@@ -1,0 +1,13 @@
+
+
+.subunit.ST { fill: #ddc; }
+.subunit.GT { fill: #cdd; }
+.subunit.VN { fill: #cdc; }
+.subunit.SN { fill: #dcd; }
+.subunit.IRL { display: none; }
+
+body {background-color: grey;}
+svg {background-color: white;}
+
+
+.project_collection{fill:red;}

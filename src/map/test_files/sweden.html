@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <!-- I recommend you host this file on your own, since this will change without warning -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datamaps/0.4.4/datamaps.swe.js"></script>
+    <!-- <script src="https://rawgit.com/Anujarya300/bubble_maps/master/data/geography-data/datamaps.none.js"></script> -->
+
+</head>
+<body style="background-color:grey;">
+<div id="sweden" class="SWE_MAP" style="background-color: white;position: relative; width: 500px; height: 500px;">
+</div>
+</body>
+<script>
+var map = new Datamap({
+          scope: 'swe',
+          element: document.getElementsByClassName('SWE_MAP')[0],
+          // responsive:true,
+          setProjection: function(element) {
+      var projection = d3.geo.mercator()
+        // .center([59.3293, 18.0868])
+        // .rotate([25.4, -20])
+        .rotate([5,-1])
+        .scale(950)
+        .center([21,62]) // X,Y
+        .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+      var path = d3.geo.path()
+        .projection(projection);
+
+      return {path: path, projection: projection};
+    },
+    geographyConfig: {
+        popupOnHover: true,
+        highlightOnHover: true,
+        borderColor: '#444',
+        borderWidth: 0.5,
+        // dataUrl : ''
+    },
+    fills: {
+        'MAJOR': '#306596',
+        'MEDIUM': '#0fa0fa',
+        'MINOR': '#bada55',
+        defaultFill: '#dddddd'
+    },
+  });
+
+  d3.select(window).on('resize', function() {
+    console.log(1);
+      map.resize();
+  });
+</script>
+<!-- https://bost.ocks.org/mike/map/ -->
+</html>
