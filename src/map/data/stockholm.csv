@@ -1,5 +1,11 @@
 id,value
-project,
-project.subarea1,100
-project.subarea2,300
-project.subarea3,50
+stockholm,
+stockholm.project,
+stockholm.project.1,
+stockholm.project.1.subarea1,100
+stockholm.project.1.subarea2,300
+stockholm.project.1.subarea3,50
+stockholm.project.2,
+stockholm.project.2.subarea1,10
+stockholm.project.2.subarea2,40
+stockholm.project.2.subarea3,200

@@ -8,9 +8,10 @@ var stratify = d3.stratify()
     .parentId(function(d) { return d.id.substring(0, d.id.lastIndexOf(".")); });
 
 
-function create_circle_pack(svg, filename, location, p, w, h){
-
-  d3.csv("data/stockholm.csv", function(error, data) {
+function create_circle_pack(svg, city, filename, location, p, w, h){
+  // svg.attr("class","bubble");
+  svg.append("g").attr("id",city+"_circles");
+  d3.csv(filename,function(error, data) {
     if (error) throw error;
 
     var root = stratify(data)
@@ -18,21 +19,25 @@ function create_circle_pack(svg, filename, location, p, w, h){
         .sort(function(a, b) { return b.value - a.value; });
 
     var pack = d3.pack()
-        .size([w - 2, h - 2])
-        .padding(.5);
+        .size([w - 2, h - 2]);
+        // .padding(.5);
 
     pack(root);
     // console.log(p);
-    var node = svg.select("g")
+    var node = svg.select("#" + city + "_circles")
       .selectAll("g")
       .data(root.descendants())
       .enter().append("g")
-        .attr("transform", function(d) { console.log(p); return "translate(" + d.x + "," + d.y + ")"; })
+        .attr("transform", function(d) {; return "translate(" + d.x + "," + d.y + ")"; })
         // .attr("transform", function(d) { console.log(p.centreturn "translate(" + p.centroid(d) + ")"; })
-        .attr("class", function(d) { return "node" + (!d.children ? " node--leaf" : d.depth ? "" : " node--root"); })
+        .attr("class", function(d) { return "node" + " node--" + (d.depth) + (!d.children ? " node--leaf" : d.depth ? "" : " node--root"); })
+        // .attr("")
         .each(function(d) { d.node = this; })
         .on("mouseover", hovered(true))
-        .on("mouseout", hovered(false));
+        .on("mouseout", hovered(false))
+        .on("click", clicked_bubble);
+
+        // node.selectAll("node--2")
 
     node.append("circle")
         .attr("id", function(d) { return "node-" + d.id; })
@@ -58,17 +63,22 @@ function create_circle_pack(svg, filename, location, p, w, h){
     node.append("title")
         .text(function(d) { return d.id + "\n" + format(d.value); });
     // $("#node-project").css("fill","green");
-    svg.select(".bubble")
-      .attr("opacity","0.8")
+    svg.select("#" + city + "_circles")
+      .attr("opacity","0.9")
       .attr("transform","translate("+(p[0]-(w/2))+","+(p[1]-(h/2))+")");
+
+    function clicked_bubble(){
+      $("#info_box_col").css("display","initial");
+    }
   });
 
   function hovered(hover) {
     return function(d) {
       d3.selectAll(d.ancestors().map(function(d) { return d.node; })).classed("node--hover", hover);
     };
-
   }
+}
 
-
+function hide_text(){
+  $("#info_box_col").css("display","none");
 }

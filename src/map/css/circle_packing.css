@@ -1,9 +1,14 @@
 text {
-  font: 2px sans-serif;
-  text-anchor: middle;
+  font: 5% sans-serif;
+  /* text-anchor: middle; */
 }
 
+.node circle {
+  stroke: #a9a9a9;
+  stroke-width: 0.1px;
+}
 .node--hover circle {
   stroke: #000;
   stroke-width: 0.2px;
+  opacity:1;
 }

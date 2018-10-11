@@ -1,13 +1,37 @@
 
 
-.subunit.ST { fill: #ddc; }
+/* .subunit.ST { fill: #ddc; }
 .subunit.GT { fill: #cdd; }
 .subunit.VN { fill: #cdc; }
 .subunit.SN { fill: #dcd; }
-.subunit.IRL { display: none; }
+*/
+#menu{
+  background-color: rgba(0,0,0,.1);
+  border-right: 1px solid rgba(0,0,0,.2)
+}
 
-body {background-color: grey;}
-svg {background-color: white;}
+#nav_bar_top{
+  /* background-color: #5c5b97; */
+  background-color: #007d91!important;
+  /* height: 7vh; */
+  /* height: 10%; */
+}
+/* body {background-color: grey;} */
+/* svg {background-color: white;} */
+
+.node--0 {
+  display: none;
+}
+
+.node--1 {
+  display:none;
+}
+
+.view{
+  cursor: pointer;
+}
 
 
 .project_collection{fill:red;}
+
+/* #info_box_col{background-color:orange;} */
