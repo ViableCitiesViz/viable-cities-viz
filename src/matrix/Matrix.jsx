@@ -232,7 +232,7 @@ export default class Matrix extends Component {
           .classed('neighbor', false);
       this.circles.selectAll('.clicked')
           .classed('clicked', false)
-          .attr('fill', function(d) { return rgb(select(this).attr('fill')).brighter() });
+          .attr('fill', function(d) { return rgb(select(this).attr('fill')).brighter(2) });
     }
 
     // make a mess with current
@@ -248,7 +248,7 @@ export default class Matrix extends Component {
           .classed('neighbor', true);
       this.circles.selectAll(`[data-id='${current.id}']`)
           .classed('clicked', true)
-          .attr('fill', function(d) { return rgb(select(this).attr('fill')).darker() });
+          .attr('fill', function(d) { return rgb(select(this).attr('fill')).darker(2) });
     }
   }
 
