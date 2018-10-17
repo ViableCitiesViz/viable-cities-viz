@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { select, axisLeft, axisTop, scaleOrdinal, range, packSiblings, event, hcl } from 'd3';
+import { select, axisLeft, axisTop, scaleOrdinal, range, packSiblings, event, rgb } from 'd3';
 import mockData from './mock-data-v2.json';
 import MatrixDetails from './MatrixDetails';
 import './Matrix.css';
@@ -145,7 +145,7 @@ export default class Matrix extends Component {
         .range(range(5).map(d => (1 + d) * height / 5 - height / 10))
         .domain([1, 2, 3, 4, 5]);
     this.scaleType = scaleOrdinal()
-        .range([hcl(221.5, 28.7, 47.9), hcl(138.2, 32.5, 74.3), hcl(69.9, 77.3, 74.4)]) // pms 3145, pms 2255, pms 2011
+        .range([rgb(0, 125, 145), rgb(151, 194, 142), rgb(234, 154, 0)]) // pms 3145, pms 2255, pms 2011
         .domain(['Forskningsprojekt', 'Innovationsprojekt', 'Förstudie']);
 
     // y-axis
@@ -212,14 +212,14 @@ export default class Matrix extends Component {
     if (prev !== null)
       this.circles.selectAll(`[data-id='${prev.id}']`)
           .classed('hover', false)
-          .attr('fill', function(d) { return hcl(select(this).attr('fill')).brighter() });
+          .attr('fill', function(d) { return rgb(select(this).attr('fill')).brighter() });
 
 
 
     if (current !== null)
       this.circles.selectAll(`[data-id='${current.id}']`)
           .classed('hover', true)
-          .attr('fill', function(d) { return hcl(select(this).attr('fill')).darker() });
+          .attr('fill', function(d) { return rgb(select(this).attr('fill')).darker() });
   }
 
   updateClicked(current, prev) {
@@ -232,7 +232,7 @@ export default class Matrix extends Component {
           .classed('neighbor', false);
       this.circles.selectAll('.clicked')
           .classed('clicked', false)
-          .attr('fill', function(d) { return hcl(select(this).attr('fill')).brighter(1.5) });
+          .attr('fill', function(d) { return rgb(select(this).attr('fill')).brighter() });
     }
 
     // make a mess with current
@@ -248,7 +248,7 @@ export default class Matrix extends Component {
           .classed('neighbor', true);
       this.circles.selectAll(`[data-id='${current.id}']`)
           .classed('clicked', true)
-          .attr('fill', function(d) { return hcl(select(this).attr('fill')).darker(1.5) });
+          .attr('fill', function(d) { return rgb(select(this).attr('fill')).darker() });
     }
   }
 
