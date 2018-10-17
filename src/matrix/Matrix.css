@@ -29,20 +29,17 @@
   transition: fill 500ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.matrix.clicked circle {
+.matrix.clicked circle:not(.neighbor):not(.hover) {
   fill: #eee;
 }
 
 .matrix circle.hover:not(.clicked) {
-  fill: #666 !important;
 }
 
 .matrix circle.clicked.neighbor {
-  fill: #4a4a4a;
 }
 
-.matrix circle.neighbor {
-  fill: #9B9B9B;
+.matrix circle.neighbor:not(.clicked) {
 }
 
 h2 {
