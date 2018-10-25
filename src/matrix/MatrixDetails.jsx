@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'd3';
 
-function MatrixDetails({project}) {
+function MatrixDetails({ project }) {
   if (!project) return (<div className="matrix-details matrix-details--empty" />);
 
   const { title, organization, budget } = project;

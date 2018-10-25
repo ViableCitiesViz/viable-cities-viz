@@ -129,12 +129,16 @@ export default class Matrix extends Component {
       hoveredProject: null,
       clickedProject: null
     };
+
+    this.scaleType = scaleOrdinal()
+        .range([rgb(0, 125, 145), rgb(151, 194, 142), rgb(234, 154, 0)]) // pms 3145, pms 2255, pms 2011
+        .domain(['Forskningsprojekt', 'Innovationsprojekt', 'Förstudie']);
   }
 
   componentDidMount() {
     this.svg = select(this.svgRef);
 
-    const margin = { top: 120, right: 0, bottom: 100, left: 120 };
+    const margin = { top: 130, right: 0, bottom: 0, left: 150 };
     const width = +this.svg.attr("width") - margin.left - margin.right; // TODO, responsive?
     const height = +this.svg.attr("height") - margin.top - margin.bottom; // TODO, responsive?
 
@@ -144,9 +148,6 @@ export default class Matrix extends Component {
     const scaleY = scaleOrdinal()
         .range(range(5).map(d => (1 + d) * height / 5 - height / 10))
         .domain([1, 2, 3, 4, 5]);
-    this.scaleType = scaleOrdinal()
-        .range([rgb(0, 125, 145), rgb(151, 194, 142), rgb(234, 154, 0)]) // pms 3145, pms 2255, pms 2011
-        .domain(['Forskningsprojekt', 'Innovationsprojekt', 'Förstudie']);
 
     // y-axis
     this.svg.append('g')
@@ -159,6 +160,12 @@ export default class Matrix extends Component {
       .selectAll(".tick text")
         .call(parseNewLinesY);
 
+    // themes label
+    this.svg.append('text')
+        .attr('transform', `translate(20, ${margin.top + height / 2})rotate(-90)`)
+        .style('text-anchor', 'middle')
+        .text('Themes');
+
     // x-axis
     this.svg.append('g')
         .attr('transform', `translate(${margin.left}, ${height + margin.top})`)
@@ -169,6 +176,12 @@ export default class Matrix extends Component {
         .call(g => g.select('.domain').remove())
       .selectAll(".tick text")
         .call(parseNewLinesX);
+
+    // focus areas label
+    this.svg.append('text')
+        .attr('transform', `translate(${margin.left + width / 2}, 20)`)
+        .style('text-anchor', 'middle')
+        .text('Focus areas');
 
     const packedData = packData(mockData, scaleX, scaleY);
 
@@ -181,7 +194,6 @@ export default class Matrix extends Component {
 
     node.append("circle")
         .attr('r', d => d.r)
-        .attr('fill', '#ccc')
         .attr('data-id', d => d.id)
         .attr('data-row', d => d.row)
         .attr('data-col', d => d.col)
@@ -214,8 +226,6 @@ export default class Matrix extends Component {
           .classed('hover', false)
           .attr('fill', function(d) { return rgb(select(this).attr('fill')).brighter() });
 
-
-
     if (current !== null)
       this.circles.selectAll(`[data-id='${current.id}']`)
           .classed('hover', true)
@@ -237,14 +247,13 @@ export default class Matrix extends Component {
 
     // make a mess with current
     if (current !== null) {
-      let neighBorselector = '';
+      let neighborSelector = '';
       current.pins.forEach(pin => {
-        neighBorselector += `[data-row='${pin.row}'][data-col='${pin.col}'], `;
+        neighborSelector += `[data-row='${pin.row}'][data-col='${pin.col}'], `;
       });
-      console.log(current.pins);
-      neighBorselector = neighBorselector.slice(0, -2);
+      neighborSelector = neighborSelector.slice(0, -2);
       this.svg.classed('clicked', true);
-      this.circles.selectAll(neighBorselector)
+      this.circles.selectAll(neighborSelector)
           .classed('neighbor', true);
       this.circles.selectAll(`[data-id='${current.id}']`)
           .classed('clicked', true)
@@ -260,7 +269,7 @@ export default class Matrix extends Component {
   render() {
     return (
       <div className="matrix-wrapper">
-        <svg className="matrix" width="800" height="900" ref={(svg) => { this.svgRef = svg; }} />
+        <svg className="matrix" width="800" height="800" ref={(svg) => { this.svgRef = svg; }} />
         <MatrixDetails project={this.state.clickedProject} />
       </div>
     );
