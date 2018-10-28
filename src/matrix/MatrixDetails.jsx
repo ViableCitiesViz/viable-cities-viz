@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'd3';
+import './MatrixDetails.css';
 
 function MatrixDetails({ project }) {
   if (!project) return (<div className="matrix-details matrix-details--empty" />);

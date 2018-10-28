@@ -1,0 +1,40 @@
+.matrix-scale {
+  position: relative;
+}
+
+.matrix-scale svg {
+}
+
+.matrix-scale circle {
+  stroke: #999;
+  stroke-width: 1px;
+  stroke-dasharray: 2;
+  fill: none;
+}
+
+.matrix-scale__labels {
+  position: absolute;
+}
+
+.matrix-scale__label {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  transform: translate(0, -50%);
+}
+
+.matrix-scale__label-line {
+  height: 1px;
+  width: 40px;
+  background: #e6e6e6;
+  flex-shrink: 0;
+}
+
+.matrix-scale__label-text {
+  flex-grow: 1;
+  flex-shrink: 0;
+  text-align: left;
+  margin-left: 5px;
+  font-size: 10px;
+  color: #999;
+}

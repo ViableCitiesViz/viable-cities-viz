@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { select, axisLeft, axisTop, scaleOrdinal, range, packSiblings, event, rgb } from 'd3';
+import { select, axisLeft, axisTop, scaleOrdinal, packSiblings, event, rgb, packEnclose, scalePoint } from 'd3';
 import mockData from './mock-data-v2.json';
 import MatrixDetails from './MatrixDetails';
+import MatrixLegend from './MatrixLegend';
+import MatrixScale from './MatrixScale';
 import './Matrix.css';
 
 const col2focus = {
@@ -35,7 +37,8 @@ const themeLabel = {
 };
 
 function packData(data, scaleX, scaleY) {
-  // first, group together circles that are at the same position in the matrix
+  // first, group together circles that are
+  // at the same position in the matrix
   const obj = {};
   for (let row = 1; row <= 5; ++row) {
     obj[row] = {};
@@ -60,13 +63,34 @@ function packData(data, scaleX, scaleY) {
           type: project.survey_answers.project_type,
           organization: project.survey_answers.project_organization,
           budget: project.survey_answers.budget,
-          r: Math.sqrt(project.survey_answers.budget.funded / Math.PI) * 0.015
+          r: Math.sqrt(project.survey_answers.budget.funded / Math.PI)
         })
       });
     }
   });
 
-  // pack them together, fix their position and return as a flat list
+  // first pass: pack circles and find the "optimal scale"
+  // and redo the circle radii to use that scale
+  let maxEnclose = 0;
+  for (let row = 1; row <= 5; ++row) {
+    for (let col = 1; col <= 4; ++col) {
+      if (!obj[row][col].length) continue; // if empty continue
+      packSiblings(obj[row][col]);
+      maxEnclose = Math.max(maxEnclose, packEnclose(obj[row][col]).r);
+    }
+  }
+  const optimalEncloseRadius = Math.min(scaleX.step() / 2, scaleY.step() / 2); // * 0.95?
+  const rScale = optimalEncloseRadius / maxEnclose;
+  for (let row = 1; row <= 5; ++row) {
+    for (let col = 1; col <= 4; ++col) {
+      obj[row][col].forEach(pin => {
+        pin.r = Math.sqrt(pin.budget.funded / Math.PI) * rScale;
+      });
+    }
+  }
+
+  // second pass: pack again, fix positions
+  // and return as a flat list
   const arr = [];
   for (let row = 1; row <= 5; ++row) {
     for (let col = 1; col <= 4; ++col) {
@@ -74,7 +98,8 @@ function packData(data, scaleX, scaleY) {
         arr.push({
           ...pin,
           x: pin.x + scaleX(col),
-          y: pin.y + scaleY(row)
+          y: pin.y + scaleY(row),
+          rScale
         })
       });
     }
@@ -127,12 +152,14 @@ export default class Matrix extends Component {
     super(props);
     this.state = {
       hoveredProject: null,
-      clickedProject: null
+      clickedProject: null,
+      packedData: null
     };
 
+    this.domainType = ['Forskningsprojekt', 'Innovationsprojekt', 'Förstudie'];
     this.scaleType = scaleOrdinal()
         .range([rgb(0, 125, 145), rgb(151, 194, 142), rgb(234, 154, 0)]) // pms 3145, pms 2255, pms 2011
-        .domain(['Forskningsprojekt', 'Innovationsprojekt', 'Förstudie']);
+        .domain(this.domainType);
   }
 
   componentDidMount() {
@@ -142,12 +169,14 @@ export default class Matrix extends Component {
     const width = +this.svg.attr("width") - margin.left - margin.right; // TODO, responsive?
     const height = +this.svg.attr("height") - margin.top - margin.bottom; // TODO, responsive?
 
-    const scaleX = scaleOrdinal()
-        .range(range(4).map(d => (1 + d) * width / 4 - width / 8))
-        .domain([1, 2, 3, 4]);
-    const scaleY = scaleOrdinal()
-        .range(range(5).map(d => (1 + d) * height / 5 - height / 10))
-        .domain([1, 2, 3, 4, 5]);
+    const scaleX = scalePoint()
+        .range([0, width])
+        .domain([1,2,3,4])
+        .padding(0.5)
+    const scaleY = scalePoint()
+        .range([0, height])
+        .domain([1,2,3,4,5])
+        .padding(0.5)
 
     // y-axis
     this.svg.append('g')
@@ -184,8 +213,12 @@ export default class Matrix extends Component {
         .text('Focus areas');
 
     const packedData = packData(mockData, scaleX, scaleY);
+    this.setState({
+      packedData
+    });
 
     // make some circles
+    // TODO: Move this (or at least .data(packedData)) to ComponentDidUpdate?
     this.circles = this.svg.append('g').classed('circles', true);
     const node = this.circles.selectAll('g')
       .data(packedData)
@@ -271,6 +304,8 @@ export default class Matrix extends Component {
       <div className="matrix-wrapper">
         <svg className="matrix" width="800" height="800" ref={(svg) => { this.svgRef = svg; }} />
         <MatrixDetails project={this.state.clickedProject} />
+        <MatrixLegend domain={this.domainType} scale={this.scaleType} />
+        <MatrixScale data={this.state.packedData} />
       </div>
     );
   }

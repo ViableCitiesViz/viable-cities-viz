@@ -1,0 +1,30 @@
+.matrix-legend {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-align: left;
+}
+
+.matrix-legend ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.matrix-legend li {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+}
+
+.matrix-legend__box {
+  height: 0.7em;
+  width: 0.7em;
+  border-radius: 50%;
+}
+
+.matrix-legend__text {
+  flex-grow: 1;
+  font-size: 0.9em;
+  margin-left: 5px;
+}
