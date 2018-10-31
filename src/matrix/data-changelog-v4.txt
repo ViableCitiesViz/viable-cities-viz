@@ -1,0 +1,73 @@
+Har lagt till en del fält baserat på kalkylen huvudsakligen men även hemsidan i andra hand.
+Fälten keywords, other_financiers, other_recipients, project_manager, project_manager_email, dates, description och (i tre fall) website är nya.
+Sharing Cities är nu helt borttaget eftersom det saknas data.
+
+Notera att jag la in other_financiers och other_recipients från kalkylen istället för partners (från hemsidan).
+
+När hemsida och kalkyl har sagt olika saker har jag använt infon från kalkylen,
+såvida inte kalkylen var tom på det fältet, då jag använt hemsidan (i.e. keywords).
+
+Skillnader mellan hemsida och kalkyl (som jag upptäckt):
+========================================================
+Aktivitetsbaserad energi- och mobilitetsmodellering på stadsnivå för planering av framtidens städer
+- Funded = 4387349 (hemsida) eller 4409448 (kalkyl)
+
+Digitalt kontrollerade odlingssystem i stadsnära industriområden
+- Projektledare
+  - Hemsida: Irena Lundberg
+  - Kalkyl: Nils Gabrielsson
+
+Effektiv energiplanering för smarta och hållbara städer
+- Total_cost = 870000 (hemsida) eller 875000 (kalkyl)
+
+Att skapa hållbara urbana livsstilar genom nudging och medborgardeltagande
+- Funded = 4470000 (hemsida) eller 4441000 (kalkyl)
+- Total_cost = 5970000 (hemsida) eller 5970000 (kalkyl)
+
+Klimatkampen Uppsala
+- Funded = 3879895 (hemsida) eller 3870471 (kalkyl)
+- Total_cost = 8082420 (hemsida) eller 8594096 (kalkyl)
+- Saknar keywords i kalkyl
+
+Ladda, Lagra, Länka – Storskalig Testbädd för Prosumenter i Energinätet
+- Saknar keywords i kalkyl
+
+Mo-Bo – Arkitektur för hållbar mobilitet
+- Funded: 4999334 (hemsida) eller 4234559 (kalkyl)
+- Total_cost: 10294238 (hemsida) eller 9265438(kalkyl)
+
+Samverkande infrastruktur för smarta och hållbara mindre kommuner och städer
+- Saknar keywords i kalkyl
+- Projektledare:
+  - Hemsida: Björn Laumert, KTH; Jan Markendahl, KTH (bitr)
+  - Kalkyl: JAN MARKENDAHL
+
+Sensorer för luftmiljö - möjligheter och begränsningar
+- Funded: 500000 (hemsida) eller 480000 (kalkyl)
+- Total_cost: 1000000 (hemsida) eller 960000 (kalkyl)
+
+Sharing Cities Sweden
+- Hemsidan har ändrat sen sist, innehåller ingen info? Saknar info överhuvudtaget i kalkyl
+- Jag tar bort den eftersom det saknas data
+
+Skapa en lokal förnyelsebar energilösning i Röstånga
+- Saknar keywords i kalkyl
+
+Smart Village – självförsörjande energisystem i framtiden kvarter
+- Saknar keywords i kalkyl
+
+Småskalig elförsörjning genom aktiv styrning och innovativ lagring av solel
+- Saknar keywords i kalkyl
+- Projektledare:
+  - Hemsida: Johan Holmqvist
+  - Kalkyl: Jeanette Green
+
+Värdeskapande med öppen data från energisystemet ectogrid™
+- !!! Funded: 4659600 (hemsida) eller 2584000 (kalkyl) !!!
+- !!! Total_cost 9790000 (hemsida) eller 5360000 (kalkyl) !!!
+- Projektledare:
+  - Hemsida: Maria Malm Skarin
+  - Kalkyl: Lars Bierlein
+
+3De – energiutmaningar med tredimensionell fastighetsindelning
+- Saknar keywords i kalkyl
