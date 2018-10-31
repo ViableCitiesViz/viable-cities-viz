@@ -1,8 +1,6 @@
 .matrix-legend {
-  position: absolute;
-  bottom: 0;
-  right: 0;
   text-align: left;
+  margin: 0 20px;
 }
 
 .matrix-legend ul {

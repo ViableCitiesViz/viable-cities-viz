@@ -1,159 +1,19 @@
 import React, { Component } from 'react';
-import { select, axisLeft, axisTop, scaleOrdinal, packSiblings, event, rgb, packEnclose, scalePoint } from 'd3';
-import mockData from './mock-data-v2.json';
+import { select, axisLeft, axisTop, scaleOrdinal, event, rgb, scalePoint } from 'd3';
+import { themeLabel, focusLabel, packData, buildScaleData, parseNewlinesY, parseNewlinesX } from './MatrixUtility';
 import MatrixDetails from './MatrixDetails';
 import MatrixLegend from './MatrixLegend';
 import MatrixScale from './MatrixScale';
+import PropTypes from 'prop-types';
 import './Matrix.css';
 
-const col2focus = {
-  1: 'focus_lifestyle',
-  2: 'focus_planning',
-  3: 'focus_mobility',
-  4: 'focus_infrastructure'
-};
-
-const theme2row = {
-  testbeds: 1,
-  innovation: 2,
-  financing: 3,
-  management: 4,
-  intelligence: 5
-};
-
-const focusLabel = {
-  1: 'Lifestyle and  Consumption',
-  2: 'Planning and  Built Environment',
-  3: 'Mobility and  Accessibility',
-  4: 'Integrated  Infrastructure'
-};
-
-const themeLabel = {
-  1: 'Testbeds and  Living Labs',
-  2: 'Innovation and  Entrepreneurship',
-  3: 'Financing and  Business Models',
-  4: 'Governance',
-  5: 'Intelligence, Security  and Ethics'
-};
-
-function packData(data, scaleX, scaleY) {
-  // first, group together circles that are
-  // at the same position in the matrix
-  const obj = {};
-  for (let row = 1; row <= 5; ++row) {
-    obj[row] = {};
-    for (let col = 1; col <= 4; ++col) {
-      obj[row][col] = [];
-    }
-  }
-  data.data.forEach(project => {
-    const pins = []; // so that a circle can find its buddies
-    for (let col = 1; col <= 4; ++col) {
-      project.survey_answers[col2focus[col]].forEach(theme => {
-        pins.push({
-          row: theme2row[theme],
-          col
-        });
-        obj[theme2row[theme]][col].push({
-          row: theme2row[theme],
-          col,
-          pins,
-          id: project.survey_answers.project_id,
-          title: project.survey_answers.project_title,
-          type: project.survey_answers.project_type,
-          organization: project.survey_answers.project_organization,
-          budget: project.survey_answers.budget,
-          r: Math.sqrt(project.survey_answers.budget.funded / Math.PI)
-        })
-      });
-    }
-  });
-
-  // first pass: pack circles and find the "optimal scale"
-  // and redo the circle radii to use that scale
-  let maxEnclose = 0;
-  for (let row = 1; row <= 5; ++row) {
-    for (let col = 1; col <= 4; ++col) {
-      if (!obj[row][col].length) continue; // if empty continue
-      packSiblings(obj[row][col]);
-      maxEnclose = Math.max(maxEnclose, packEnclose(obj[row][col]).r);
-    }
-  }
-  const optimalEncloseRadius = Math.min(scaleX.step() / 2, scaleY.step() / 2); // * 0.95?
-  const rScale = optimalEncloseRadius / maxEnclose;
-  for (let row = 1; row <= 5; ++row) {
-    for (let col = 1; col <= 4; ++col) {
-      obj[row][col].forEach(pin => {
-        pin.r = Math.sqrt(pin.budget.funded / Math.PI) * rScale;
-      });
-    }
-  }
-
-  // second pass: pack again, fix positions
-  // and return as a flat list
-  const arr = [];
-  for (let row = 1; row <= 5; ++row) {
-    for (let col = 1; col <= 4; ++col) {
-      packSiblings(obj[row][col]).forEach(pin => {
-        arr.push({
-          ...pin,
-          x: pin.x + scaleX(col),
-          y: pin.y + scaleY(row),
-          rScale
-        })
-      });
-    }
-  }
-  return arr;
-}
-
-// inspired by https://bl.ocks.org/mbostock/7555321
-// replaces double spaces in the labels with fake "newlines"
-// (tspan elements) and fixes their positions
-function parseNewLinesY(text) {
-  text.each(function() {
-    const text = select(this);
-    const words = text.text().split(/ {2}/);
-    const x = text.attr('x');
-    const dy = parseFloat(text.attr('dy'));
-    text.text(null);
-    const lineHeight = 1.1; // em
-    let i = 0;
-    words.forEach(word => {
-      text.append('tspan')
-          .text(word)
-          .attr('x', x)
-          .attr('y', `-${(words.length - 1) * lineHeight / 2}em`)
-          .attr('dy', `${dy + (i++ * lineHeight)}em`);
-    });
-  });
-}
-function parseNewLinesX(text) {
-  text.each(function() {
-    const text = select(this).attr('text-anchor', 'start');
-    const words = text.text().split(/ {2}/);
-    const y = text.attr('y');
-    const dy = parseFloat(text.attr('dy'));
-    text.text(null);
-    const lineHeight = 1.1; // em
-    let i = 0;
-    words.forEach(word => {
-      text.append('tspan')
-          .text(word)
-          .attr('x', 0)
-          .attr('dy', `${dy + (i++ * lineHeight)}em`);
-    });
-    text.attr('transform', `translate(0,${y})rotate(-45)translate(0,${-y})`);
-  });
-}
-
-export default class Matrix extends Component {
+class Matrix extends Component {
   constructor(props) {
     super(props);
     this.state = {
       hoveredProject: null,
       clickedProject: null,
-      packedData: null
+      scaleData: null
     };
 
     this.domainType = ['Forskningsprojekt', 'Innovationsprojekt', 'Förstudie'];
@@ -165,83 +25,59 @@ export default class Matrix extends Component {
   componentDidMount() {
     this.svg = select(this.svgRef);
 
-    const margin = { top: 130, right: 0, bottom: 0, left: 150 };
-    const width = +this.svg.attr("width") - margin.left - margin.right; // TODO, responsive?
-    const height = +this.svg.attr("height") - margin.top - margin.bottom; // TODO, responsive?
+    this.margin = { top: 130, right: 0, bottom: 0, left: 150 };
+    const width = +this.svg.attr("width") - this.margin.left - this.margin.right; // TODO, responsive?
+    const height = +this.svg.attr("height") - this.margin.top - this.margin.bottom; // TODO, responsive?
 
-    const scaleX = scalePoint()
+    this.scaleX = scalePoint()
         .range([0, width])
         .domain([1,2,3,4])
         .padding(0.5)
-    const scaleY = scalePoint()
+    this.scaleY = scalePoint()
         .range([0, height])
         .domain([1,2,3,4,5])
         .padding(0.5)
 
     // y-axis
     this.svg.append('g')
-        .attr('transform', `translate(${width + margin.left}, ${margin.top})`)
-        .call(axisLeft(scaleY)
+        .attr('transform', `translate(${width + this.margin.left}, ${this.margin.top})`)
+        .call(axisLeft(this.scaleY)
             .tickSize(width)
             .tickPadding(10)
             .tickFormat(row => themeLabel[row]))
         .call(g => g.select('.domain').remove())
       .selectAll(".tick text")
-        .call(parseNewLinesY);
+        .call(parseNewlinesY);
 
     // themes label
     this.svg.append('text')
-        .attr('transform', `translate(20, ${margin.top + height / 2})rotate(-90)`)
+        .attr('transform', `translate(20, ${this.margin.top + height / 2})rotate(-90)`)
         .style('text-anchor', 'middle')
         .text('Themes');
 
     // x-axis
     this.svg.append('g')
-        .attr('transform', `translate(${margin.left}, ${height + margin.top})`)
-        .call(axisTop(scaleX)
+        .attr('transform', `translate(${this.margin.left}, ${height + this.margin.top})`)
+        .call(axisTop(this.scaleX)
             .tickSize(height)
             .tickPadding(20)
             .tickFormat(col => focusLabel[col]))
         .call(g => g.select('.domain').remove())
       .selectAll(".tick text")
-        .call(parseNewLinesX);
+        .call(parseNewlinesX);
 
     // focus areas label
     this.svg.append('text')
-        .attr('transform', `translate(${margin.left + width / 2}, 20)`)
+        .attr('transform', `translate(${this.margin.left + width / 2}, 20)`)
         .style('text-anchor', 'middle')
         .text('Focus areas');
 
-    const packedData = packData(mockData, scaleX, scaleY);
-    this.setState({
-      packedData
-    });
-
     // make some circles
-    // TODO: Move this (or at least .data(packedData)) to ComponentDidUpdate?
     this.circles = this.svg.append('g').classed('circles', true);
-    const node = this.circles.selectAll('g')
-      .data(packedData)
-      .enter().append('g')
-        .attr('transform', d => `translate(${d.x + margin.left},${d.y + margin.top})`);
-
-    node.append("circle")
-        .attr('r', d => d.r)
-        .attr('data-id', d => d.id)
-        .attr('data-row', d => d.row)
-        .attr('data-col', d => d.col)
-        .attr('fill', d => this.scaleType(d.type))
-        .on('mouseover', d => this.setState({
-          hoveredProject: d
-        }))
-        .on('mouseout', d => this.setState({
-          hoveredProject: null
-        }))
-        .on('click', d => this.setState({
-          clickedProject: d
-        }));
+    this.updateData(this.props.data);
 
     // clear clickedProject when clicking outside of any circle
+    // TODO, put this on something bigger than the svg?
     this.svg.on('click', () => {
       if (event.target.tagName !== 'circle') {
         this.setState({
@@ -294,19 +130,72 @@ export default class Matrix extends Component {
     }
   }
 
+  updateData(data) {
+    const packedData = packData(data, this.scaleX, this.scaleY);
+    this.setState({
+      scaleData: buildScaleData(packedData)
+    });
+    const circle = this.circles
+      .selectAll('circle')
+      .data(packedData, d => `${d.id}[${d.row},${d.col}]`);
+
+    circle.exit()
+        .on('mouseover', null)
+        .on('mouseout', null)
+        .on('click', null)
+      .transition()
+        .attr('r', 0)
+        .remove()
+
+    circle
+      .transition()
+        .attr('transform', d => `translate(${d.x + this.margin.left},${d.y + this.margin.top})`)
+        .attr('r', d => d.r)
+
+    circle.enter().append('circle')
+        .attr('transform', d => `translate(${d.x + this.margin.left},${d.y + this.margin.top})`)
+        .attr('data-id', d => d.id)
+        .attr('data-row', d => d.row)
+        .attr('data-col', d => d.col)
+        .attr('fill', d => this.scaleType(d.type))
+        .on('mouseover', d => this.setState({
+          hoveredProject: d
+        }))
+        .on('mouseout', d => this.setState({
+          hoveredProject: null
+        }))
+        .on('click', d => this.setState({
+          clickedProject: d
+        }))
+        .attr('r', 0)
+      .transition()
+        .attr('r', d => d.r)
+  }
+
   componentDidUpdate(prevProps, prevState) {
     this.updateHovered(this.state.hoveredProject, prevState.hoveredProject);
     this.updateClicked(this.state.clickedProject, prevState.clickedProject);
+
+    if (this.props.data !== prevProps.data)
+      this.updateData(this.props.data);      
   }
 
   render() {
     return (
       <div className="matrix-wrapper">
         <svg className="matrix" width="800" height="800" ref={(svg) => { this.svgRef = svg; }} />
-        <MatrixDetails project={this.state.clickedProject} />
-        <MatrixLegend domain={this.domainType} scale={this.scaleType} />
-        <MatrixScale data={this.state.packedData} />
+        <div className="matrix-info">
+          <MatrixDetails project={this.state.clickedProject} />
+          <MatrixLegend domain={this.domainType} scale={this.scaleType} />
+          <MatrixScale scaleData={this.state.scaleData} />
+        </div>
       </div>
     );
   }
 }
+
+Matrix.propTypes = {
+  data: PropTypes.object.isRequired
+};
+
+export default Matrix;

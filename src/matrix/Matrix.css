@@ -4,10 +4,17 @@
   display: flex;
   font-family: 'Open Sans', sans-serif;
   position: relative;
+  flex-grow: 1;
+  align-items: center;
 }
 
 .matrix {
   flex-shrink: 0;
+}
+
+.matrix-info {
+  position: relative;
+  flex-grow: 1;
 }
 
 .matrix .tick text {

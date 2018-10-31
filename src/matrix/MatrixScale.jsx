@@ -1,95 +1,75 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { format } from 'd3';
 import PropTypes from 'prop-types';
 import './MatrixScale.css';
 
 
-class MatrixScale extends Component {
-  constructor(props) {
-    super(props);
+function MatrixScale(props) {
+  if (!props.scaleData) return (<div></div>);
 
-    this.data = null;
-    this.labelNumbers = [];
-    this.circleRadii = [];
-  }
+  const labelNumbers = [];
+  const circleRadii = [];
 
-  render() {
-    if (!this.props.data || !this.props.data.length) return (<div></div>);
+  labelNumbers[0] = Number.parseInt(props.scaleData.maxBudget).toPrecision(1);
+  labelNumbers[1] = Number.parseInt(props.scaleData.maxBudget / 2).toPrecision(1);
+  labelNumbers[2] = Number.parseInt(props.scaleData.maxBudget / 10).toPrecision(1);
 
-    // this is ugly, but it should work
-    if (this.props.data !== this.data) {
-      this.data = this.props.data;
+  circleRadii[0] = Math.sqrt(labelNumbers[0] / Math.PI) * props.scaleData.rScale;
+  circleRadii[1] = Math.sqrt(labelNumbers[1] / Math.PI) * props.scaleData.rScale;
+  circleRadii[2] = Math.sqrt(labelNumbers[2] / Math.PI) * props.scaleData.rScale;
 
-      const rScale = this.props.data[0].rScale;
-      let minBudget = Number.MAX_VALUE;
-      let maxBudget = 0;
-      this.props.data.forEach(d => {
-        minBudget = Math.min(minBudget, d.budget.funded);
-        maxBudget = Math.max(maxBudget, d.budget.funded);
-      });
+  const margin = { top: 20, right: 0, bottom: 0, left: 20};
+  const lineWidth = 10;
 
-      this.labelNumbers[0] = Number.parseInt(maxBudget).toPrecision(1);
-      this.labelNumbers[1] = Number.parseInt(maxBudget / 2).toPrecision(1);
-      this.labelNumbers[2] = Number.parseInt(maxBudget / 12).toPrecision(1);
-
-      this.circleRadii[0] = Math.sqrt(this.labelNumbers[0] / Math.PI) * rScale;
-      this.circleRadii[1] = Math.sqrt(this.labelNumbers[1] / Math.PI) * rScale;
-      this.circleRadii[2] = Math.sqrt(this.labelNumbers[2] / Math.PI) * rScale;
-
-      const max = format(",.1s")(maxBudget);
-
-      console.log(`rScale: ${rScale}, min: ${maxBudget}, max: ${maxBudget}, formatted: ${max}`);
-      console.log(`radius 1: ${this.circleRadii[0]}`);
-    }
-
-    const margin = { top: 20, right: 0, bottom: 0, left: 20};
-
-    return (
-      <div className="matrix-scale">
-        <div className="matrix-scale__labels" style={{paddingTop: margin.top, paddingLeft: margin.left}}>
-          <div className="matrix-scale__label"
-            style={{left: this.circleRadii[0] + margin.left, top: 0 + margin.top}}
-          >
-            <div className="matrix-scale__label-line" />
-            <span className="matrix-scale__label-text">{`${format(',')(this.labelNumbers[0]).replace(/,/g, ' ')} kr`}</span>
-          </div>
-          <div className="matrix-scale__label"
-            style={{left: this.circleRadii[0] + margin.left, top: this.circleRadii[0] * 2 - this.circleRadii[1] * 2 + margin.top}}
-          >
-            <div className="matrix-scale__label-line" />
-            <span className="matrix-scale__label-text">{`${format(',')(this.labelNumbers[1]).replace(/,/g, ' ')} kr`}</span>
-          </div>
-          <div className="matrix-scale__label"
-            style={{left: this.circleRadii[0] + margin.left, top: this.circleRadii[0] * 2 + margin.top}}
-          >
-            <div className="matrix-scale__label-line" />
-            <span className="matrix-scale__label-text">{`${format(',')(this.labelNumbers[2]).replace(/,/g, ' ')} kr`}</span>
-          </div>
+  return (
+    <div className="matrix-scale">
+      <div className="matrix-scale__labels" style={{paddingTop: margin.top, paddingLeft: margin.left}}>
+        <div className="matrix-scale__label"
+          style={{left: circleRadii[0] + margin.left, top: 0 + margin.top}}
+        >
+          <div className="matrix-scale__label-line" style={{width: circleRadii[0] + lineWidth}} />
+          <span className="matrix-scale__label-text">{`${format(',')(labelNumbers[0]).replace(/,/g, ' ')} kr`}</span>
         </div>
-        <svg>
-          <circle
-            r={this.circleRadii[0]}
-            cx={this.circleRadii[0] + margin.left}
-            cy={this.circleRadii[0] + margin.top}
-          />
-          <circle
-            r={this.circleRadii[1]}
-            cx={this.circleRadii[0] + margin.left}
-            cy={this.circleRadii[0] * 2 - this.circleRadii[1] + margin.top}
-          />
-          <circle
-            r={this.circleRadii[2]}
-            cx={this.circleRadii[0] + margin.left}
-            cy={this.circleRadii[0] * 2 - this.circleRadii[2] + margin.top}
-          />
-        </svg>
+        <div className="matrix-scale__label"
+          style={{left: circleRadii[0] + margin.left, top: circleRadii[0] * 2 - circleRadii[1] * 2 + margin.top}}
+        >
+          <div className="matrix-scale__label-line" style={{width: circleRadii[0] + lineWidth}} />
+          <span className="matrix-scale__label-text">{`${format(',')(labelNumbers[1]).replace(/,/g, ' ')} kr`}</span>
+        </div>
+        <div className="matrix-scale__label"
+          style={{left: circleRadii[0] + circleRadii[2] + margin.left, top: circleRadii[0] * 2 - circleRadii[2] + margin.top}}
+        >
+          <div className="matrix-scale__label-line" style={{width: circleRadii[0] + lineWidth - circleRadii[2]}} />
+          <span className="matrix-scale__label-text">{`${format(',')(labelNumbers[2]).replace(/,/g, ' ')} kr`}</span>
+        </div>
       </div>
-    );
-  }
+      <svg>
+        <circle
+          r={circleRadii[0]}
+          cx={circleRadii[0] + margin.left}
+          cy={circleRadii[0] + margin.top}
+        />
+        <circle
+          r={circleRadii[1]}
+          cx={circleRadii[0] + margin.left}
+          cy={circleRadii[0] * 2 - circleRadii[1] + margin.top}
+        />
+        <circle
+          r={circleRadii[2]}
+          cx={circleRadii[0] + margin.left}
+          cy={circleRadii[0] * 2 - circleRadii[2] + margin.top}
+        />
+      </svg>
+    </div>
+  );
 }
 
 MatrixScale.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object)
+  scaleData: PropTypes.shape({
+    rScale: PropTypes.number,
+    minBudget: PropTypes.number,
+    maxBudget: PropTypes.number
+  })
 };
 
 export default MatrixScale;

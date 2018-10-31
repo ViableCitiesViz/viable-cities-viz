@@ -3,6 +3,7 @@
 }
 
 .matrix-scale svg {
+  height: 170px;
 }
 
 .matrix-scale circle {
@@ -25,7 +26,6 @@
 
 .matrix-scale__label-line {
   height: 1px;
-  width: 40px;
   background: #e6e6e6;
   flex-shrink: 0;
 }
