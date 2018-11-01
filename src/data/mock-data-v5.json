@@ -129,10 +129,10 @@
             "Cyber security", "Threat modeling", "Attack simulation", "Risk management", "Vulnerabilities", "Security operation center", "Internet of Things"
         ],
         "other_financiers": [
-            "Umeå Universitet, Foreseeti AB"
+            "Umeå universitet", "Foreseeti AB"
         ],
         "other_recipients": [
-            "Kungliga Tekniska Högskolan", "Umeå Universitet", "Foreseeti AB"
+            "Kungliga Tekniska Högskolan", "Umeå universitet", "Foreseeti AB"
         ],
         "project_manager": "Robert Lagerström",
         "project_manager_email": "robertl@kth.se",
@@ -356,7 +356,7 @@
             "SenseAir", "Camfil Svenska AB", "Akademiska Hus AB", "MANN + HUMMEL Vokes Air AB", "Swegon Operations AB", "Karlstads kommun", "Systemair Sverige AB", "Norsk Elektro Optikk Lund AB"
         ],
         "other_recipients": [
-            " Rise Research Institutes Of Sweden AB"
+            "Rise Research Institutes Of Sweden AB"
         ],
         "project_manager": "Sara Janhäll",
         "project_manager_email": "sara.janhall@ri.se",
@@ -409,10 +409,10 @@
             "Nudging", "Konsumtion", "E-handel", "Livsmedel", "Köpbeteende", "Klimatpåverkan", "Innovation"
         ],
         "other_financiers": [
-            "MATSE AB", "Göteborgs Kommun"
+            "MATSE AB", "Göteborgs kommun"
         ],
         "other_recipients": [
-            "Göteborgs Universitet", "Rise Research Institutes Of Sweden AB"
+            "Göteborgs universitet", "Rise Research Institutes Of Sweden AB"
         ],
         "project_manager": "Britta Florén",
         "project_manager_email": "britta.floren@ri.se",
@@ -466,7 +466,7 @@
             "Flexibla energisystem", "Solel", "Lokal ellagring", "Styrbara laster", "Användarstudier", "Affärsmodell"
         ],
         "other_financiers": [
-            "Sony Mobile Communications AB", "Kraftringen Energi AB (publ)", "Lunds kommun", "Sydö development"
+            "Sony Mobile Communications AB", "Kraftringen Energi AB", "Lunds kommun", "Sydö development"
         ],
         "other_recipients": [
             "IVL Svenska Miljöinstitutet AB"
