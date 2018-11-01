@@ -1,0 +1,563 @@
+{
+  "data": [
+    {
+      "survey_answers": {
+        "budget": { "funded": 4387349, "total_cost": 7886801 },
+        "project_id": "1",
+        "project_type": "Forskningsprojekt",
+        "ratio_funded": 0.5562900598100547,
+        "project_title": "Aktivitetsbaserad energi- och mobilitetsmodellering på stadsnivå för planering av framtidens städer",
+        "focus_lifestyle": ["testbeds", "management"],
+        "focus_planning": ["testbeds", "management"],
+        "focus_mobility": ["testbeds", "management"],
+        "focus_infrastructure": ["testbeds", "management"],
+        "project_organization": "Uppsala universitet",
+        "location" : "Borlänge",
+        "keywords": [
+            "Energi", "Byggnader", "Transporter", "Mobilitet", "Aktiviteter", "Stadsplanering", "Modellering"
+        ],
+        "other_financiers": [
+            "Uppsala universitet", "Högskolan Dalarna", "WSP Sverige AB", "Vattenfall AB", "AB Borlänge Energi", "Borlänge kommun"
+        ],
+        "other_recipients": [
+            "Kungliga Tekniska Högskolan", "Uppsala universitet", "Högskolan Dalarna", "WSP Sverige AB"
+        ],
+        "project_manager": "Joakim Widén",
+        "project_manager_email": "joakim.widen@angstrom.uu.se",
+        "dates": { "start": "2019-01-01", "end": "2021-13-31" },
+        "description": "För att nå uppsatta mål för energieffektivisering och minskade utsläpp av växthusgaser, och samtidigt hantera ökad urbanisering och befolkningstillväxt, måste städer världen över hitta optimala strategier för att ställa om lokal användning och tillförsel av energi. Det är nödvändigt att kunna studera vilka effekter olika stadsutformningar, policyåtgärder och spridning av ny teknik har på energiprestandan hos hela städer. I det här projektet kommer vi att använda smarta digitala tekniker för att samla in stora dataset över mobilitet och aktiviteter för stadsinvånare. Dessa data, i kombination med meteorologiska data, LiDAR-data och andra GIS-baserade data, kommer sedan att användas för att konstruera en stadsmodell som kan användas för att beräkna och visualisera energi- och effektbehov och växthusgasutsläpp från byggnader och transporter på stadsnivå. Projektets resultat omfattar ny kunskap och data liksom demonstrerade innovationer som kommer till praktisk användning i stadsplanering."
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 3487000, "total_cost": 6974000 },
+        "project_id": "2",
+        "project_type": "Innovationsprojekt",
+        "ratio_funded": 0.5,
+        "project_title": "DDS Energieffektiv vård",
+        "focus_lifestyle": ["testbeds", "management"],
+        "focus_planning": ["testbeds", "management"],
+        "focus_mobility": [],
+        "focus_infrastructure": [],
+        "project_organization": "Stockholms Läns Landsting",
+        "location" : "Stockholm",
+        "keywords": [
+            "Energieffektivisering", "Vård", "Fastigheter", "Digitalisering", "Energieffektiv", "Innovation"
+        ],
+        "other_financiers": [
+            "Stockholms läns landsting", "Vattenfall AB", "ABB AB", "Ericsson AB", "Telia Sverige AB"
+        ],
+        "other_recipients": [
+            "Kungliga Tekniska Högskolan", "Stockholms läns landsting", "Vattenfall AB", "ABB AB", "Ericsson AB", "Telia Sverige AB"
+        ],
+        "project_manager": "Annika Larsson",
+        "project_manager_email": "annika1.larsson@vattenfall.com",
+        "dates": { "start": "2018-06-01", "end": "2019-12-31" },
+        "description": "Innovationsprojektet syftar till energieffektivisering inom sjukvården. Förväntade resultat är samordning av vårdprocess och fastighetsdrift, nyckeltal för energieffektivitet speglande även vårdnytta, visuell återkoppling, och ökad kunskap om datahantering på framtidssäkert sätt. Resultatets värde är ökad medvetenhet om hur digitalisering kan skapa samverkan för att nå energieffektiv vård med mindre klimatpåverkan och kunskap om hur bra upphandling bör utföras. Projektet omfattar tre fokus- och fyra temaområden och består av fyra steg; 1) Preparering & basinstallation, 2) Visualisering, 3) Förbättra & utöka, 4) Överlämna & avsluta. Utmaningar är samordning mellan vård och fastighet, säker datahantering med avseende på drift- och personsäkerhet, analys, presentation och återkoppling av information. Ingående partners är Stockholms läns landsting, KTH, ABB, Vattenfall, Ericsson & Telia. Projektet är initierat av Digital Demo Stockholm, ett samarbete mellan samhälle, akademi och industri.",
+        "website": "https://www.digitaldemostockholm.com/energieffektiv-vard/"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 225000, "total_cost": 450000 },
+        "project_id": "3",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.5,
+        "project_title": "Digitalt kontrollerade odlingssystem i stadsnära industriområden",
+        "focus_lifestyle": ["financing"],
+        "focus_planning": ["testbeds", "innovation"],
+        "focus_mobility": [],
+        "focus_infrastructure": ["testbeds", "innovation"],
+        "project_organization": "Invest Stockholm",
+        "location" : "Stockholm",
+        "keywords": [
+            "Controlled Environment Agriculture", "Stadsodling", "Industriområden", "Foodtech", "Cirkulära resursflöden", "Attraktivitet och arbetstillfällen"
+        ],
+        "other_financiers": [
+            "Invest Stockholm Business Region AB"
+        ],
+        "other_recipients": [
+            "Invest Stockholm Business Region AB", "Sweheat Swedish Council for District Heating", "Högdalsgruppen Ideell Förening", "Sweden Foodtech"
+        ],
+        "project_manager": "Irena Lundberg",
+        "dates": { "start": "2018-06-01", "end": "2018-12-31" },
+        "description": "Stockholms Stad (näringslivsförvaltning, miljöförvaltning och stadsledningskontor) privata fastighetsägare och företagarföreningarna Högdalsgruppen och Sweheat vill genomföra pilotinstallationer av innovativa och högteknologiskt kontrollerade odlingssystem för frukt och grönsaker i stadens industriområden. Installationer i industriområden möjliggör integration av odlingssystem i industriområdenas resursflöden varvid synergier med betydande positiva miljöeffekter uppstår. Dessutom skapas potential till medborgarengagemang i industriområdena och nya arbetstillfällen som matchar nyanländas förutsättningar. Projektet är en förstudie som ska leverera en ekonomiskt och tekniskt hållbar installationsplan för minst en pilotanläggning. Projektet bidrar till stadens mål om ökad lokal försörjningsförmåga av livsmedel och ett flertal av de miljömålen för 2016-2019. Samtidigt bidrar projektet till Viable Cities resultatmål 5&7, till utfallsmålen 1, 3, 4 & 5 och särskilt till effektmålen 1, 4 & 5."
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 437500, "total_cost": 875000 },
+        "project_id": "4",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.502873563222,
+        "project_title": "Effektiv energiplanering för smarta och hållbara städer",
+        "focus_lifestyle": [],
+        "focus_planning": ["management"],
+        "focus_mobility": [],
+        "focus_infrastructure": ["management"],
+        "project_organization": "RISE",
+        "location" : "Kiruna",
+        "keywords": [
+            "Visualisering", "Energisystem", "Stadsplanering", "Digitalisering", "Beslutsstöd"
+        ],
+        "other_financiers": [
+            "Rise Research Institutes Of Sweden AB", "Tekniska Verken i Kiruna AB", "IVL Svenska Miljöinstitutet AB"
+        ],
+        "other_recipients": [
+            "Rise Research Institutes Of Sweden AB", "Tekniska Verken i Kiruna AB", "IVL Svenska Miljöinstitutet AB"
+        ],
+        "project_manager": "Inger-Lise Svensson",
+        "project_manager_email": "inger-lise.svensson@sp.se",
+        "dates": { "start": "2018-08-15", "end": "2019-07-31" },
+        "description": "För mer effektiv planering av städer behövs verktyg för att visualisera och kommunicera konsekvenserna av stadsutveckling för energisystemet. Dagens verktyg är begränsade till statisk data vilket gör att synergier i systemet inte kan identifieras och realiseras. Det här projektet är en förstudie undersöka genomförbarheten i att utveckla ett dynamiskt visualiseringsverktyg för effektivare planeringsprocesser. Verktyget utvecklas i samråd med Kiruna kommun där nyttan kommer att vara betydande genom den stora förändring staden står inför. Inom ramen för förstudien kommer en mockup av ett visualiseringsverktyg att tas fram samt en första skiss på vad beslutsunderlaget i det färdiga verktyget behöver omfatta för effektivt beslutsfattande. En plan för full implementering av verktyget med tillhörande beslutsunderlagsfunktion skall utarbetas. Förstudiens resultat skall kommuniceras till andra, svenska aktörer med intresse för stadsomvandling."
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 405000, "total_cost": 810000 },
+        "project_id": "5",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.5,
+        "project_title": "Hotmodellering och attacksimulering av livskraftiga städer",
+        "focus_lifestyle": [],
+        "focus_planning": [],
+        "focus_mobility": ["intelligence"],
+        "focus_infrastructure": ["intelligence"],
+        "project_organization": "KTH",
+        "location" : "Stockholm",
+        "keywords": [
+            "Cyber security", "Threat modeling", "Attack simulation", "Risk management", "Vulnerabilities", "Security operation center", "Internet of Things"
+        ],
+        "other_financiers": [
+            "Umeå Universitet, Foreseeti AB"
+        ],
+        "other_recipients": [
+            "Kungliga Tekniska Högskolan", "Umeå Universitet", "Foreseeti AB"
+        ],
+        "project_manager": "Robert Lagerström",
+        "project_manager_email": "robertl@kth.se",
+        "dates": { "start": "2018-06-01", "end": "2018-12-31" },
+        "description": "Increased digitization makes cities increasingly vulnerable to cyber attacks, where computers are compromised by malicious actors in order to cause damage and disruption. The higher the degree of digitization, the more devastating the potential attacks. In order to mitigate cyber threats, vulnerabilities first need to be identified. This is generally very difficult, because it requires (i) a detailed understanding of the city-wide system architecture, and (ii) significant security expertise. The task can be significantly facilitated by dedicated engineering tool support in the form of threat modeling and attack simulation. Threat modeling supports requirement no 1 by documenting the design of the system architecture. Attack simulation supports requirement no 2 by automating the identification of vulnerabilities. The main goal is to do a feasibility study for a threat modeling and attack simulation approach specifically designed for large scaled complex system-of-systems"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 4441000, "total_cost": 5940000 },
+        "project_id": "6",
+        "project_type": "Forskningsprojekt",
+        "ratio_funded": 0.7476430976430977,
+        "project_title": "Hållbara urbana livsstilar genom nudging och medborgardeltagande",
+        "focus_lifestyle": ["testbeds", "management"],
+        "focus_planning": ["testbeds", "management"],
+        "focus_mobility": [],
+        "focus_infrastructure": [],
+        "project_organization": "SLU",
+        "location" : "Uppsala",
+        "keywords": [
+            "Medborgardeltagande", "Nudging", "Hållbara Urbana livsstilar", "Konsumtion", "Styrning"
+        ],
+        "other_financiers": [
+            "Uppsala kommun", "Malmö stad", "WSP Sverige AB", "LINK Arkitektur AB", "Urban Minds", "Lindroos Arkitekter"
+        ],
+        "other_recipients": [
+            "Sveriges Lantbruksuniversitet SLU", "Uppsala kommun", "Malmö stad", "WSP Sverige AB", "LINK Arkitektur AB", "Urban Minds", "Lindroos Arkitekter"
+        ],
+        "project_manager": "Sofie Joosse",
+        "project_manager_email": "sofie.joosse@slu.se",
+        "dates": { "start": "2018-09-01", "end": "2021-08-31" },
+        "description": "Det här projektet tar fram kunskap som är av strategisk betydelse för transitionen till ett effektivt energisystem genom att adressera hur stadsplanering kan främja hållbara urbana livsstilar. Fokus läggs på två styrstrategier: nudging och medborgardeltagande. Medborgardeltagande bygger på aktivt medborgarengagemang medan nudging riktar sig direkt mot beteende genom små förändringar i den (fysiska eller virtuella) miljön. Strategierna ses ofta som oförenliga, men djupare analys av dess vetenskapliga och etiska bas samt praktik saknas. Således är det oklart på vilka sätt de kompletterar varandra eller står i motsatsförhållande. Det gör att beslutsfattare, planerare och medborgare saknar underlag att bedöma de båda styrstrategiernas möjligheter och begränsningar. Genom samverkan mellan forskare, företagare och tjänstepersoner, tar detta projekt därför fram praktiknära och vetenskapligt kunskap om medborgardeltagande och nudging som strategier för att främja hållbara urbana livsstilar."
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 3870471, "total_cost": 8594096 },
+        "project_id": "7",
+        "project_type": "Innovationsprojekt",
+        "ratio_funded": 0.45036394752862896,
+        "project_title": "Klimatkampen Uppsala",
+        "focus_lifestyle": ["testbeds"],
+        "focus_planning": [],
+        "focus_mobility": ["testbeds"],
+        "focus_infrastructure": [],
+        "project_organization": "Chalmers tekniska högskola",
+        "location" : "Uppsala",
+        "keywords": [
+            "Konsumtionens klimatpåverkan", "Hållbara livsstilar", "Hållbara praktiker", "Feedback", "Normaktivering"
+        ],
+        "other_financiers": [
+            "Uppsala Pastorat", "Studiefrämjandet Uppsalarefionen", "Uppsala läns landsting", "Uppsalahem AB", "Uppsala kommun", "Vattenfall AB", "Göteborgs universitet"
+        ],
+        "other_recipients": [
+            "Chalmers Tekniska Högskola AB"
+        ],
+        "project_manager": "Stefan Wirsenius",
+        "project_manager_email": "stefan.wirsenius@gmail.com",
+        "dates": { "start": "2018-08-01", "end": "2020-03-31" },
+        "description": "Klimatkampen (arbetsnamn) är ett samarbetsprojekt mellan Chalmers tekniska högskola, Uppsala kommun, webbtjänsten Svalna AB och flera företag och organisationer som verkar i Uppsala och på nationell nivå: Studiefrämjandet, Svenska kyrkan, UL (länstrafiken), Uppsalahem och Vattenfall. Tillsammans vill parterna arbeta för att påskynda klimatomställningen genom att på olika sätt engagera och informera Uppsalabor om hur de kan minska sin klimatpåverkan, samt på olika sätt själva arbeta för att erbjuda lösningar, tjänster och produkter som undanröjer barriärer för mer hållbara val i vardagen."
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 455000, "total_cost": 1000000 },
+        "project_id": "8",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.455,
+        "project_title": "Ladda, lagra, länka – Storskalig testbädd för prosumenter i energinätet",
+        "focus_lifestyle": ["testbeds", "innovation", "financing", "management"],
+        "focus_planning": [],
+        "focus_mobility": ["testbeds", "innovation", "financing", "management"],
+        "focus_infrastructure": ["testbeds", "innovation", "financing", "management"],
+        "project_organization": "KTH",
+        "location" : "Stockholm",
+        "keywords": [
+            "Elbilar", "Laddingsinfrastruktur", "Energilagring", "Delningsekonomi", "Lokal marknad", "Lastbalansering", "Prosumenter"
+        ],
+        "other_financiers": [
+            "Kungliga Tekniska Högskolan", "Energiforsk AB", "ElectriCITY Innovation EK"
+        ],
+        "other_recipients": [
+            "Kungliga Tekniska Högskolan", "Energiforsk AB", "ElectriCITY Innovation EK", "ElBil2020 AB"
+        ],
+        "project_manager": "Björn Laumert",
+        "project_manager_email": "bjorn.laumert@energy.kth.se",
+        "dates": { "start": "2018-06-01", "end": "2018-11-30" },
+        "description": "Förstudien Ladda, Lagra, Länkar syftar till att undersöka och förbereda möjligheten att etablera en storskalig testbädd för medborgare att producera och dela energitjänster med varandra. Medborgarna skall även kunna leverera nyttigheter såsom förnybar el eller effektutjämning till den befintliga energimarknaden och på så sätt bidra till ett uthålligt och klimatneutralt samhälle. En storskalig testbädd för energitjänster kräver implementering av flera teknologier såsom produktions och lagringsinfrastruktur samt styr och regler infrastruktur och algoritmer. Vidare behövs en marknadsplattform för att kunna dela och byta energitjänster med varandra och interagera med energimarknaden. Förstudiens mål är att etablera en strategi och projektplan för etablering av denna testbädd och undersöka hur den kan implementeras i eller bygga vidare på befintlig testbädd för digital delningsekonomi som etableras inom ramen för projektet Sharing Cities."
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 499250, "total_cost": 1119250 },
+        "project_id": "9",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.44605763,
+        "project_title": "MERiT: Miljövänligt och enkelt resande i tjänsten",
+        "focus_lifestyle": ["testbeds"],
+        "focus_planning": [],
+        "focus_mobility": ["testbeds", "management"],
+        "focus_infrastructure": ["innovation"],
+        "project_organization": "RISE Viktoria",
+        "location" : "Göteborg",
+        "keywords": [
+            "Kombinerad mobilitet (KM)", "Tjänsteresor", "Mobility as a Service (MaaS)", "Reseplattform", "Fallstudie", "Innovationsupphandling"
+        ],
+        "other_financiers": [
+            "Rise Research Institutes Of Sweden AB", "WSP Sverige AB", "Göteborgs kommun"
+        ],
+        "other_recipients": [
+            "Rise Viktoria AB"
+        ],
+        "project_manager": "Anne Faxer",
+        "project_manager_email": "anne.faxer@viktoria.se",
+        "dates": { "start": "2018-08-01", "end": "2019-06-30" },
+        "description": "MERiT är en förstudie som utgår från den problematik stora organisationer har med att ta hänsyn till hållbarhet och administration vid hantering av tjänsteresor. Förstudien förväntas på ett tydligt sätt visa på möjligheter med nya digitala mobilitetstjänster (mobilitet som tjänst MaaS, kombinerad mobilitet) som börjar etableras för att adressera dessa utmaningar. Projektet kommer bl.a. att genomföra en fallstudie med Göteborgs stadsdelsförvaltningar, där de på eget initiativ implementerar och testar en ny reseplattform under ett års tid. Dessutom undersöks hur dessa tjänster kan anpassas i stora organisationerna såsom RISE och WSP framöver. Målet är att identifiera kritiska faktorer för företag och offentliga organisationer där ”MaaS för företag” kan möjliggöra ett strukturerat system för att planera och kontrollera smidiga och hållbara resor för sina anställda. MERiT kommer bygga unik kunskap kring MaaS för företag som tillgodoser privata och offentliga organisationers särskilda behov."
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 4234559, "total_cost": 9265438 },
+        "project_id": "10",
+        "project_type": "Innovationsprojekt",
+        "ratio_funded": 0.4570273957906793,
+        "project_title": "Mo-Bo – Arkitektur för hållbar mobilitet",
+        "focus_lifestyle": [],
+        "focus_planning": ["testbeds", "innovation", "management"],
+        "focus_mobility": ["testbeds", "financing"],
+        "focus_infrastructure": [],
+        "project_organization": "Theory Into Practice",
+        "location" : "Upplands Väsby",
+        "keywords": [
+            "Mo-Bo", "Arkitektur", "Stadsbyggnad", "Bostad", "Mobilitetstjänster", "Delningsekonomi", "Hållbara transporter"
+        ],
+        "other_financiers": [
+            "Upplands Väsby kommun", "Uppsala kommun", "Laterre Invest ab", "Kungliga Tekniska Högskolan", "Theory Into Practice", "Trivector Traffic AB", "Urbio ab"
+        ],
+        "other_recipients": [
+            "Kungliga Tekniska Högskolan", "Sveriges Lantbruksuniversitet SLU", "Theory Into Practice", "Urbio ab", "Trivector Traffic AB"
+        ],
+        "project_manager": "Anna Sundman",
+        "project_manager_email": "anna@theoryintopractice.se",
+        "dates": { "start": "2018-06-01", "end": "2020-06-01" },
+        "description": "Delningsekonomi och mobilitetstjänster banar väg för nytänkande arkitektur. Mo-Bo är ett bostadskoncept med mobilitetstjänster som löser de boendes transporter på ett socialt, ekonomiskt och ekologiskt hållbart sätt. Mobilitetstjänster möjliggör att fler människor och varor kan transporteras av färre fordon, vilket innebär smartare användning av resurser och ytor. I anslutning till bostaden frigörs stora ytor och kostnader som tidigare investerats i privata bilplatser. Innovationsarbetet utgår från ett Living Lab (Vilunda, Mo-Bo I) och två testbäddar (Slakthusområdet, Mo-Bo II, samt Östra Sala backe) där gestaltning, tjänster och policy testas i plan-, bygg- och driftskede. Aktörskonstellationen består av kommuner, byggaktörer, arkitekter, tjänsteleverantörer, boende och forskare. Målet är en omställning från dagens “Normal” inom bostadsarkitektur och stadsplanering med fokus på privatbilism till “New Normal” med fokus på transportbehov, lösningars kapacitet och klimateffekter.",
+        "website": "http://mo-bo.se/"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 500000, "total_cost": 1000000 },
+        "project_id": "11",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.5,
+        "project_title": "Mått och steg för effektivare nyttjande av byggnadsyta och användning av energi",
+        "focus_lifestyle": ["testbeds", "financing"],
+        "focus_planning": ["testbeds", "innovation", "financing", "management"],
+        "focus_mobility": [],
+        "focus_infrastructure": [],
+        "project_organization": "KTH",
+        "location" : "Malmö",
+        "keywords": [
+            "Effektiv ytanvändning", "Nyttjandegrad", "Alternativa energianvändningsmått", "Fyrstegsprincip för bebyggelse", "Digitalisering", "Tjänster"
+        ],
+        "other_financiers": [
+            "Kungliga Tekniska Högskolan", "Rise Research Institutes Of Sweden AB", "Fastighets AB Trianon"
+        ],
+        "other_recipients": [
+            "Kungliga Tekniska Högskolan", "Rise Research Institutes Of Sweden AB"
+        ],
+        "project_manager": "Mattias Höjer",
+        "project_manager_email": "hojer@kth.se",
+        "dates": { "start": "2018-08-01", "end": "2019-07-31" },
+        "description": "Denna förstudie initierar en diskussion om hur digitalisering kan påverka efterfrågan och utbudet av uppvärmd yta i bebyggelsen, genom att införa tjänster för delning av yta. Den undersöker också nya sätt att mäta energianvändning utifrån aktivitet istället för per kvadratmeter och hur en kvantifiering av den potentiella minskningen av energianvändningen till följd av effektivare ytutnyttjande skulle kunna göras. Baserat på idéer om att uppmuntra flexibel användning av byggnader, som underlättas av digitaliseringen, och nya mått på byggnaders energianvändning, föreslår vi en prioriteringsordning:\n\n– Minska efterfrågan på utrymme’\n– Minska efterfrågan på utrymme\n– Intensifiera användningen av befintligt utrymme\n– Rekonstruera, med tanke på de två första stegen\n– Konstruera nya byggnader med tanke på de två första stegen"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 480000, "total_cost": 960000 },
+        "project_id": "12",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.5,
+        "project_title": "Samverkande infrastruktur för smarta och hållbara mindre kommuner och städer",
+        "focus_lifestyle": ["financing"],
+        "focus_planning": [],
+        "focus_mobility": ["financing", "management"],
+        "focus_infrastructure": ["financing", "management"],
+        "project_organization": "KTH",
+        "location" : "Herrljunga",
+        "keywords": [
+            "Digitalisering", "Hållbara små städer och kommuner", "Samverkande kommunal infrastruktur", "Stadsnät", "VA och el", "Möjlighetsstudie", "Roadmap"
+        ],
+        "other_financiers": [
+            "Kungälv Energi AB", "Herrljunga Elektriska AB", "Kungliga Tekniska Högskolan", "Servanet AB", "Iioote AB"
+        ],
+        "other_recipients": [
+            "Kungliga Tekniska Högskolan"
+        ],
+        "project_manager": "Björn Laumert; Jan Markendahl (bitr)",
+        "dates": { "start": "2018-07-01", "end": "2018-12-31" },
+        "description": "Begreppen smarta och hållbara städer förknippas vanligen med stora städer. Problem, utmaningar och lösningar för framtida städer handlar mycket om förutsättningar typiska för storstäder. I vår förslagna förstudie vill vi inrikta oss på särdrag för mindre kommuner; innefattande krav, förutsättningar och lösningar. Målsättningen är att bygga en konstellation för ett större projekt samt att skapa förutsättningar för detta. Dessa delar ska ingå i förstudien: Behov av och begränsningar för mindre kommuner att använda smarta lösningar, Samverkan inom och mellan kommuner vad gäller olika typer av infrastruktur, Möjligheter att bygga ut stadsnäten med trådlösa komponenter, Möjligheter att Integrera kommunikationslösningar med tjänsteplattform för att erbjuda lokala tjänster.\n\nProjektet består av flera olika typer av aktörer; Kommuner (Herrljunga, Kungälv), Stadsnät och Kommunala energibolag (Herrljunga elektriska, Kungälv Energi, ServaNet), teknikföretaget Iioote samt forskare från KTH."
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 480000, "total_cost": 960000 },
+        "project_id": "13",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.5,
+        "project_title": "Sensorer för luftmiljö – möjligheter och begränsningar",
+        "focus_lifestyle": ["testbeds", "innovation"],
+        "focus_planning": ["testbeds", "innovation"],
+        "focus_mobility": ["testbeds", "innovation"],
+        "focus_infrastructure": [],
+        "project_organization": "RISE",
+        "location" : "Karlstad",
+        "keywords": [
+            "Sensor", "Luft", "Kontroll", "Kvalitet", "Partiklar", "Mätning"
+        ],
+        "other_financiers": [
+            "SenseAir", "Camfil Svenska AB", "Akademiska Hus AB", "MANN + HUMMEL Vokes Air AB", "Swegon Operations AB", "Karlstads kommun", "Systemair Sverige AB", "Norsk Elektro Optikk Lund AB"
+        ],
+        "other_recipients": [
+            " Rise Research Institutes Of Sweden AB"
+        ],
+        "project_manager": "Sara Janhäll",
+        "project_manager_email": "sara.janhall@ri.se",
+        "dates": { "start": "2018-08-15", "end": "2019-08-15" },
+        "description": "Denna förstudie adresserar två stora klimatutmaningar; transporter och energieffektivitet i byggnader via ventilationen. Sensorer för mätning av luftkvalitet används i allt större utsträckning för bl.a. styrning av inomhusluft och för information till allmänheten om utomhusluft. Dessa sensorer är enkla att använda, relativt billiga och ger data i realtid med hög tidsupplösning, vilket är nödvändigt för många tillämpningar. Dessvärre finns problem med kvaliteten hos mätdata, speciellt för sensorer för luftburna partiklar.\nDenna förstudie vänder sig till användare och utvecklare av enklare sensorer för luftkvalitetsmätningar och erbjuder en sammanställning av hur sensorerna fungerar i olika tillämpningar, kommer att sprida kunskap om sensorer, höja medvetenheten kring kvalitetssäkring av mätdata, föreslå en verifierbar kvalitetskontroll och i förlängningen leda till ökad service till oskyddade trafikanter och effektivare ventilation i byggnader."
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 242000, "total_cost": 630000 },
+        "project_id": "15",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.38412698,
+        "project_title": "Skapa en lokal förnyelsebar energilösning i Röstånga",
+        "focus_lifestyle": ["innovation", "financing", "management"],
+        "focus_planning": ["innovation", "financing", "management"],
+        "focus_mobility": [],
+        "focus_infrastructure": ["innovation", "financing", "management"],
+        "project_organization": "Röstånga Tillsammans",
+        "location" : "Svalöv",
+        "keywords": [
+            "Röstånga ekoby", "100% förnybar", "Lokal energisystemlösning", "Medborgardialog", "Nätnytta"
+        ],
+        "other_financiers": [
+            "EvalPart AB", "FOJAB arkitekter AB", "Kraftringen Energi AB", "Lunds universitet", "Röstånga ekoby ekonomisk förening", "Röstånga Tillsammans"
+        ],
+        "other_recipients": [
+            "EvalPart AB", "FOJAB arkitekter AB"
+        ],
+        "project_manager": "Christian Stenqvist",
+        "project_manager_email": "christian.stenqvist@evalpart.se",
+        "dates": { "start": "2018-06-04", "end": "2019-02-28" },
+        "description": "Hur kan civilsamhälle, privat näringsliv, kommunägt nätbolag och akademi samverka för att skapa ett resilient och hållbart energisystem för hela Röstånga till 2030 faciliterat av det nybyggda området R:ekobyn? Förstudien svarar mot behov att sammanställa kunskap och beslutsunderlag om energisystemlösningar att integrera i projekteringen av boendemiljön R:ekobyn med 30 hushåll. Frågor kring R:ekobyns samspel och värdeskapande gentemot omgivande samhälle ligger bakom målet att Röstånga blir en energimässigt helt förnybar “plusenergiort”. Med systemperspektiv utformas det lokala energisystemet flexibelt till nytta för omgivande elnät, och av stor vikt är att matcha variabel förnybar elproduktion med effektbehov och lagring. Som ett led i utvärdering av ändamålsenliga lösningar ställs krav på sociotekniskt förhållningssätt och förmåga att samla samhällsaktörer, främja medborgardialog och engagemang. Detta sker via anpassade digital plattformar som samlar medborgares åsikter och värderingar. Framgångar och resultat sprids, väcker omvärldsintresse, och möjliggör replikerbarhet anpassat till lokala förutsättningar. Hur civilsamhälle, privat näringsliv, kommunägt nätbolag och akademi kan samverka för att skapa ett resilient och hållbart energisystem för hela Röstånga till 2030."
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 300000, "total_cost": 600000 },
+        "project_id": "16",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.5,
+        "project_title": "Smart och klimatmedveten matbutik för morgondagens konsumenter och samhälle",
+        "focus_lifestyle": ["testbeds", "innovation"],
+        "focus_planning": [],
+        "focus_mobility": ["testbeds", "innovation"],
+        "focus_infrastructure": [],
+        "project_organization": "RISE Research Institutes of Sweden",
+        "location" : "Göteborg",
+        "keywords": [
+            "Nudging", "Konsumtion", "E-handel", "Livsmedel", "Köpbeteende", "Klimatpåverkan", "Innovation"
+        ],
+        "other_financiers": [
+            "MATSE AB", "Göteborgs Kommun"
+        ],
+        "other_recipients": [
+            "Göteborgs Universitet", "Rise Research Institutes Of Sweden AB"
+        ],
+        "project_manager": "Britta Florén",
+        "project_manager_email": "britta.floren@ri.se",
+        "dates": { "start": "2018-09-01", "end": "2019-08-31" },
+        "description": "Förstudiens mål är att förstå hur miljöinformation om olika livsmedel tillsammans med smarta arbetssätt (nudging) kan förändra köpbeteendet hos konsumenten, för att minska klimatpåverkan i staden. Det handlar om metoder och parametrar viktiga för att locka fler att medvetet eller omedvetet handla mer miljö-/klimatsmartare mat. Livskraftiga städer som uppmuntrar till hållbara livsstilar kräver innovativa lösningar som underlättar för konsumenten att välja rätt. Mat.se är en innovativ aktör inom e-handel som vill utveckla lösningar för en minskad klimatpåverkan från livsmedelskonsumtionen. Göteborg Stad deltar som representant för medborgaren och staden, Handelshögskolan (GU) med forskningsexpertis inom Nudging. RISE är experter inom livsmedels klimatpåverkan och beteendevetenskap. RISE klimatdatabas för livsmedel är central i förstudien för att identifiera beslutsval som ger en betydande klimatnytta. Projektupplägget består av kartläggning, nudgingförsök, webenkäter samt projektworkshops."
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 430000, "total_cost": 860000 },
+        "project_id": "17",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.5,
+        "project_title": "Smart Village – självförsörjande energisystem i framtiden kvarter",
+        "focus_lifestyle": ["testbeds", "innovation"],
+        "focus_planning": ["testbeds", "innovation"],
+        "focus_mobility": [],
+        "focus_infrastructure": ["testbeds", "innovation"],
+        "project_organization": "Energikontoret sydost",
+        "location" : "Mörbylånga",
+        "keywords": [
+            "Smarta elnät", "Materialval", "Energilagring", "Livvstil", "Smart village"
+        ],
+        "other_financiers": [
+            "Kalmar Energi Försäljning AB", "Energikontor Sydost AB", "Magnus Björkegren", "Niklas Andersson", "WSP Sverige AB"
+        ],
+        "other_recipients": [
+            "Energikontor Sydost AB", "Magnus Björkegren", "Niklas Andersson", "WSP Sverige AB"
+        ],
+        "project_manager": "Anna Thore",
+        "project_manager_email": "anna.thore@wsp.com",
+        "dates": { "start": "2018-06-18", "end": "2019-03-31" },
+        "description": "Projektkonceptet Smart Village har tagits fram ideellt för att bygga framtidens kvarter i en modern ekoenhet med hög självförsörjningsgrad ur energisynpunkt. Projektet har som mål att tvista gränserna för hur ett modernt område kan utformas och ge möjligheter till en livsstil med utsläpp nära noll samtidigt som nya förutsättningar skapas för social gemenskap. I denna ansökan vill vi undersöka och verifiera förutsättningarna för hur ett framtida bostadsområde med nära noll i energiförbrukning framgångsrikt ska kunna realiseras och där bästa klimat- och miljönytta kan integreras i befintligt energisystem. Projektgruppen är branschöverskridande där Kalmar Energi, byggföretaget I am Home, WSP och ideella Smart Village. Resultaten av studien ska kunna vägleda och inspirera dem som vill gå före regelverket och redan nu satsa på att bygga framtidens samhällen. Projektet skapar förutsättningar för att bedriva framtida banbrytande demonstrationsprojekt i nästa steg där lärdomar kan spridas.",
+        "website": "http://www.smartvillage.se/"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 317500, "total_cost": 635000 },
+        "project_id": "18",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.5,
+        "project_title": "Småskalig elförsörjning genom aktiv styrning och innovativ lagring av solel.",
+        "focus_lifestyle": ["financing"],
+        "focus_planning": [],
+        "focus_mobility": [],
+        "focus_infrastructure": ["financing"],
+        "project_organization": "IVL Svenska Miljöinstitutet",
+        "location" : "Lund",
+        "keywords": [
+            "Flexibla energisystem", "Solel", "Lokal ellagring", "Styrbara laster", "Användarstudier", "Affärsmodell"
+        ],
+        "other_financiers": [
+            "Sony Mobile Communications AB", "Kraftringen Energi AB (publ)", "Lunds kommun", "Sydö development"
+        ],
+        "other_recipients": [
+            "IVL Svenska Miljöinstitutet AB"
+        ],
+        "project_manager": "Johan Holmqvist",
+        "dates": { "start": "2018-06-15", "end": "2018-12-14" },
+        "description": "Denna förstudie syftar till att undersöka och verifiera förutsättningarna för ett demonstrationsprojekt avseende flexibla energisystem i byggnader baserad på solel, lokal lagring och styrbara laster i den nyetablerade stadsdelen Brunnshög i Lunds kommun. Förstudien ska även ta fram ett förslag för hur flera byggnader med flexibla energisystem i ett område kan samverka för att öka den energisystemmässiga nyttan, resurseffektiviteten och robustheten i både det lokala elnätet och i det nationella elsystemet. Förstudien ska också ta fram förslag på en metodik för hur man bäst utvärderar nyttan av dessa flexibla energisystem för byggnadens energiprestanda och systemets resurseffektivitet. Förstudien kommer att ta sin utgångspunkt i användarstudier för att föreslå lösningen för aktiv styrning."
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 400000, "total_cost": 800000 },
+        "project_id": "19",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.5,
+        "project_title": "Urban ICT Arena som kvadrupelhelixmiljö för en hållbar energiomställning",
+        "focus_lifestyle": ["testbeds"],
+        "focus_planning": ["testbeds"],
+        "focus_mobility": [],
+        "focus_infrastructure": [],
+        "project_organization": "Kista Science City AB",
+        "location" : "Stockholm",
+        "keywords": [
+            "Urban ICT Arena", "Testbädd", "Kvadrupelhelix", "Medborgardialog", "Energi", "Civilsamhället", "Kista"
+        ],
+        "other_financiers": [
+            "SSM Holding AB", "Kista Träff", "INITIATIVES OF CHANGE-SVERIGE", "Kista Science City AB"
+        ],
+        "other_recipients": [
+            "Kista Träff", "INITIATIVES OF CHANGE-SVERIGE", "Kista Science City AB"
+        ],
+        "project_manager": "Marcus Anneroth",
+        "project_manager_email": "marcus.anneroth@scap.se",
+        "dates": { "start": "2018-08-13", "end": "2018-12-14" },
+        "description": "Förstudien är en genomförbarhetsstudie som syftar till att undersöka förutsättningarna för att utveckla testbädden Urban ICTArena i Kista till en kvadrupelhelixmiljö, med fokus på kopplingen till det lokala civilsamhället. Målet med projektet är att akademi, näringsliv, offentlig sektor och civilsamhälle gemensamt tar sig an energiutmaningen för att påskynda omställningen till en hållbar stad. Därmed ökar möjligheterna att lösningar implementeras inom alla samhällsnivåer, ända ner till individnivå. I Kista är detta särskilt utmanande. Förutom att vara känt för sin innovationsmiljö och sitt ICT-kluster, finns stora sociala utmaningar i bostadsområdena runtomkring. Projektgruppen har en stark lokal förankring genom medborgarinitiativet Hopp i Järva, Kista Träff samt Urban ICT Arena och Stiftelsen Electrum som också äger det icke-vinstdrivande bolaget Kista Science City AB. Medverkar gör även bostadsutvecklaren SSM Holding AB. Arbetet leds av konsultbolaget Sharing Capabilities AB."
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 2584000, "total_cost": 5360000 },
+        "project_id": "20",
+        "project_type": "Innovationsprojekt",
+        "ratio_funded": 0.48208955223880595,
+        "project_title": "Värdeskapande med öppen data från energisystemet ectogrid™",
+        "focus_lifestyle": ["testbeds", "innovation"],
+        "focus_planning": ["testbeds", "innovation"],
+        "focus_mobility": [],
+        "focus_infrastructure": ["testbeds", "innovation"],
+        "project_organization": "E.ON Energilösningar AB",
+        "location" : "Lund",
+        "keywords": [
+            "Datadelning", "Öppen innovation", "ectogrid™", "Digitaliserad energilösning", "Systemintegrering"
+        ],
+        "other_financiers": [
+            "Lunds kommun", "Medicon Village", "E.ON Energilösningar AB"
+        ],
+        "other_recipients": [
+            "Lunds universitet", "Lunds kommun", "Medicon Village", "E.ON Energilösningar AB"
+        ],
+        "project_manager": "Maria Malm Skarin",
+        "dates": { "start": "2018-09-01", "end": "2020-09-01" },
+        "description": "Med utgångspunkt i det innovativa energigränsöverskridande systemet ectogrid™ och demonstrationsprojektet Medicon Village syftar projektet till att skapa förutsättningar för externa aktörer, som företag, föreningar, forsknings- och offentliga verksamheter, att dra nytta av data som systemet generar. På så sätt kan digitalisering och medborgarinvolvering bidra till ökad energisystemoptimering, t ex genom balansering av energislag och laster.\n\nDetta uppnås genom att:\n• Skapa tekniska förutsättningar för att tillgängliggöra ectogrid™-data\n• Definiera hur värden kan skapas av externa aktörer baserat på ectogrid™-data\n• Utveckla en modell för datadelning som är generiskt applicerbar för kommande ectogrid™-system.\n\nFörväntade effekter är att datadelning ska bidra till att ytterligare stärka effektivitet, hållbarhet och skalbarhet, både nationellt och internationellt, för det ekosystem som byggs upp med ectogrid™ som bas."
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 500000, "total_cost": 1000000 },
+        "project_id": "21",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.5,
+        "project_title": "3De – energiutmaningar med tredimensionell fastighetsindelning",
+        "focus_lifestyle": ["testbeds", "innovation", "financing", "management"],
+        "focus_planning": ["testbeds", "innovation", "financing", "management"],
+        "focus_mobility": [],
+        "focus_infrastructure": ["testbeds", "innovation", "financing", "management"],
+        "project_organization": "FOG",
+        "location" : "Göteborg",
+        "keywords": [
+            "Integrerad energidesign", "Tredimensionell fastighetsbildning", "Energioptimering", "Affärsmodell", "Stadsutveckling."
+        ],
+        "other_financiers": [
+            "Älvstranden Utveckling AB", "Göteborg Energi AB", "Göteborgs kommun", "Riksbyggen ek för"
+        ],
+        "other_recipients": [
+            "Chalmers Tekniska Högskola AB", "Rise Research Institutes Of Sweden AB", "Riksbyggen ek för"
+        ],
+        "project_manager": "Staffan Bolminger",
+        "project_manager_email": "staffan@urbaninnovation.se",
+        "dates": { "start": "2018-08-31", "end": "2019-08-30" },
+        "description": "För den multifunktionella staden är trenden idag i Sverige att arbeta med tredimensionell fastighetsindelning (3D) för att inrymma flera ägare och många funktioner i samma byggnad. Detta skapar både möjligheter och utmaningar för energioptimering (e). Vi kan i teorin skapa positiva energiblock där samma kvarter delar energiflöden men i praktiken är dock detta outvecklat både inom teknik, policy och affärsmodeller\n\nVi vill i en nära trippelhelix-samverkan öka affärsdrivet och korta kopplingarna mellan forskning och praktik genom att i tre stadsutvecklingsprojekt föra samman forskare med kravställare samt genomförare. I förstudien skall vi driva arbetet i parallella processer där vi identifierar möjligheter och utmaningar inom policys och krav för styrning, samt metoder och modeller för genomförande. Vi skall även identifiera nätverk och aktörer med liknande agenda som vi så att vi i slutfasen av förstudien kan rigga ett starkt konsortium som kan ta utmaningarna med 3De in i framtiden."
+      }
+    }
+  ]
+}
