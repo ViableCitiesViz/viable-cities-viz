@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { select, axisLeft, axisTop, scaleOrdinal, event, rgb, scalePoint } from 'd3';
-import { themeLabel, focusLabel, packData, buildScaleData, parseNewlinesY, parseNewlinesX } from './MatrixUtility';
+import { select, axisLeft, axisTop, event, rgb, scalePoint } from 'd3';
+import { themeLabel, focusLabel, packData, buildScaleData, parseNewlinesY, parseNewlinesX, projectTypeColors } from './MatrixUtility';
 import MatrixDetails from './MatrixDetails';
-import MatrixLegend from './MatrixLegend';
-import MatrixScale from './MatrixScale';
 import PropTypes from 'prop-types';
+import isEqual from 'react-fast-compare';
 import './Matrix.css';
 
 class Matrix extends Component {
@@ -12,20 +11,14 @@ class Matrix extends Component {
     super(props);
     this.state = {
       hoveredProject: null,
-      clickedProject: null,
-      scaleData: null
+      clickedProject: null
     };
-
-    this.domainType = ['Forskningsprojekt', 'Innovationsprojekt', 'Förstudie'];
-    this.scaleType = scaleOrdinal()
-        .range([rgb(0, 125, 145), rgb(151, 194, 142), rgb(234, 154, 0)]) // pms 3145, pms 2255, pms 2011
-        .domain(this.domainType);
   }
 
   componentDidMount() {
     this.svg = select(this.svgRef);
 
-    this.margin = { top: 130, right: 0, bottom: 0, left: 150 };
+    this.margin = { top: 140, right: 0, bottom: 0, left: 170 };
     const width = +this.svg.attr("width") - this.margin.left - this.margin.right; // TODO, responsive?
     const height = +this.svg.attr("height") - this.margin.top - this.margin.bottom; // TODO, responsive?
 
@@ -52,8 +45,8 @@ class Matrix extends Component {
     // themes label
     this.svg.append('text')
         .attr('transform', `translate(20, ${this.margin.top + height / 2})rotate(-90)`)
-        .style('text-anchor', 'middle')
-        .text('Themes');
+        .text('Teman')
+        .classed('matrix-axis-label', true);
 
     // x-axis
     this.svg.append('g')
@@ -69,8 +62,8 @@ class Matrix extends Component {
     // focus areas label
     this.svg.append('text')
         .attr('transform', `translate(${this.margin.left + width / 2}, 20)`)
-        .style('text-anchor', 'middle')
-        .text('Focus areas');
+        .text('Fokusområden')
+        .classed('matrix-axis-label', true);
 
     // make some circles
     this.circles = this.svg.append('g').classed('circles', true);
@@ -132,9 +125,7 @@ class Matrix extends Component {
 
   updateData(data) {
     const packedData = packData(data, this.scaleX, this.scaleY);
-    this.setState({
-      scaleData: buildScaleData(packedData)
-    });
+    this.props.updateScaleData(buildScaleData(packedData));
     const circle = this.circles
       .selectAll('circle')
       .data(packedData, d => `${d.id}[${d.row},${d.col}]`);
@@ -145,19 +136,19 @@ class Matrix extends Component {
         .on('click', null)
       .transition()
         .attr('r', 0)
-        .remove()
+        .remove();
 
     circle
       .transition()
-        .attr('transform', d => `translate(${d.x + this.margin.left},${d.y + this.margin.top})`)
         .attr('r', d => d.r)
+        .attr('transform', d => `translate(${d.x + this.margin.left},${d.y + this.margin.top})`);
 
     circle.enter().append('circle')
         .attr('transform', d => `translate(${d.x + this.margin.left},${d.y + this.margin.top})`)
         .attr('data-id', d => d.id)
         .attr('data-row', d => d.row)
         .attr('data-col', d => d.col)
-        .attr('fill', d => this.scaleType(d.type))
+        .attr('fill', d => projectTypeColors(d.type))
         .on('mouseover', d => this.setState({
           hoveredProject: d
         }))
@@ -169,25 +160,27 @@ class Matrix extends Component {
         }))
         .attr('r', 0)
       .transition()
-        .attr('r', d => d.r)
+        .attr('r', d => d.r);
   }
 
   componentDidUpdate(prevProps, prevState) {
     this.updateHovered(this.state.hoveredProject, prevState.hoveredProject);
     this.updateClicked(this.state.clickedProject, prevState.clickedProject);
 
-    if (this.props.data !== prevProps.data)
-      this.updateData(this.props.data);      
+    if (!isEqual(this.props.data, prevProps.data)) {
+      this.updateData(this.props.data);
+      this.setState({
+        clickedProject: null
+      });
+    }
   }
 
   render() {
     return (
       <div className="matrix-wrapper">
-        <svg className="matrix" width="800" height="800" ref={(svg) => { this.svgRef = svg; }} />
+        <svg className="matrix" width="700" height="700" ref={(svg) => { this.svgRef = svg; }} />
         <div className="matrix-info">
           <MatrixDetails project={this.state.clickedProject} />
-          <MatrixLegend domain={this.domainType} scale={this.scaleType} />
-          <MatrixScale scaleData={this.state.scaleData} />
         </div>
       </div>
     );
@@ -195,7 +188,8 @@ class Matrix extends Component {
 }
 
 Matrix.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
+  updateScaleData: PropTypes.func.isRequired
 };
 
 export default Matrix;

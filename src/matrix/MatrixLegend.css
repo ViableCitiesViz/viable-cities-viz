@@ -1,5 +1,5 @@
 .matrix-legend {
-  text-align: left;
+  text-align: center;
   margin: 0 20px;
 }
 
@@ -7,6 +7,8 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  display: inline-block;
+  text-align: left;
 }
 
 .matrix-legend li {

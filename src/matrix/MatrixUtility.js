@@ -1,4 +1,4 @@
-import { packSiblings, packEnclose, select } from 'd3';
+import { scaleOrdinal, rgb, packSiblings, packEnclose, select } from 'd3';
 
 export const col2focus = {
   1: 'focus_lifestyle',
@@ -16,19 +16,24 @@ export const theme2row = {
 };
 
 export const focusLabel = {
-  1: 'Lifestyle and  Consumption',
-  2: 'Planning and  Built Environment',
-  3: 'Mobility and  Accessibility',
-  4: 'Integrated  Infrastructure'
+  1: 'Livsstil och  konsumtion',
+  2: 'Planering och  byggd miljö',
+  3: 'Mobilitet och  tillgänglighet',
+  4: 'Integrerad  infrastruktur'
 };
 
 export const themeLabel = {
-  1: 'Testbeds and  Living Labs',
-  2: 'Innovation and  Entrepreneurship',
-  3: 'Financing and  Business Models',
-  4: 'Governance',
-  5: 'Intelligence, Security  and Ethics'
+  1: 'Testbäddar och  living labs',
+  2: 'Innovation och  entreprenörskap',
+  3: 'Finansierings- och  affärsmodeller',
+  4: 'Styrning',
+  5: 'Intelligens,  cybersäkerhet  och etik'
 };
+
+export const projectTypes = ['Forskningsprojekt', 'Innovationsprojekt', 'Förstudie'];
+export const projectTypeColors = scaleOrdinal()
+  .range([rgb(0, 125, 145), rgb(151, 194, 142), rgb(234, 154, 0)]) // pms 3145, pms 2255, pms 2011
+  .domain(projectTypes);
 
 export function packData(data, scaleX, scaleY) {
   // first, group together circles that are
@@ -102,6 +107,8 @@ export function packData(data, scaleX, scaleY) {
 }
 
 export function buildScaleData(packedData) {
+  if (!packedData.length) return null;
+
   const rScale = packedData[0].rScale;
   let minBudget = Number.MAX_VALUE;
   let maxBudget = 0;
@@ -123,7 +130,7 @@ export function parseNewlinesY(text) {
     const x = text.attr('x');
     const dy = parseFloat(text.attr('dy'));
     text.text(null);
-    const lineHeight = 1.1; // em
+    const lineHeight = 1.3; // em
     let i = 0;
     words.forEach(word => {
       text.append('tspan')
@@ -141,7 +148,7 @@ export function parseNewlinesX(text) {
     const y = text.attr('y');
     const dy = parseFloat(text.attr('dy'));
     text.text(null);
-    const lineHeight = 1.1; // em
+    const lineHeight = 1.3; // em
     let i = 0;
     words.forEach(word => {
       text.append('tspan')

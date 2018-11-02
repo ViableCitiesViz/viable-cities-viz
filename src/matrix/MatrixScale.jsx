@@ -18,11 +18,12 @@ function MatrixScale(props) {
   circleRadii[1] = Math.sqrt(labelNumbers[1] / Math.PI) * props.scaleData.rScale;
   circleRadii[2] = Math.sqrt(labelNumbers[2] / Math.PI) * props.scaleData.rScale;
 
-  const margin = { top: 20, right: 0, bottom: 0, left: 20};
+  const margin = { top: 20, right: 10, bottom: 10, left: 20};
   const lineWidth = 10;
+  const labelWidth = 60; // hard-coded approximation of label width for centering
 
   return (
-    <div className="matrix-scale">
+    <div className="matrix-scale" style={{width: circleRadii[0] * 2 + margin.left + margin.right + lineWidth + labelWidth}}>
       <div className="matrix-scale__labels" style={{paddingTop: margin.top, paddingLeft: margin.left}}>
         <div className="matrix-scale__label"
           style={{left: circleRadii[0] + margin.left, top: 0 + margin.top}}
@@ -43,7 +44,7 @@ function MatrixScale(props) {
           <span className="matrix-scale__label-text">{`${format(',')(labelNumbers[2]).replace(/,/g, ' ')} kr`}</span>
         </div>
       </div>
-      <svg>
+      <svg height={circleRadii[0] * 2 + margin.top + margin.bottom} width={circleRadii[0] * 2 + margin.left + margin.right}>
         <circle
           r={circleRadii[0]}
           cx={circleRadii[0] + margin.left}

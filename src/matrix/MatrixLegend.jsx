@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { projectTypes, projectTypeColors } from './MatrixUtility'
 import './MatrixLegend.css';
 
-function MatrixLegend({ domain, scale }) {
-  let items = domain.map(d => 
+function MatrixLegend() {
+  let items = projectTypes.map(d => 
     <li key={d}>
-      <div className="matrix-legend__box" style={{background: scale(d)}} />
+      <div className="matrix-legend__box" style={{background: projectTypeColors(d)}} />
       <span className="matrix-legend__text">{d}</span>
     </li>
   );
@@ -18,10 +18,5 @@ function MatrixLegend({ domain, scale }) {
     </div>
   );
 }
-
-MatrixLegend.propTypes = {
-  domain: PropTypes.arrayOf(PropTypes.string).isRequired,
-  scale: PropTypes.func.isRequired
-};
 
 export default MatrixLegend;

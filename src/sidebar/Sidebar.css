@@ -1,9 +1,0 @@
-.sidebar {
-  flex-shrink: 0;
-  width: 300px;
-  background: #ccc;
-}
-
-.sidebar__header {
-  text-align: center;
-}

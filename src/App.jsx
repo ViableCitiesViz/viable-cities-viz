@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
 import Matrix from './matrix/Matrix';
-import Sidebar from './sidebar/Sidebar';
-import mockData from './matrix/mock-data-v4.json';
+import Filters from './filters/Filters';
+import mockData from './data/mock-data-v5.json';
+import './App.css';
+import 'react-widgets/dist/css/react-widgets.css';
 
 
 class App extends Component {
@@ -11,9 +12,11 @@ class App extends Component {
 
     this.state = {
       filteredData: mockData,
+      scaleData: null
     };
 
     this.updateFilteredData = this.updateFilteredData.bind(this);
+    this.updateScaleData = this.updateScaleData.bind(this);
   }
 
   updateFilteredData(newData) {
@@ -22,11 +25,17 @@ class App extends Component {
     });
   }
 
+  updateScaleData(newData) {
+    this.setState({
+      scaleData: newData
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <Sidebar data={mockData} updateFilteredData={this.updateFilteredData} />
-        <Matrix data={this.state.filteredData} />
+        <Filters data={mockData} updateFilteredData={this.updateFilteredData} scaleData={this.state.scaleData} />
+        <Matrix data={this.state.filteredData} updateScaleData={this.updateScaleData} />
       </div>
     );
   }

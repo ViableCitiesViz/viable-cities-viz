@@ -1,15 +1,19 @@
 .matrix-wrapper {
-  width: 1200px;
-  margin: 0 auto;
   display: flex;
-  font-family: 'Open Sans', sans-serif;
   position: relative;
   flex-grow: 1;
-  align-items: center;
+  margin-left: 20px;
+  margin-top: 20px;
 }
 
 .matrix {
   flex-shrink: 0;
+}
+
+.matrix-axis-label {
+  text-anchor: middle;
+  text-transform: uppercase;
+  font-size: 1.2em;
 }
 
 .matrix-info {
@@ -18,7 +22,8 @@
 }
 
 .matrix .tick text {
-  font-size: 12px;
+  font-size: 1.4em;
+  font-family: 'Open Sans';
 }
 
 .matrix .tick line {
