@@ -28,7 +28,7 @@
 }
 
 .matrix .tick line {
-  stroke: #f6f6f6;
+  stroke: #f1f3f5;
   stroke-width: 20px;
 }
 
@@ -38,7 +38,7 @@
 }
 
 .matrix.clicked circle:not(.neighbor):not(.hover) {
-  fill: #eee;
+  fill: #e2e4e6;
 }
 
 .matrix circle.hover:not(.clicked) {

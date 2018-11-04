@@ -218,7 +218,7 @@ class Filters extends Component {
         <div className="filters__top">
           <div className="filter-box">
             <span className="filter-box__title">
-              Titel
+              Filtera efter titel
             </span>
             <Multiselect
               data={titlesList}
@@ -237,7 +237,7 @@ class Filters extends Component {
           </div>
           <div className="filter-box">
             <span className="filter-box__title">
-              Plats
+              Filtrera efter plats
             </span>
             <Multiselect
               data={locationsList}
@@ -258,7 +258,7 @@ class Filters extends Component {
           </div>
           <div className="filter-box">
             <span className="filter-box__title">
-              Partner
+              Filtrera efter partner
             </span>
             <Multiselect
               data={partnersList}
@@ -271,6 +271,7 @@ class Filters extends Component {
                 });
               }}
               placeholder="Partners"
+              filter="contains"
               valueField="name"
               textField="name"
               itemComponent={ListItem}
@@ -279,7 +280,7 @@ class Filters extends Component {
           </div>
           <div className="filter-box">
             <span className="filter-box__title">
-              Nyckelord
+              Filtera efter nyckelord
             </span>
             <Multiselect
               data={keywordsList}
