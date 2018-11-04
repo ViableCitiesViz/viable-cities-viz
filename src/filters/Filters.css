@@ -1,6 +1,6 @@
 .filters {
   flex-shrink: 0;
-  width: 300px;
+  width: 250px;
   background: #f1f3f5;
   padding: 20px;
   box-sizing: border-box;
@@ -79,6 +79,21 @@
 .filter-item__count {
   margin-left: 5px;
   color: #999;
+}
+
+.filter-results-text {
+  text-align: center;
+  font-size: 0.9em;
+  color: #999;
+  margin: 20px 0;
+}
+
+.filter-results-text--hidden {
+  display: none;
+}
+
+.filter-results-text__number {
+  font-weight: 600;
 }
 
 .filter-button-box {

@@ -37,7 +37,8 @@ class Filters extends Component {
         locations: [],
         partners: [],
         keywords: []
-      }
+      },
+      filteredData: props.data
     };
 
     this.projectPartners = {};
@@ -119,6 +120,10 @@ class Filters extends Component {
     };
   }
 
+  empty() {
+    return Object.values(this.state.filterValues).every(value => value.length === 0);
+  }
+
   filteredByAllExcept(filter) {
     return intersection(...Object.entries(this.state.filteredBy)
       .filter(([key, value]) => key !== filter)
@@ -194,6 +199,9 @@ class Filters extends Component {
 
     if (!isEqual(prevState.filteredBy, this.state.filteredBy)) {
       const newFilteredData = intersection(...Object.values(this.state.filteredBy));
+      this.setState({
+        filteredData: newFilteredData
+      });
       this.props.updateFilteredData(newFilteredData);
     }
   }
@@ -222,7 +230,7 @@ class Filters extends Component {
                   }
                 });
               }}
-              placeholder="Filtera efter projekttitel"
+              placeholder="Projekttitel"
               filter="contains"
               value={this.state.filterValues.titles}
             />
@@ -241,7 +249,7 @@ class Filters extends Component {
                   }
                 });
               }}
-              placeholder="Filtrera efter kommun"
+              placeholder="Kommuner"
               valueField="name"
               textField="name"
               itemComponent={ListItem}
@@ -262,7 +270,7 @@ class Filters extends Component {
                   }
                 });
               }}
-              placeholder="Filtera efter partner"
+              placeholder="Partners"
               valueField="name"
               textField="name"
               itemComponent={ListItem}
@@ -283,7 +291,7 @@ class Filters extends Component {
                   }
                 });
               }}
-              placeholder="Filtrera efter nyckelord"
+              placeholder="Nyckelord"
               filter="contains"
               valueField="name"
               textField="name"
@@ -291,6 +299,12 @@ class Filters extends Component {
               value={this.state.filterValues.keywords}
             />
           </div>
+
+          <p className={`filter-results-text ${this.empty() ? 'filter-results-text--hidden' : ''}`}>
+            Visar <span className="filter-results-text__number">{this.state.filteredData.data.length}</span>
+            {' '} av <span className="filter-results-text__number">{this.props.data.data.length}</span> projekt.
+          </p>
+
           <div className="filter-button-box">
             <button
               className="filter-button"
