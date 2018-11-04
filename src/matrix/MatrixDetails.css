@@ -1,7 +1,5 @@
 .matrix-details {
   padding: 0 20px;
-  position: absolute;
-  top: 0;
   background: rgba(255, 255, 255, 0.9);
   font-size: 0.9em;
 
@@ -16,6 +14,8 @@
 
 .matrix-details__subtitle {
   margin: 0;
+  color: #666;
+  font-weight: 600;
 }
 
 /* !!! hard-coded solution: can hopefully find something better later !!! */
@@ -24,7 +24,7 @@
 }
 
 .matrix-details dt {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .matrix-details dd {

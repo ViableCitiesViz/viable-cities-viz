@@ -1,5 +1,5 @@
 import React from 'react';
-import { projectTypes, projectTypeColors } from './MatrixUtility'
+import { projectTypes } from './MatrixUtility'
 import MatrixLegendItem from './MatrixLegendItem';
 import './MatrixLegend.css';
 

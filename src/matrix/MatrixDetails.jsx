@@ -26,13 +26,18 @@ function MatrixDetails({ project }) {
   return (
     <div className="matrix-details">
       <h2 className="matrix-details__title">{project_title}</h2>
-      <h3 className="matrix-details__title">{location}</h3>
+      <h3 className="matrix-details__subtitle">{location}</h3>
       <dl>
-        <dt>Projektledare</dt>
-        <dd>{`${project_manager}, ${project_organization}`}</dd>
+        <dt>Typ av projekt</dt>
+        <dd>
+          <MatrixLegendItem type={project_type} />
+        </dd>
 
-        <dt>Projektpartners</dt>
-        <dd>{partners.join(', ')}</dd>
+        <dt>Projektorganisation</dt>
+        <dd>{project_organization}</dd>
+
+        <dt>Projektledare</dt>
+        <dd>{project_manager}</dd>
 
         <dt>Total projektbudget</dt>
         <dd>{`${format(',')(budget.total_cost).replace(/,/g, ' ')} kr`}</dd>
@@ -42,11 +47,6 @@ function MatrixDetails({ project }) {
 
         <dt>Projekttid</dt>
         <dd>{`${dates.start} - ${dates.end}`}</dd>
-
-        <dt>Typ av projekt</dt>
-        <dd>
-          <MatrixLegendItem type={project_type} />
-        </dd>
 
         <dt>Nyckelord</dt>
         <dd>{keywords.join(', ')}</dd>

@@ -6,19 +6,20 @@
   margin-top: 20px;
 }
 
+.matrix-svg-wrapper {
+  position: relative;
+  z-index: 1;
+  flex-grow: 1;
+}
+
 .matrix {
-  flex-shrink: 0;
 }
 
 .matrix-axis-label {
   text-anchor: middle;
   text-transform: uppercase;
   font-size: 1.2em;
-}
-
-.matrix-info {
-  position: relative;
-  flex-grow: 1;
+  font-weight: 600;
 }
 
 .matrix .tick text {

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './MatrixTooltip.css';
 
-const topOffset = 15;
+const topOffset = 10;
 
 function MatrixTooltip({ hoveredProject, margin }) {
   if (!hoveredProject) return (<div className="matrix-tooltip" />);
