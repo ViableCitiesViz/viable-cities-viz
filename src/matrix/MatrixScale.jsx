@@ -1,6 +1,7 @@
 import React from 'react';
 import { format } from 'd3';
 import PropTypes from 'prop-types';
+import { circleRadius } from './MatrixUtility';
 import './MatrixScale.css';
 
 
@@ -14,9 +15,9 @@ function MatrixScale(props) {
   labelNumbers[1] = Number.parseInt(props.scaleData.maxBudget / 2).toPrecision(1);
   labelNumbers[2] = Number.parseInt(props.scaleData.maxBudget / 10).toPrecision(1);
 
-  circleRadii[0] = Math.sqrt(labelNumbers[0] / Math.PI) * props.scaleData.rScale;
-  circleRadii[1] = Math.sqrt(labelNumbers[1] / Math.PI) * props.scaleData.rScale;
-  circleRadii[2] = Math.sqrt(labelNumbers[2] / Math.PI) * props.scaleData.rScale;
+  circleRadii[0] = circleRadius(labelNumbers[0]) * props.scaleData.rScale;
+  circleRadii[1] = circleRadius(labelNumbers[1]) * props.scaleData.rScale;
+  circleRadii[2] = circleRadius(labelNumbers[2]) * props.scaleData.rScale;
 
   const margin = { top: 20, right: 10, bottom: 10, left: 20};
   const lineWidth = 10;

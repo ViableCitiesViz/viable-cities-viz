@@ -132,46 +132,52 @@ class Filters extends Component {
 
   buildLocationList() {
     const data = this.filteredByAllExcept('locations');
+    
     const ret = new Map();
     data.data.forEach(d => {
       const location = d.survey_answers.location;
       ret.has(location) ? ret.set(location, ret.get(location) + 1) : ret.set(location, 1);
     });
-    const arr = [];
-    (new Map([...ret.entries()].sort())).forEach((value, key) => arr.push({name: key, count: value}))
-    return arr;
+
+    return [...ret]
+      .sort()
+      .reduce((arr, [key, value]) => [...arr, {name: key, count: value}], [])
   }
 
   buildPartnerList() {
     const data = this.filteredByAllExcept('partners');
+
     const ret = new Map();
     data.data.forEach(d => {
       this.projectPartners[d.survey_answers.project_id].forEach(partner => {
         ret.has(partner) ? ret.set(partner, ret.get(partner) + 1) : ret.set(partner, 1);
       });
     });
-    const arr = [];
-    (new Map([...ret.entries()].sort())).forEach((value, key) => arr.push({name: key, count: value}))
-    return arr;
+
+    return [...ret]
+      .sort()
+      .reduce((arr, [key, value]) => [...arr, {name: key, count: value}], [])
   }
 
   buildKeywordList() {
     const data = this.filteredByAllExcept('keywords');
+
     const ret = new Map();
     data.data.forEach(d => {
       d.survey_answers.keywords.forEach(keyword => {
         ret.has(keyword) ? ret.set(keyword, ret.get(keyword) + 1) : ret.set(keyword, 1);
       });
     });
-    const arr = [];
-    (new Map([...ret.entries()].sort())).forEach((value, key) => arr.push({name: key, count: value}))
-    return arr;
+
+    return [...ret]
+      .sort()
+      .reduce((arr, [key, value]) => [...arr, {name: key, count: value}], [])
   }
 
   // only render if state changed, ignore props (except for scaleData) since they shouldn't change anyway
   shouldComponentUpdate(nextProps, nextState) {
-    if (nextState !== this.state) return true;
-    if (nextProps.scaleData !== this.props.scaleData) return true;
+    if (!isEqual(nextState, this.state)) return true;
+    if (!isEqual(nextProps.scaleData, this.props.scaleData)) return true;
     return false;
   }
 

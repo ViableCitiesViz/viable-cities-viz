@@ -30,6 +30,10 @@ export const themeLabel = {
   5: 'Intelligens,  cybersäkerhet  och etik'
 };
 
+export function circleRadius(area) {
+  return Math.sqrt(area / Math.PI);
+}
+
 export const projectTypes = ['Forskningsprojekt', 'Innovationsprojekt', 'Förstudie'];
 export const projectTypeColors = scaleOrdinal()
   .range([rgb(0, 125, 145), rgb(151, 194, 142), rgb(234, 154, 0)]) // pms 3145, pms 2255, pms 2011
@@ -57,12 +61,8 @@ export function packData(data, scaleX, scaleY) {
           row: theme2row[theme],
           col,
           pins,
-          id: project.survey_answers.project_id,
-          title: project.survey_answers.project_title,
-          type: project.survey_answers.project_type,
-          organization: project.survey_answers.project_organization,
-          budget: project.survey_answers.budget,
-          r: Math.sqrt(project.survey_answers.budget.funded / Math.PI)
+          survey_answers: project.survey_answers,
+          r: circleRadius(project.survey_answers.budget.funded)
         })
       });
     }
@@ -83,7 +83,7 @@ export function packData(data, scaleX, scaleY) {
   for (let row = 1; row <= 5; ++row) {
     for (let col = 1; col <= 4; ++col) {
       obj[row][col].forEach(pin => {
-        pin.r = Math.sqrt(pin.budget.funded / Math.PI) * rScale;
+        pin.r = circleRadius(pin.survey_answers.budget.funded) * rScale;
       });
     }
   }
@@ -113,8 +113,8 @@ export function buildScaleData(packedData) {
   let minBudget = Number.MAX_VALUE;
   let maxBudget = 0;
   packedData.forEach(d => {
-    minBudget = Math.min(minBudget, d.budget.funded);
-    maxBudget = Math.max(maxBudget, d.budget.funded);
+    minBudget = Math.min(minBudget, d.survey_answers.budget.funded);
+    maxBudget = Math.max(maxBudget, d.survey_answers.budget.funded);
   });
 
   return { rScale, minBudget, maxBudget };

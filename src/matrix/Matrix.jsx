@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { select, axisLeft, axisTop, event, rgb, scalePoint } from 'd3';
 import { themeLabel, focusLabel, packData, buildScaleData, parseNewlinesY, parseNewlinesX, projectTypeColors } from './MatrixUtility';
 import MatrixDetails from './MatrixDetails';
+import MatrixTooltip from './MatrixTooltip';
 import PropTypes from 'prop-types';
 import isEqual from 'react-fast-compare';
 import './Matrix.css';
@@ -13,12 +14,13 @@ class Matrix extends Component {
       hoveredProject: null,
       clickedProject: null
     };
+
+    this.margin = { top: 140, right: 10, bottom: 0, left: 170 };
   }
 
   componentDidMount() {
     this.svg = select(this.svgRef);
 
-    this.margin = { top: 140, right: 0, bottom: 0, left: 170 };
     const width = +this.svg.attr("width") - this.margin.left - this.margin.right; // TODO, responsive?
     const height = +this.svg.attr("height") - this.margin.top - this.margin.bottom; // TODO, responsive?
 
@@ -84,12 +86,12 @@ class Matrix extends Component {
     if (current === prev) return;
 
     if (prev !== null)
-      this.circles.selectAll(`[data-id='${prev.id}']`)
+      this.circles.selectAll(`[data-id='${prev.survey_answers.project_id}']`)
           .classed('hover', false)
           .attr('fill', function(d) { return rgb(select(this).attr('fill')).brighter() });
 
     if (current !== null)
-      this.circles.selectAll(`[data-id='${current.id}']`)
+      this.circles.selectAll(`[data-id='${current.survey_answers.project_id}']`)
           .classed('hover', true)
           .attr('fill', function(d) { return rgb(select(this).attr('fill')).darker() });
   }
@@ -117,7 +119,7 @@ class Matrix extends Component {
       this.svg.classed('clicked', true);
       this.circles.selectAll(neighborSelector)
           .classed('neighbor', true);
-      this.circles.selectAll(`[data-id='${current.id}']`)
+      this.circles.selectAll(`[data-id='${current.survey_answers.project_id}']`)
           .classed('clicked', true)
           .attr('fill', function(d) { return rgb(select(this).attr('fill')).darker(2) });
     }
@@ -128,7 +130,7 @@ class Matrix extends Component {
     this.props.updateScaleData(buildScaleData(packedData));
     const circle = this.circles
       .selectAll('circle')
-      .data(packedData, d => `${d.id}[${d.row},${d.col}]`);
+      .data(packedData, d => `${d.survey_answers.project_id}[${d.row},${d.col}]`);
 
     circle.exit()
         .on('mouseover', null)
@@ -145,10 +147,10 @@ class Matrix extends Component {
 
     circle.enter().append('circle')
         .attr('transform', d => `translate(${d.x + this.margin.left},${d.y + this.margin.top})`)
-        .attr('data-id', d => d.id)
+        .attr('data-id', d => d.survey_answers.project_id)
         .attr('data-row', d => d.row)
         .attr('data-col', d => d.col)
-        .attr('fill', d => projectTypeColors(d.type))
+        .attr('fill', d => projectTypeColors(d.survey_answers.project_type))
         .on('mouseover', d => this.setState({
           hoveredProject: d
         }))
@@ -170,7 +172,8 @@ class Matrix extends Component {
     if (!isEqual(this.props.data, prevProps.data)) {
       this.updateData(this.props.data);
       this.setState({
-        clickedProject: null
+        clickedProject: null,
+        hoveredProject: null
       });
     }
   }
@@ -178,7 +181,10 @@ class Matrix extends Component {
   render() {
     return (
       <div className="matrix-wrapper">
-        <svg className="matrix" width="700" height="700" ref={(svg) => { this.svgRef = svg; }} />
+        <div style={{postion: 'relative', zIndex: 1}}>
+          <svg className="matrix" width="700" height="700" ref={(svg) => { this.svgRef = svg; }} />
+          <MatrixTooltip hoveredProject={this.state.hoveredProject} margin={this.margin} />
+        </div>
         <div className="matrix-info">
           <MatrixDetails project={this.state.clickedProject} />
         </div>

@@ -48,19 +48,3 @@
 
 .matrix circle.neighbor:not(.clicked) {
 }
-
-h2 {
-  margin: 0;
-  font-weight: 600;
-  line-height: 1.1;
-}
-
-h3 {
-  font-weight: 400;
-  margin: 5px;
-}
-
-h4 {
-  font-weight: 700;
-  margin: 5px;
-}

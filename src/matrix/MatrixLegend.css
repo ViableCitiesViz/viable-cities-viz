@@ -1,6 +1,7 @@
 .matrix-legend {
   text-align: center;
   margin: 0 20px;
+  font-size: 0.9em;
 }
 
 .matrix-legend ul {
@@ -12,19 +13,5 @@
 }
 
 .matrix-legend li {
-  display: flex;
-  align-items: center;
   margin: 5px;
-}
-
-.matrix-legend__box {
-  height: 0.7em;
-  width: 0.7em;
-  border-radius: 50%;
-}
-
-.matrix-legend__text {
-  flex-grow: 1;
-  font-size: 0.9em;
-  margin-left: 5px;
 }

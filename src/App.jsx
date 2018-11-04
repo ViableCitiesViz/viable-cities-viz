@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Matrix from './matrix/Matrix';
 import Filters from './filters/Filters';
-import mockData from './data/mock-data-v5.json';
+import mockData from './data/mock-data-v6.json';
 import './App.css';
 import 'react-widgets/dist/css/react-widgets.css';
 

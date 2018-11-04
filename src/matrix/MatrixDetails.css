@@ -3,4 +3,31 @@
   position: absolute;
   top: 0;
   background: rgba(255, 255, 255, 0.9);
+  font-size: 0.9em;
+
+  max-width: 500px;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.matrix-details__title {
+  margin: 0;
+}
+
+.matrix-details__subtitle {
+  margin: 0;
+}
+
+/* !!! hard-coded solution: can hopefully find something better later !!! */
+
+.matrix-details dl {
+}
+
+.matrix-details dt {
+  font-weight: 600;
+}
+
+.matrix-details dd {
+  padding-bottom: 0.5em;
+  margin: 0;
 }

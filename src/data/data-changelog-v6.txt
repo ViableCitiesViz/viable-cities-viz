@@ -1,0 +1,3 @@
+- Added Sharing Cities Sweden according to data from Åsa/Charlie.
+
+- Changed some partner names to be consistent with other project partners, i.e. (RISE -> Rise Research Institutes Of Sweden AB)
