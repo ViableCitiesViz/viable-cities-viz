@@ -182,7 +182,7 @@ class Matrix extends Component {
     return (
       <div className="matrix-wrapper">
         <div style={{postion: 'relative', zIndex: 1}}>
-          <svg className="matrix" width="750" height="700" ref={(svg) => { this.svgRef = svg; }} />
+          <svg className="matrix" width="700" height="700" ref={(svg) => { this.svgRef = svg; }} />
           <MatrixTooltip hoveredProject={this.state.hoveredProject} margin={this.margin} />
         </div>
         <div className="matrix-info">
