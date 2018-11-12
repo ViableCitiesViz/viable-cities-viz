@@ -109,15 +109,21 @@ export function packData(data, scaleX, scaleY) {
 export function buildScaleData(packedData) {
   if (!packedData.length) return null;
 
-  const rScale = packedData[0].rScale;
-  let minBudget = Number.MAX_VALUE;
-  let maxBudget = 0;
-  packedData.forEach(d => {
-    minBudget = Math.min(minBudget, d.survey_answers.budget.funded);
-    maxBudget = Math.max(maxBudget, d.survey_answers.budget.funded);
-  });
+  const sortedPackedData = [...packedData].sort((a, b) => a.survey_answers.budget.funded - b.survey_answers.budget.funded);
 
-  return { rScale, minBudget, maxBudget };
+  const mid = Math.floor(sortedPackedData.length / 2);
+  let medianBudget;
+  if (sortedPackedData.length % 2 === 0) {
+    medianBudget = (sortedPackedData[mid].survey_answers.budget.funded + sortedPackedData[mid + 1].survey_answers.budget.funded) / 2;
+  } else {
+    medianBudget = sortedPackedData[mid].survey_answers.budget.funded;
+  }
+
+  const minBudget = sortedPackedData[0].survey_answers.budget.funded;
+  const maxBudget = sortedPackedData[sortedPackedData.length - 1].survey_answers.budget.funded;
+  const rScale = packedData[0].rScale;
+
+  return { rScale, minBudget, maxBudget, medianBudget };
 }
 
 // inspired by https://bl.ocks.org/mbostock/7555321

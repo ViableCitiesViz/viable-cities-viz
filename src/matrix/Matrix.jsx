@@ -5,6 +5,7 @@ import MatrixDetails from './MatrixDetails';
 import MatrixTooltip from './MatrixTooltip';
 import PropTypes from 'prop-types';
 import isEqual from 'react-fast-compare';
+import debounce from 'lodash.debounce';
 import './Matrix.css';
 
 class Matrix extends Component {
@@ -16,6 +17,7 @@ class Matrix extends Component {
     };
 
     this.margin = { top: 140, right: 10, bottom: 0, left: 170 };
+    this.resize = this.resize.bind(this);
   }
 
   componentDidMount() {
@@ -80,6 +82,17 @@ class Matrix extends Component {
         });
       }
     });
+
+    this.debounce = debounce(this.resize, 100);
+    window.addEventListener("resize", this.debounce);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.debounce);
+  }
+
+  resize() {
+    console.log("HEJ");
   }
 
   updateHovered(current, prev) {
