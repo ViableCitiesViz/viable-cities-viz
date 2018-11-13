@@ -16,62 +16,44 @@ class Matrix extends Component {
       clickedProject: null
     };
 
-    this.margin = { top: 140, right: 10, bottom: 0, left: 170 };
-    this.resize = this.resize.bind(this);
+    this.margin = { top: 160, right: 20, bottom: 20, left: 190 };
+    this.draw = this.draw.bind(this);
   }
 
   componentDidMount() {
     this.svg = select(this.svgRef);
 
-    const width = +this.svg.attr("width") - this.margin.left - this.margin.right; // TODO, responsive?
-    const height = +this.svg.attr("height") - this.margin.top - this.margin.bottom; // TODO, responsive?
-
     this.scaleX = scalePoint()
-        .range([0, width])
         .domain([1,2,3,4])
         .padding(0.5)
     this.scaleY = scalePoint()
-        .range([0, height])
         .domain([1,2,3,4,5])
         .padding(0.5)
 
     // y-axis
     this.svg.append('g')
-        .attr('transform', `translate(${width + this.margin.left}, ${this.margin.top})`)
-        .call(axisLeft(this.scaleY)
-            .tickSize(width)
-            .tickPadding(10)
-            .tickFormat(row => themeLabel[row]))
-        .call(g => g.select('.domain').remove())
-      .selectAll(".tick text")
-        .call(parseNewlinesY);
+        .classed('y-axis', true);
 
     // themes label
     this.svg.append('text')
-        .attr('transform', `translate(20, ${this.margin.top + height / 2})rotate(-90)`)
-        .text('Teman')
-        .classed('matrix-axis-label', true);
+        .classed('themes-label', true)
+        .classed('matrix-axis-label', true)
+        .text('Teman');
 
     // x-axis
     this.svg.append('g')
-        .attr('transform', `translate(${this.margin.left}, ${height + this.margin.top})`)
-        .call(axisTop(this.scaleX)
-            .tickSize(height)
-            .tickPadding(20)
-            .tickFormat(col => focusLabel[col]))
-        .call(g => g.select('.domain').remove())
-      .selectAll(".tick text")
-        .call(parseNewlinesX);
+        .classed('x-axis', true);
 
     // focus areas label
     this.svg.append('text')
-        .attr('transform', `translate(${this.margin.left + width / 2}, 20)`)
-        .text('Fokusområden')
-        .classed('matrix-axis-label', true);
+        .classed('focus-areas-label', true)
+        .classed('matrix-axis-label', true)
+        .text('Fokusområden');
 
     // make some circles
     this.circles = this.svg.append('g').classed('circles', true);
-    this.updateData(this.props.data);
+
+    this.draw();
 
     // clear clickedProject when clicking outside of any circle
     // TODO, put this on something bigger than the svg?
@@ -83,16 +65,67 @@ class Matrix extends Component {
       }
     });
 
-    this.debounce = debounce(this.resize, 100);
-    window.addEventListener("resize", this.debounce);
+    this.debounce = debounce(this.draw, 100);
+    window.addEventListener('resize', this.debounce);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    this.updateHovered(this.state.hoveredProject, prevState.hoveredProject);
+    this.updateClicked(this.state.clickedProject, prevState.clickedProject);
+
+    if (!isEqual(this.props.data, prevProps.data)) {
+      this.updateData(this.props.data);
+      this.setState({
+        clickedProject: null,
+        hoveredProject: null
+      });
+    }
   }
 
   componentWillUnmount() {
-    window.removeEventListener("resize", this.debounce);
+    window.removeEventListener('resize', this.debounce);
   }
 
-  resize() {
-    console.log("HEJ");
+  draw() {
+    const width = +this.svgWrapperRef.clientWidth - this.margin.left - this.margin.right;
+    const height = +this.svgWrapperRef.clientHeight - this.margin.top - this.margin.bottom;
+
+    // update scales
+    this.scaleX.range([0, width]);
+    this.scaleY.range([0, height]);
+
+    // y-axis
+    this.svg.select('g.y-axis')
+        .attr('transform', `translate(${width + this.margin.left}, ${this.margin.top})`)
+        .call(axisLeft(this.scaleY)
+            .tickSize(width)
+            .tickPadding(20)
+            .tickFormat(row => themeLabel[row]))
+        .call(g => g.select('.domain').remove())
+      .selectAll(".tick text")
+        .call(parseNewlinesY);
+
+    // themes label
+    this.svg.select('text.themes-label')
+        .attr('transform', `translate(30, ${this.margin.top + height / 2})rotate(-90)`);
+
+    // x-axis
+    this.svg.select('g.x-axis')
+        .attr('transform', `translate(${this.margin.left}, ${height + this.margin.top})`)
+        .call(axisTop(this.scaleX)
+            .tickSize(height)
+            .tickPadding(20)
+            .tickFormat(col => focusLabel[col]))
+        .call(g => g.select('.domain').remove())
+      .selectAll(".tick text")
+        .call(parseNewlinesX);
+      
+
+    // focus areas label
+    this.svg.select('text.focus-areas-label')
+        .attr('transform', `translate(${this.margin.left + width / 2}, 30)`);
+
+    this.updateData(this.props.data);
   }
 
   updateHovered(current, prev) {
@@ -111,6 +144,8 @@ class Matrix extends Component {
 
   updateClicked(current, prev) {
     if (current === prev) return;
+
+    this.draw();
 
     // clean up from prev
     if (prev !== null) {
@@ -178,24 +213,11 @@ class Matrix extends Component {
         .attr('r', d => d.r);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    this.updateHovered(this.state.hoveredProject, prevState.hoveredProject);
-    this.updateClicked(this.state.clickedProject, prevState.clickedProject);
-
-    if (!isEqual(this.props.data, prevProps.data)) {
-      this.updateData(this.props.data);
-      this.setState({
-        clickedProject: null,
-        hoveredProject: null
-      });
-    }
-  }
-
   render() {
     return (
       <div className="matrix-wrapper">
-        <div style={{postion: 'relative', zIndex: 1}}>
-          <svg className="matrix" width="750" height="700" ref={(svg) => { this.svgRef = svg; }} />
+        <div className="matrix-svg-wrapper" ref={svgWrapper => { this.svgWrapperRef = svgWrapper; }}>
+          <svg className="matrix" width="100%" height="100%" ref={svg => { this.svgRef = svg; }} />
           <MatrixTooltip hoveredProject={this.state.hoveredProject} margin={this.margin} />
         </div>
         <div className="matrix-info">

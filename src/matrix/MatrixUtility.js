@@ -147,8 +147,8 @@ export function parseNewlinesY(text) {
     });
   });
 }
-export function parseNewlinesX(text) {
-  text.each(function() {
+export function parseNewlinesX(texts) {
+  texts.each(function() {
     const text = select(this).attr('text-anchor', 'start');
     const words = text.text().split(/ {2}/);
     const y = text.attr('y');

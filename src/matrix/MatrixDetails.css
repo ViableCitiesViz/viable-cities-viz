@@ -1,11 +1,17 @@
 .matrix-details {
-  padding: 0 20px;
-  background: rgba(255, 255, 255, 0.9);
+  padding: 10px 20px;
   font-size: 0.9em;
+  background: #f1f3f5;
+  box-sizing: border-box;
 
-  max-width: 500px;
+  width: 300px;
+  height: 100%;
   max-height: 100%;
   overflow-y: auto;
+}
+
+.matrix-details--empty {
+  /*width: 0;*/
 }
 
 .matrix-details__title {

@@ -14,14 +14,14 @@ function MatrixDetails({ project }) {
     project_manager,
     dates,
     keywords,
-    other_financiers,
-    other_recipients,
+    //other_financiers,
+    //other_recipients,
     description,
     project_type,
     location
   } = project.survey_answers;
 
-  const partners = [...new Set([...other_financiers, ...other_recipients])].sort();
+  //const partners = [...new Set([...other_financiers, ...other_recipients])].sort();
 
   return (
     <div className="matrix-details">

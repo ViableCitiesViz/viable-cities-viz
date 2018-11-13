@@ -2,17 +2,17 @@
   display: flex;
   position: relative;
   flex-grow: 1;
-  margin-left: 20px;
-  margin-top: 20px;
 }
 
 .matrix-svg-wrapper {
   position: relative;
   z-index: 1;
   flex-grow: 1;
+  overflow-y: hidden;
 }
 
 .matrix {
+  display: block;
 }
 
 .matrix-axis-label {
