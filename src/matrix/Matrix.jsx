@@ -17,11 +17,15 @@ class Matrix extends Component {
     };
 
     this.margin = { top: 160, right: 20, bottom: 20, left: 190 };
+    this.offset = { x: 0,  y: 0 };
     this.draw = this.draw.bind(this);
   }
 
   componentDidMount() {
     this.svg = select(this.svgRef);
+
+    // used for transforming the contents of the svg, if necessary
+    this.svgInner = this.svg.append('g');
 
     this.scaleX = scalePoint()
         .domain([1,2,3,4])
@@ -31,27 +35,27 @@ class Matrix extends Component {
         .padding(0.5)
 
     // y-axis
-    this.svg.append('g')
+    this.svgInner.append('g')
         .classed('y-axis', true);
 
     // themes label
-    this.svg.append('text')
+    this.svgInner.append('text')
         .classed('themes-label', true)
         .classed('matrix-axis-label', true)
         .text('Teman');
 
     // x-axis
-    this.svg.append('g')
+    this.svgInner.append('g')
         .classed('x-axis', true);
 
     // focus areas label
-    this.svg.append('text')
+    this.svgInner.append('text')
         .classed('focus-areas-label', true)
         .classed('matrix-axis-label', true)
         .text('Fokusområden');
 
     // make some circles
-    this.circles = this.svg.append('g').classed('circles', true);
+    this.circles = this.svgInner.append('g').classed('circles', true);
 
     this.draw();
 
@@ -84,18 +88,37 @@ class Matrix extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.debounce);
+    this.svg.on('click', null);
   }
 
   draw() {
-    const width = +this.svgWrapperRef.clientWidth - this.margin.left - this.margin.right;
-    const height = +this.svgWrapperRef.clientHeight - this.margin.top - this.margin.bottom;
+    let height = +this.svgWrapperRef.clientHeight - this.margin.top - this.margin.bottom;
+    let width = +this.svgWrapperRef.clientWidth - this.margin.left - this.margin.right;
+    
+    const stretch = true;
+
+    if (!stretch) {
+      const aspectRatio = 5 / 5; // 4 / 5 is optimal
+      const optimalHeight = width * 1 / aspectRatio;
+      const optimalWidth = height * aspectRatio;
+
+      if ((optimalHeight + this.margin.top + this.margin.bottom) <= this.svgWrapperRef.clientHeight) {
+        this.offset = { x: 0, y: (height - optimalHeight) / 2 };
+        height = optimalHeight;
+      } else {
+        this.offset = { x: (width - optimalWidth) / 2, y: 0 };
+        width = optimalWidth;
+      }
+    }
 
     // update scales
     this.scaleX.range([0, width]);
     this.scaleY.range([0, height]);
 
+    this.svgInner.attr('transform', `translate(${this.offset.x}, ${this.offset.y})`)
+
     // y-axis
-    this.svg.select('g.y-axis')
+    this.svgInner.select('g.y-axis')
         .attr('transform', `translate(${width + this.margin.left}, ${this.margin.top})`)
         .call(axisLeft(this.scaleY)
             .tickSize(width)
@@ -106,11 +129,11 @@ class Matrix extends Component {
         .call(parseNewlinesY);
 
     // themes label
-    this.svg.select('text.themes-label')
+    this.svgInner.select('text.themes-label')
         .attr('transform', `translate(30, ${this.margin.top + height / 2})rotate(-90)`);
 
     // x-axis
-    this.svg.select('g.x-axis')
+    this.svgInner.select('g.x-axis')
         .attr('transform', `translate(${this.margin.left}, ${height + this.margin.top})`)
         .call(axisTop(this.scaleX)
             .tickSize(height)
@@ -122,7 +145,7 @@ class Matrix extends Component {
       
 
     // focus areas label
-    this.svg.select('text.focus-areas-label')
+    this.svgInner.select('text.focus-areas-label')
         .attr('transform', `translate(${this.margin.left + width / 2}, 30)`);
 
     this.updateData(this.props.data);
@@ -218,7 +241,7 @@ class Matrix extends Component {
       <div className="matrix-wrapper">
         <div className="matrix-svg-wrapper" ref={svgWrapper => { this.svgWrapperRef = svgWrapper; }}>
           <svg className="matrix" width="100%" height="100%" ref={svg => { this.svgRef = svg; }} />
-          <MatrixTooltip hoveredProject={this.state.hoveredProject} margin={this.margin} />
+          <MatrixTooltip hoveredProject={this.state.hoveredProject} margin={this.margin} offset={this.offset} />
         </div>
         <div className="matrix-info">
           <MatrixDetails project={this.state.clickedProject} />
