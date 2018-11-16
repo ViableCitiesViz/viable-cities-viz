@@ -218,7 +218,7 @@ class Filters extends Component {
         <div className="filters__top">
           <div className="filter-box">
             <span className="filter-box__title">
-              Filtera efter titel
+              Titel
             </span>
             <Multiselect
               data={titlesList}
@@ -230,14 +230,14 @@ class Filters extends Component {
                   }
                 });
               }}
-              placeholder="Projekttitel"
+              placeholder="Filtera efter titlar"
               filter="contains"
               value={this.state.filterValues.titles}
             />
           </div>
           <div className="filter-box">
             <span className="filter-box__title">
-              Filtrera efter plats
+              Plats
             </span>
             <Multiselect
               data={locationsList}
@@ -249,7 +249,7 @@ class Filters extends Component {
                   }
                 });
               }}
-              placeholder="Kommuner"
+              placeholder="Filtrera efter kommuner"
               valueField="name"
               textField="name"
               itemComponent={ListItem}
@@ -258,7 +258,7 @@ class Filters extends Component {
           </div>
           <div className="filter-box">
             <span className="filter-box__title">
-              Filtrera efter partner
+              Partner
             </span>
             <Multiselect
               data={partnersList}
@@ -270,7 +270,7 @@ class Filters extends Component {
                   }
                 });
               }}
-              placeholder="Partners"
+              placeholder="Filtrera efter partners"
               filter="contains"
               valueField="name"
               textField="name"
@@ -280,7 +280,7 @@ class Filters extends Component {
           </div>
           <div className="filter-box">
             <span className="filter-box__title">
-              Filtera efter nyckelord
+              Nyckelord
             </span>
             <Multiselect
               data={keywordsList}
@@ -292,7 +292,7 @@ class Filters extends Component {
                   }
                 });
               }}
-              placeholder="Nyckelord"
+              placeholder="Filtera efter nyckelord"
               filter="contains"
               valueField="name"
               textField="name"
@@ -333,8 +333,7 @@ Filters.propTypes = {
   scaleData: PropTypes.shape({
     rScale: PropTypes.number,
     minBudget: PropTypes.number,
-    maxBudget: PropTypes.number,
-    medianBudget: PropTypes.number
+    maxBudget: PropTypes.number
   })
 };
 

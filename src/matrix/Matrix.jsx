@@ -16,7 +16,7 @@ class Matrix extends Component {
       clickedProject: null
     };
 
-    this.margin = { top: 160, right: 20, bottom: 20, left: 190 };
+    this.margin = { top: 140, right: 20, bottom: 20, left: 180 };
     this.offset = { x: 0,  y: 0 };
     this.draw = this.draw.bind(this);
   }
@@ -95,7 +95,7 @@ class Matrix extends Component {
     let height = +this.svgWrapperRef.clientHeight - this.margin.top - this.margin.bottom;
     let width = +this.svgWrapperRef.clientWidth - this.margin.left - this.margin.right;
     
-    const stretch = true;
+    const stretch = false;
 
     if (!stretch) {
       const aspectRatio = 5 / 5; // 4 / 5 is optimal

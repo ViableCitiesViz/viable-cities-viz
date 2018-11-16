@@ -70,8 +70,7 @@ MatrixScale.propTypes = {
   scaleData: PropTypes.shape({
     rScale: PropTypes.number,
     minBudget: PropTypes.number,
-    maxBudget: PropTypes.number,
-    medianBudget: PropTypes.number
+    maxBudget: PropTypes.number
   })
 };
 

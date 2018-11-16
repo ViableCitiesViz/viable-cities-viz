@@ -26,12 +26,20 @@
 .filter-box__title {
   text-transform: uppercase;
   font-weight: 600;
-  font-size: 0.8em;
+  font-size: 0.9em;
   margin-left: 1em;
 }
 
 .filters .rw-multiselect {
   font-size: 14px;
+}
+
+.filters .rw-multiselect input {
+  /* !!! IMPORTANT!!! 
+   * Fixes width overflow bug caused MultiSelect
+   * setting the size attribute on the inputs
+   */
+  width: 100%; 
 }
 
 /* multiselect input closed */
@@ -82,7 +90,7 @@
 
 .filter-results-text {
   text-align: center;
-  font-size: 0.9em;
+  font-size: 0.85714em;
   color: #999;
   margin: 20px 0;
 }
@@ -109,7 +117,7 @@
   padding: 7px 30px;
   font-weight: 600;
   font-family: 'Open Sans', sans-serif;
-  font-size: 0.8em;
+  font-size: 0.85714em;
 }
 
 .filter-button:focus {
