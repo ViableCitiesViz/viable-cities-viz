@@ -15,6 +15,14 @@ export const theme2row = {
   intelligence: 5
 };
 
+export const row2theme = {
+  1: 'testbeds',
+  2: 'innovation',
+  3: 'financing',
+  4: 'management',
+  5: 'intelligence'
+};
+
 export const focusLabel = {
   1: 'Livsstil och  konsumtion',
   2: 'Planering och  byggd miljö',

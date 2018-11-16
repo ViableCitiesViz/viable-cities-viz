@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { range } from 'd3';
 import { Multiselect } from 'react-widgets'
 import MatrixLegend from '../matrix/MatrixLegend';
 import MatrixScale from '../matrix/MatrixScale';
+import { col2focus, row2theme, theme2row } from '../matrix/MatrixUtility';
+import Matchmaking from './Matchmaking';
 import isEqual from 'react-fast-compare';
 import './Filters.css';
 
@@ -30,13 +33,15 @@ class Filters extends Component {
         titles: props.data,
         locations: props.data,
         partners: props.data,
-        keywords: props.data
+        keywords: props.data,
+        matchmaking: props.data,
       },
       filterValues: {
         titles: [],
         locations: [],
         partners: [],
-        keywords: []
+        keywords: [],
+        matchmaking: []
       },
       filteredData: props.data
     };
@@ -61,61 +66,51 @@ class Filters extends Component {
 
     this.filterBy = {
       titles: (titles) => {
-        this.setState((state, props) => ({
-          filteredBy: {
-            ...state.filteredBy,
-            titles: { 
-              data: props.data.data.filter((d) => {
-                if (titles.length && !titles.includes(d.survey_answers.project_title)) return false;
-                return true;
-              })
-            }
-          }
-        }))
+        return {
+          data: this.props.data.data.filter((d) => {
+            if (titles.length && !titles.includes(d.survey_answers.project_title)) return false;
+            return true;
+          })
+        };
       },
       locations: (locations) => {
         const locationsList = locations.map(locationObj => locationObj.name);
-        this.setState((state, props) => ({
-          filteredBy: {
-            ...state.filteredBy,
-            locations: { 
-              data: props.data.data.filter((d) => {
-                if (locations.length && !locationsList.includes(d.survey_answers.location)) return false;
-                return true;
-              })
-            }
-          }
-        }))
+        return {
+          data: this.props.data.data.filter((d) => {
+            if (locations.length && !locationsList.includes(d.survey_answers.location)) return false;
+            return true;
+          })
+        };
       },
       partners: (partners) => {
-        this.setState((state, props) => ({
-          filteredBy: {
-            ...state.filteredBy,
-            partners: {
-              data: props.data.data.filter((d) => {
-                if (partners.length && !partners.some(partner => {
-                  return this.projectPartners[d.survey_answers.project_id].has(partner.name);
-                })) return false;
-                return true;
-              })
-            }
-          }
-        }))
+        return {
+          data: this.props.data.data.filter((d) => {
+            if (partners.length && !partners.some(partner => {
+              return this.projectPartners[d.survey_answers.project_id].has(partner.name);
+            })) return false;
+            return true;
+          })
+        }
       },
       keywords: (keywords) => {
-        this.setState((state, props) => ({
-          filteredBy: {
-            ...state.filteredBy,
-            keywords: {
-              data: props.data.data.filter((d) => {
-                if (keywords.length && !keywords.some(keyword => {
-                  return this.projectKeywords[d.survey_answers.project_id].has(keyword.name);
-                })) return false;
-                return true;
-              })
-            }
-          }
-        }))
+        return {
+          data: this.props.data.data.filter((d) => {
+            if (keywords.length && !keywords.some(keyword => {
+              return this.projectKeywords[d.survey_answers.project_id].has(keyword.name);
+            })) return false;
+            return true;
+          })
+        }
+      },
+      matchmaking: (matchmaking) => {
+        return {
+          data: this.props.data.data.filter((d) => {
+            if (matchmaking.length && !matchmaking.every(position => {
+              return d.survey_answers[col2focus[position.col]].includes(row2theme[position.row])
+            })) return false;
+            return true;
+          })
+        }
       }
     };
   }
@@ -179,6 +174,34 @@ class Filters extends Component {
       .reduce((arr, [key, value]) => [...arr, {name: key, count: value}], [])
   }
 
+  buildMatchmakingList() {
+    const data = this.state.filteredData;
+
+    const ROWS = 5;
+    const COLS = 4;
+
+    const colRange = range(1, COLS + 1); 
+
+    const nonEmpty = {};
+    for (let row = 1; row <= ROWS; ++row) {
+      nonEmpty[row] = {};
+      for (let col = 1; col <= COLS; ++col) {
+        nonEmpty[row][col] = false;
+      }
+    }
+
+    data.data.forEach(d => {
+      colRange.forEach(col => {
+        d.survey_answers[col2focus[col]].forEach(theme => {
+          const row = theme2row[theme];
+          if (!nonEmpty[row][col]) nonEmpty[row][col] = true;
+        })
+      });
+    });
+
+    return nonEmpty;
+  }
+
   // only render if state changed, ignore props (except for scaleData) since they shouldn't change anyway
   shouldComponentUpdate(nextProps, nextState) {
     if (!isEqual(nextState, this.state)) return true;
@@ -190,11 +213,20 @@ class Filters extends Component {
     if (prevState === this.state) return;
 
     if (!isEqual(prevState.filterValues, this.state.filterValues)) {
+      const filteredBy = {};
       Object.keys(this.filterBy).forEach(filter => {
         if (!isEqual(prevState.filterValues[filter], this.state.filterValues[filter])) {
-          this.filterBy[filter](this.state.filterValues[filter]);
+          filteredBy[filter] = this.filterBy[filter](this.state.filterValues[filter]);
         }
       });
+      if (Object.keys(filteredBy).length) {
+        this.setState((state, props) => ({
+          filteredBy: {
+            ...state.filteredBy,
+            ...filteredBy
+          }
+        }))
+      }
     }
 
     if (!isEqual(prevState.filteredBy, this.state.filteredBy)) {
@@ -212,7 +244,8 @@ class Filters extends Component {
     const locationsList = this.buildLocationList();
     const partnersList = this.buildPartnerList();
     const keywordsList = this.buildKeywordList();
-
+    const matchmakingList = this.buildMatchmakingList();
+    
     return (
       <div className="filters">
         <div className="filters__top">
@@ -301,12 +334,25 @@ class Filters extends Component {
             />
           </div>
 
+          <Matchmaking
+            value={this.state.filterValues.matchmaking}
+            onChange={matchmaking => {
+              this.setState({
+                filterValues: {
+                  ...this.state.filterValues,
+                  matchmaking
+                }
+              });
+            }}
+            enabled={matchmakingList}
+          />
+
           <p className={`filter-results-text ${this.empty() ? 'filter-results-text--hidden' : ''}`}>
             Visar <span className="filter-results-text__number">{this.state.filteredData.data.length}</span>
             {' '} av <span className="filter-results-text__number">{this.props.data.data.length}</span> projekt.
           </p>
 
-          <div className="filter-button-box">
+          <div className={`filter-button-box ${this.empty() ? 'filter-button-box--hidden' : ''}`}>
             <button
               className="filter-button"
               onClick={() => this.setState({

@@ -20,7 +20,7 @@
 }
 
 .filter-box {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .filter-box__title {
@@ -103,9 +103,21 @@
   font-weight: 600;
 }
 
+.filter-box .filter-button-box {
+  margin: 5px 0;
+}
+
+.filter-box .filter-button {
+  width: 100%;
+}
+
 .filter-button-box {
   text-align: center;
-  margin: 30px;
+  margin: 20px;
+}
+
+.filter-button-box--hidden {
+  display: none;
 }
 
 .filter-button {
