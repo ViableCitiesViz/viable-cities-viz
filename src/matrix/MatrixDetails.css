@@ -15,12 +15,14 @@
 
 .matrix-details__title {
   margin: 0;
+  font-size: 1.1666em;
 }
 
 .matrix-details__subtitle {
   margin: 0;
   color: #666;
   font-weight: 600;
+  font-size: 1em;
 }
 
 /* !!! hard-coded solution: can hopefully find something better later !!! */

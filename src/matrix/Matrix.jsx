@@ -16,7 +16,7 @@ class Matrix extends Component {
       clickedProject: null
     };
 
-    this.margin = { top: 140, right: 20, bottom: 20, left: 180 };
+    this.margin = { top: 150, right: 20, bottom: 20, left: 180 };
     this.offset = { x: 0,  y: 0 };
     this.draw = this.draw.bind(this);
   }
@@ -146,7 +146,7 @@ class Matrix extends Component {
 
     // focus areas label
     this.svgInner.select('text.focus-areas-label')
-        .attr('transform', `translate(${this.margin.left + width / 2}, 30)`);
+        .attr('transform', `translate(${this.margin.left + width / 2}, ${this.margin.top - 110})`);
 
     this.updateData(this.props.data);
   }

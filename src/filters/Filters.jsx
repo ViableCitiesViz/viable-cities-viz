@@ -7,13 +7,12 @@ import MatrixScale from '../matrix/MatrixScale';
 import { col2focus, row2theme, theme2row } from '../matrix/MatrixUtility';
 import Matchmaking from './Matchmaking';
 import isEqual from 'react-fast-compare';
+import _intersection from 'lodash.intersection';
 import './Filters.css';
 
 // find the intersection of an arbitrary number of subsets of data
-function intersection(datum, ...moreData) {
-  return moreData.reduce((previous, current) => (
-    {data: previous.data.filter(x => current.data.includes(x))}
-  ), datum)
+function intersection(...data) {
+  return { data: _intersection(...data.map(d => d.data)) };
 }
 
 // presentation of the multiselect options
@@ -46,6 +45,19 @@ class Filters extends Component {
       filteredData: props.data
     };
 
+    // used for optimizations
+    this.prevFilteredData = null;
+
+    // data used by filter components when rendering, e.g.
+    // location names, partners, enabled matrix cells etc
+    this.componentData = {
+      titles: null,
+      locations: null,
+      partners: null,
+      keywords: null,
+      matchmaking: null
+    };
+
     this.projectPartners = {};
     this.projectKeywords = {};
 
@@ -66,26 +78,32 @@ class Filters extends Component {
 
     this.filterBy = {
       titles: (titles) => {
+        if (!titles.length) return this.props.data;
+
         return {
           data: this.props.data.data.filter((d) => {
-            if (titles.length && !titles.includes(d.survey_answers.project_title)) return false;
+            if (titles.includes(d.survey_answers.project_title)) return false;
             return true;
           })
         };
       },
       locations: (locations) => {
-        const locationsList = locations.map(locationObj => locationObj.name);
+        if (!locations.length) return this.props.data;
+
+        const locationsNames = locations.map(locationObj => locationObj.name);
         return {
           data: this.props.data.data.filter((d) => {
-            if (locations.length && !locationsList.includes(d.survey_answers.location)) return false;
+            if (!locationsNames.includes(d.survey_answers.location)) return false;
             return true;
           })
         };
       },
       partners: (partners) => {
+        if (!partners.length) return this.props.data;
+
         return {
           data: this.props.data.data.filter((d) => {
-            if (partners.length && !partners.some(partner => {
+            if (!partners.some(partner => {
               return this.projectPartners[d.survey_answers.project_id].has(partner.name);
             })) return false;
             return true;
@@ -93,9 +111,11 @@ class Filters extends Component {
         }
       },
       keywords: (keywords) => {
+        if (!keywords.length) return this.props.data;
+
         return {
           data: this.props.data.data.filter((d) => {
-            if (keywords.length && !keywords.some(keyword => {
+            if (!keywords.some(keyword => {
               return this.projectKeywords[d.survey_answers.project_id].has(keyword.name);
             })) return false;
             return true;
@@ -103,9 +123,11 @@ class Filters extends Component {
         }
       },
       matchmaking: (matchmaking) => {
+        if (!matchmaking.length) return this.props.data;
+
         return {
           data: this.props.data.data.filter((d) => {
-            if (matchmaking.length && !matchmaking.every(position => {
+            if (!matchmaking.every(position => {
               return d.survey_answers[col2focus[position.col]].includes(row2theme[position.row])
             })) return false;
             return true;
@@ -240,11 +262,16 @@ class Filters extends Component {
 
   render() {
     // load these here, otherwise lazy evaluation can cause some choppiness in the browser
-    const titlesList = this.buildTitlesList();
-    const locationsList = this.buildLocationList();
-    const partnersList = this.buildPartnerList();
-    const keywordsList = this.buildKeywordList();
-    const matchmakingList = this.buildMatchmakingList();
+    if (this.state.filteredData !== this.prevFilteredData) {
+      this.prevFilteredData = this.state.filteredData;
+      this.componentData = {
+        titles: this.buildTitlesList(),
+        locations: this.buildLocationList(),
+        partners: this.buildPartnerList(),
+        keywords: this.buildKeywordList(),
+        matchmaking: this.buildMatchmakingList()
+      }
+    }
     
     return (
       <div className="filters">
@@ -254,7 +281,7 @@ class Filters extends Component {
               Titel
             </span>
             <Multiselect
-              data={titlesList}
+              data={this.componentData.titles}
               onChange={titles => {
                 this.setState({
                   filterValues: {
@@ -273,7 +300,7 @@ class Filters extends Component {
               Plats
             </span>
             <Multiselect
-              data={locationsList}
+              data={this.componentData.locations}
               onChange={locations => {
                 this.setState({
                   filterValues: {
@@ -294,7 +321,7 @@ class Filters extends Component {
               Partner
             </span>
             <Multiselect
-              data={partnersList}
+              data={this.componentData.partners}
               onChange={partners => {
                 this.setState({
                   filterValues: {
@@ -316,7 +343,7 @@ class Filters extends Component {
               Nyckelord
             </span>
             <Multiselect
-              data={keywordsList}
+              data={this.componentData.keywords}
               onChange={keywords => {
                 this.setState({
                   filterValues: {
@@ -344,7 +371,7 @@ class Filters extends Component {
                 }
               });
             }}
-            enabled={matchmakingList}
+            enabled={this.componentData.matchmaking}
           />
 
           <p className={`filter-results-text ${this.empty() ? 'filter-results-text--hidden' : ''}`}>

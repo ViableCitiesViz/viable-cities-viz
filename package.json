@@ -5,6 +5,7 @@
   "dependencies": {
     "d3": "^5.7.0",
     "lodash.debounce": "^4.0.8",
+    "lodash.intersection": "^4.4.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-app-polyfill": "^0.1.3",

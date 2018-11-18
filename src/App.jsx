@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from './Header';
 import Matrix from './matrix/Matrix';
 import Filters from './filters/Filters';
 import mockData from './data/mock-data-v7.json';
@@ -34,8 +35,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Filters data={mockData} updateFilteredData={this.updateFilteredData} scaleData={this.state.scaleData} />
-        <Matrix data={this.state.filteredData} updateScaleData={this.updateScaleData} />
+        <Header />
+        <div className="App__content">
+          <Filters data={mockData} updateFilteredData={this.updateFilteredData} scaleData={this.state.scaleData} />
+          <Matrix data={this.state.filteredData} updateScaleData={this.updateScaleData} />
+        </div>
       </div>
     );
   }
