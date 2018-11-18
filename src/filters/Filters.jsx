@@ -82,7 +82,7 @@ class Filters extends Component {
 
         return {
           data: this.props.data.data.filter((d) => {
-            if (titles.includes(d.survey_answers.project_title)) return false;
+            if (!titles.includes(d.survey_answers.project_title)) return false;
             return true;
           })
         };
