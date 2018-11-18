@@ -1,0 +1,2 @@
+- Updated all project descriptions to use the shorter version off of the viable cities website project listing.
+- Added links for all projects to their pages on the viable cities
