@@ -1,0 +1,82 @@
+[
+  {
+    "name" : "Stockholm",
+    "population" : 0,
+    "coordinates" : {
+      "x" : 18.068580800000063,
+      "y" : 59.32932349999999
+    }
+  },
+  {
+    "name" : "Karlstad",
+    "population" : 0,
+    "coordinates" : {
+      "x" : 13.51149780000003,
+      "y" : 59.4021806
+    }
+  },
+  {
+    "name" : "Kiruna",
+    "population" : 0,
+    "coordinates" : {
+      "x" : 20.225282,
+      "y" : 67.8558
+    }
+  },
+  {
+    "name" : "Umeå",
+    "population" : 0,
+    "coordinates" : {
+      "x" : 20.263035,
+      "y" : 63.825847
+    }
+  },
+  {
+    "name" : "Göteborg",
+    "population" : 0,
+    "coordinates" : {
+      "x" : 11.97456,
+      "y" : 57.70887
+    }
+  },
+  {
+    "name" : "Uppsala",
+    "population" : 0,
+    "coordinates" : {
+      "x" : 17.638926699999956,
+      "y" : 59.85856380000001
+    }
+  },
+  {
+    "name" : "Lund",
+    "population" : 0,
+    "coordinates" : {
+      "x" : 13.191007300000024,
+      "y" : 55.70466010000001
+    }
+  },
+  {
+    "name" : "Kungälv",
+    "population" : 0,
+    "coordinates" : {
+      "x" : 11.974031700000069,
+      "y" : 57.86975400000001
+    }
+  },
+  {
+    "name" : "Kalmar",
+    "population" : 0,
+    "coordinates" : {
+      "x" : 16.35677910000004,
+      "y" : 56.6634447
+    }
+  },
+  {
+    "name" : "Röståncities_container",
+    "population" : 0,
+    "coordinates" : {
+      "x" : 13.29325689999996,
+      "y" : 56.0024903
+    }
+  }
+]

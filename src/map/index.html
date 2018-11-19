@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8">
 
-<link rel="stylesheet" type="text/css" href="css/circle_packing.css">
+<!-- <link rel="stylesheet" type="text/css" href="css/circle_packing.css"> -->
 <link rel="stylesheet" type="text/css" href="css/map.css">
 <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css">
 
@@ -24,6 +24,8 @@
               <a class="nav-link" onclick="change_view(1)">Matrix</a>
             </li>
             <li class="nav-item view" id="view_2">
+              <a class="nav-link" onclick="change_view(1)">Gantt</a>
+
               <!-- <a class="nav-link" onclick="change_view(2)">Fokus Områden</a> -->
             </li>
             <li class="nav-item view" id="view_3">
@@ -31,54 +33,40 @@
             </li>
           </ul>
           <form class="form-inline my-md-0 py-0">
-            <input class="form-control py-0" id="search_bar" type="text" placeholder="Search...">
+            <!-- <input class="form-control py-0" id="search_bar" type="text" placeholder="Search..."> -->
           </form>
         </div>
       </nav>
     </div>
-
+<div class="multi-proj" id="multi-proj">
+  <div class="card my-3">
+    <h4 class="card-title my-0" id="multi_title">Multiple Projects<span onclick="hide_text(1)"style="float:right;cursor:pointer;"><h6>x</h6></span></h4>
+    <hr>
+    <div class="card-body">
+      <div id="multi_proj_list">
+      </div>
+    </div>
+  </div>
+</div>
   <div class="container-fluid p-0">
     <div class="row m-0">
-      <div id="menu" class="col-2">
-                <h3 style="margin-top:5px;">Filter</h3>
-                <hr class="pl-0 mb-0">
-                <!-- <ul class="nav flex-column">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="#">Sort</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Filter</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Tags</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Results</a>
-                  </li>
-                  <li class="nav-item">
-                    <br>
-                    <a href="#" class="btn btn-primary">Reset</a>
-
-                  </li>
-                </ul> -->
-              </div>
-    <div class="col-10 p-0">
+    <div class="col-12 p-0">
       <svg></svg>
       <div id="info_box_col" class="pl-0" style="position:absolute; top:0px;right:0px; display:none;">
         <div class="card my-3" style="width: 500px;">
           <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
           <div class="card-header">
 
-          <h4 class="card-title">Project Title <span onclick="hide_text()"style="float:right;cursor:pointer;"><h1>X</h1></span></h4> 
-          <h6 class="card-subtitle">Project subtitle</h6>
+          <h4 class="card-title"><span id="project_title">Project Title</span> <span onclick="hide_text(0)"style="float:right;cursor:pointer;"><h1>x</h1></span></h4>
+          <h6 class="card-subtitle" id="project_subtitle">Project subtitle</h6>
         </div>
-          <div class="card-body">
+          <div class="card-body" id="card_body_">
 
             <div class="row">
-              <div id="card_project_leader" class="col-5">
+              <div  class="col-5">
                 <b>Project Lead</b>
               </div>
-              <div class="col-7 p-0">
+              <div id="project_leader" class="col-7 p-0">
                 Insert Name, and also Organisation
               </div>
             </div>
@@ -86,7 +74,7 @@
               <div class="col-5">
                 <b>Total Budget</b>
               </div>
-              <div class="col-7 p-0">
+              <div id="budget" class="col-7 p-0">
                 Money
               </div>
             </div>
@@ -94,7 +82,7 @@
               <div class="col-5">
                 <b>Project Time</b>
               </div>
-              <div class="col-7 p-0">
+              <div id="project_time" class="col-7 p-0">
                 Date - Date
               </div>
             </div>
@@ -102,7 +90,7 @@
               <div class="col-5">
                 <b>Keywords</b>
               </div>
-              <div class="col-7 p-0">
+              <div id="project_keywords" class="col-7 p-0">
                 <u>#clickable</u> <u>#keywords</u> <u>#that</u> <u>#lead</u> <u>#somewhere</u>
               </div>
             </div>
@@ -111,7 +99,7 @@
                 <b>Focus Areas & Themes</b>
               </div>
               <div class="col-7 p-0">
-                Cool Visualization
+                Clickable Link to Matrix
               </div>
             </div>
             <hr>
@@ -124,13 +112,17 @@
   </div>
   </div>
 </body>
-
+<div class="texta"></div>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="js/lib/bootstrap/bootstrap.min.js"></script>
 <script src="//d3js.org/d3.v4.min.js" charset="utf-8"></script>
 <script src="//d3js.org/topojson.v1.min.js"></script>
-<script src="/js/circle_packing.js"></script>
-<script src="/js/map.js"></script>
-<script>load_map()</script>
+<!-- <script src="/js/circle_packing.js"></script> -->
+<script src="js/sunburst.js"></script>
+<script src="js/map.js"></script>
+<script src="js/fetch_city_coordinates.js"></script>
+
+<!-- <script>fetch_cities()</script> -->
+<script>load_map_components()</script>
 
 </html>
