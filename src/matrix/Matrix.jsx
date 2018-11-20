@@ -115,7 +115,9 @@ class Matrix extends Component {
     this.scaleX.range([0, width]);
     this.scaleY.range([0, height]);
 
-    this.svgInner.attr('transform', `translate(${this.offset.x}, ${this.offset.y})`)
+    this.svgInner
+      .transition()
+        .attr('transform', `translate(${this.offset.x}, ${this.offset.y})`);
 
     // y-axis
     this.svgInner.select('g.y-axis')
@@ -168,6 +170,7 @@ class Matrix extends Component {
   updateClicked(current, prev) {
     if (current === prev) return;
 
+    // necessary only if clicking a project changes svgWrapper size (i.e. infobox takes up more space)
     this.draw();
 
     // clean up from prev
@@ -229,7 +232,8 @@ class Matrix extends Component {
           hoveredProject: null
         }))
         .on('click', d => this.setState({
-          clickedProject: d
+          clickedProject: d,
+          hoveredProject: null
         }))
         .attr('r', 0)
       .transition()

@@ -10,7 +10,8 @@
 }
 
 .matrix-details--empty {
-  /*width: 0;*/
+  width: 0;
+  padding: 0;
 }
 
 .matrix-details__title {
