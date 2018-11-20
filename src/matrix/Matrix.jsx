@@ -57,7 +57,7 @@ class Matrix extends Component {
     // make some circles
     this.circles = this.svgInner.append('g').classed('circles', true);
 
-    this.draw();
+    this.draw(true);
 
     // clear clickedProject when clicking outside of any circle
     // TODO, put this on something bigger than the svg?
@@ -69,7 +69,7 @@ class Matrix extends Component {
       }
     });
 
-    this.debounce = debounce(this.draw, 100);
+    this.debounce = debounce(() => this.draw(), 100);
     window.addEventListener('resize', this.debounce);
   }
 
@@ -91,12 +91,11 @@ class Matrix extends Component {
     this.svg.on('click', null);
   }
 
-  draw() {
+  draw(init = false) {
     let height = +this.svgWrapperRef.clientHeight - this.margin.top - this.margin.bottom;
     let width = +this.svgWrapperRef.clientWidth - this.margin.left - this.margin.right;
     
     const stretch = false;
-
     if (!stretch) {
       const aspectRatio = 5 / 5; // 4 / 5 is optimal
       const optimalHeight = width * 1 / aspectRatio;
@@ -115,40 +114,91 @@ class Matrix extends Component {
     this.scaleX.range([0, width]);
     this.scaleY.range([0, height]);
 
-    this.svgInner
-      .transition()
+    // set up selectors
+    const selectors = {
+      svgInner: this.svgInner,
+      yAxis: this.svgInner.select('g.y-axis'),
+      themesLabel: this.svgInner.select('text.themes-label'),
+      xAxis: this.svgInner.select('g.x-axis'),
+      focusAreasLabel: this.svgInner.select('text.focus-areas-label')
+    }
+    if (!init)
+      Object.keys(selectors).forEach(s => selectors[s] = selectors[s].transition());
+
+    selectors.svgInner
         .attr('transform', `translate(${this.offset.x}, ${this.offset.y})`);
 
-    // y-axis
-    this.svgInner.select('g.y-axis')
-        .attr('transform', `translate(${width + this.margin.left}, ${this.margin.top})`)
-        .call(axisLeft(this.scaleY)
-            .tickSize(width)
-            .tickPadding(20)
-            .tickFormat(row => themeLabel[row]))
-        .call(g => g.select('.domain').remove())
-      .selectAll(".tick text")
-        .call(parseNewlinesY);
-
     // themes label
-    this.svgInner.select('text.themes-label')
+    selectors.themesLabel
         .attr('transform', `translate(30, ${this.margin.top + height / 2})rotate(-90)`);
 
-    // x-axis
-    this.svgInner.select('g.x-axis')
-        .attr('transform', `translate(${this.margin.left}, ${height + this.margin.top})`)
-        .call(axisTop(this.scaleX)
-            .tickSize(height)
-            .tickPadding(20)
-            .tickFormat(col => focusLabel[col]))
-        .call(g => g.select('.domain').remove())
-      .selectAll(".tick text")
-        .call(parseNewlinesX);
-      
-
     // focus areas label
-    this.svgInner.select('text.focus-areas-label')
+    selectors.focusAreasLabel
         .attr('transform', `translate(${this.margin.left + width / 2}, ${this.margin.top - 110})`);
+
+    /**
+     * NOTE: The default text elements (labels) on the axes are hidden and replaced to
+     * allow for two things: (1) splitting up the labels into multiple lines and (2)
+     * having transitions. The default labels can support (1) and (2) separately but not 
+     * at the same time! So that's why there's some extra code here
+     *
+     * We don't want remove the original text element and .domain,
+     * if we remove the text element, d3-axis will start fucking with our label
+     * (changin text contents, position etc)
+     * if we remove .domain, d3-axis will just add it again next draw call.
+     */
+
+    // (equivalent to axis.tickPadding [but hardcoded])
+    const tickPadding = 20;
+
+    // y-axis
+    selectors.yAxis
+        .attr('transform', `translate(${width + this.margin.left}, ${this.margin.top})`)
+        .call(axisLeft(this.scaleY).tickSize(width))
+    const yAxisSelection = selectors.yAxis.selection ? selectors.yAxis.selection() : selectors.yAxis;
+    if (yAxisSelection.selectAll('.tick text.label').empty()) {
+      yAxisSelection
+          .call(e => e.selectAll('.tick text').attr('display', 'none'))
+          .call(e => e.select('.domain').attr('display', 'none'))
+        .selectAll('.tick')
+        .append('text')
+          .classed('label', true)
+          .text(i => themeLabel[i])
+          .attr('fill', 'currentColor')
+          .attr('x', -width - tickPadding)
+          .attr('dy', '0.32em') // see d3-axis source code
+          .call(parseNewlinesY);
+    } else {
+      const x = -width - tickPadding;
+      selectors.yAxis.selectAll('.tick text.label')
+          .attr('x', x)
+        .selectAll('tspan')
+          .attr('x', x);
+    }
+
+    // x-axis
+    selectors.xAxis
+        .attr('transform', `translate(${this.margin.left}, ${height + this.margin.top})`)
+        .call(axisTop(this.scaleX).tickSize(height))
+    const xAxisSelection = selectors.xAxis.selection ? selectors.xAxis.selection() : selectors.xAxis;
+    if (xAxisSelection.selectAll('.tick text.label').empty()) {
+      xAxisSelection
+          .call(e => e.selectAll('.tick text').attr('display', 'none'))
+          .call(e => e.select('.domain').attr('display', 'none'))
+        .selectAll('.tick')
+        .append('text')
+          .classed('label', true)
+          .text(i => focusLabel[i])
+          .attr('fill', 'currentColor')
+          .attr('y', -height - tickPadding)
+          .attr('dy', '0em') // see d3-axis source code
+          .call(parseNewlinesX);
+    } else {
+      const y = -height - tickPadding;
+      selectors.xAxis.selectAll('.tick text.label')
+          .attr('y', y)
+          .attr('transform', `translate(0,${y})rotate(-45)translate(0,${-y})`);
+    }
 
     this.updateData(this.props.data);
   }
