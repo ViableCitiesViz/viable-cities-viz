@@ -38,6 +38,12 @@ export const themeLabel = {
   5: 'Intelligens,  cybersäkerhet  och etik'
 };
 
+export const type2class = {
+  'Forskningsprojekt': 'research',
+  'Innovationsprojekt': 'innovation',
+  'Förstudie': 'prestudy'
+}
+
 export function circleRadius(area) {
   return Math.sqrt(area / Math.PI);
 }
@@ -128,8 +134,8 @@ export function buildScaleData(packedData) {
 // inspired by https://bl.ocks.org/mbostock/7555321
 // replaces double spaces in the labels with fake "newlines"
 // (tspan elements) and fixes their positions
-export function parseNewlinesY(text) {
-  text.each(function() {
+export function parseNewlinesY(texts) {
+  texts.each(function() {
     const text = select(this);
     const words = text.text().split(/ {2}/);
     const x = text.attr('x');

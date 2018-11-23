@@ -9,10 +9,7 @@
   transform: translate(-50%, -100%);
   max-width: 250px;
   font-size: 1em;
-
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  pointer-events: none;
 }
 
 .matrix-tooltip::after {
@@ -25,9 +22,3 @@
     border-style: solid;
     border-color: #4a4c4d transparent transparent transparent;
 }
-
-.matrix-tooltip--visible {
-  visibility: visible;
-  opacity: 1;
-}
-

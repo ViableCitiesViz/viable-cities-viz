@@ -48,8 +48,7 @@ class Matchmaking extends Component {
             name={`[${row},${col}]`}
             checked={this.isChecked(row, col)}
             onChange={this.handleChange}
-            disabled={this.props.enabled && !this.props.enabled[row][col]}
-          />
+            disabled={this.props.enabled && !this.props.enabled[row][col]} />
         </td>
       ));
     };

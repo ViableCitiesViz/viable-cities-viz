@@ -27,20 +27,17 @@ function MatrixScale(props) {
     <div className="matrix-scale" style={{width: circleRadii[0] * 2 + margin.left + margin.right + lineWidth + labelWidth}}>
       <div className="matrix-scale__labels" style={{paddingTop: margin.top, paddingLeft: margin.left}}>
         <div className="matrix-scale__label"
-          style={{left: circleRadii[0] + margin.left, top: 0 + margin.top}}
-        >
+          style={{left: circleRadii[0] + margin.left, top: 0 + margin.top}}>
           <div className="matrix-scale__label-line" style={{width: circleRadii[0] + lineWidth}} />
           <span className="matrix-scale__label-text">{`${format(',')(labelNumbers[0]).replace(/,/g, ' ')} kr`}</span>
         </div>
         <div className="matrix-scale__label"
-          style={{left: circleRadii[0] + margin.left, top: circleRadii[0] * 2 - circleRadii[1] * 2 + margin.top}}
-        >
+          style={{left: circleRadii[0] + margin.left, top: circleRadii[0] * 2 - circleRadii[1] * 2 + margin.top}}>
           <div className="matrix-scale__label-line" style={{width: circleRadii[0] + lineWidth}} />
           <span className="matrix-scale__label-text">{`${format(',')(labelNumbers[1]).replace(/,/g, ' ')} kr`}</span>
         </div>
         <div className="matrix-scale__label"
-          style={{left: circleRadii[0] + circleRadii[2] + margin.left, top: circleRadii[0] * 2 - circleRadii[2] + margin.top}}
-        >
+          style={{left: circleRadii[0] + circleRadii[2] + margin.left, top: circleRadii[0] * 2 - circleRadii[2] + margin.top}}>
           <div className="matrix-scale__label-line" style={{width: circleRadii[0] + lineWidth - circleRadii[2]}} />
           <span className="matrix-scale__label-text">{`${format(',')(labelNumbers[2]).replace(/,/g, ' ')} kr`}</span>
         </div>
@@ -49,18 +46,15 @@ function MatrixScale(props) {
         <circle
           r={circleRadii[0]}
           cx={circleRadii[0] + margin.left}
-          cy={circleRadii[0] + margin.top}
-        />
+          cy={circleRadii[0] + margin.top} />
         <circle
           r={circleRadii[1]}
           cx={circleRadii[0] + margin.left}
-          cy={circleRadii[0] * 2 - circleRadii[1] + margin.top}
-        />
+          cy={circleRadii[0] * 2 - circleRadii[1] + margin.top} />
         <circle
           r={circleRadii[2]}
           cx={circleRadii[0] + margin.left}
-          cy={circleRadii[0] * 2 - circleRadii[2] + margin.top}
-        />
+          cy={circleRadii[0] * 2 - circleRadii[2] + margin.top} />
       </svg>
     </div>
   );

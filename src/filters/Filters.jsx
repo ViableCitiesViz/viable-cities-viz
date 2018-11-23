@@ -292,8 +292,7 @@ class Filters extends Component {
               }}
               placeholder="Filtera efter titlar"
               filter="contains"
-              value={this.state.filterValues.titles}
-            />
+              value={this.state.filterValues.titles} />
           </div>
           <div className="filter-box">
             <span className="filter-box__title">
@@ -313,8 +312,7 @@ class Filters extends Component {
               valueField="name"
               textField="name"
               itemComponent={ListItem}
-              value={this.state.filterValues.locations}
-            />
+              value={this.state.filterValues.locations} />
           </div>
           <div className="filter-box">
             <span className="filter-box__title">
@@ -335,8 +333,7 @@ class Filters extends Component {
               valueField="name"
               textField="name"
               itemComponent={ListItem}
-              value={this.state.filterValues.partners}
-            />
+              value={this.state.filterValues.partners} />
           </div>
           <div className="filter-box">
             <span className="filter-box__title">
@@ -357,8 +354,7 @@ class Filters extends Component {
               valueField="name"
               textField="name"
               itemComponent={ListItem}
-              value={this.state.filterValues.keywords}
-            />
+              value={this.state.filterValues.keywords} />
           </div>
 
           <Matchmaking
@@ -371,8 +367,7 @@ class Filters extends Component {
                 }
               });
             }}
-            enabled={this.componentData.matchmaking}
-          />
+            enabled={this.componentData.matchmaking} />
 
           <p className={`filter-results-text ${this.empty() ? 'filter-results-text--hidden' : ''}`}>
             Visar <span className="filter-results-text__number">{this.state.filteredData.data.length}</span>
@@ -385,8 +380,7 @@ class Filters extends Component {
               onClick={() => this.setState({
                 filterValues: Object.entries(this.state.filterValues)
                   .reduce((obj, [k,_]) => ({...obj, [k]: []}), {})
-              })}
-            >
+              })}>
               Rensa filter
             </button>
           </div>

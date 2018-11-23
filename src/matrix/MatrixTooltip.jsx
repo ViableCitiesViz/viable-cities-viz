@@ -1,27 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './MatrixTooltip.css';
 
 const topOffset = 10;
 
-function MatrixTooltip({ hoveredProject, margin, offset }) {
-  if (!hoveredProject) return (<div className="matrix-tooltip" />);
+class MatrixTooltip extends Component {
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.project !== this.props.project) return true;
+    return false;
+  }
 
-  return (
-    <div
-      className="matrix-tooltip matrix-tooltip--visible"
-      style={{
-        top: hoveredProject.y + margin.top - hoveredProject.r - topOffset + offset.y,
-        left: hoveredProject.x + margin.left + offset.x
-      }}
-    >
-      {hoveredProject.survey_answers.project_title}
-    </div>
-  );
+  render() {
+    if (!this.props.project) return null;
+
+    return (
+      <div
+        className="matrix-tooltip"
+        style={{
+          top: this.props.project.y + this.props.margin.top - this.props.project.r - topOffset + this.props.offset.y,
+          left: this.props.project.x + this.props.margin.left + this.props.offset.x
+        }}>
+        {this.props.project.survey_answers.project_title}
+      </div>
+    );
+  }
 }
 
 MatrixTooltip.propTypes = {
-  hoveredProject: PropTypes.object,
+  project: PropTypes.object,
   margin: PropTypes.shape({
     top: PropTypes.number,
     right: PropTypes.number,
