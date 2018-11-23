@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { select, axisLeft, axisTop, event, rgb, scalePoint, easePolyOut } from 'd3';
-import { themeLabel, focusLabel, packData, buildScaleData, parseNewlinesY, parseNewlinesX, projectTypeColors, type2class } from './MatrixUtility';
+import { select, axisLeft, axisTop, event, scalePoint, easePolyOut } from 'd3';
+import { themeLabel, focusLabel, packData, buildScaleData, parseNewlinesY, parseNewlinesX, type2class } from './MatrixUtility';
 import AnimatedInfoBox from '../info-box/AnimatedInfoBox';
 import MatrixTooltip from './MatrixTooltip';
 import PropTypes from 'prop-types';
@@ -81,8 +81,8 @@ class Matrix extends Component {
     this.updateHovered(this.state.hoveredProject, prevState.hoveredProject);
     this.updateClicked(this.state.clickedProject, prevState.clickedProject);
 
-    if (!isEqual(this.props.data, prevProps.data)) {
-      this.updateData(this.props.data);
+    if (!isEqual(this.props.filteredData, prevProps.filteredData)) {
+      this.updateData(this.props.filteredData);
       this.setState({
         clickedProject: null,
         hoveredProject: null
@@ -207,7 +207,7 @@ class Matrix extends Component {
           .attr('transform', `translate(0,${y})rotate(-45)translate(0,${-y})`);
     }
 
-    this.updateData(this.props.data);
+    this.updateData(this.props.filteredData);
   }
 
   updateHovered(current, prev) {
@@ -315,6 +315,7 @@ class Matrix extends Component {
 
 Matrix.propTypes = {
   data: PropTypes.object.isRequired,
+  filteredData: PropTypes.object.isRequired,
   updateScaleData: PropTypes.func.isRequired
 };
 

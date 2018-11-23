@@ -38,7 +38,7 @@ class App extends Component {
         <Header />
         <div className="App__content">
           <Filters data={mockData} updateFilteredData={this.updateFilteredData} scaleData={this.state.scaleData} />
-          <Matrix data={this.state.filteredData} updateScaleData={this.updateScaleData} />
+          <Matrix data={mockData} filteredData={this.state.filteredData} updateScaleData={this.updateScaleData} />
         </div>
       </div>
     );

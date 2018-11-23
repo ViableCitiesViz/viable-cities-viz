@@ -8,8 +8,8 @@ class AnimatedInfoBox extends Component {
   constructor(props) {
     super(props);
 
-    this.prevData = props.data;
-    this.updateProjectDetails();
+    this.projectDetails = this.props.data.data
+      .reduce((acc, cur) => ({ ...acc, [cur.survey_answers.project_id]: <InfoBox project={cur} /> }), {});
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -17,17 +17,7 @@ class AnimatedInfoBox extends Component {
     return false;
   }
 
-  updateProjectDetails() {
-    this.projectDetails = this.props.data.data
-      .reduce((acc, cur) => ({ ...acc, [cur.survey_answers.project_id]: <InfoBox project={cur} /> }), {});
-  }
-
   render() {
-    if (this.props.data !== this.prevData) {
-      this.prevData = this.props.data;
-      this.updateProjectDetails();
-    }
-
     return (
       <Transition
         native
