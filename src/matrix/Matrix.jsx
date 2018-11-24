@@ -260,9 +260,11 @@ class Matrix extends Component {
       .data(packedData, d => `${d.survey_answers.project_id}[${d.row},${d.col}]`);
 
     circle.exit()
-        .on('mouseover', null)
-        .on('mouseout', null)
-        .on('click', null)
+        // NOTE: These lines caused a nasty bug when calling updateData more than once in quick succession
+        //       with different subsets of data. But they shouldn't be needed regardlessly.
+        //.on('mouseover', null)
+        //.on('mouseout', null)
+        //.on('click', null))
       .transition()
         .call(masterTransition)
         .attr('r', 0)
