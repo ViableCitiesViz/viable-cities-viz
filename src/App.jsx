@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Header from './Header';
 import Matrix from './matrix/Matrix';
 import Filters from './filters/Filters';
@@ -34,13 +35,20 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Header />
-        <div className="App__content">
-          <Filters data={mockData} updateFilteredData={this.updateFilteredData} scaleData={this.state.scaleData} />
-          <Matrix data={mockData} filteredData={this.state.filteredData} updateScaleData={this.updateScaleData} />
+      <Router basename={process.env.PUBLIC_URL}>
+        <div className="App">
+          <Header />
+          <div className="App__content">
+            <Filters data={mockData} updateFilteredData={this.updateFilteredData} scaleData={this.state.scaleData} />
+            <Route path="/" exact render={props => (
+              <Redirect to="/matrix" />
+            )}/>
+            <Route path="/matrix" render={props => (
+              <Matrix data={mockData} filteredData={this.state.filteredData} updateScaleData={this.updateScaleData} />
+            )}/>
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }

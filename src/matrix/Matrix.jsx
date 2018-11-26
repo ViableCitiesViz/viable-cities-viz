@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { select, axisLeft, axisTop, event, scalePoint, easePolyOut } from 'd3';
 import { themeLabel, focusLabel, packData, buildScaleData, parseNewlinesY, parseNewlinesX, type2class } from './MatrixUtility';
+import { withRouter } from 'react-router-dom';
 import AnimatedInfoBox from '../info-box/AnimatedInfoBox';
 import MatrixTooltip from './MatrixTooltip';
 import PropTypes from 'prop-types';
 import isEqual from 'react-fast-compare';
 import debounce from 'lodash.debounce';
+import ProjectNavigator from '../ProjectNavigator';
 import './Matrix.css';
 
 const masterTransition = (transition) => transition.duration(800).ease(easePolyOut.exponent(4));
@@ -14,12 +16,12 @@ class Matrix extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hoveredProject: null,
-      clickedProject: null
+      hoveredProject: null
     };
 
     this.margin = { top: 150, right: 20, bottom: 20, left: 180 };
     this.offset = { x: 0,  y: 0 };
+    this.projectNavigator = new ProjectNavigator('/matrix');
     this.draw = this.draw.bind(this);
   }
 
@@ -60,16 +62,12 @@ class Matrix extends Component {
 
     // make some circles
     this.circles = this.svgInner.append('g').classed('circles', true);
-
     this.draw(true);
 
     // clear clickedProject when clicking outside of any circle
-    // TODO, put this on something bigger than the svg?
     this.svg.on('click', () => {
       if (event.target.tagName !== 'circle') {
-        this.setState({
-          clickedProject: null
-        });
+        this.projectNavigator.goToRoot(this.props.history, this.props.location);
       }
     });
 
@@ -79,14 +77,14 @@ class Matrix extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     this.updateHovered(this.state.hoveredProject, prevState.hoveredProject);
-    this.updateClicked(this.state.clickedProject, prevState.clickedProject);
+    this.updateClicked(this.props, prevProps);
 
     if (!isEqual(this.props.filteredData, prevProps.filteredData)) {
       this.updateData(this.props.filteredData);
       this.setState({
-        clickedProject: null,
         hoveredProject: null
       });
+      this.projectNavigator.goToRoot(this.props.history, this.props.location);
     }
   }
 
@@ -95,12 +93,16 @@ class Matrix extends Component {
     this.svg.on('click', null);
   }
 
+  selectCircle(id) {
+    return this.circles.select(`[data-id='${id}']`)
+  }
+
   draw(init = false) {
     let height = +this.svgWrapperRef.clientHeight - this.margin.top - this.margin.bottom;
     let width = +this.svgWrapperRef.clientWidth - this.margin.left - this.margin.right;
 
     // 300 px is the size of the infobox that appears when a project is clicked!
-    if (this.state.clickedProject !== null) width -= 300;
+    if (this.projectNavigator.projectIsActive(this.props.location, this.props.filteredData)) width -= 300;
     
     const stretch = false;
     if (!stretch) {
@@ -210,26 +212,39 @@ class Matrix extends Component {
     this.updateData(this.props.filteredData);
   }
 
-  updateHovered(current, prev) {
-    if (current === prev) return;
+  updateHovered(project, prevProject) {
+    if (project === prevProject)
+      return;
 
-    if (prev !== null)
-      this.circles.selectAll(`[data-id='${prev.survey_answers.project_id}']`)
+    if (prevProject !== null)
+      this.circles.selectAll('.hover')
           .classed('hover', false);
 
-    if (current !== null)
-      this.circles.selectAll(`[data-id='${current.survey_answers.project_id}']`)
+    if (project !== null)
+      this.circles.selectAll(`[data-id='${project.survey_answers.project_id}']`)
           .classed('hover', true);
   }
 
-  updateClicked(current, prev) {
-    if (current === prev) return;
+  updateClicked(props, prevProps) {
+    let projectId = this.projectNavigator.getProjectId(props.location);
+    let prevProjectId = this.projectNavigator.getProjectId(prevProps.location);
 
-    // necessary only if clicking a project changes svgWrapper size (i.e. infobox takes up more space)
-    this.draw();
+    // if we just started, (i.e. navigated to the site via a permalink with a project id)
+    // the projectId and prevProjectId will be identical because of how prevProps.location works
+    // so change it to -1.
+    if (!this.projectNavigator.hasChangedSinceInit()) {
+      prevProjectId = -1;
+      this.projectNavigator.triggerChange();
+    }
+
+    if (projectId === prevProjectId) return;
+
+    // necessary only if clicking a project changes svgWrapper size (i.e. infobox takes up more or less space than before)
+    if ((projectId === -1 && prevProjectId !== -1) || (projectId !== -1 && prevProjectId === -1))
+      this.draw();
 
     // clean up from prev
-    if (prev !== null) {
+    if (prevProjectId !== -1 && this.svg.classed('clicked')) {
       this.svg.classed('clicked', false);
       this.circles.selectAll('.neighbor')
           .classed('neighbor', false);
@@ -237,19 +252,27 @@ class Matrix extends Component {
           .classed('clicked', false);
     }
 
-    // make a mess with current
-    if (current !== null) {
-      let neighborSelector = '';
-      current.pins.forEach(pin => {
-        neighborSelector += `[data-row='${pin.row}'][data-col='${pin.col}'], `;
-      });
-      neighborSelector = neighborSelector.slice(0, -2); // remove trailing comma
-      this.svg.classed('clicked', true);
-      this.circles.selectAll(neighborSelector)
-          .classed('neighbor', true);
-      this.circles.selectAll(`[data-id='${current.survey_answers.project_id}']`)
-          .classed('clicked', true);
+    // if no project in path, we done
+    if (projectId === -1) return;
+
+    // if the project from the url doesn't exist in filteredData, redirect to root
+    if (!this.projectNavigator.projectIsActive(props.location, props.filteredData)) {
+      this.projectNavigator.redirectToRoot(props.history);
+      return;
     }
+
+    // make a mess with current
+    const datum = this.circles.select(`[data-id='${projectId}']`).datum();
+    let neighborSelector = '';
+    datum.pins.forEach(pin => {
+      neighborSelector += `[data-row='${pin.row}'][data-col='${pin.col}'], `;
+    });
+    neighborSelector = neighborSelector.slice(0, -2); // remove trailing comma
+    this.svg.classed('clicked', true);
+    this.circles.selectAll(neighborSelector)
+        .classed('neighbor', true);
+    this.circles.selectAll(`[data-id='${datum.survey_answers.project_id}']`)
+        .classed('clicked', true);
   }
 
   updateData(data) {
@@ -288,10 +311,15 @@ class Matrix extends Component {
         .on('mouseout', d => this.setState({
           hoveredProject: null
         }))
-        .on('click', d => this.setState({
-          clickedProject: d,
-          hoveredProject: null
-        }))
+        .on('click', d => {
+          this.projectNavigator.goToProject(this.props.history, this.props.location, d.survey_answers.project_id);
+
+          //if (this.clickedProjectId(this.props) !== Number.parseInt(d.survey_answers.project_id))
+          //  this.props.history.push(`/project/${d.survey_answers.project_id}`);
+          this.setState({
+            hoveredProject: null
+          });
+        })
         .attr('r', 0)
       .transition()
         .call(masterTransition)
@@ -307,9 +335,7 @@ class Matrix extends Component {
         </div>
         <AnimatedInfoBox
           data={this.props.data}
-          id={this.state.clickedProject !== null ?
-            Number.parseInt(this.state.clickedProject.survey_answers.project_id) :
-            -1} />
+          id={Number.parseInt(this.projectNavigator.getProjectId(this.props.location))} />
       </div>
     );
   }
@@ -321,4 +347,4 @@ Matrix.propTypes = {
   updateScaleData: PropTypes.func.isRequired
 };
 
-export default Matrix;
+export default withRouter(Matrix);
