@@ -4,8 +4,8 @@ import Header from './Header';
 import Matrix from './matrix/Matrix';
 import Filters from './filters/Filters';
 import AnimatedInfoBox from './info-box/AnimatedInfoBox';
-import ProjectNavigator from './ProjectNavigator';
-import mockData from './data/mock-data-v7.json';
+import { GetProjectId } from './ProjectNavigator';
+import mockData from './assets/data/mock-data-v7.json';
 import './App.css';
 import 'react-widgets/dist/css/react-widgets.css';
 
@@ -46,16 +46,16 @@ class App extends Component {
               <Route path="/" exact render={props => (
                 <Redirect to="/matrix" />
               )}/>
-              <Route path="/map" render={props => (<div>map here</div>)}/>
+              <Route path="/map" render={props => (<h1>MAP</h1>)}/>
               <Route path="/matrix" render={props => (
                 <Matrix data={mockData} filteredData={this.state.filteredData} updateScaleData={this.updateScaleData} />
               )}/>
-              <Route path="/partners" render={props => (<div>partners here</div>)}/>
+              <Route path="/partners" render={props => (<h1>PARTNERS</h1>)}/>
             </Switch>
             <Route render={props => (
               <AnimatedInfoBox
                 data={mockData}
-                id={Number.parseInt(ProjectNavigator.getProjectId(props.location))} />
+                id={Number.parseInt(GetProjectId(props.location))}/>
             )}/>
           </div>
         </div>

@@ -9,7 +9,7 @@ class ProjectNavigator {
     this._hasChangedSinceInit = false;
   }
 
-  static getProjectId(location) {
+  static GetProjectId(location) {
     const match = matchPath(location.pathname, { path: `*/project/:id` });
     if (match !== null)
       return match.params.id;
@@ -44,15 +44,16 @@ class ProjectNavigator {
   }
 
   projectIsActive(location, filteredData) {
-    const id = ProjectNavigator.getProjectId(location);
+    const id = ProjectNavigator.GetProjectId(location);
     if (filteredData.data.find(d => d.survey_answers.project_id === id))
       return true;
     return false;
   }
 
   projectHasChanged(location, prevLocation) {
-    return ProjectNavigator.getProjectId(location) !== ProjectNavigator.getProjectId(prevLocation);
+    return ProjectNavigator.GetProjectId(location) !== ProjectNavigator.GetProjectId(prevLocation);
   }
 }
 
+export const GetProjectId = ProjectNavigator.GetProjectId;
 export default ProjectNavigator;

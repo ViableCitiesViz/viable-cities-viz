@@ -225,8 +225,8 @@ class Matrix extends Component {
   }
 
   updateClicked(props, prevProps) {
-    let projectId = ProjectNavigator.getProjectId(props.location);
-    let prevProjectId = ProjectNavigator.getProjectId(prevProps.location);
+    let projectId = ProjectNavigator.GetProjectId(props.location);
+    let prevProjectId = ProjectNavigator.GetProjectId(prevProps.location);
 
     // if we just started, (i.e. navigated to the site via a permalink with a project id)
     // the projectId and prevProjectId will be identical because of how prevProps.location works

@@ -71,35 +71,35 @@
 /* colors specific to different project types */
 
 .matrix circle.research {
-  stroke: hsl(188, 50%, 20%);
+  stroke: hsl(188, 50%, 15%);
   fill: hsl(188, 100%, 28%);
 }
 .matrix circle.research.hover:not(.clicked) {
-  fill: hsl(188, 80%, 24%);
+  fill: hsl(188, 80%, 21%);
 }
 .matrix circle.research.clicked.neighbor {
-  fill: hsl(188, 70%, 21%);
+  fill: hsl(188, 70%, 18%);
 }
 
 .matrix circle.innovation {
-  stroke: hsl(110, 15%, 40%);
+  stroke: hsl(110, 15%, 30%);
   fill: hsl(110, 27%, 66%);
 }
 .matrix circle.innovation.hover:not(.clicked) {
-  fill: hsl(110, 16%, 50%);
+  fill: hsl(110, 16%, 38%);
 }
 .matrix circle.innovation.clicked.neighbor {
-  fill: hsl(110, 15%, 43%);
+  fill: hsl(110, 15%, 33%);
 }
 
 .matrix circle.prestudy {
-  stroke: hsl(39, 50%, 30%);
+  stroke: hsl(39, 50%, 25%);
   fill: hsl(39, 100%, 46%);
 }
 .matrix circle.prestudy.hover:not(.clicked) {
-  fill: hsl(39, 80%, 41%);
+  fill: hsl(39, 80%, 32%);
 }
 .matrix circle.prestudy.clicked.neighbor {
-  fill: hsl(39, 70%, 32%);
+  fill: hsl(39, 70%, 28%);
 }
 

@@ -5,7 +5,7 @@
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
   color: #fff;
   font-weight: 600;
-  z-index: 2;
+  z-index: 3;
 }
 
 .header-content {
@@ -55,8 +55,9 @@
   padding: 0 20px;
   border-bottom: 0px solid #eee;
   box-sizing: border-box;
-  /*transition: border-width 200ms,
-    color 200ms;*/
+  transition: border-width 200ms,
+    border-color 200ms,
+    color 200ms;
 }
 
 .header-links__item:not(.header-links__item--active) a:hover {
@@ -65,6 +66,11 @@
 }
 
 .header-links__item--active a {
-  border-bottom: 4px solid #eee;
-  color: #fff;
+  border-bottom: 4px solid hsl(173, 100%, 35%);
+  color: hsl(173, 100%, 35%);
+}
+
+.header-links__item--active a:hover {
+  border-color: hsl(173, 100%, 40%);
+  color: hsl(173, 100%, 40%);
 }
