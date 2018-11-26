@@ -1,19 +1,26 @@
 import { matchPath } from 'react-router';
 
-// NOTE: For all methods that take props as an argument, it assumed that props in an object which contains
+// NOTE: For all methods that take props as an argument, it assumed that props is an object which contains
 // the history property and the filteredData property. If the history property is missing, make sure to 
-// use the 'withRouter' Higher-Order-Component on whatever component ProjectNavigator is used from.
+// use the 'withRouter' higher-order-component on whatever component ProjectNavigator is used from.
 class ProjectNavigator {
   constructor(rootPath = '') {
     this.rootPath = rootPath;
     this._hasChangedSinceInit = false;
   }
 
+  static getProjectId(location) {
+    const match = matchPath(location.pathname, { path: `*/project/:id` });
+    if (match !== null)
+      return match.params.id;
+    return -1;
+  }
+
   hasChangedSinceInit() {
     return this._hasChangedSinceInit;
   }
 
-  triggerChange() {
+  change() {
     this._hasChangedSinceInit = true;
   }
 
@@ -36,22 +43,15 @@ class ProjectNavigator {
     }
   }
 
-  getProjectId(location) {
-    const match = matchPath(location.pathname, { path: `${this.rootPath}/project/:id` });
-    if (match !== null)
-      return match.params.id;
-    return -1;
-  }
-
   projectIsActive(location, filteredData) {
-    const id = this.getProjectId(location);
+    const id = ProjectNavigator.getProjectId(location);
     if (filteredData.data.find(d => d.survey_answers.project_id === id))
       return true;
     return false;
   }
 
   projectHasChanged(location, prevLocation) {
-    return this.getProjectId(location) !== this.getProjectId(prevLocation);
+    return ProjectNavigator.getProjectId(location) !== ProjectNavigator.getProjectId(prevLocation);
   }
 }
 

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { select, axisLeft, axisTop, event, scalePoint, easePolyOut } from 'd3';
 import { themeLabel, focusLabel, packData, buildScaleData, parseNewlinesY, parseNewlinesX, type2class } from './MatrixUtility';
 import { withRouter } from 'react-router-dom';
-import AnimatedInfoBox from '../info-box/AnimatedInfoBox';
 import MatrixTooltip from './MatrixTooltip';
 import PropTypes from 'prop-types';
 import isEqual from 'react-fast-compare';
@@ -19,7 +18,7 @@ class Matrix extends Component {
       hoveredProject: null
     };
 
-    this.margin = { top: 150, right: 20, bottom: 20, left: 180 };
+    this.margin = { top: 130, right: 20, bottom: 20, left: 160 };
     this.offset = { x: 0,  y: 0 };
     this.projectNavigator = new ProjectNavigator('/matrix');
     this.draw = this.draw.bind(this);
@@ -139,11 +138,11 @@ class Matrix extends Component {
 
     // themes label
     selectors.themesLabel
-        .attr('transform', `translate(30, ${this.margin.top + height / 2})rotate(-90)`);
+        .attr('transform', `translate(25, ${this.margin.top + height / 2})rotate(-90)`);
 
     // focus areas label
     selectors.focusAreasLabel
-        .attr('transform', `translate(${this.margin.left + width / 2}, ${this.margin.top - 110})`);
+        .attr('transform', `translate(${this.margin.left + width / 2}, 35)`);
 
     /**
      * NOTE: The default text elements (labels) on the axes are hidden and replaced to
@@ -226,15 +225,15 @@ class Matrix extends Component {
   }
 
   updateClicked(props, prevProps) {
-    let projectId = this.projectNavigator.getProjectId(props.location);
-    let prevProjectId = this.projectNavigator.getProjectId(prevProps.location);
+    let projectId = ProjectNavigator.getProjectId(props.location);
+    let prevProjectId = ProjectNavigator.getProjectId(prevProps.location);
 
     // if we just started, (i.e. navigated to the site via a permalink with a project id)
     // the projectId and prevProjectId will be identical because of how prevProps.location works
     // so change it to -1.
     if (!this.projectNavigator.hasChangedSinceInit()) {
       prevProjectId = -1;
-      this.projectNavigator.triggerChange();
+      this.projectNavigator.change();
     }
 
     if (projectId === prevProjectId) return;
@@ -313,9 +312,6 @@ class Matrix extends Component {
         }))
         .on('click', d => {
           this.projectNavigator.goToProject(this.props.history, this.props.location, d.survey_answers.project_id);
-
-          //if (this.clickedProjectId(this.props) !== Number.parseInt(d.survey_answers.project_id))
-          //  this.props.history.push(`/project/${d.survey_answers.project_id}`);
           this.setState({
             hoveredProject: null
           });
@@ -328,14 +324,9 @@ class Matrix extends Component {
 
   render() {
     return (
-      <div className="matrix-wrapper">
-        <div className="matrix-svg-wrapper" ref={svgWrapper => { this.svgWrapperRef = svgWrapper; }}>
-          <svg className="matrix" width="100%" height="100%" ref={svg => { this.svgRef = svg; }} />
-          <MatrixTooltip project={this.state.hoveredProject} margin={this.margin} offset={this.offset} />
-        </div>
-        <AnimatedInfoBox
-          data={this.props.data}
-          id={Number.parseInt(this.projectNavigator.getProjectId(this.props.location))} />
+      <div className="matrix-wrapper" ref={svgWrapper => { this.svgWrapperRef = svgWrapper; }}>
+        <svg className="matrix" width="100%" height="100%" ref={svg => { this.svgRef = svg; }} />
+        <MatrixTooltip project={this.state.hoveredProject} margin={this.margin} offset={this.offset} />
       </div>
     );
   }
