@@ -13,7 +13,7 @@
   font-size: 1em;
   font-weight: 700;
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 15px 20px;
   box-sizing: border-box;
   
 
@@ -24,11 +24,11 @@
 .info-box-section__title-text {
   flex-grow: 1;
   transition: color 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  color: #777;
+  color: #555;
 }
 
 .info-box-section:not(.info-box-section--toggled) .info-box-section__title:hover .info-box-section__title-text {
-  color: #555;
+  color: #4a4a4a;
 }
 
 .info-box-section--toggled .info-box-section__title-text {
@@ -61,7 +61,7 @@
 }
 
 .info-box-section__inner-content {
-  padding: 0 20px 10px 20px;
+  padding: 0 20px 0px 20px;
   /*border-top: 1px solid #eee;*/
 }
 
@@ -73,7 +73,6 @@
 
 .info-box-section__content dt {
   font-weight: 600;
-  color: #666;
 }
 
 .info-box-section__content dd {
