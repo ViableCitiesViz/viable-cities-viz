@@ -43,7 +43,7 @@ class ProjectNavigator {
     }
   }
 
-  projectIsActive(location, filteredData) {
+  projectExists(location, filteredData) {
     const id = ProjectNavigator.GetProjectId(location);
     if (filteredData.data.find(d => d.survey_answers.project_id === id))
       return true;

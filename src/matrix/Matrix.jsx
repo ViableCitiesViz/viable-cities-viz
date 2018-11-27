@@ -92,16 +92,12 @@ class Matrix extends Component {
     this.svg.on('click', null);
   }
 
-  selectCircle(id) {
-    return this.circles.select(`[data-id='${id}']`)
-  }
-
   draw(init = false) {
     let height = +this.svgWrapperRef.clientHeight - this.margin.top - this.margin.bottom;
     let width = +this.svgWrapperRef.clientWidth - this.margin.left - this.margin.right;
 
     // 300 px is the size of the infobox that appears when a project is clicked!
-    if (this.projectNavigator.projectIsActive(this.props.location, this.props.filteredData)) width -= 300;
+    if (this.projectNavigator.projectExists(this.props.location, this.props.filteredData)) width -= 300;
     
     const stretch = false;
     if (!stretch) {
@@ -255,7 +251,7 @@ class Matrix extends Component {
     if (projectId === -1) return;
 
     // if the project from the url doesn't exist in filteredData, redirect to root
-    if (!this.projectNavigator.projectIsActive(props.location, props.filteredData)) {
+    if (!this.projectNavigator.projectExists(props.location, props.filteredData)) {
       this.projectNavigator.redirectToRoot(props.history);
       return;
     }
