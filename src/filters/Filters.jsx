@@ -58,10 +58,16 @@ class Filters extends Component {
       matchmaking: null
     };
 
+    this.projectLocations = {};
     this.projectPartners = {};
     this.projectKeywords = {};
 
     props.data.data.forEach(d => {
+      this.projectLocations[d.survey_answers.project_id] = new Set();
+      d.survey_answers.locations.forEach(location => {
+        this.projectLocations[d.survey_answers.project_id].add(location);
+      });
+
       this.projectPartners[d.survey_answers.project_id] = new Set();
       d.survey_answers.other_financiers.forEach(financier => {
         this.projectPartners[d.survey_answers.project_id].add(financier);
@@ -90,10 +96,11 @@ class Filters extends Component {
       locations: (locations) => {
         if (!locations.length) return this.props.data;
 
-        const locationsNames = locations.map(locationObj => locationObj.name);
         return {
           data: this.props.data.data.filter((d) => {
-            if (!locationsNames.includes(d.survey_answers.location)) return false;
+            if (!locations.some(location => {
+              return this.projectLocations[d.survey_answers.project_id].has(location.name);
+            })) return false;
             return true;
           })
         };
@@ -157,8 +164,9 @@ class Filters extends Component {
     
     const ret = new Map();
     data.data.forEach(d => {
-      const location = d.survey_answers.location;
-      ret.has(location) ? ret.set(location, ret.get(location) + 1) : ret.set(location, 1);
+      d.survey_answers.locations.forEach(location => {
+        ret.has(location) ? ret.set(location, ret.get(location) + 1) : ret.set(location, 1);
+      });
     });
 
     return [...ret]

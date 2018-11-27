@@ -5,7 +5,7 @@ import Matrix from './matrix/Matrix';
 import Filters from './filters/Filters';
 import AnimatedInfoBox from './info-box/AnimatedInfoBox';
 import { GetProjectId } from './ProjectNavigator';
-import mockData from './assets/data/mock-data-v7.json';
+import mockData from './assets/data/mock-data-v8.json';
 import './App.css';
 import 'react-widgets/dist/css/react-widgets.css';
 

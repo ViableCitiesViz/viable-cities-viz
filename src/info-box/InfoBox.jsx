@@ -39,7 +39,7 @@ class InfoBox extends Component {
       other_recipients,
       description,
       project_type,
-      location
+      locations
     } = project.survey_answers;
 
     const partners = [...new Set([...other_financiers, ...other_recipients])].sort();
@@ -68,7 +68,7 @@ class InfoBox extends Component {
         <div className="info-box__splash" style={{ backgroundImage: `url(${projectImages[project_id]})` }} />
         <div className="info-box__content">
           <h2 className="info-box__title">{project_title}</h2>
-          <h3 className="info-box__subtitle">{location}</h3>
+          <h3 className="info-box__subtitle">{locations.join(', ')}</h3>
           <div>
             <InfoBoxSection title="Generell Information" initToggle={true}>
               <dl>
