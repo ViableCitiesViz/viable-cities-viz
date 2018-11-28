@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { range } from 'd3';
 import { Multiselect } from 'react-widgets'
@@ -284,113 +284,121 @@ class Filters extends Component {
     return (
       <div className="filters">
         <div className="filters__top">
-          <div className="filter-box">
-            <span className="filter-box__title">
-              Titel
-            </span>
-            <Multiselect
-              data={this.componentData.titles}
-              onChange={titles => {
-                this.setState({
-                  filterValues: {
-                    ...this.state.filterValues,
-                    titles
-                  }
-                });
-              }}
-              placeholder="Filtera efter titlar"
-              filter="contains"
-              value={this.state.filterValues.titles} />
-          </div>
-          <div className="filter-box">
-            <span className="filter-box__title">
-              Plats
-            </span>
-            <Multiselect
-              data={this.componentData.locations}
-              onChange={locations => {
-                this.setState({
-                  filterValues: {
-                    ...this.state.filterValues,
-                    locations
-                  }
-                });
-              }}
-              placeholder="Filtrera efter kommuner"
-              valueField="name"
-              textField="name"
-              itemComponent={ListItem}
-              value={this.state.filterValues.locations} />
-          </div>
-          <div className="filter-box">
-            <span className="filter-box__title">
-              Partner
-            </span>
-            <Multiselect
-              data={this.componentData.partners}
-              onChange={partners => {
-                this.setState({
-                  filterValues: {
-                    ...this.state.filterValues,
-                    partners
-                  }
-                });
-              }}
-              placeholder="Filtrera efter partners"
-              filter="contains"
-              valueField="name"
-              textField="name"
-              itemComponent={ListItem}
-              value={this.state.filterValues.partners} />
-          </div>
-          <div className="filter-box">
-            <span className="filter-box__title">
-              Nyckelord
-            </span>
-            <Multiselect
-              data={this.componentData.keywords}
-              onChange={keywords => {
-                this.setState({
-                  filterValues: {
-                    ...this.state.filterValues,
-                    keywords
-                  }
-                });
-              }}
-              placeholder="Filtera efter nyckelord"
-              filter="contains"
-              valueField="name"
-              textField="name"
-              itemComponent={ListItem}
-              value={this.state.filterValues.keywords} />
-          </div>
+          <div className="filters__bg">
+            <h2>Filter</h2>
+            <div className="filter-box">
+              <span className="filter-box__title">
+                Titel
+              </span>
+              <Multiselect
+                data={this.componentData.titles}
+                onChange={titles => {
+                  this.setState({
+                    filterValues: {
+                      ...this.state.filterValues,
+                      titles
+                    }
+                  });
+                }}
+                placeholder="Filtera efter titlar"
+                filter="contains"
+                value={this.state.filterValues.titles} />
+            </div>
+            <div className="filter-box">
+              <span className="filter-box__title">
+                Plats
+              </span>
+              <Multiselect
+                data={this.componentData.locations}
+                onChange={locations => {
+                  this.setState({
+                    filterValues: {
+                      ...this.state.filterValues,
+                      locations
+                    }
+                  });
+                }}
+                placeholder="Filtrera efter kommuner"
+                valueField="name"
+                textField="name"
+                itemComponent={ListItem}
+                value={this.state.filterValues.locations} />
+            </div>
+            <div className="filter-box">
+              <span className="filter-box__title">
+                Partner
+              </span>
+              <Multiselect
+                data={this.componentData.partners}
+                onChange={partners => {
+                  this.setState({
+                    filterValues: {
+                      ...this.state.filterValues,
+                      partners
+                    }
+                  });
+                }}
+                placeholder="Filtrera efter partners"
+                filter="contains"
+                valueField="name"
+                textField="name"
+                itemComponent={ListItem}
+                value={this.state.filterValues.partners} />
+            </div>
+            <div className="filter-box">
+              <span className="filter-box__title">
+                Nyckelord
+              </span>
+              <Multiselect
+                data={this.componentData.keywords}
+                onChange={keywords => {
+                  this.setState({
+                    filterValues: {
+                      ...this.state.filterValues,
+                      keywords
+                    }
+                  });
+                }}
+                placeholder="Filtera efter nyckelord"
+                filter="contains"
+                valueField="name"
+                textField="name"
+                itemComponent={ListItem}
+                value={this.state.filterValues.keywords} />
+            </div>
 
-          <Matchmaking
-            value={this.state.filterValues.matchmaking}
-            onChange={matchmaking => {
-              this.setState({
-                filterValues: {
-                  ...this.state.filterValues,
-                  matchmaking
-                }
-              });
-            }}
-            enabled={this.componentData.matchmaking} />
+            <Matchmaking
+              value={this.state.filterValues.matchmaking}
+              onChange={matchmaking => {
+                this.setState({
+                  filterValues: {
+                    ...this.state.filterValues,
+                    matchmaking
+                  }
+                });
+              }}
+              enabled={this.componentData.matchmaking} />
 
-          <p className={`filter-results-text ${this.empty() ? 'filter-results-text--hidden' : ''}`}>
-            Visar <span className="filter-results-text__number">{this.state.filteredData.data.length}</span>
-            {' '} av <span className="filter-results-text__number">{this.props.data.data.length}</span> projekt.
-          </p>
+            {!this.empty() &&
+              <Fragment>
+                <p className='filter-results-text'>
+                  Visar <span className="filter-results-text__number">{this.state.filteredData.data.length}</span>
+                  {' '} av <span className="filter-results-text__number">{this.props.data.data.length}</span> projekt.
+                </p>
 
-          <div className={`filter-button-box ${this.empty() ? 'filter-button-box--hidden' : ''}`}>
-            <button
-              className="filter-button"
-              onClick={() => this.setState({
-                filterValues: Object.entries(this.state.filterValues)
-                  .reduce((obj, [k,_]) => ({...obj, [k]: []}), {})
-              })}>
-              Rensa filter
-            </button>
+                <div className='filter-button-box'>
+                  <button
+                    className="filter-button"
+                    onClick={() => this.setState({
+                      filterValues: Object.entries(this.state.filterValues)
+                        .reduce((obj, [k,_]) => ({...obj, [k]: []}), {})
+                    })}>
+                    Rensa filter
+                  </button>
+                </div>
+              </Fragment>
+            }
+            
           </div>
         </div>
         <div className="filter__bottom">

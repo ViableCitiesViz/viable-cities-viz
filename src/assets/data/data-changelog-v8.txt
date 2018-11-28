@@ -11,3 +11,4 @@
   - Mo-Bo:
     - Upplands Väsby, Uppsala, Stockholm
 - Updated all projects titles to reflect the current project portfolio website (https://viablecities.com/foi-projekt/)
+- Fixed incorrect list formatting of Sharing Cities keywords

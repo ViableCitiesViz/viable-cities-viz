@@ -18,7 +18,13 @@ class InfoBox extends Component {
   shouldComponentUpdate(nextProps) {
     if (nextProps.project !== this.props.project) return true;
     return false;
-  } 
+  }
+
+  decorateItems(stringList) {
+    return stringList
+      .map(str => (<span key={str} className="info-box__item-decoration">{str}</span> ))
+      .reduce((acc, cur) => [acc, ', ', cur]);
+  }
 
   render() {
     if (!this.props.project && !this.lastProject) return null;
@@ -97,13 +103,13 @@ class InfoBox extends Component {
 
             <InfoBoxSection title="Nyckelord">
               <p>
-                {keywords.join(', ')}
+                {this.decorateItems(keywords)}
               </p>
             </InfoBoxSection>
 
             <InfoBoxSection title="Partners">
               <p>
-                {partners.join(', ')}
+                {this.decorateItems(partners)}
               </p>
             </InfoBoxSection>
 

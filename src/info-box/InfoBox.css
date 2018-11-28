@@ -68,3 +68,8 @@
 .info-box__view-link--active {
   /*color: rgb(0, 148, 131);*/
 }
+
+.info-box__item-decoration {
+  /*background: hsl(60, 90%, 90%);*/
+  text-decoration: underline;
+}
