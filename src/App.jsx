@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import Header from './Header';
 import Matrix from './matrix/Matrix';
+import Map from './map/Map';
 import Filters from './filters/Filters';
 import AnimatedInfoBox from './info-box/AnimatedInfoBox';
 import { GetProjectId } from './ProjectNavigator';
@@ -46,7 +47,9 @@ class App extends Component {
               <Route path="/" exact render={props => (
                 <Redirect to="/matrix" />
               )}/>
-              <Route path="/map" render={props => (<h1>MAP</h1>)}/>
+              <Route path="/map" render={props => (
+                <Map/>
+              )}/>
               <Route path="/matrix" render={props => (
                 <Matrix data={mockData} filteredData={this.state.filteredData} updateScaleData={this.updateScaleData} />
               )}/>

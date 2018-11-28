@@ -1,7 +1,6 @@
 var width = 1300;
 var height = 400;
 
-
 // Titles displayed
 var omrade_titles = {
   0: "Civilsamhälle",

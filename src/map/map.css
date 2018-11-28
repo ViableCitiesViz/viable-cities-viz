@@ -1,10 +1,8 @@
 /* https://www.color-hex.com/color/add8e6 */
-svg {
+.bubbles_svg_area {
   background-color: #e8f4f8;
-}
-html, body{
-  height:100%;
   width:100%;
+  height:100%;
 }
 
 
@@ -30,6 +28,14 @@ html, body{
 }
 
 
+.mapWrap{
+  position: relative;
+  z-index: 1;
+  overflow-y: hidden;
+  width: 100%;
+  height: 100%;
+}
+
 .about_box{
   display: none;
 
@@ -54,7 +60,7 @@ html, body{
     filter: blur(2px);
 
     /* Firefox version 34 and earlier */
-    filter: url("blur.svg#gaussian_blur");
+    /* filter: url("blur.svg#gaussian_blur"); */
 
     /* Webkit in Chrome 52, Safari 9, Opera 39, and earlier */
     -webkit-filter: blur(2px);
