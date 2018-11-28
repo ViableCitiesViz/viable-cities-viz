@@ -14,15 +14,11 @@ class Map extends Component {
     super(props);
     this.margin = { top: 130, right: 20, bottom: 20, left: 160 };
     this.offset = { x: 0,  y: 0 };
-    // mockData = mockData.data;
   }
 
 
   // Render före compMount
   componentDidMount(){
-
-    // this.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    // this.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
     this.height = +this.svgWrapperRef.clientHeight - this.margin.top - this.margin.bottom;
     this.width = +this.svgWrapperRef.clientWidth - this.margin.left - this.margin.right;

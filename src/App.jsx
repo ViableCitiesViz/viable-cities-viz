@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-d
 import Header from './Header';
 import Matrix from './matrix/Matrix';
 import Map from './map/Map';
+import Partners from './partners/Partners'
 import Filters from './filters/Filters';
 import AnimatedInfoBox from './info-box/AnimatedInfoBox';
 import { GetProjectId } from './ProjectNavigator';
@@ -53,7 +54,9 @@ class App extends Component {
               <Route path="/matrix" render={props => (
                 <Matrix data={mockData} filteredData={this.state.filteredData} updateScaleData={this.updateScaleData} />
               )}/>
-              <Route path="/partners" render={props => (<h1>PARTNERS</h1>)}/>
+              <Route path="/partners" render={props => (
+                <Partners />
+              )}/>
             </Switch>
             <Route render={props => (
               <AnimatedInfoBox
