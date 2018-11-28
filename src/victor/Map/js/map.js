@@ -188,7 +188,7 @@ function circle_transform(t) {
 // City Dots, Projects, Europe, Sweden.
 function load_map_components(){
 
-  d3.json("/data/cities.json", function(error,data){
+  d3.json("../../data/cities.json", function(error,data){
       cities = data;
       cities_circles = cities_container.selectAll("circle")
          .data(cities).enter()
@@ -215,7 +215,7 @@ function load_map_components(){
   });
 
   // Mock Data loading!
-  d3.json("/data/mock-data-v7.json", function(error,data){
+  d3.json("../../data/mock-data-v7.json", function(error,data){
     mock_data = data.data;
 
     // Calculating # of projects per city.
@@ -336,8 +336,8 @@ function load_map_components(){
 
   // used to ensure Sweden loads ontop of Europe.
   var q = d3.queue();
-  q.defer(d3.json, '/data/europe.topo.json');
-  q.defer(d3.json, '/data/sweden.topo.json');
+  q.defer(d3.json, '../../data/europe.topo.json');
+  q.defer(d3.json, '../../data/sweden.topo.json');
 
   q.awaitAll(function(error, data_list){
     var europe = data_list[0];
