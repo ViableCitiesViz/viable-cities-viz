@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="/Map/css/map.css">
+<link rel="stylesheet" type="text/css" href="/libraries/css/bootstrap.min.css">
+<title>Viable Cities Viz - Map View</title>
+</head>
+
+<body>
+  <div class="inner_content" id="inner_content">
+    <svg id="svg_area"></svg>
+</div>
+</body>
+<div id="about_box" class="about_box mx-2 my-2">
+  <h5 id="about_header" class="card-title mx-2 my-2">Om Projektet<span style="float:right;cursor:pointer;"><button type="button" class="close" aria-label="Close"><span onclick="toggle_about(1)"aria-hidden="true">&times;</span></button></span></h5>
+  <hr>
+  <p class='mx-2'>
+  Här skriver vi lite information om projektet och hur man använder verktyget
+</p>
+
+<script src="//d3js.org/d3.v4.min.js" charset="utf-8"></script>
+<script src="//d3js.org/topojson.v1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="js/map.js"></script>
+<!-- <script src="js/fetch_city_coordinates.js"></script> -->
+
+<!-- <script>fetch_cities()</script> -->
+<script>load_map_components()</script>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-98785382-1', 'auto');
+ga('send', 'pageview');
+</script>
+</html>

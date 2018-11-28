@@ -1,0 +1,124 @@
+/* https://www.color-hex.com/color/add8e6 */
+svg {
+  background-color: #e8f4f8;
+}
+html, body{
+  height:100%;
+  width:100%;
+}
+
+
+.inner_content{
+  height:inherit;
+  width:inherit;
+}
+
+
+
+.boundary {
+  fill: none;
+  /* stroke: #5d732f; */
+  stroke:black;
+  stroke-width: .2px;
+}
+.graticule {
+  fill: none;
+  /* stroke: #777; */
+  stroke:#000;
+  stroke-width: .2px;
+  /* stroke-opacity: .5; */
+}
+
+
+.about_box{
+  display: none;
+
+  position: absolute;
+  background-color: white;
+  width: 40%;
+  top:10%;
+  left:30%;
+  height:auto;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+
+.blurredElement {
+    transition: 0.3s -webkit-filter linear;
+    /* -webkit-transition: 2s -webkit-filter linear; */
+    -moz-transition: 0.3s -moz-filter linear;
+    -o-transition: 0.3s -o-filter linear;
+
+     /* Any browser which supports CSS3 */
+    filter: blur(2px);
+
+    /* Firefox version 34 and earlier */
+    filter: url("blur.svg#gaussian_blur");
+
+    /* Webkit in Chrome 52, Safari 9, Opera 39, and earlier */
+    -webkit-filter: blur(2px);
+}
+
+.multi-proj{
+  position: absolute;
+  z-index: 1;
+  display: none;
+  /* display:initial; */
+  /* width:50px; */
+  min-width:250px;
+  height:50px;
+  top: 5%;
+  left:40%;
+}
+
+#card_body_ {
+  max-height: 380px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar{
+  width:10px;
+}
+
+.tooltip_bubble {
+    position: absolute;
+    text-align: center;
+    top:0;
+    color:white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font: 12px sans-serif;
+    pointer-events: none;
+}
+
+.tooltip_bubble2 {
+    position: absolute;
+    text-align: center;
+    top:0;
+    /* width: 60px; */
+    /* height: 28px; */
+    padding: 2px;
+    font: 12px sans-serif;
+    /* background: lightsteelblue; */
+    background: white;
+    border: 1px solid black;
+    border-radius: 3px;
+    pointer-events: none;
+}
+
+.tooltip_bubble3 {
+    position: absolute;
+    text-align: center;
+    top:0;
+    z-index:100;
+    /* width: 60px; */
+    /* height: 28px; */
+    padding: 2px;
+    font: 12px sans-serif;
+    /* background: lightsteelblue; */
+    background: white;
+    border: 1px solid black;
+    border-radius: 3px;
+    pointer-events: none;
+}
