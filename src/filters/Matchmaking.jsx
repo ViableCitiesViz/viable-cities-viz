@@ -62,7 +62,7 @@ class Matchmaking extends Component {
     return (
       <div className="filter-box filter-box--matchmaking">
         <span className="filter-box__title">
-          Matchmaking
+          Teman och fokusområden
         </span>
         <div className="matchmaking-table-container">
           <table className="matchmaking-table">

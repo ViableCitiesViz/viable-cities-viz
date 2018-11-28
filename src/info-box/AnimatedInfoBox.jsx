@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import { Transition, animated } from 'react-spring';
 import PropTypes from 'prop-types';
 import InfoBox from './InfoBox';
 import './AnimatedInfoBox.css';
 
 class AnimatedInfoBox extends Component {
-  constructor(props) {
-    super(props);
-
-    this.projectDetails = this.props.data.data
-      .reduce((acc, cur) => ({ ...acc, [cur.survey_answers.project_id]: <InfoBox project={cur} /> }), {});
-  }
-
   shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps.data !== this.props.data || nextProps.id !== this.props.id) return true;
+    if (nextProps.data !== this.props.data
+      || nextProps.id !== this.props.id
+      || nextProps.location !== this.props.location) return true;
     return false;
   }
 
   render() {
+    const projectDetails = this.props.data.data
+      .reduce((acc, cur) => ({ ...acc, [cur.survey_answers.project_id]: <InfoBox project={cur} location={this.props.location} /> }), {});
+
     return (
       <Transition
         native
@@ -29,7 +28,7 @@ class AnimatedInfoBox extends Component {
           id !== -1 &&
             (props => 
               <animated.div className="info-box-container" style={{ ...props}}>
-                {this.projectDetails[id]}
+                {projectDetails[id]}
               </animated.div>)
         }
       </Transition>
@@ -42,4 +41,4 @@ AnimatedInfoBox.propTypes = {
   id: PropTypes.number
 }
 
-export default AnimatedInfoBox;
+export default withRouter(AnimatedInfoBox);

@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { format } from 'd3';
@@ -16,7 +15,8 @@ class InfoBox extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    if (nextProps.project !== this.props.project) return true;
+    if (nextProps.project !== this.props.project
+      || nextProps.location !== this.props.location) return true;
     return false;
   }
 
@@ -51,20 +51,20 @@ class InfoBox extends Component {
     const partners = [...new Set([...other_financiers, ...other_recipients])].sort();
 
     const views = {
-      Map: `/map/project/${project_id}`,
-      Matrix: `/matrix/project/${project_id}`,
-      Partners: `/partners/project/${project_id}`,
+      Map: { link: `/map/project/${project_id}`, match: '/map' },
+      Matrix: { link: `/matrix/project/${project_id}`, match: '/matrix' },
+      Partners: { link: `/partners/project/${project_id}`, match: '/partners' }
     }
 
-    const vizViews = Object.keys(views).map(view => {
-      const pathname = views[view];
-      const match = pathname === this.props.location.pathname;
+    const vizViews = Object.keys(views).map(viewName => {
+      const view = views[viewName];
+      const match = this.props.location.pathname.includes(view.match);
       return (
         <Link
-          key={view}
-          to={pathname}
+          key={viewName}
+          to={view.link}
           className={`info-box__view-link ${match ? 'info-box__view-link--active' : ''}`}>
-          {view}
+          {viewName}
         </Link>
       );
     });
@@ -73,8 +73,10 @@ class InfoBox extends Component {
       <div className="info-box">
         <div className="info-box__splash" style={{ backgroundImage: `url(${projectImages[project_id]})` }} />
         <div className="info-box__content">
-          <h2 className="info-box__title">{project_title}</h2>
-          <h3 className="info-box__subtitle">{locations.join(', ')}</h3>
+          <div className="info-box__content-header">
+            <h2 className="info-box__title">{project_title}</h2>
+            <h3 className="info-box__subtitle">{locations.join(', ')}</h3>
+          </div>
           <div>
             <InfoBoxSection title="Generell Information" initToggle={true}>
               <dl>
@@ -135,4 +137,4 @@ InfoBox.propTypes = {
   project: PropTypes.object
 };
 
-export default withRouter(InfoBox);
+export default InfoBox;
