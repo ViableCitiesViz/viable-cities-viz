@@ -234,8 +234,8 @@ function project_view(d){
 
 function start_program(){
   var q = d3.queue();
-  q.defer(d3.json, "data.json");
-  q.defer(d3.json, "../data/mock-data-v7.json");
+  q.defer(d3.json, "../assets/data/partners.json");
+  q.defer(d3.json, "../assets/data/mock-data-v7.json");
 
   q.awaitAll(function(error, data_list){
     if(error) throw error;
