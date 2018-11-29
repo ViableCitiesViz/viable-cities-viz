@@ -44,11 +44,13 @@
 }
 
 .filter-box__title {
+  display: block;
   text-transform: uppercase;
   font-weight: 600;
   font-size: 1em;
   color: #666;
   margin-left: 1em;
+  margin-bottom: 5px;
 }
 
 .filters .rw-multiselect {
