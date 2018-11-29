@@ -401,7 +401,7 @@ class Filters extends Component {
             
           </div>
         </div>
-        <div className="filter__bottom">
+        <div className="filters__bottom">
           <MatrixScale scaleData={this.props.scaleData} />
           <MatrixLegend />
         </div>

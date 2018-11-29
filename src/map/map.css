@@ -84,10 +84,6 @@
   overflow-x: hidden;
 }
 
-::-webkit-scrollbar{
-  width:10px;
-}
-
 .tooltip_bubble {
     position: absolute;
     text-align: center;

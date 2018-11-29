@@ -17,8 +17,8 @@
 .matrix-axis-label {
   text-anchor: middle;
   text-transform: uppercase;
-  font-size: 1.285714em;
-  font-weight: 600;
+  font-size: 1.1428em;
+  font-weight: 700;
   will-change: transform;
 }
 
@@ -54,6 +54,20 @@
 .matrix.clicked circle:not(.neighbor):not(.hover) {
   fill: #e2e4e6;
 }
+
+/* NOTE: The stroke width transition is buggy when zooming in Chrome,
+         don't think there's much we can do about it
+ * See: https://stackoverflow.com/a/10145250
+ *      https://github.com/d3/d3/pull/476
+ *
+ *     "Regarding your issues. For # 1, full-page zooming is just broken in WebKit, period.
+ *      It looks like crap and events have buggy positions.
+ *      If we can workaround bugs in zooming, that's nice,
+ *      but given the other issues that remain this doesn't feel
+ *      like a strong argument (relative to the above concerns)"
+ *      
+ *     -mbostock
+ */
 
 /* hovered circles */
 .matrix circle.hover:not(.clicked) {

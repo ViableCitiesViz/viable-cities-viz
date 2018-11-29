@@ -6,6 +6,7 @@
   height: 100%;
   max-height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
   z-index: 2;
 
   display: flex;
@@ -31,6 +32,7 @@
   box-sizing: border-box;
   z-index: 3;
   position: relative;
+  margin-bottom: 10px;
 }
 
 .info-box__title {
@@ -44,11 +46,11 @@
 
 .info-box__subtitle {
   margin: 0;
-  color: #666;
-  font-weight: 400;
-  font-size: 1em;
+  color: #888;
+  font-weight: 600;
+  font-size: 0.92857em;
   text-align: center;
-  padding: 10px 20px 5px 20px;
+  padding: 10px 30px 5px 30px;
 }
 
 .info-box__views {
@@ -61,7 +63,7 @@
   box-sizing: border-box;
   display: block;
   padding: 10px;
-  font-size: 1em;
+  font-size: 0.92587em;
   text-decoration: none;
   font-weight: 600;
   color: hsl(0, 10%, 70%);
