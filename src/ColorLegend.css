@@ -1,10 +1,10 @@
-.legend {
+.color-legend {
   text-align: center;
   margin: 0 20px;
   font-size: 0.92857em;
 }
 
-.legend ul {
+.color-legend ul {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -12,6 +12,6 @@
   text-align: left;
 }
 
-.legend li {
+.color-legend li {
   margin: 5px;
 }

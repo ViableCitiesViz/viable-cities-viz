@@ -189,6 +189,7 @@ class Map extends Component {
                let a = d.data.length;
                let i = d3.interpolateNumber(3+a, 30*a);
                let x = ((d3.zoomTransform(this.svg.node()).y)*-1) -1000;
+              console.log(x);
                if(x > 0){
                  let t = x/21776;
                  return i(t);

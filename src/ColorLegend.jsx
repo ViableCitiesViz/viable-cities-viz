@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { range } from 'd3';
 import { withRouter } from 'react-router';
 import { Transition, animated } from 'react-spring';
-import LegendItem from './LegendItem';
+import ColorLegendItem from './ColorLegendItem';
 import { projectTypes, projectTypeColors } from './matrix/MatrixUtility';
-import './Legend.css';
+import './ColorLegend.css';
 
 // NOTE: Hardcoded for now, but for prettier code these could be imported directly from Partners.jsx
 const omrade_titles = {
@@ -22,15 +22,15 @@ const helix_colors = {
   3: "#97C28E"
 };
 
-function RouteLegend({ labels }) {
+function RouteColorLegend({ labels }) {
   let items = labels.map(label => 
     <li key={label.text}>
-      <LegendItem {...label} />
+      <ColorLegendItem {...label} />
     </li>
   );
 
   return (
-    <div className="legend">
+    <div className="color-legend">
       <ul>
         {items}
       </ul>
@@ -38,14 +38,14 @@ function RouteLegend({ labels }) {
   );
 };
 
-RouteLegend.propTypes = {
+RouteColorLegend.propTypes = {
   labels: PropTypes.arrayOf(PropTypes.shape({
     text: PropTypes.string.isRequired,
     color: PropTypes.any.isRequired
   })).isRequired
 };
 
-class Legend extends Component {
+class ColorLegend extends Component {
   constructor(props) {
     super(props);
 
@@ -54,9 +54,9 @@ class Legend extends Component {
     const partnersLabels = range(4).map(i => ({ text: omrade_titles[i], color: helix_colors[i] }));
 
     this.legends = {
-      map: (<RouteLegend labels={mapLabels} />),
-      matrix: (<RouteLegend labels={matrixLabels} />),
-      partners: (<RouteLegend labels={partnersLabels} />)
+      map: (<RouteColorLegend labels={mapLabels} />),
+      matrix: (<RouteColorLegend labels={matrixLabels} />),
+      partners: (<RouteColorLegend labels={partnersLabels} />)
     };
   }
 
@@ -87,4 +87,4 @@ class Legend extends Component {
   }
 }
 
-export default withRouter(Legend);
+export default withRouter(ColorLegend);

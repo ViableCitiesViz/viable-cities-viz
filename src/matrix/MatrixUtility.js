@@ -1,4 +1,4 @@
-import { scaleOrdinal, rgb, packSiblings, packEnclose, select } from 'd3';
+import { scaleOrdinal, rgb, packSiblings, packEnclose, select, range, format } from 'd3';
 
 export const col2focus = {
   1: 'focus_lifestyle',
@@ -128,7 +128,27 @@ export function buildScaleData(packedData) {
   const maxBudget = sortedPackedData[sortedPackedData.length - 1].survey_answers.budget.funded;
   const rScale = packedData[0].rScale;
 
-  return { rScale, minBudget, maxBudget };
+  const labelNumbers = [];
+  const circleRadii = [];
+
+  labelNumbers[0] = Number.parseInt(maxBudget).toPrecision(1);
+  labelNumbers[1] = Number.parseInt(maxBudget / 2).toPrecision(1);
+  labelNumbers[2] = Number.parseInt(maxBudget / 10).toPrecision(1);
+
+  circleRadii[0] = circleRadius(labelNumbers[0]) * rScale;
+  circleRadii[1] = circleRadius(labelNumbers[1]) * rScale;
+  circleRadii[2] = circleRadius(labelNumbers[2]) * rScale;
+
+  if (Number.parseInt(maxBudget).toPrecision(1) === Number.parseInt(minBudget).toPrecision(1))
+    return [{
+      r: circleRadii[0],
+      label: `${format(',')(labelNumbers[0]).replace(/,/g, ' ')} kr`
+    }];
+
+  return range(3).map(i => ({
+    r: circleRadii[i],
+    label: `${format(',')(labelNumbers[i]).replace(/,/g, ' ')} kr`
+  }));
 }
 
 // inspired by https://bl.ocks.org/mbostock/7555321

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Filters from './filters/Filters';
-import Legend from './Legend';
-import MatrixScale from './matrix/MatrixScale';
+import ColorLegend from './ColorLegend';
+import ScaleLegend from './ScaleLegend';
 import './Sidebar.css';
 
 class Sidebar extends Component {
@@ -9,11 +9,11 @@ class Sidebar extends Component {
     return (
       <div className="sidebar">
         <div className="sidebar__top">
-          <Filters data={this.props.data} updateFilteredData={this.props.updateFilteredData} scaleData={this.props.scaleData} />
+          <Filters data={this.props.data} updateFilteredData={this.props.updateFilteredData} />
         </div>
         <div className="sidebar__bottom">
-          <MatrixScale scaleData={this.props.scaleData} />
-          <Legend />
+          <ScaleLegend scaleData={this.props.scaleData} />
+          <ColorLegend />
         </div>
       </div>
     );

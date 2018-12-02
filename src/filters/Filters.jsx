@@ -15,9 +15,9 @@ function intersection(...data) {
 
 // presentation of the multiselect options
 const ListItem = ({ item }) => (
-  <div className="filter-item">
-    <span className="filter-item__name">{item.name}</span>
-    <span className="filter-item__count">{item.count}</span>
+  <div className="filters-item">
+    <span className="filters-item__name">{item.name}</span>
+    <span className="filters-item__count">{item.count}</span>
   </div>
 );
 
@@ -230,10 +230,9 @@ class Filters extends Component {
     return nonEmpty;
   }
 
-  // only render if state changed, ignore props (except for scaleData) since they shouldn't change anyway
+  // only render if state changed, ignore props since they shouldn't change anyway
   shouldComponentUpdate(nextProps, nextState) {
     if (!isEqual(nextState, this.state)) return true;
-    if (!isEqual(nextProps.scaleData, this.props.scaleData)) return true;
     return false;
   }
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { format } from 'd3';
 import './InfoBox.css';
-import LegendItem from '../LegendItem';
+import ColorLegendItem from '../ColorLegendItem';
 import InfoBoxSection from './InfoBoxSection';
 import projectImages from './projectImages';
 import { projectTypeColors } from '../matrix/MatrixUtility';
@@ -83,7 +83,7 @@ class InfoBox extends Component {
               <dl>
                 <dt>Typ av projekt</dt>
                 <dd>
-                  <LegendItem text={project_type} color={projectTypeColors(project_type)} />
+                  <ColorLegendItem text={project_type} color={projectTypeColors(project_type)} />
                 </dd>
 
                 <dt>Projektorganisation</dt>

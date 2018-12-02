@@ -258,11 +258,9 @@ class Matrix extends Component {
 
     // make a mess with current
     const datum = this.circles.select(`[data-id='${projectId}']`).datum();
-    let neighborSelector = '';
-    datum.pins.forEach(pin => {
-      neighborSelector += `[data-row='${pin.row}'][data-col='${pin.col}'], `;
-    });
-    neighborSelector = neighborSelector.slice(0, -2); // remove trailing comma
+    const neighborSelector = datum.pins
+      .map(pin => `[data-row='${pin.row}'][data-col='${pin.col}']`)
+      .join(', ');
     this.svg.classed('clicked', true);
     this.circles.selectAll(neighborSelector)
         .classed('neighbor', true);
