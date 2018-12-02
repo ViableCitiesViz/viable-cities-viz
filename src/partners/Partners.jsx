@@ -3,6 +3,7 @@ import * as d3 from 'd3';
 import './Bubbles.css';
 import mockData from '../assets/data/mock-data-v8.json';
 import partners from '../assets/data/partners.json';
+import debounce from 'lodash.debounce';
 
 
 class Partners extends Component {
@@ -70,7 +71,6 @@ class Partners extends Component {
 
     this.createNewNodes = this.createNewNodes.bind(this);
 
-
   }
 
   componentDidMount(){
@@ -128,18 +128,19 @@ class Partners extends Component {
     this.center = { x: this.width / 2, y: this.height / 2 };
 
     // this.projspace_title = {};
-
+    this.scaleLegendDebounce = debounce(() => this.updateScaleLegend(), 200);
     this.zoom = d3.zoom()
         .scaleExtent([.2, 20])
-        .on("zoom", () => {this.g.attr("transform", d3.event.transform);});
+        .on("zoom.transform", () => {this.g.attr("transform", d3.event.transform);})
+        .on("zoom.legend", this.scaleLegendDebounce);
 
     this.svg = d3.select(this.svgRef)
           .attr("width",this.width)
           .attr("height",this.height)
           .call(this.zoom);
+    this.updateScaleLegend();
 
     this.g = this.svg.append("g");
-
 
     this.simulation = d3.forceSimulation()
       .velocityDecay(0.2)
@@ -323,6 +324,11 @@ class Partners extends Component {
     });
     myNodes.sort(function (a,b){ return b.value - a.value; });
     return myNodes;
+  }
+
+  updateScaleLegend() {
+    const scaleFactor = d3.zoomTransform(this.svg.node()).k;
+    this.props.updateScaleData([{ r: 15 * scaleFactor, label: '1 partner' }]);
   }
 
 

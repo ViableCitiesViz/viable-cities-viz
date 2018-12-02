@@ -10,6 +10,7 @@ import mockData from '../assets/data/mock-data-v8.json';
 import project_coordinates from '../assets/data/project-coordinates.json';
 import './Map.css';
 import ProjectNavigator from '../ProjectNavigator';
+import debounce from 'lodash.debounce';
 
 
 class Map extends Component {
@@ -29,10 +30,12 @@ class Map extends Component {
     this.height = +this.svgWrapperRef.clientHeight - this.margin.top - this.margin.bottom;
     this.width = +this.svgWrapperRef.clientWidth - this.margin.left - this.margin.right;
 
+    this.scaleLegendDebounce = debounce(() => this.updateScaleLegend(), 200);
     this.zoom = d3.zoom()
         .scaleExtent([1, 100])
         .on("zoom.foo", this.zoomed2.bind(this))
-        .on("zoom.bar", () => {this.g.attr("transform",  d3.event.transform);});
+        .on("zoom.bar", () => {this.g.attr("transform",  d3.event.transform);})
+        .on("zoom.legend", this.scaleLegendDebounce);
         // .on(this.updateData, this.zoomed2.bind(this));
         // console.log(this.zoom);
     this.projection = d3.geoMercator()
@@ -50,6 +53,7 @@ class Map extends Component {
             .attr("width", this.width)
             .attr("height", this.height)
             .call(this.zoom);
+    this.updateScaleLegend();
 
     this.g = this.svg.append("g");                              // The map itself
 
@@ -189,7 +193,6 @@ class Map extends Component {
                let a = d.data.length;
                let i = d3.interpolateNumber(3+a, 30*a);
                let x = ((d3.zoomTransform(this.svg.node()).y)*-1) -1000;
-              console.log(x);
                if(x > 0){
                  let t = x/21776;
                  return i(t);
@@ -295,6 +298,25 @@ class Map extends Component {
       let x = [r[0] - c[0], r[1]-c[1]];
       return "translate(" + x + ")";
     };
+  }
+
+  updateScaleLegend() {
+    // Just copied this from the lines following "this.project_circles.transition()..." 
+    // (lines 193-200) at the time of writing this.
+    const radius = (a) => {
+      let i = d3.interpolateNumber(3+a, 30*a);
+      let x = ((d3.zoomTransform(this.svg.node()).y)*-1) -1000;
+      if(x > 0){
+        let t = x/21776;
+        return i(t);
+      }
+      return 3 + a;
+    }
+
+    this.props.updateScaleData([
+      { r: radius(5), label: '5 projekt' },
+      { r: radius(1), label: '1 projekt' }
+    ]);
   }
 
   // Efter constructor

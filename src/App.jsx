@@ -49,13 +49,13 @@ class App extends Component {
                 <Redirect to="/matrix" />
               )}/>
               <Route path="/map" render={props => (
-                <Map data={mockData} filteredData={this.state.filteredData} />
+                <Map data={mockData} filteredData={this.state.filteredData} updateScaleData={this.updateScaleData} />
               )}/>
               <Route path="/matrix" render={props => (
                 <Matrix data={mockData} filteredData={this.state.filteredData} updateScaleData={this.updateScaleData} />
               )}/>
               <Route path="/partners" render={props => (
-                <Partners />
+                <Partners updateScaleData={this.updateScaleData} />
               )}/>
             </Switch>
             <Route render={props => (
