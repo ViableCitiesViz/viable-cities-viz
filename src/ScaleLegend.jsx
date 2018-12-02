@@ -1,51 +1,138 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { select, easePolyOut } from 'd3';
 import PropTypes from 'prop-types';
 import './ScaleLegend.css';
 
-function ScaleLegend({ scaleData }) {
-  if (!scaleData || !scaleData.length) return null;
+const masterTransition = (transition) => transition.duration(800).ease(easePolyOut.exponent(4));
 
-  const margin = { top: 20, right: 10, bottom: 10, left: 20};
-  const lineWidth = 10;
-  const labelWidth = 60; // hard-coded approximation of label width for centering
+class ScaleLegend extends Component {
+  componentDidMount() {
+    this.parent = select(this.parentRef).style('width', '150px');
+    this.svg = select(this.svgRef).attr('height', 0);
 
-  const labels = scaleData.map((circle, index) => {
-    let left = scaleData[0].r + margin.left;
-    let top = scaleData[0].r * 2 - circle.r * 2 + margin.top;
-    let width = scaleData[0].r + lineWidth;
+    this.margin = { top: 10, right: 10, bottom: 10, left: 20};
+    this.lineWidth = 10;
+    this.labelWidth = 60; // hard-coded approximation of label width for centering
 
-    if (index === scaleData.length - 1) {
-      left += circle.r;
-      top += circle.r;
-      width -= circle.r;
-    }
+    this.updateData(this.props.scaleData);
+  }
 
+  updateData(data) {
+    if (!data || !data.length) return;
+
+    const fixedData = data.slice().map((d, i) => ({ ...d, i })).reverse();
+    const selection = this.svg.selectAll('g').data(fixedData);
+
+    const labels = data.map((circle, index) => {
+      let left = data[0].r + this.margin.left;
+      let top = data[0].r * 2 - circle.r * 2 + this.margin.top;
+      let width = data[0].r + this.lineWidth;
+      if (index === data.length - 1) {
+        left += circle.r;
+        top += circle.r;
+        width -= circle.r;
+      }
+
+      return { left, top, width };
+    })
+
+    const prevSvgHeight = this.svg.attr('height');
+    const svgHeight = data[0].r * 2 + this.margin.top + this.margin.bottom;
+    const svgHeightChange = svgHeight - prevSvgHeight;
+
+    const prevParentWidth = Number.parseInt(this.svg.style('width').replace('px', ''));
+    const parentWidth = data[0].r * 2 + this.margin.left + this.margin.right + this.lineWidth + this.labelWidth;
+    const parentWidthChange = parentWidth - prevParentWidth;
+
+    this.parent
+      .transition()
+        .call(masterTransition)
+        .style('width', `${parentWidth}px`)
+
+    this.svg
+      .transition()
+        .call(masterTransition)
+        .attr('height', svgHeight)
+
+    selection.exit()
+        .call(g => g.select('line')
+            .attr('opacity', 0))
+        .call(g => g.select('text')
+            .attr('opacity', 0))
+      .transition()
+        .call(masterTransition)
+        .call(g => g.select('circle')
+            .attr('cx', data[0].r + this.margin.left)
+            .attr('cy', d => data[0].r * 2 - d.r + this.margin.top)
+            .attr('opacity', 0))
+        .remove();
+
+    selection
+      .transition()
+        .call(masterTransition)
+        .call(g => g.select('circle')
+            .attr('r', d => d.r)
+            .attr('cx', data[0].r + this.margin.left)
+            .attr('cy', d => data[0].r * 2 - d.r + this.margin.top))
+        .call(g => g.select('line')
+            .attr('x1', d => labels[d.i].left)
+            .attr('x2', d => labels[d.i].left + labels[d.i].width)
+            .attr('y1', d => labels[d.i].top)
+            .attr('y2', d => labels[d.i].top))
+        .call(g => g.select('text')
+            .attr('x', d => labels[d.i].left + labels[d.i].width + 5)
+            .attr('y', d => labels[d.i].top)
+            .text(d => d.label))
+
+    selection.enter().append('g')
+        .call(g => g.append('circle')
+            .attr('r', d => d.r)
+            .attr('cx', data[0].r + this.margin.left - parentWidthChange / 2)
+            .attr('cy', d => data[0].r * 2 - d.r + this.margin.top - svgHeightChange)
+            .attr('opacity', 0))
+        .call(g => g.append('line')
+            .attr('x1', d => labels[d.i].left - parentWidthChange / 2)
+            .attr('x2', d => labels[d.i].left + labels[d.i].width - parentWidthChange / 2)
+            .attr('y1', d => labels[d.i].top - svgHeightChange)
+            .attr('y2', d => labels[d.i].top - svgHeightChange)
+            .attr('shape-rendering', 'crispEdges')
+            .attr('opacity', 0))
+        .call(g => g.append('text')
+            .attr('x', d => labels[d.i].left + labels[d.i].width + 5 - parentWidthChange / 2)
+            .attr('y', d => labels[d.i].top - svgHeightChange)
+            .attr('alignment-baseline', 'central')
+            .text(d => d.label)
+            .attr('opacity', 0))
+      .transition()
+        .call(masterTransition)
+        .call(g => g.select('circle')
+            .attr('cx', data[0].r + this.margin.left)
+            .attr('cy', d => data[0].r * 2 - d.r + this.margin.top)
+            .attr('opacity', 1))
+        .call(g => g.select('line')
+            .attr('x1', d => labels[d.i].left)
+            .attr('x2', d => labels[d.i].left + labels[d.i].width)
+            .attr('y1', d => labels[d.i].top)
+            .attr('y2', d => labels[d.i].top)
+            .attr('opacity', 1))
+        .call(g => g.select('text')
+            .attr('x', d => labels[d.i].left + labels[d.i].width + 5)
+            .attr('y', d => labels[d.i].top)
+            .attr('opacity', 1))
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.scaleData !== this.props.scaleData)
+      this.updateData(this.props.scaleData);
+  }
+
+  render() {
     return (
-      <div className="scale-legend__label" key={circle.r} style={{left, top}}>
-        <div className="scale-legend__label-line" style={{width}} />
-        <span className="scale-legend__label-text">{circle.label}</span>
+      <div className="scale-legend" ref={parent => this.parentRef = parent}>
+        <svg ref={svg => this.svgRef = svg} width="100%" />
       </div>
     );
-  });
-
-  const circles = scaleData.map(circle => (
-    <circle
-      key={circle.r}
-      r={circle.r}
-      cx={scaleData[0].r + margin.left}
-      cy={scaleData[0].r * 2 - circle.r + margin.top} />
-  ));
-
-  return (
-    <div className="scale-legend" style={{width: scaleData[0].r * 2 + margin.left + margin.right + lineWidth + labelWidth}}>
-      <div className="scale-legend__labels" style={{paddingTop: margin.top, paddingLeft: margin.left}}>
-        {labels}
-      </div>
-      <svg height={scaleData[0].r * 2 + margin.top + margin.bottom} width={scaleData[0].r * 2 + margin.left + margin.right}>
-        {circles}
-      </svg>
-    </div>
-  );
+  }
 }
 
 ScaleLegend.propTypes = {

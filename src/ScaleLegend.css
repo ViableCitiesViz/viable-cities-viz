@@ -14,28 +14,13 @@
   fill: none;
 }
 
-.scale-legend__labels {
-  position: absolute;
-}
-
-.scale-legend__label {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  transform: translate(0, -50%);
-}
-
-.scale-legend__label-line {
+.scale-legend line {
   height: 1px;
-  background: #ccc;
-  flex-shrink: 0;
+  stroke-width: 1px;
+  stroke: #ccc;
 }
 
-.scale-legend__label-text {
-  flex-grow: 1;
-  flex-shrink: 0;
-  text-align: left;
-  margin-left: 5px;
+.scale-legend text {
   font-size: 10px;
   color: #4a4a4a;
 }
