@@ -1,12 +1,16 @@
 import React, { Component} from 'react';
+import PropTypes from 'prop-types';
+import isEqual from 'react-fast-compare';
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
 import europe from '../assets/data/europe.topo.json';
 import sweden from '../assets/data/sweden.topo.json';
-import cities from '../assets/data/cities.json';
-import mockData from '../assets/data/mock-data-v7.json';
+import cities from '../assets/data/cities-v2.json';
+import mockData from '../assets/data/mock-data-v8.json';
 import project_coordinates from '../assets/data/project-coordinates.json';
 import './Map.css';
+import ProjectNavigator from '../ProjectNavigator';
+
 
 class Map extends Component {
 
@@ -14,6 +18,8 @@ class Map extends Component {
     super(props);
     this.margin = { top: 130, right: 20, bottom: 20, left: 160 };
     this.offset = { x: 0,  y: 0 };
+    this.projectNavigator = new ProjectNavigator('/map');
+
   }
 
 
@@ -27,11 +33,14 @@ class Map extends Component {
         .scaleExtent([1, 100])
         .on("zoom.foo", this.zoomed2.bind(this))
         .on("zoom.bar", () => {this.g.attr("transform",  d3.event.transform);});
-
+        // .on(this.updateData, this.zoomed2.bind(this));
+        // console.log(this.zoom);
     this.projection = d3.geoMercator()
         .rotate([5,-1])
-        .scale(500)
-        .center([15,58])
+        // .scale(500)
+        // .center([15,58])
+        .scale(900)
+        .center([20,63])
         .translate([this.width / 2, this.height / 2]);
 
     this.path = d3.geoPath()
@@ -75,7 +84,7 @@ class Map extends Component {
        .attr("id",function(d){return"circle-"+d.id})
        .attr("cx", d => {return this.projection([d.coordinates.x, d.coordinates.y])[0]; })
        .attr("cy", d => { return this.projection([d.coordinates.x, d.coordinates.y])[1]; })
-       .attr("r", 2)
+       .attr("r", 1.2)
        .attr("fill","black")
        .on("mouseover", d => {
          this.tooltip.transition("tooltip-1").style("opacity", .9);
@@ -86,84 +95,173 @@ class Map extends Component {
        })
        .on("mouseout", d => { this.tooltip.transition().style("opacity", 0); });
 
-      // Calculating # of projects per city.
-      let length = mockData.data.length;
-      for(var i = 0; i < length; i++){
-        let city = mockData.data[i].survey_answers.location;
-        if(this.project_count_city[city] === undefined){
-          this.project_count_city[city] = 1;
-        } else {
-          this.project_count_city[city] += 1;
-        }
-      }
-
-      for(var i = 0; i < length; i ++){
-        if(this.project_count_city[mockData.data[i].survey_answers.location]>1){
-          mockData.data[i].survey_answers.group = 1;
-        } else {
-          mockData.data[i].survey_answers.group = 0;
-        }
-      }
-
-      this.project_circles = this.projects.selectAll("circle")
-         .data(mockData.data)
-         .enter()
-         .append("circle");
-
-
-      this.project_circles
-         .attr("id",function(d){return"project-"+d.survey_answers.project_id})
-         .attr("cx", d => { let c = project_coordinates[d.survey_answers.location]; return this.projection([c.x,c.y])[0];})
-         .attr("cy", d => { let c = project_coordinates[d.survey_answers.location]; return this.projection([c.x,c.y])[1];})
-         .attr("r", d => {
-           let city = d.survey_answers.location;
-           let a = this.project_count_city[city];
-           return 3 + a;
-         })
-         .classed("bubble","true")
-         .style("stroke-width", 1)
-         .style("stroke","#4ca4b2")
-         .attr("fill","#007d91")
-         .on('mouseover', d => {
-           let tx = ""
-             if(this.project_count_city[d.survey_answers.location]>1 && d.survey_answers.group == 1){
-               tx = "<b>"+ d.survey_answers.location +"</b><br>Multiple Projects"
-             } else{
-               tx = "<b>" + d.survey_answers.location +"</b>\n<br>" + d.survey_answers.project_title;
-             }
-             this.tooltip2.transition().style("opacity", .9);
-             this.tooltip2.html(tx)
-                .style("left", (d3.event.offsetX) + "px")
-                .style("top", (d3.event.offsetY - 18) + "px")
-                .style("max-width",  200 + "px");
-              })
-         .on('mouseout', d => { this.tooltip2.transition("check").style("opacity", 0);});
+       this.updateData(mockData);
 
         //Europe
         this.g.selectAll(".continent_Europe_subunits")
           .data(topojson.feature(europe, europe.objects.europe).features)
             .enter().append("path")
             .attr("d", this.path)
-            .attr("fill",'lightgrey');
+            .attr("fill",'#e4e4e4');
         // Sweden
         this.g.selectAll('.continent_Sweden_subnits')
           .data(topojson.feature(sweden, sweden.objects.subunits).features)
           .enter().append("path")
           .attr("class", function(d) {return "country-" + d.id;})
           .attr("d", this.path)
-          .attr("fill", 'grey');
+          .attr("fill", '#a8a8a8'); //https://www.color-hex.com/color/d3d3d3#shades-tints
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
+    // console.log(prevProps);
+    // console.log(prevState);
+    // console.log(this.props.filteredData);
+    // this.updateHovered(this.state.hoveredProject, prevState.hoveredProject);
+    // this.updateClicked(this.props, prevProps);
+
+    if (!isEqual(this.props.filteredData, prevProps.filteredData)) {
+      this.updateData(this.props.filteredData);
+      // this.setState({
+        // hoveredProject: null
+      // });
+      // this.projectNavigator.goToRoot(this.props.history, this.props.location);
+    }
+  }
+
+  updateData(dat){
+
+    var mockData_real = [];
+    let tetra = dat.data.length;
+    for(var i = 0; i < tetra; i++){
+      var da = dat.data[i].survey_answers;
+      var leng = da.locations.length;
+      for(var j = 0; j < leng; j++){
+        var obj = {};
+        //https://stackoverflow.com/questions/728360/how-do-i-correctly-clone-a-javascript-object
+        obj.survey_answers = JSON.parse(JSON.stringify(da));
+        obj.survey_answers.location = da.locations[j];
+        mockData_real.push(obj);
+      }
+    }
+    var loc_circles = [];
+    let tetr = mockData_real.length;
+    for(var i = 0; i < tetr; i ++){
+      var ob = {};
+      ob.name =  mockData_real[i].survey_answers.location;
+      ob.data = mockData_real[i];
+      loc_circles.push(ob);
+    }
+
+    // My variable names are awful here.
+    this.xx_loc = [];
+    for(var i = 0; i < tetr; i++){
+      var ab = loc_circles[i].name;
+      var xx = false;
+      for(var j = 0; j < this.xx_loc.length; j++){
+        var k = this.xx_loc[j].name;
+        if(ab.match(k)){
+          var tt = this.xx_loc[j].data;
+          tt.push(loc_circles[i].data);
+          this.xx_loc[j].data = tt;
+          xx = true;
+        }
+      }
+      if(xx == false){
+        var obj = {};
+        obj.name = ab;
+        var xxx = loc_circles[i].data;
+        obj.data = [];
+        obj.data.push(xxx);
+        this.xx_loc.push(obj);
+      }
+    }
+
+    this.project_circles = this.projects
+      .selectAll('circle')
+      .data(this.xx_loc, d => { return d.name;});
+    this.project_circles.exit()
+      .transition()
+      .attr('r',0)
+      .remove();
+
+      this.project_circles.transition()
+             .attr("r", d => {
+               let a = d.data.length;
+               let i = d3.interpolateNumber(3+a, 30*a);
+               let x = ((d3.zoomTransform(this.svg.node()).y)*-1) -1000;
+               if(x > 0){
+                 let t = x/21776;
+                 return i(t);
+               }
+               return 3 + a;
+             });
+
+      this.project_circles.enter().append('circle')
+         .attr("id",function(d,i){return"project-"+d.name;})
+         .attr("cx", d => { let c = project_coordinates[d.name]; return this.projection([c.x,c.y])[0];})
+         .attr("cy", d => { let c = project_coordinates[d.name]; return this.projection([c.x,c.y])[1];})
+         .attr('transform', d => {
+           // I hate projections.
+           let c = project_coordinates[d.name];
+           let cx = this.projection([c.x,c.y]);
+           var trans = d3.zoomTransform(this.svg.node());
+           var t = trans.apply(cx);
+           let x = [t[0] - cx[0], t[1]-cx[1]];
+           return "translate(" + x + ")";
+         })
+         .classed("bubble","true")
+         .style("stroke-width", .7)
+         .style("stroke","#007082")
+         .attr("fill","#007d91")
+         .on('mouseover', d => {
+           let tx = ""
+           if(d.data.length > 1){
+             tx = "<b>"+ d.name +"</b><br>" + d.data.length+ " Projects"
+           } else {
+             tx = "<b>" + d.name +"</b>\n<br>" + d.data[0].survey_answers.project_title;
+           }
+             this.tooltip2.transition().style("opacity", .9);
+             this.tooltip2.html(tx)
+                .style("left", (d3.event.offsetX) + "px")
+                .style("top", (d3.event.offsetY - 18) + "px")
+                .style("max-width",  200 + "px");
+              })
+         .on('mouseout', d => { this.tooltip2.transition("check").style("opacity", 0);})
+         .on('click',d => {
+
+         })
+        .transition()
+         .attr("r", d => {
+           let a = d.data.length;
+           let i = d3.interpolateNumber(3+a, 30*a);
+           let x = ((d3.zoomTransform(this.svg.node()).y)*-1) -1000;
+           // console.log(trans);
+           // let x = (d3.event.transform.y * -1)-1000;
+           if(x > 0){
+             let t = x/21776;
+             return i(t);
+           }
+           return 3 + a;
+           // return 3 + d.data.length;
+         })
+         .on("end", d => { });
+// console.log(d3.zoomTransform(this.svg.node()));
+         // console.log(this.zoomIdentity);
+       // this.project_circles.call(this.zoom.transform, d3.zoomIdentity);
 
   }
 
   zoomed2(){
-    this.cities_circles.attr("transform",this.circle_transform(d3.event.transform));
-    this.project_circles.attr("transform",this.circle_transform(d3.event.transform));
+    let afa = this.projects
+      .selectAll('circle')
+      .data(this.xx_loc, d => { return d.name;});
 
-    this.cities_circles.attr("r",this.circle_size_increase.bind(this));
-    this.project_circles.attr("r",this.project_size_increase.bind(this));
+      this.cities_circles.attr("transform",this.circle_transform(d3.event.transform));
+      afa.attr("transform",this.circle_transform(d3.event.transform));
+
+      this.cities_circles.attr("r",this.circle_size_increase.bind(this));
+      afa.attr("r",this.project_size_increase.bind(this));
+
   }
 
   circle_size_increase(d){
@@ -173,13 +271,12 @@ class Map extends Component {
       let t = x/21776;
       return i(t);
     }
-    return 2;
+    return 1.3;
   }
 
   // Projects increase after zoom in factor X.
   project_size_increase(d){
-    let city = d.survey_answers.location;
-    let a = this.project_count_city[city];
+    let a = d.data.length;
     let i = d3.interpolateNumber(3+a, 30*a);
     let x = (d3.event.transform.y * -1)-1000;
     if(x > 0){
@@ -208,4 +305,10 @@ class Map extends Component {
     );
   }
 }
+
+Map.propTypes = {
+  data: PropTypes.object.isRequired,
+  filteredData: PropTypes.object.isRequired
+};
+
 export default Map;
