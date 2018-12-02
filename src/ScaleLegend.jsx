@@ -36,13 +36,12 @@ class ScaleLegend extends Component {
       return { left, top, width };
     })
 
-    const prevSvgHeight = this.svg.attr('height');
+    // We the previous height and width to align the items properly on enter,
+    // otherwise it will looks like they're sliding on from the side.
     const svgHeight = data[0].r * 2 + this.margin.top + this.margin.bottom;
-    const svgHeightChange = svgHeight - prevSvgHeight;
-
-    const prevParentWidth = Number.parseInt(this.svg.style('width').replace('px', ''));
+    const svgHeightChange = svgHeight - this.svg.attr('height');
     const parentWidth = data[0].r * 2 + this.margin.left + this.margin.right + this.lineWidth + this.labelWidth;
-    const parentWidthChange = parentWidth - prevParentWidth;
+    const parentWidthChange = parentWidth - Number.parseInt(this.svg.style('width').replace('px', ''));
 
     this.parent
       .transition()
@@ -71,15 +70,18 @@ class ScaleLegend extends Component {
       .transition()
         .call(masterTransition)
         .call(g => g.select('circle')
+            .attr('opacity', 1)
             .attr('r', d => d.r)
             .attr('cx', data[0].r + this.margin.left)
             .attr('cy', d => data[0].r * 2 - d.r + this.margin.top))
         .call(g => g.select('line')
+            .attr('opacity', 1)
             .attr('x1', d => labels[d.i].left)
             .attr('x2', d => labels[d.i].left + labels[d.i].width)
             .attr('y1', d => labels[d.i].top)
             .attr('y2', d => labels[d.i].top))
         .call(g => g.select('text')
+            .attr('opacity', 1)
             .attr('x', d => labels[d.i].left + labels[d.i].width + 5)
             .attr('y', d => labels[d.i].top)
             .text(d => d.label))
