@@ -1,10 +1,10 @@
-.matrix-legend {
+.legend {
   text-align: center;
   margin: 0 20px;
   font-size: 0.92857em;
 }
 
-.matrix-legend ul {
+.legend ul {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -12,6 +12,6 @@
   text-align: left;
 }
 
-.matrix-legend li {
+.legend li {
   margin: 5px;
 }

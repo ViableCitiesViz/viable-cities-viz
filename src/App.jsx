@@ -4,7 +4,7 @@ import Header from './Header';
 import Matrix from './matrix/Matrix';
 import Map from './map/Map';
 import Partners from './partners/Partners'
-import Filters from './filters/Filters';
+import Sidebar from './Sidebar';
 import AnimatedInfoBox from './info-box/AnimatedInfoBox';
 import { GetProjectId } from './ProjectNavigator';
 import mockData from './assets/data/mock-data-v8.json';
@@ -43,7 +43,7 @@ class App extends Component {
         <div className="App">
           <Header />
           <div className="App__content">
-            <Filters data={mockData} updateFilteredData={this.updateFilteredData} scaleData={this.state.scaleData} />
+            <Sidebar data={mockData} updateFilteredData={this.updateFilteredData} scaleData={this.state.scaleData} />
             <Switch>
               <Route path="/" exact render={props => (
                 <Redirect to="/matrix" />

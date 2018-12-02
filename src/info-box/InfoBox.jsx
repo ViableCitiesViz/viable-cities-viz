@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { format } from 'd3';
 import './InfoBox.css';
-import MatrixLegendItem from '../matrix/MatrixLegendItem';
+import LegendItem from '../LegendItem';
 import InfoBoxSection from './InfoBoxSection';
 import projectImages from './projectImages';
+import { projectTypeColors } from '../matrix/MatrixUtility';
 
 class InfoBox extends Component {
   constructor(props) {
@@ -82,7 +83,7 @@ class InfoBox extends Component {
               <dl>
                 <dt>Typ av projekt</dt>
                 <dd>
-                  <MatrixLegendItem type={project_type} />
+                  <LegendItem text={project_type} color={projectTypeColors(project_type)} />
                 </dd>
 
                 <dt>Projektorganisation</dt>

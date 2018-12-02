@@ -2,8 +2,6 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { range } from 'd3';
 import { Multiselect } from 'react-widgets'
-import MatrixLegend from '../matrix/MatrixLegend';
-import MatrixScale from '../matrix/MatrixScale';
 import { col2focus, row2theme, theme2row } from '../matrix/MatrixUtility';
 import Matchmaking from './Matchmaking';
 import isEqual from 'react-fast-compare';
@@ -283,128 +281,119 @@ class Filters extends Component {
     
     return (
       <div className="filters">
-        <div className="filters__top">
-          <div className="filters__bg">
-            <h2>Filter</h2>
-            <div className="filter-box">
-              <span className="filter-box__title">
-                Titel
-              </span>
-              <Multiselect
-                data={this.componentData.titles}
-                onChange={titles => {
-                  this.setState({
-                    filterValues: {
-                      ...this.state.filterValues,
-                      titles
-                    }
-                  });
-                }}
-                placeholder="Filtera efter titlar"
-                filter="contains"
-                value={this.state.filterValues.titles} />
-            </div>
-            <div className="filter-box">
-              <span className="filter-box__title">
-                Plats
-              </span>
-              <Multiselect
-                data={this.componentData.locations}
-                onChange={locations => {
-                  this.setState({
-                    filterValues: {
-                      ...this.state.filterValues,
-                      locations
-                    }
-                  });
-                }}
-                placeholder="Filtrera efter kommuner"
-                valueField="name"
-                textField="name"
-                itemComponent={ListItem}
-                value={this.state.filterValues.locations} />
-            </div>
-            <div className="filter-box">
-              <span className="filter-box__title">
-                Partner
-              </span>
-              <Multiselect
-                data={this.componentData.partners}
-                onChange={partners => {
-                  this.setState({
-                    filterValues: {
-                      ...this.state.filterValues,
-                      partners
-                    }
-                  });
-                }}
-                placeholder="Filtrera efter partners"
-                filter="contains"
-                valueField="name"
-                textField="name"
-                itemComponent={ListItem}
-                value={this.state.filterValues.partners} />
-            </div>
-            <div className="filter-box">
-              <span className="filter-box__title">
-                Nyckelord
-              </span>
-              <Multiselect
-                data={this.componentData.keywords}
-                onChange={keywords => {
-                  this.setState({
-                    filterValues: {
-                      ...this.state.filterValues,
-                      keywords
-                    }
-                  });
-                }}
-                placeholder="Filtera efter nyckelord"
-                filter="contains"
-                valueField="name"
-                textField="name"
-                itemComponent={ListItem}
-                value={this.state.filterValues.keywords} />
-            </div>
-
-            <Matchmaking
-              value={this.state.filterValues.matchmaking}
-              onChange={matchmaking => {
-                this.setState({
-                  filterValues: {
-                    ...this.state.filterValues,
-                    matchmaking
-                  }
-                });
-              }}
-              enabled={this.componentData.matchmaking} />
-
-            {!this.empty() &&
-              <Fragment>
-                <p className='filter-results-text'>
-                  Visar <span className="filter-results-text__number">{this.state.filteredData.data.length}</span>
-                  {' '} av <span className="filter-results-text__number">{this.props.data.data.length}</span> projekt.
-                </p>
-
-                <div className='filter-button-box'>
-                  <button
-                    className="filter-button"
-                    onClick={() => this.setState({
-                      filterValues: Object.entries(this.state.filterValues)
-                        .reduce((obj, [k,_]) => ({...obj, [k]: []}), {})
-                    })}>
-                    Rensa filter
-                  </button>
-                </div>
-              </Fragment>
-            }
-            
-          </div>
+        <h2>Filter</h2>
+        <div className="filters-box">
+          <span className="filters-box__title">
+            Titel
+          </span>
+          <Multiselect
+            data={this.componentData.titles}
+            onChange={titles => {
+              this.setState({
+                filterValues: {
+                  ...this.state.filterValues,
+                  titles
+                }
+              });
+            }}
+            placeholder="Filtera efter titlar"
+            filter="contains"
+            value={this.state.filterValues.titles} />
         </div>
-        <div className="filters__bottom">
-          <MatrixScale scaleData={this.props.scaleData} />
-          <MatrixLegend />
+        <div className="filters-box">
+          <span className="filters-box__title">
+            Plats
+          </span>
+          <Multiselect
+            data={this.componentData.locations}
+            onChange={locations => {
+              this.setState({
+                filterValues: {
+                  ...this.state.filterValues,
+                  locations
+                }
+              });
+            }}
+            placeholder="Filtrera efter kommuner"
+            valueField="name"
+            textField="name"
+            itemComponent={ListItem}
+            value={this.state.filterValues.locations} />
         </div>
+        <div className="filters-box">
+          <span className="filters-box__title">
+            Partner
+          </span>
+          <Multiselect
+            data={this.componentData.partners}
+            onChange={partners => {
+              this.setState({
+                filterValues: {
+                  ...this.state.filterValues,
+                  partners
+                }
+              });
+            }}
+            placeholder="Filtrera efter partners"
+            filter="contains"
+            valueField="name"
+            textField="name"
+            itemComponent={ListItem}
+            value={this.state.filterValues.partners} />
+        </div>
+        <div className="filters-box">
+          <span className="filters-box__title">
+            Nyckelord
+          </span>
+          <Multiselect
+            data={this.componentData.keywords}
+            onChange={keywords => {
+              this.setState({
+                filterValues: {
+                  ...this.state.filterValues,
+                  keywords
+                }
+              });
+            }}
+            placeholder="Filtera efter nyckelord"
+            filter="contains"
+            valueField="name"
+            textField="name"
+            itemComponent={ListItem}
+            value={this.state.filterValues.keywords} />
+        </div>
+
+        <Matchmaking
+          value={this.state.filterValues.matchmaking}
+          onChange={matchmaking => {
+            this.setState({
+              filterValues: {
+                ...this.state.filterValues,
+                matchmaking
+              }
+            });
+          }}
+          enabled={this.componentData.matchmaking} />
+
+        {!this.empty() &&
+          <Fragment>
+            <p className='filters-results-text'>
+              Visar <span className="filters-results-text__number">{this.state.filteredData.data.length}</span>
+              {' '} av <span className="filters-results-text__number">{this.props.data.data.length}</span> projekt.
+            </p>
+
+            <div className='filters-button-box'>
+              <button
+                className="filters-button"
+                onClick={() => this.setState({
+                  filterValues: Object.entries(this.state.filterValues)
+                    .reduce((obj, [k,_]) => ({...obj, [k]: []}), {})
+                })}>
+                Rensa filter
+              </button>
+            </div>
+          </Fragment>
+        }
       </div>
     );
   }
