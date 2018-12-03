@@ -63,6 +63,8 @@ class Map extends Component {
         this.projectNavigator.goToRoot(this.props.history, this.props.location);
         this.multiple_projects_box.transition().style('opacity',0);
         this.multiple_projects_box.text("");
+        this.projects.selectAll('circle').classed('clicked_bubble',false);
+        
       }
     });
 
