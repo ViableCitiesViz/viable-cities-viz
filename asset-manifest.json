@@ -1,7 +1,7 @@
 {
   "main.css": "/static/css/main.6bf36ca7.chunk.css",
-  "main.js": "/static/js/main.2a3baad1.chunk.js",
-  "main.js.map": "/static/js/main.2a3baad1.chunk.js.map",
+  "main.js": "/static/js/main.4e1da55c.chunk.js",
+  "main.js.map": "/static/js/main.4e1da55c.chunk.js.map",
   "static/css/1.0a25ce06.chunk.css": "/static/css/1.0a25ce06.chunk.css",
   "static/js/1.4df6348b.chunk.js": "/static/js/1.4df6348b.chunk.js",
   "static/js/1.4df6348b.chunk.js.map": "/static/js/1.4df6348b.chunk.js.map",
@@ -29,9 +29,9 @@
   "static/media/2-DDS-energieffektiv-vard.jpg": "/static/media/2-DDS-energieffektiv-vard.289abdde.jpg",
   "static/media/21-3De.jpg": "/static/media/21-3De.05da2369.jpg",
   "static/media/react-widgets.css": "/static/media/loader-big.a770b679.gif",
-  "static/css/main.6bf36ca7.chunk.css.map": "/static/css/main.6bf36ca7.chunk.css.map",
   "static/css/1.0a25ce06.chunk.css.map": "/static/css/1.0a25ce06.chunk.css.map",
+  "static/css/main.6bf36ca7.chunk.css.map": "/static/css/main.6bf36ca7.chunk.css.map",
   "index.html": "/index.html",
-  "precache-manifest.33a10ec2d2cfa01a248f6d08b9953610.js": "/precache-manifest.33a10ec2d2cfa01a248f6d08b9953610.js",
+  "precache-manifest.cf342004d88235c1f95b278347f49347.js": "/precache-manifest.cf342004d88235c1f95b278347f49347.js",
   "service-worker.js": "/service-worker.js"
 }
