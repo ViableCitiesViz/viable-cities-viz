@@ -11,9 +11,10 @@ class Sidebar extends Component {
 
     return (
       <div className="sidebar">
-        <div className="sidebar__top">
-          {noPartners && 
-            <Filters data={this.props.data} updateFilteredData={this.props.updateFilteredData} />}
+        <div
+          className="sidebar__top"
+          style={{ visibility: (noPartners ? 'visible' : 'hidden') }}>
+          <Filters data={this.props.data} updateFilteredData={this.props.updateFilteredData} />
         </div>
         <div className="sidebar__bottom">
           <ScaleLegend scaleData={this.props.scaleData} />
