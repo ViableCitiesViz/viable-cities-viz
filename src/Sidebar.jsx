@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import Filters from './filters/Filters';
 import ColorLegend from './ColorLegend';
 import ScaleLegend from './ScaleLegend';
@@ -6,10 +7,13 @@ import './Sidebar.css';
 
 class Sidebar extends Component {
   render() {
+    const noPartners = !this.props.location.pathname.includes('partners');
+
     return (
       <div className="sidebar">
         <div className="sidebar__top">
-          <Filters data={this.props.data} updateFilteredData={this.props.updateFilteredData} />
+          {noPartners && 
+            <Filters data={this.props.data} updateFilteredData={this.props.updateFilteredData} />}
         </div>
         <div className="sidebar__bottom">
           <ScaleLegend scaleData={this.props.scaleData} />
@@ -20,4 +24,4 @@ class Sidebar extends Component {
   }
 }
 
-export default Sidebar;
+export default withRouter(Sidebar);
