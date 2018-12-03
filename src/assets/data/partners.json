@@ -2,7 +2,7 @@
     {
         "Organisation":"ElectriCITY Innovation EK",
         "Kategori":"Civilsamhälle",
-        "Projects" : [8,22]
+        "Projects" : [8,14]
     },
     {
         "Organisation":"Fastighetsägareförening Sofielund",
@@ -27,7 +27,7 @@
     {
         "Organisation":"Riksbyggen Ekonomisk Förening",
         "Kategori":"Civilsamhälle",
-        "Projects" : [21,22]
+        "Projects" : [21,14]
     },
     {
         "Organisation":"Röstånga Ekoby ek för",
@@ -47,7 +47,7 @@
     {
         "Organisation":"Studiefrämjandet Uppsala",
         "Kategori":"Civilsamhälle",
-        "Projects" : [7,22]
+        "Projects" : [7,14]
     },
     {
         "Organisation":"Svenska Kyrkan (Uppsala pastorat)",
@@ -72,7 +72,7 @@
     {
         "Organisation":"Göteborgs universitet",
         "Kategori":"Forskning",
-        "Projects":[7,22]
+        "Projects":[7,14]
     },
     {
         "Organisation":"Handelshögskolan vid Göteborgs Universitet",
@@ -87,12 +87,12 @@
     {
         "Organisation":"IVL Svenska miljöinstitutet",
         "Kategori":"Forskning",
-        "Projects":[4,18,22]
+        "Projects":[4,18,14]
     },
     {
         "Organisation":"KTH",
         "Kategori":"Forskning",
-        "Projects":[5,8,10,11,12,22]
+        "Projects":[5,8,10,11,12,14]
 
     },
     {
@@ -103,12 +103,12 @@
     {
         "Organisation":"Lunds universitetet",
         "Kategori":"Forskning",
-        "Projects":[15,20,22]
+        "Projects":[15,20,14]
     },
     {
         "Organisation":"RISE ",
         "Kategori":"Forskning",
-        "Projects":[4,9,11,13,16,21,22]
+        "Projects":[4,9,11,13,16,21,14]
     },
     {
         "Organisation":"SINTEF",
@@ -118,7 +118,7 @@
     {
         "Organisation":"Sveriges Lantbruksuniversitet (SLU)",
         "Kategori":"Forskning",
-        "Projects":[6,10,22]
+        "Projects":[6,10,14]
     },
     {
         "Organisation":"Umeå universitet",
@@ -138,12 +138,12 @@
     {
         "Organisation":"Akademiska Hus",
         "Kategori":"Näringsliv",
-        "Projects":[13,22]
+        "Projects":[13,14]
     },
     {
         "Organisation":"Älvstranden Utveckling",
         "Kategori":"Näringsliv",
-        "Projects" : [21,22]
+        "Projects" : [21,14]
     },
     {
         "Organisation":"Borlänge Energi",
@@ -158,12 +158,12 @@
     {
         "Organisation":"E.ON Energilösningar",
         "Kategori":"Näringsliv",
-        "Projects" : [20,22]
+        "Projects" : [20,14]
     },
     {
         "Organisation":"Ericsson ",
         "Kategori":"Näringsliv",
-        "Projects" : [2,22]
+        "Projects" : [2,14]
     },
     {
         "Organisation":"EvalPart ",
@@ -344,7 +344,7 @@
     {
         "Organisation":"Trianon ",
         "Kategori":"Näringsliv",
-        "Projects" : [11,22]
+        "Projects" : [11,14]
     },
     {
         "Organisation":"Trivector",
@@ -404,7 +404,7 @@
     {
         "Organisation":"Göteborgs stad",
         "Kategori":"Offentlig verksamhet",
-        "Projects" : [9,16,21,22]
+        "Projects" : [9,16,21,14]
     },
     {
         "Organisation":"Herrljunga kommun",
@@ -434,7 +434,7 @@
     {
         "Organisation":"Malmö stad",
         "Kategori":"Offentlig verksamhet",
-        "Projects" : [6,22]
+        "Projects" : [6,14]
     },
     {
         "Organisation":"Region Uppsala",
@@ -449,12 +449,12 @@
     {
         "Organisation":"Stockholm stad",
         "Kategori":"Offentlig verksamhet",
-        "Projects" : [3,22]
+        "Projects" : [3,14]
     },
     {
         "Organisation":"Umeå kommun",
         "Kategori":"Offentlig verksamhet",
-        "Projects" : [5,22]
+        "Projects" : [5,14]
     },
     {
         "Organisation":"Upplands Väsby kommun",
@@ -469,76 +469,76 @@
     {
         "Organisation":"Form/Design Center",
         "Kategori":"Civilsamhälle",
-        "Projects" : [22]
+        "Projects" : [14]
     },
     {
         "Organisation":"Kollaborativ Ekonomi Göteborg",
         "Kategori":"Civilsamhälle",
-        "Projects" : [22]
+        "Projects" : [14]
     },
     {
         "Organisation":"Majornas samverkansförening",
         "Kategori":"Civilsamhälle",
-        "Projects" : [22]
+        "Projects" : [14]
     },
     {
         "Organisation":"Coompanion",
         "Kategori":"Civilsamhälle",
-        "Projects" : [22]
+        "Projects" : [14]
     },
     {
         "Organisation":"Evothings",
         "Kategori":"Näringsliv",
-        "Projects" : [22]
+        "Projects" : [14]
     },
     {
         "Organisation":"Skanska",
         "Kategori":"Näringsliv",
-        "Projects" : [22]
+        "Projects" : [14]
     },
     {
         "Organisation":"Elof Hansson",
         "Kategori":"Näringsliv",
-        "Projects" : [22]
+        "Projects" : [14]
     },
     {
         "Organisation":"NCC Property Development",
         "Kategori":"Näringsliv",
-        "Projects" : [22]
+        "Projects" : [14]
     },
     {
         "Organisation":"Stena Fastigheter",
         "Kategori":"Näringsliv",
-        "Projects" : [22]
+        "Projects" : [14]
     },
     {
         "Organisation":"The Food Print Lab",
         "Kategori":"Näringsliv",
-        "Projects" : [22]
+        "Projects" : [14]
     },
     {
         "Organisation":"Klädoteket",
         "Kategori":"Näringsliv",
-        "Projects" : [22]
+        "Projects" : [14]
     },
     {
         "Organisation":"Umeå Energi",
         "Kategori":"Näringsliv",
-        "Projects" : [22]
+        "Projects" : [14]
     },
     {
         "Organisation":"UPAB",
         "Kategori":"Näringsliv",
-        "Projects" : [22]
+        "Projects" : [14]
     },
     {
         "Organisation":"VAKIN",
         "Kategori":"Näringsliv",
-        "Projects" : [22]
+        "Projects" : [14]
     },
     {
         "Organisation":"Västerbottens läns landsting",
         "Kategori":"Offentlig verksamhet",
-        "Projects" : [22]
+        "Projects" : [14]
     }
 ]

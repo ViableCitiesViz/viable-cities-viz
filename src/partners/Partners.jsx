@@ -48,6 +48,7 @@ class Partners extends Component {
       2:50
     };
 
+
     // Location on screen
     this.projectSpace = {
       0 : 415,
@@ -90,13 +91,20 @@ class Partners extends Component {
     this.normal_button = this.button_collection.append("div")
             .classed("button",true)
             .classed("overview_button",true)
-            .on('click', () => {this.move_bubbles(0);})
-            .text("Overview");
+            .classed('button_selected',true)
+            .on('click', () => {d3.selectAll('.button').classed('button_selected',false);this.normal_button.classed('button_selected',true);this.move_bubbles(0);})
+            .text("Översikt");
     this.helix_button = this.button_collection.append("div")
         .classed("button",true)
         .classed("helix_button",true)
-        .on('click', () => {this.move_bubbles(1);})
+        .on('click', () => {d3.selectAll('.button').classed('button_selected',false);this.helix_button.classed('button_selected',true);this.move_bubbles(1);})
         .text("Quadruple Helix");
+
+    this.expand_button = this.button_collection.append("div")
+        .classed("button",true)
+        .classed("expand_button",true)
+        .on('click', () => {d3.selectAll('.button_collections').style('display','initial');})
+        .text("Projekt ↓ ")
 
     this.nodes = this.createNewNodes(partners);
 
@@ -108,22 +116,38 @@ class Partners extends Component {
 
     // !!!!!!!!!!
     // This is good code. Just needs to be placed elsewhere.
-    // this.project_buttons = this.button_collection.append('div').selectAll('.buttons_here')
-    //   .data(mockData.data);
-    // this.project_buttons.enter().append('div')
-    //   .classed("button",true)
-    //   .classed('project_button',true)
-    //   // .text( d => {console.log(d); return "gaga"});
-    //   .on('click', d => {this.change_view_spec(2, d.survey_answers.project_id);})
-    //   .text( d => {return d.survey_answers.project_title;});
+    this.button_collections = d3.select(this.svgWrapperRef).append("div")
+        .classed("button_collections",true)
+        // .style('width','100%')
+        .style('background-color','lightgrey');
+    this.button_collections.append('h2').text("Projekt").style('margin-top','2px');
+    this.project_buttons = this.button_collections.append("div").selectAll('div')
+      .data(mockData.data);
+    this.project_buttons.enter().append('div')
+      // .text('hey')
+      .classed("buttons",true)
+      .classed('project_button',true)
+      // .text( d => {console.log(d); return "gaga"});
+      .on('click', d => {this.change_view_spec(2, d.survey_answers.project_id);
+        d3.selectAll('.button_collections').style('display','none');
+        d3.selectAll('.button').classed('button_selected',false);
+        this.expand_button.classed('button_selected',true);})
+      .on('mouseover',function(d){
+        d3.select(this).style('background-color','white');
+      })
+      .on('mouseout',function(d){
+        d3.select(this).style('background-color','lightgrey');
+      })
+      .html( d => {return d.survey_answers.project_title + "<br>";});
     // !!!!!!!!!!
-    
+
     this.omradeCenters = {
-      0: { x: this.width / 3, y: this.height / 2 },
-      1: { x: this.width / 2, y: this.height / 2 },
-      2: { x: 2 * this.width / 3, y: this.height / 2 },
-      3: { x: 150, y:0}
+      0: { x: 255, y: 0 },
+      1: { x: 400, y: 0 },
+      2: { x: 570, y: 0 },
+      3: { x: 70, y:0}
     };
+
 
     this.center = { x: this.width / 2, y: this.height / 2 };
 
@@ -139,7 +163,12 @@ class Partners extends Component {
           .attr("height",this.height)
           .call(this.zoom);
     this.updateScaleLegend();
-
+    this.svg.on('click', () => {
+      if (d3.event.target.class !== 'project_button') {
+        // this.projectNavigator.goToRoot(this.props.history, this.props.location);
+        d3.selectAll('.button_collections').style('display','none');
+      }
+    });
     this.g = this.svg.append("g");
 
     this.simulation = d3.forceSimulation()

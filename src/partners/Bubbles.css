@@ -34,15 +34,41 @@
 
 .button_collection {
   position: absolute;
+  /* width:300px; */
   top:0;
 }
 
 .button {
   cursor: pointer;
   /* top:0; */
-  /* width:50px; */
+  width:150px;
   color: white;
   padding: 3px;
   border: .1px solid black;
-  background-color: grey;
+  background-color: #4a4c4d;
+  box-shadow:0 2px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.button_selected{
+  color:hsl(173, 100%, 37%);
+}
+
+.button_collections{
+  box-shadow:0 2px 6px 0 rgba(0, 0, 0, 0.2);
+  border: .1px solid black;
+  position: absolute;
+  left:0;
+  top:0;
+  padding: 2px;
+  display:none;
+
+}
+
+.buttons{
+  background-color: lightgrey;
+  /* width:100%; */
+
+
+  /* width:200px; */
+  cursor:pointer;
 }
