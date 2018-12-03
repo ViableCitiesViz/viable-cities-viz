@@ -122,7 +122,10 @@ class Matrix extends Component {
       }
     }
 
-    
+    // this is useful further down, if the width/height didn't change, we don't need to call updateData!
+    const oldWidth = this.scaleX.range()[1];
+    const oldHeight = this.scaleY.range()[1];
+    const dimensionsChanged = oldWidth !== width || oldHeight !== height;
 
     // update scales
     this.scaleX.range([0, width]);
@@ -220,7 +223,8 @@ class Matrix extends Component {
           .attr('transform', `translate(0,${y})rotate(-45)translate(0,${-y})`);
     }
 
-    this.updateData(this.props.filteredData);
+    if (dimensionsChanged)
+      this.updateData(this.props.filteredData);
   }
 
   updateHovered(project, prevProject) {
