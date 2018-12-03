@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { select, axisLeft, axisTop, event, scalePoint, easePolyOut } from 'd3';
-import { themeLabel, focusLabel, packData, buildScaleData, parseNewlinesY, parseNewlinesX, type2class } from './MatrixUtility';
+import { themeLabel, focusLabel, packData, buildScaleData, parseNewlinesY, parseNewlinesX, type2class, circleSizes } from './MatrixUtility';
 import { withRouter } from 'react-router-dom';
 import MatrixTooltip from './MatrixTooltip';
+import MatrixCircleMenu from './MatrixCircleMenu';
 import PropTypes from 'prop-types';
 import isEqual from 'react-fast-compare';
 import debounce from 'lodash.debounce';
@@ -15,13 +16,15 @@ class Matrix extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hoveredProject: null
+      hoveredProject: null,
+      circleSize: 'Ticks'
     };
 
     this.margin = { top: 130, right: 20, bottom: 20, left: 160 };
     this.offset = { x: 0,  y: 0 };
     this.projectNavigator = new ProjectNavigator('/matrix');
     this.draw = this.draw.bind(this);
+    this.updateCircleSize = this.updateCircleSize.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +34,10 @@ class Matrix extends Component {
     this.svgInner = this.svg
       .append('g')
         .classed('matrix-svg-inner', true);
+
+    // used for moving around the circle menu
+    this.circleSizeWrapper = select(this.circleSizeWrapperRef)
+      .style('transform', 'translate(0, 0)');
 
     this.scaleX = scalePoint()
         .domain([1,2,3,4])
@@ -78,7 +85,8 @@ class Matrix extends Component {
     this.updateHovered(this.state.hoveredProject, prevState.hoveredProject);
     this.updateClicked(this.props, prevProps);
 
-    if (!isEqual(this.props.filteredData, prevProps.filteredData)) {
+    if (!isEqual(this.props.filteredData, prevProps.filteredData) ||
+      this.state.circleSize !== prevState.circleSize) {
       this.updateData(this.props.filteredData);
       this.setState({
         hoveredProject: null
@@ -114,6 +122,8 @@ class Matrix extends Component {
       }
     }
 
+    
+
     // update scales
     this.scaleX.range([0, width]);
     this.scaleY.range([0, height]);
@@ -121,6 +131,7 @@ class Matrix extends Component {
     // set up selectors
     const selectors = {
       svgInner: this.svgInner,
+      circleSizeWrapper: this.circleSizeWrapper,
       yAxis: this.svgInner.select('g.matrix-y-axis'),
       themesLabel: this.svgInner.select('text.themes-label'),
       xAxis: this.svgInner.select('g.matrix-x-axis'),
@@ -131,6 +142,11 @@ class Matrix extends Component {
 
     selectors.svgInner
         .attr('transform', `translate(${this.offset.x}, ${this.offset.y})`);
+
+    selectors.circleSizeWrapper
+        .style('top', `${this.offset.y + this.margin.top - 40}px`)
+        .style('left', `${this.offset.x + this.margin.left - 120}px`);
+        //.style('transform', `translate(${this.offset.x + this.margin.left - 120}px, ${this.offset.y + this.margin.top - 40}px)`);
 
     // themes label
     selectors.themesLabel
@@ -269,8 +285,8 @@ class Matrix extends Component {
   }
 
   updateData(data) {
-    const packedData = packData(data, this.scaleX, this.scaleY);
-    this.props.updateScaleData(buildScaleData(packedData));
+    const packedData = packData(data, this.scaleX, this.scaleY, circleSizes[this.state.circleSize]);
+    this.props.updateScaleData(buildScaleData(packedData, circleSizes[this.state.circleSize]));
     const circle = this.circles
       .selectAll('circle')
       .data(packedData, d => `${d.survey_answers.project_id}[${d.row},${d.col}]`);
@@ -316,11 +332,18 @@ class Matrix extends Component {
         .attr('r', d => d.r);
   }
 
+  updateCircleSize(circleSize) {
+    this.setState({ circleSize });
+  }
+
   render() {
     return (
       <div className="matrix-wrapper" ref={svgWrapper => { this.svgWrapperRef = svgWrapper; }}>
         <svg className="matrix" width="100%" height="100%" ref={svg => { this.svgRef = svg; }} />
         <MatrixTooltip project={this.state.hoveredProject} margin={this.margin} offset={this.offset} />
+        <div className="matrix-circle-scale-wrapper" ref={circleSizeWrapper => { this.circleSizeWrapperRef = circleSizeWrapper; }}>
+          <MatrixCircleMenu updateCircleSize={this.updateCircleSize} circleSize={this.state.circleSize} />
+        </div>
       </div>
     );
   }

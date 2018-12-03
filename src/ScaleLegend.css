@@ -15,7 +15,6 @@
 }
 
 .scale-legend line {
-  height: 1px;
   stroke-width: 1px;
   stroke: #ccc;
 }

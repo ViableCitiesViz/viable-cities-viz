@@ -1,6 +1,5 @@
 .matrix-wrapper {
   position: relative;
-  z-index: 1;
   overflow-y: hidden;
   width: 100%;
   height: 100%;
@@ -8,6 +7,13 @@
 
 .matrix {
   display: block;
+  z-index: 1;
+}
+
+.matrix-circle-scale-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .matrix-svg-inner {
@@ -44,8 +50,8 @@
 .matrix circle {
   cursor: pointer;
   will-change: fill, stroke-width;
-  transition: fill 800ms cubic-bezier(0.215, 0.61, 0.355, 1),
-    stroke-width 800ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: fill 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  /*  stroke-width 800ms cubic-bezier(0.215, 0.61, 0.355, 1);*/
   shape-rendering: geometricPrecision;
   stroke-width: 0px;
 }
@@ -70,14 +76,14 @@
  */
 
 /* hovered circles */
-.matrix circle.hover:not(.clicked) {
+/*.matrix circle.hover:not(.clicked) {
   stroke-width: 3px;
-}
+}*/
 
 /* clicked circles */
-.matrix circle.clicked.neighbor {
+/*.matrix circle.clicked.neighbor {
   stroke-width: 5px;
-}
+}*/
 
 .matrix circle.neighbor:not(.clicked) {
 }
@@ -85,35 +91,35 @@
 /* colors specific to different project types */
 
 .matrix circle.research {
-  stroke: hsl(188, 50%, 15%);
+  /*stroke: hsl(188, 50%, 15%);*/
   fill: hsl(188, 100%, 28%);
 }
 .matrix circle.research.hover:not(.clicked) {
-  fill: hsl(188, 80%, 21%);
+  fill: hsl(188, 80%, 19%);
 }
 .matrix circle.research.clicked.neighbor {
-  fill: hsl(188, 70%, 18%);
+  fill: hsl(188, 70%, 15%);
 }
 
 .matrix circle.innovation {
-  stroke: hsl(110, 15%, 30%);
+  /*stroke: hsl(110, 15%, 30%);*/
   fill: hsl(110, 27%, 66%);
 }
 .matrix circle.innovation.hover:not(.clicked) {
-  fill: hsl(110, 16%, 38%);
+  fill: hsl(110, 16%, 34%);
 }
 .matrix circle.innovation.clicked.neighbor {
-  fill: hsl(110, 15%, 33%);
+  fill: hsl(110, 15%, 28%);
 }
 
 .matrix circle.prestudy {
-  stroke: hsl(39, 50%, 25%);
+  /*stroke: hsl(39, 50%, 25%);*/
   fill: hsl(39, 100%, 46%);
 }
 .matrix circle.prestudy.hover:not(.clicked) {
-  fill: hsl(39, 80%, 32%);
+  fill: hsl(39, 80%, 30%);
 }
 .matrix circle.prestudy.clicked.neighbor {
-  fill: hsl(39, 70%, 28%);
+  fill: hsl(39, 70%, 24%);
 }
 

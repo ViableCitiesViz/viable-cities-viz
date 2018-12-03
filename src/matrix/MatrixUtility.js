@@ -48,12 +48,31 @@ export function circleRadius(area) {
   return Math.sqrt(area / Math.PI);
 }
 
+export const circleSizes = {
+  Ticks: {
+    value: project => 1,
+    label: label => `${format('d')(label)} tick`
+  },
+  Budget: {
+    value: project => project.survey_answers.budget.funded,
+    label: label => `${format(',')(label).replace(/,/g, ' ')} kr`
+  },
+  Partners: {
+    value: project => [...new Set([...project.survey_answers.other_financiers, ...project.survey_answers.other_recipients])].length,
+    label: label => `${format('d')(label)} partners`
+  },
+  Locations: {
+    value: project => project.survey_answers.locations.length,
+    label: label => `${format('d')(label)} locations`
+  }
+}
+
 export const projectTypes = ['Forskningsprojekt', 'Innovationsprojekt', 'Förstudie'];
 export const projectTypeColors = scaleOrdinal()
   .range([rgb(0, 125, 145), rgb(151, 194, 142), rgb(234, 154, 0)]) // pms 3145, pms 2255, pms 2011
   .domain(projectTypes);
 
-export function packData(data, scaleX, scaleY) {
+export function packData(data, scaleX, scaleY, circleSize) {
   // first, group together circles that are
   // at the same position in the matrix
   const obj = {};
@@ -76,7 +95,7 @@ export function packData(data, scaleX, scaleY) {
           col,
           pins,
           survey_answers: project.survey_answers,
-          r: circleRadius(project.survey_answers.budget.funded)
+          r: circleRadius(circleSize.value(project))
         })
       });
     }
@@ -97,7 +116,7 @@ export function packData(data, scaleX, scaleY) {
   for (let row = 1; row <= 5; ++row) {
     for (let col = 1; col <= 4; ++col) {
       obj[row][col].forEach(pin => {
-        pin.r = circleRadius(pin.survey_answers.budget.funded) * rScale;
+        pin.r = circleRadius(circleSize.value(pin)) * rScale;
       });
     }
   }
@@ -120,34 +139,35 @@ export function packData(data, scaleX, scaleY) {
   return arr;
 }
 
-export function buildScaleData(packedData) {
+export function buildScaleData(packedData, circleSize) {
   if (!packedData.length) return null;
 
-  const sortedPackedData = [...packedData].sort((a, b) => a.survey_answers.budget.funded - b.survey_answers.budget.funded);
-  const minBudget = sortedPackedData[0].survey_answers.budget.funded;
-  const maxBudget = sortedPackedData[sortedPackedData.length - 1].survey_answers.budget.funded;
+  const sortedPackedData = [...packedData].sort((a, b) => circleSize.value(a) - circleSize.value(b));
+  const minSize = circleSize.value(sortedPackedData[0]);
+  const maxSize = circleSize.value(sortedPackedData[sortedPackedData.length - 1]);
   const rScale = packedData[0].rScale;
 
-  const labelNumbers = [];
+  let labelNumbers = [];
   const circleRadii = [];
 
-  labelNumbers[0] = Number.parseInt(maxBudget).toPrecision(1);
-  labelNumbers[1] = Number.parseInt(maxBudget / 2).toPrecision(1);
-  labelNumbers[2] = Number.parseInt(maxBudget / 10).toPrecision(1);
+  labelNumbers[0] = Number.parseInt(maxSize).toPrecision(1);
+  labelNumbers[1] = Number.parseInt(maxSize / 2).toPrecision(1);
+  labelNumbers[2] = Number.parseInt(maxSize / 10).toPrecision(1);
+  labelNumbers = labelNumbers.map(number => number === '0' ? 1 : number);
 
   circleRadii[0] = circleRadius(labelNumbers[0]) * rScale;
   circleRadii[1] = circleRadius(labelNumbers[1]) * rScale;
   circleRadii[2] = circleRadius(labelNumbers[2]) * rScale;
 
-  if (Number.parseInt(maxBudget).toPrecision(1) === Number.parseInt(minBudget).toPrecision(1))
+  if (Number.parseInt(maxSize).toPrecision(1) === Number.parseInt(minSize).toPrecision(1))
     return [{
       r: circleRadii[0],
-      label: `${format(',')(labelNumbers[0]).replace(/,/g, ' ')} kr`
+      label: circleSize.label(labelNumbers[0])
     }];
 
   return range(3).map(i => ({
     r: circleRadii[i],
-    label: `${format(',')(labelNumbers[i]).replace(/,/g, ' ')} kr`
+    label: circleSize.label(labelNumbers[i])
   }));
 }
 

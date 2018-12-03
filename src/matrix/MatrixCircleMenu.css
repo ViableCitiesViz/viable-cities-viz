@@ -1,0 +1,54 @@
+.matrix-circle-menu {
+  display: flex;
+  align-items: center;
+
+  width: 120px;
+
+  z-index: 0;
+}
+
+.matrix-circle-menu svg {
+}
+
+.matrix-circle-menu circle {
+  stroke: #4a4a4a;
+  stroke-width: 1px;
+  /*stroke-dasharray: 2;*/
+  fill: none;
+}
+
+.matrix-circle-menu line {
+  stroke-width: 1px;
+  stroke: #666;
+}
+
+.matrix-circle-menu polygon {
+  stroke-width: 1px;
+  stroke: #666;
+  fill: none;
+}
+
+.matrix-circle-menu path {
+  stroke-width: 1px;
+  stroke: #666;
+  fill: none;
+}
+
+.matrix-circle-menu .rw-dropdown-list {
+  flex-grow: 1;
+  font-size: 0.92857em;
+}
+
+.matrix-circle-menu .rw-input {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.matrix-circle-menu .rw-widget-input {
+  box-shadow: none !important;
+}
+
+.matrix-circle-menu .rw-widget-container {
+  border: none;
+  outline: none;
+}

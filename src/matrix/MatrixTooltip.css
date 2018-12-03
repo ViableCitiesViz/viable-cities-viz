@@ -10,6 +10,7 @@
   max-width: 250px;
   font-size: 0.92857em;
   pointer-events: none;
+  z-index: 3;
 }
 
 .matrix-tooltip::after {
