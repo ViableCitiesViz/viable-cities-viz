@@ -1,8 +1,10 @@
 /* https://www.color-hex.com/color/add8e6 */
 .bubbles_svg_area {
   /* background-color: #e8f4f8; */
+  /* position:absolute; */
   width:100%;
   height:100%;
+  /* z-index: -1; */
 }
 
 
@@ -11,6 +13,23 @@
   width:inherit;
 }
 
+.multiple_projects_box{
+  position: absolute;
+  /* text-align: center; */
+  /* top:0; */
+  bottom:0;
+  z-index: 10;
+  /* text-overflow:  */
+  left:0;
+  /* width: 60px; */
+  /* height: 28px; */
+  padding: 2px;
+  font: 12px sans-serif;
+  /* background: lightsteelblue; */
+  background: white;
+  border: 0.2px solid grey;
+  /* border-radius: 3px; */
+}
 
 
 .boundary {
