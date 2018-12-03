@@ -49,21 +49,29 @@ export function circleRadius(area) {
 }
 
 export const circleSizes = {
-  Ticks: {
+  ticks: {
     value: project => 1,
-    label: label => `${format('d')(label)} tick`
+    label: label => `${format('d')(label)} tick`,
+    display: 'Tick',
+    key: 'ticks'
   },
-  Budget: {
+  budget: {
     value: project => project.survey_answers.budget.funded,
-    label: label => `${format(',')(label).replace(/,/g, ' ')} kr`
+    label: label => `${format(',')(label).replace(/,/g, ' ')} kr`,
+    display: 'Budget',
+    key: 'budget'
   },
-  Partners: {
+  partners: {
     value: project => [...new Set([...project.survey_answers.other_financiers, ...project.survey_answers.other_recipients])].length,
-    label: label => `${format('d')(label)} partners`
+    label: label => `${format('d')(label)} partners`,
+    display: 'Partners',
+    key: 'partners'
   },
-  Locations: {
+  locations: {
     value: project => project.survey_answers.locations.length,
-    label: label => `${format('d')(label)} locations`
+    label: label => `${format('d')(label)} platser`,
+    display: 'Platser',
+    key: 'locations'
   }
 }
 

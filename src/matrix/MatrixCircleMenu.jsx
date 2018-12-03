@@ -26,7 +26,9 @@ class MatrixCircleMenu extends Component {
         </svg>
         <DropdownList
           filter={false}
-          data={Object.keys(circleSizes)}
+          data={Object.values(circleSizes)}
+          valueField='key'
+          textField='display'
           value={this.props.circleSize}
           onChange={this.props.updateCircleSize} />
       </div>

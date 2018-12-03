@@ -17,7 +17,7 @@ class Matrix extends Component {
     super(props);
     this.state = {
       hoveredProject: null,
-      circleSize: 'Ticks'
+      circleSize: circleSizes.ticks
     };
 
     this.margin = { top: 130, right: 20, bottom: 20, left: 160 };
@@ -285,8 +285,8 @@ class Matrix extends Component {
   }
 
   updateData(data) {
-    const packedData = packData(data, this.scaleX, this.scaleY, circleSizes[this.state.circleSize]);
-    this.props.updateScaleData(buildScaleData(packedData, circleSizes[this.state.circleSize]));
+    const packedData = packData(data, this.scaleX, this.scaleY, this.state.circleSize);
+    this.props.updateScaleData(buildScaleData(packedData, this.state.circleSize));
     const circle = this.circles
       .selectAll('circle')
       .data(packedData, d => `${d.survey_answers.project_id}[${d.row},${d.col}]`);
