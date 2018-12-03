@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/static/media/11-Matt-och-steg.80797cbb.jpg"
   },
   {
-    "revision": "72dcfe9c27b40a7742b8",
+    "revision": "5e725465120106459b79",
     "url": "/static/css/main.143d85fc.chunk.css"
   },
   {
@@ -64,8 +64,8 @@ self.__precacheManifest = [
     "url": "/static/media/10-Mo-Bo.87f2f9fc.jpg"
   },
   {
-    "revision": "72dcfe9c27b40a7742b8",
-    "url": "/static/js/main.72dcfe9c.chunk.js"
+    "revision": "5e725465120106459b79",
+    "url": "/static/js/main.5e725465.chunk.js"
   },
   {
     "revision": "d14d2eb6e9525a0b74c2f7b2c04e587f",
@@ -128,7 +128,7 @@ self.__precacheManifest = [
     "url": "/static/css/1.4265df5b.chunk.css"
   },
   {
-    "revision": "a5ac3801584a83db9b08d09acd6a94e2",
+    "revision": "b27d93aea9221e89834ba882e29c36e5",
     "url": "/index.html"
   }
 ];
