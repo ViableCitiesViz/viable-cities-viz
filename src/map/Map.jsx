@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'react-fast-compare';
+import { withRouter } from 'react-router-dom';
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
 import europe from '../assets/data/europe.topo.json';
@@ -49,10 +50,22 @@ class Map extends Component {
     this.path = d3.geoPath()
         .projection(this.projection);
 
+    this.multiple_projects_box = d3.select(this.svgWrapperRef).append("div")
+        .classed("multiple_projects_box",true)
+        .style("opacity", 0);
     this.svg = d3.select(this.svgRef)
             .attr("width", this.width)
             .attr("height", this.height)
             .call(this.zoom);
+
+    this.svg.on('click', () => {
+      if (d3.event.target.tagName !== 'circle') {
+        this.projectNavigator.goToRoot(this.props.history, this.props.location);
+        this.multiple_projects_box.transition().style('opacity',0);
+        this.multiple_projects_box.text("");
+      }
+    });
+
     this.updateScaleLegend();
 
     this.g = this.svg.append("g");                              // The map itself
@@ -82,6 +95,8 @@ class Map extends Component {
     this.project_count_city = {};
 
 
+
+
     this.cities_circles = this.cities_container.selectAll("circle")
        .data(cities).enter()
        .append("circle")
@@ -99,8 +114,7 @@ class Map extends Component {
        })
        .on("mouseout", d => { this.tooltip.transition().style("opacity", 0); });
 
-       this.updateData(mockData);
-
+       this.updateData(this.props.filteredData);
         //Europe
         this.g.selectAll(".continent_Europe_subunits")
           .data(topojson.feature(europe, europe.objects.europe).features)
@@ -113,7 +127,7 @@ class Map extends Component {
           .enter().append("path")
           .attr("class", function(d) {return "country-" + d.id;})
           .attr("d", this.path)
-          .attr("fill", '#a8a8a8'); //https://www.color-hex.com/color/d3d3d3#shades-tints
+          .attr("fill", '#bdbdbd'); //https://www.color-hex.com/color/d3d3d3#shades-tints
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -121,14 +135,42 @@ class Map extends Component {
     // console.log(prevState);
     // console.log(this.props.filteredData);
     // this.updateHovered(this.state.hoveredProject, prevState.hoveredProject);
-    // this.updateClicked(this.props, prevProps);
+    this.updateClicked(this.props, prevProps);
 
     if (!isEqual(this.props.filteredData, prevProps.filteredData)) {
       this.updateData(this.props.filteredData);
       // this.setState({
         // hoveredProject: null
       // });
-      // this.projectNavigator.goToRoot(this.props.history, this.props.location);
+      this.projectNavigator.goToRoot(this.props.history, this.props.location);
+    }
+  }
+
+  updateClicked(props, prevProps){
+    let projectId = ProjectNavigator.GetProjectId(props.location);
+    let prevProjectId = ProjectNavigator.GetProjectId(prevProps.location);
+
+    // if we just started, (i.e. navigated to the site via a permalink with a project id)
+    // the projectId and prevProjectId will be identical because of how prevProps.location works
+    // so change it to -1.
+    if (!this.projectNavigator.hasChangedSinceInit()) {
+      prevProjectId = -1;
+      this.projectNavigator.change();
+    }
+
+    if (projectId === prevProjectId) return;
+
+    // necessary only if clicking a project changes svgWrapper size (i.e. infobox takes up more or less space than before)
+    // if ((projectId === -1 && prevProjectId !== -1) || (projectId !== -1 && prevProjectId === -1))
+      // this.draw();
+
+    // if no project in path, we done
+    if (projectId === -1) return;
+
+    // if the project from the url doesn't exist in filteredData, redirect to root
+    if (!this.projectNavigator.projectExists(props.location, props.filteredData)) {
+      this.projectNavigator.redirectToRoot(props.history);
+      return;
     }
   }
 
@@ -216,7 +258,8 @@ class Map extends Component {
          .classed("bubble","true")
          .style("stroke-width", .7)
          .style("stroke","#007082")
-         .attr("fill","#007d91")
+         // .attr("fill","#007d91")
+         .attr('fill','hsl(173, 100%, 37%)')  // Temporary
          .on('mouseover', d => {
            let tx = ""
            if(d.data.length > 1){
@@ -232,28 +275,39 @@ class Map extends Component {
               })
          .on('mouseout', d => { this.tooltip2.transition("check").style("opacity", 0);})
          .on('click',d => {
+           if(d.data.length == 1) {
+             this.projectNavigator.goToProject(this.props.history, this.props.location, d.data[0].survey_answers.project_id);
+           } else {
+             this.multiple_projects_box.text('');
+             this.multiple_projects_box.transition().style("opacity", .9);
+             var header = d3.select('.multiple_projects_box').append('h4')
+                  .style('margin-top','2px')
+                  .text(d.name + " has "+ d.data.length +" projects");
 
+            var projects_listed = d3.select('.multiple_projects_box').append('ul').classed('mp_inner_list',true);
+            projects_listed.exit().remove();
+            projects_listed.selectAll('li').data(d.data, d => {return d.survey_answers.project_id;})
+              .enter().append('li')
+              .style('cursor','pointer')
+              .on('click', d=>{
+                this.projectNavigator.goToProject(this.props.history, this.props.location, d.survey_answers.project_id);
+              })
+              .text(function(d){return d.survey_answers.project_title;});
+           }
          })
         .transition()
          .attr("r", d => {
            let a = d.data.length;
            let i = d3.interpolateNumber(3+a, 30*a);
            let x = ((d3.zoomTransform(this.svg.node()).y)*-1) -1000;
-           // console.log(trans);
-           // let x = (d3.event.transform.y * -1)-1000;
            if(x > 0){
              let t = x/21776;
              return i(t);
            }
            return 3 + a;
-           // return 3 + d.data.length;
-         })
-         .on("end", d => { });
-// console.log(d3.zoomTransform(this.svg.node()));
-         // console.log(this.zoomIdentity);
-       // this.project_circles.call(this.zoom.transform, d3.zoomIdentity);
-
+         });
   }
+
 
   zoomed2(){
     let afa = this.projects
@@ -301,10 +355,11 @@ class Map extends Component {
   }
 
   updateScaleLegend() {
-    // Just copied this from the lines following "this.project_circles.transition()..." 
+    // Just copied this from the lines following "this.project_circles.transition()..."
     // (lines 193-200) at the time of writing this.
     const radius = (a) => {
       let i = d3.interpolateNumber(3+a, 30*a);
+      // console.log(d3.zoomTransform(this.svg.node()));
       let x = ((d3.zoomTransform(this.svg.node()).y)*-1) -1000;
       if(x > 0){
         let t = x/21776;
@@ -314,7 +369,8 @@ class Map extends Component {
     }
 
     this.props.updateScaleData([
-      { r: radius(5), label: '5 projekt' },
+      { r: radius(7), label: '7 projekt' },
+      { r: radius(4), label: '4 projekt' },
       { r: radius(1), label: '1 projekt' }
     ]);
   }
@@ -334,4 +390,4 @@ Map.propTypes = {
   filteredData: PropTypes.object.isRequired
 };
 
-export default Map;
+export default withRouter(Map);
