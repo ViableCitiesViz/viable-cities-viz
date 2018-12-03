@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 import { withRouter } from 'react-router';
 import './Header.css';
@@ -11,7 +12,7 @@ class Header extends Component {
       return (
         <li key={view}
           className={`header-links__item ${match ? 'header-links__item--active' : ''}`}>
-          <Link to={`/${view.toLowerCase()}`}>
+          <Link className="header-links__item-link" to={`/${view.toLowerCase()}`}>
             {view}
           </Link>
         </li>
@@ -28,7 +29,8 @@ class Header extends Component {
           </div>
           <div className="header-content__right">
             <ul className="header-links">
-              <li className="header-links__item"><a href="#">About</a></li>
+              <li className="header-links__item"><button className="header-links__item-link" onClick={this.props.toggleAbout}>About</button></li>
+              <li className="header-links__item header-links__item--primary"><a className="header-links__item-link" href="#">Lämna Feedback</a></li>
             </ul>
           </div>
         </div>
@@ -36,5 +38,9 @@ class Header extends Component {
     );
   }
 }
+
+Header.propTypes = {
+  toggleAbout: PropTypes.func.isRequired
+};
 
 export default withRouter(Header);

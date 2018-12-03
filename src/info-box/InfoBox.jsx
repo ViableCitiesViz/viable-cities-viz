@@ -46,7 +46,9 @@ class InfoBox extends Component {
       other_recipients,
       description,
       project_type,
-      locations
+      locations,
+      link,
+      website
     } = project.survey_answers;
 
     const partners = [...new Set([...other_financiers, ...other_recipients])].sort();
@@ -100,6 +102,15 @@ class InfoBox extends Component {
 
                 <dt>Projekttid</dt>
                 <dd>{`${dates.start} - ${dates.end}`}</dd>
+
+                <dt>Projektsida</dt>
+                <dd><a href={link}>{link}</a></dd>
+
+                {website &&
+                  <Fragment>
+                    <dt>Hemsida</dt>
+                    <dd><a href={website}>{website}</a></dd>
+                  </Fragment>}
 
               </dl>
             </InfoBoxSection>

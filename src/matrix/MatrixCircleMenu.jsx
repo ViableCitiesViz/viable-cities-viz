@@ -12,17 +12,21 @@ class MatrixCircleMenu extends Component {
    */
 
   render() {
-    const r = 10;
+    const r = 12;
     const t = 3;
     const offset = 2;
 
     return (
       <div className="matrix-circle-menu">
         <svg width={r * 2 + 2} height={r * 2 + 2}>
-          <circle cx={r + 1} cy={r + 1} r={r} />
-          <line x1={offset + 1} x2={r * 2 - offset + 1} y1={r + 1} y2={r + 1} />
-          <path d={`M ${t + offset + 1} ${r + t + 1} L ${offset + 1} ${r + 1} L ${t + offset + 1} ${r - t + 1}`} />
-          <path d={`M ${r * 2 - t - offset + 1} ${r + t + 1} L ${r * 2 - offset + 1} ${r + 1} L ${r * 2 - t - offset + 1} ${r - t + 1}`} />
+          <g transform="translate(1, 1)">
+            <circle cx={r} cy={r} r={r} />
+            <g transform={`translate(${r}, ${r})rotate(45)translate(${-r}, ${-r})`}>
+              <line x1={offset} x2={r * 2 - offset} y1={r} y2={r} />
+              <path d={`M ${t + offset} ${r + t} L ${offset} ${r} L ${t + offset} ${r - t}`} />
+              <path d={`M ${r * 2 - t - offset} ${r + t} L ${r * 2 - offset} ${r} L ${r * 2 - t - offset} ${r - t}`} />
+            </g>
+          </g>
         </svg>
         <DropdownList
           filter={false}
@@ -37,7 +41,7 @@ class MatrixCircleMenu extends Component {
 }
 
 MatrixCircleMenu.propTypes = {
-  circleSize: PropTypes.string.isRequired,
+  circleSize: PropTypes.object.isRequired,
   updateCircleSize: PropTypes.func.isRequired
 }
 

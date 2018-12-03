@@ -158,16 +158,18 @@ export function buildScaleData(packedData, circleSize) {
   let labelNumbers = [];
   const circleRadii = [];
 
-  labelNumbers[0] = Number.parseInt(maxSize).toPrecision(1);
-  labelNumbers[1] = Number.parseInt(maxSize / 2).toPrecision(1);
-  labelNumbers[2] = Number.parseInt(maxSize / 10).toPrecision(1);
-  labelNumbers = labelNumbers.map(number => number === '0' ? 1 : number);
+  const significantFigures = Number.parseInt(maxSize) > 1000000 ? 1 : 2;
+
+  labelNumbers[0] = Number.parseInt(maxSize).toPrecision(significantFigures);
+  labelNumbers[1] = Number.parseInt(maxSize / 2).toPrecision(significantFigures);
+  labelNumbers[2] = Number.parseInt(maxSize / 10).toPrecision(significantFigures);
+  labelNumbers = labelNumbers.map(number => Number.parseInt(number) === 0 ? 1 : number);
 
   circleRadii[0] = circleRadius(labelNumbers[0]) * rScale;
   circleRadii[1] = circleRadius(labelNumbers[1]) * rScale;
   circleRadii[2] = circleRadius(labelNumbers[2]) * rScale;
 
-  if (Number.parseInt(maxSize).toPrecision(1) === Number.parseInt(minSize).toPrecision(1))
+  if (Number.parseInt(maxSize).toPrecision(significantFigures) === Number.parseInt(minSize).toPrecision(significantFigures))
     return [{
       r: circleRadii[0],
       label: circleSize.label(labelNumbers[0])

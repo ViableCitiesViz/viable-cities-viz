@@ -4,7 +4,6 @@
   background: #4a4c4d;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
   color: #fff;
-  font-weight: 600;
   z-index: 20;
 }
 
@@ -42,35 +41,67 @@
 }
 
 .header-links__item {
-  display: block;
   line-height: 50px;
+  display: block;
 }
 
-.header-links__item a {
+.header-links__item-link {
+  line-height: 50px;
   display: block;
+  background: none;
   color: #eee;
   text-decoration: none;
   height: 100%;
   width: 100%;
+  font-weight: 600;
   padding: 0 20px;
+  border-top: none;
+  border-right: none;
   border-bottom: 0px solid #eee;
+  border-left: none;
   box-sizing: border-box;
   transition: border-width 200ms,
     border-color 200ms,
     color 200ms;
+  cursor: pointer;
+  outline: none;
 }
 
-.header-links__item:not(.header-links__item--active) a:hover {
+.header-links__item:not(.header-links__item--active) .header-links__item-link:hover {
   border-bottom: 4px solid #eee;
   color: #fff;
 }
 
-.header-links__item--active a {
+.header-links__item--active .header-links__item-link {
   border-bottom: 4px solid hsl(173, 100%, 37%);
   color: hsl(173, 100%, 37%);
 }
 
-.header-links__item--active a:hover {
+.header-links__item--active .header-links__item-link:hover {
   border-color: hsl(173, 100%, 45%);
   color: hsl(173, 100%, 45%);
+}
+
+.header-links__item--primary {
+  padding: 7px 0;
+  margin: 0 10px;
+}
+
+.header-links__item--primary .header-links__item-link {
+  line-height: 36px;
+  background: hsl(31, 69.4%, 51.4%);
+  height: auto;
+  border-radius: 2px;
+  transition: background 200ms;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+
+.header-links__item.header-links__item--primary .header-links__item-link:hover {
+  border-width: 0;
+  background: hsl(31, 65%, 47%);
+}
+
+.header-links__item.header-links__item--primary a:active {
+  background: hsl(31, 60%, 42%);
 }

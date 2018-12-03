@@ -144,9 +144,9 @@ class Matrix extends Component {
         .attr('transform', `translate(${this.offset.x}, ${this.offset.y})`);
 
     selectors.circleSizeWrapper
-        .style('top', `${this.offset.y + this.margin.top - 40}px`)
-        .style('left', `${this.offset.x + this.margin.left - 120}px`);
-        //.style('transform', `translate(${this.offset.x + this.margin.left - 120}px, ${this.offset.y + this.margin.top - 40}px)`);
+        //.style('top', `${this.offset.y + this.margin.top - 40}px`)
+        //.style('left', `${this.offset.x + this.margin.left - 110}px`);
+        .style('transform', `translate(${this.offset.x + this.margin.left - 120}px, ${this.offset.y + this.margin.top - 40}px)`);
 
     // themes label
     selectors.themesLabel
