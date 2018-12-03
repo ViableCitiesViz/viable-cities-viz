@@ -63,6 +63,8 @@ class Map extends Component {
         this.projectNavigator.goToRoot(this.props.history, this.props.location);
         this.multiple_projects_box.transition().style('opacity',0);
         this.multiple_projects_box.text("");
+        this.projects.selectAll('circle').classed('clicked_bubble',false);
+        
       }
     });
 
@@ -243,7 +245,7 @@ class Map extends Component {
              });
 
       this.project_circles.enter().append('circle')
-         .attr("id",function(d,i){return"project-"+d.name;})
+         .attr("id",function(d,i){let stra = d.name.split(" ")[0]; return"project-"+stra;})
          .attr("cx", d => { let c = project_coordinates[d.name]; return this.projection([c.x,c.y])[0];})
          .attr("cy", d => { let c = project_coordinates[d.name]; return this.projection([c.x,c.y])[1];})
          .attr('transform', d => {
@@ -275,8 +277,11 @@ class Map extends Component {
               })
          .on('mouseout', d => { this.tooltip2.transition("check").style("opacity", 0);})
          .on('click',d => {
+           let stra = d.name.split(" ")[0];
            if(d.data.length == 1) {
              this.projectNavigator.goToProject(this.props.history, this.props.location, d.data[0].survey_answers.project_id);
+             this.projects.selectAll('circle').classed('clicked_bubble',false);
+             d3.select('#project-'+stra).classed('clicked_bubble',true);
            } else {
              this.multiple_projects_box.text('');
              this.multiple_projects_box.transition().style("opacity", .9);
@@ -291,6 +296,10 @@ class Map extends Component {
               .style('cursor','pointer')
               .on('click', d=>{
                 this.projectNavigator.goToProject(this.props.history, this.props.location, d.survey_answers.project_id);
+                this.multiple_projects_box.transition().style('opacity',0);
+                this.multiple_projects_box.text("");
+                this.projects.selectAll('circle').classed('clicked_bubble',false);
+                d3.select('#project-'+stra).classed('clicked_bubble',true);
               })
               .text(function(d){return d.survey_answers.project_title;});
            }
