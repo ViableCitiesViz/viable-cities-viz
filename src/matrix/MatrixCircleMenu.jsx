@@ -18,23 +18,27 @@ class MatrixCircleMenu extends Component {
 
     return (
       <div className="matrix-circle-menu">
-        <svg width={r * 2 + 2} height={r * 2 + 2}>
-          <g transform="translate(1, 1)">
-            <circle cx={r} cy={r} r={r} />
-            <g transform={`translate(${r}, ${r})rotate(45)translate(${-r}, ${-r})`}>
-              <line x1={offset} x2={r * 2 - offset} y1={r} y2={r} />
-              <path d={`M ${t + offset} ${r + t} L ${offset} ${r} L ${t + offset} ${r - t}`} />
-              <path d={`M ${r * 2 - t - offset} ${r + t} L ${r * 2 - offset} ${r} L ${r * 2 - t - offset} ${r - t}`} />
+        <div className="matrix-circle-menu__svg-wrapper" style={{ width: r * 2 + 2, height: r * 2 + 2 }}>
+          <svg width="100%" height="100%">
+            <g transform="translate(1, 1)">
+              <circle cx={r} cy={r} r={r} />
+              <g transform={`translate(${r}, ${r})rotate(45)translate(${-r}, ${-r})`}>
+                <line x1={offset} x2={r * 2 - offset} y1={r} y2={r} />
+                <path d={`M ${t + offset} ${r + t} L ${offset} ${r} L ${t + offset} ${r - t}`} />
+                <path d={`M ${r * 2 - t - offset} ${r + t} L ${r * 2 - offset} ${r} L ${r * 2 - t - offset} ${r - t}`} />
+              </g>
             </g>
-          </g>
-        </svg>
-        <DropdownList
-          filter={false}
-          data={Object.values(circleSizes)}
-          valueField='key'
-          textField='display'
-          value={this.props.circleSize}
-          onChange={this.props.updateCircleSize} />
+          </svg>
+        </div>
+        <div className="matrix-circle-menu__dropdown-wrapper">
+          <DropdownList
+            filter={false}
+            data={Object.values(circleSizes)}
+            valueField='key'
+            textField='display'
+            value={this.props.circleSize}
+            onChange={this.props.updateCircleSize} />
+        </div>
       </div>
     );
   }  
