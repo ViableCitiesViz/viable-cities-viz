@@ -14,7 +14,6 @@ import ProjectNavigator from '../ProjectNavigator';
 import debounce from 'lodash.debounce';
 
 // current bugs
-// Multiple cities are not highlighted when clicked on a project.
 // Switching between map/matrix through project doesn't keep color on clicked project
 // Semantic zoom in factor needs to change from transform.y to transform.k
 
@@ -170,6 +169,18 @@ class Map extends Component {
 
     if (projectId === prevProjectId) return;
 
+    this.projects.selectAll('circle').classed('clicked_bubble',false);
+
+    this.projects.selectAll('circle')
+      .filter(function (d) {
+      for(var j =0; j < d.data.length; j++){
+        if(d.data[j].survey_answers.project_id == projectId){
+          return true;
+        }
+      }
+      return false;})
+      .classed('clicked_bubble',function(d){ return true;});
+
     // necessary only if clicking a project changes svgWrapper size (i.e. infobox takes up more or less space than before)
     // if ((projectId === -1 && prevProjectId !== -1) || (projectId !== -1 && prevProjectId === -1))
       // this.draw();
@@ -291,10 +302,6 @@ class Map extends Component {
              let id_real = d.data[0].survey_answers.project_id;
              this.projectNavigator.goToProject(this.props.history, this.props.location, d.data[0].survey_answers.project_id);
              this.projects.selectAll('circle').classed('clicked_bubble',false);
-             // d3.select('#project-'+stra).classed('clicked_bubble',true);
-             // Select All circles.
-             // Filter on circles with the same id as the project clicked - not location
-             // Update their class to clicked_bubble.
              this.projects.selectAll('circle')
                .filter(function (d) {
                for(var j =0; j < d.data.length; j++){
@@ -304,7 +311,6 @@ class Map extends Component {
                }
                return false;})
                .classed('clicked_bubble',function(d){ return true;});
-
            } else {
              this.multiple_projects_box.text('');
              this.multiple_projects_box.transition().style("opacity", .9);
