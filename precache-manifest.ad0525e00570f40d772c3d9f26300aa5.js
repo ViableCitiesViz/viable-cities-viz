@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/static/media/11-Matt-och-steg.80797cbb.jpg"
   },
   {
-    "revision": "3b99878b7aa7a6735f0d",
+    "revision": "13d1e00d173d4db6c230",
     "url": "/static/css/main.aba5c498.chunk.css"
   },
   {
@@ -64,8 +64,8 @@ self.__precacheManifest = [
     "url": "/static/media/10-Mo-Bo.87f2f9fc.jpg"
   },
   {
-    "revision": "3b99878b7aa7a6735f0d",
-    "url": "/static/js/main.3b99878b.chunk.js"
+    "revision": "13d1e00d173d4db6c230",
+    "url": "/static/js/main.13d1e00d.chunk.js"
   },
   {
     "revision": "d14d2eb6e9525a0b74c2f7b2c04e587f",
@@ -108,27 +108,27 @@ self.__precacheManifest = [
     "url": "/static/media/21-3De.05da2369.jpg"
   },
   {
-    "revision": "12f0820c451bdc75f4d1ef97732bf6e8",
-    "url": "/static/media/rw-widgets.12f0820c.woff"
-  },
-  {
     "revision": "bc7c4a59f924cf037aad6e1f9edba366",
     "url": "/static/media/rw-widgets.bc7c4a59.eot"
   },
   {
-    "revision": "eceddf474df95d8d4a7e316668c3be85",
-    "url": "/static/media/rw-widgets.eceddf47.ttf"
+    "revision": "12f0820c451bdc75f4d1ef97732bf6e8",
+    "url": "/static/media/rw-widgets.12f0820c.woff"
   },
   {
     "revision": "792dcd18baf5f544aabcad1883d673c2",
     "url": "/static/media/rw-widgets.792dcd18.svg"
   },
   {
+    "revision": "eceddf474df95d8d4a7e316668c3be85",
+    "url": "/static/media/rw-widgets.eceddf47.ttf"
+  },
+  {
     "revision": "dc39fb64fcdf5c027f93",
     "url": "/static/css/1.85d03b38.chunk.css"
   },
   {
-    "revision": "74603ca9274c7ad3a265ac622a3c843b",
+    "revision": "33d9f6d3809a97c70baa3297b87326cd",
     "url": "/index.html"
   }
 ];
