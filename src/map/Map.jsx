@@ -14,9 +14,6 @@ import ProjectNavigator from '../ProjectNavigator';
 import debounce from 'lodash.debounce';
 
 // current bugs
-// Switching between map/matrix through project doesn't keep color on clicked project
-// Semantic zoom in factor needs to change from transform.y to transform.k
-
 class Map extends Component {
 
   constructor(props){
@@ -153,12 +150,12 @@ class Map extends Component {
   updateClicked(props, prevProps){
     let projectId = ProjectNavigator.GetProjectId(props.location);
     let prevProjectId = ProjectNavigator.GetProjectId(prevProps.location);
-    console.log(props.location);
-    console.log(prevProps.location);
+    // console.log(props.location);
+    // console.log(prevProps.location);
     // if we just started, (i.e. navigated to the site via a permalink with a project id)
     // the projectId and prevProjectId will be identical because of how prevProps.location works
     // so change it to -1.
-    console.log(projectId);
+    // console.log(projectId);
     if (!this.projectNavigator.hasChangedSinceInit()) {
       prevProjectId = -1;
       this.projectNavigator.change();
@@ -170,7 +167,6 @@ class Map extends Component {
     if (projectId === prevProjectId) return;
 
     this.projects.selectAll('circle').classed('clicked_bubble',false);
-
     this.projects.selectAll('circle')
       .filter(function (d) {
       for(var j =0; j < d.data.length; j++){
@@ -371,25 +367,19 @@ class Map extends Component {
   }
 
   circle_size_increase(d){
-    let i = d3.interpolateNumber(2, 20);
-    let x = (d3.event.transform.y * -1)-2000;
-    if(x > 0){
-      let t = x/21776;
-      return i(t);
-    }
-    return 1.3;
+    let i = d3.interpolateNumber(1.2, 20);
+    let k = d3.event.transform.k -1;
+    let t = k/100;
+    return i(t);
   }
 
   // Projects increase after zoom in factor X.
   project_size_increase(d){
     let a = d.data.length;
     let i = d3.interpolateNumber(3+a, 30*a);
-    let x = (d3.event.transform.y * -1)-1000;
-    if(x > 0){
-      let t = x/21776;
-      return i(t);
-    }
-    return 3 + a;
+    let k = d3.event.transform.k -1;
+    let t = k/100;
+    return i(t);
   }
 
   // Semantic transformation
@@ -407,13 +397,9 @@ class Map extends Component {
     // (lines 193-200) at the time of writing this.
     const radius = (a) => {
       let i = d3.interpolateNumber(3+a, 30*a);
-      // console.log(d3.zoomTransform(this.svg.node()));
-      let x = ((d3.zoomTransform(this.svg.node()).y)*-1) -1000;
-      if(x > 0){
-        let t = x/21776;
-        return i(t);
-      }
-      return 3 + a;
+      let k = (d3.zoomTransform(this.svg.node()).k) -1;
+      let t = k/100;
+      return i(t);
     }
 
     this.props.updateScaleData([
