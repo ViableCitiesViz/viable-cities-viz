@@ -16,7 +16,7 @@ import debounce from 'lodash.debounce';
 // current bugs
 // Multiple cities are not highlighted when clicked on a project.
 // Switching between map/matrix through project doesn't keep color on clicked project
-// Semantic zoom in factor needs to change from transform.y to transform.k 
+// Semantic zoom in factor needs to change from transform.y to transform.k
 
 class Map extends Component {
 
@@ -100,9 +100,6 @@ class Map extends Component {
     this.tooltip3_showed = 0;
     this.project_count_city = {};
 
-
-
-
     this.cities_circles = this.cities_container.selectAll("circle")
        .data(cities).enter()
        .append("circle")
@@ -120,7 +117,7 @@ class Map extends Component {
        })
        .on("mouseout", d => { this.tooltip.transition().style("opacity", 0); });
 
-       this.updateData(this.props.filteredData);
+        this.updateData(this.props.filteredData);
         //Europe
         this.g.selectAll(".continent_Europe_subunits")
           .data(topojson.feature(europe, europe.objects.europe).features)
@@ -133,7 +130,7 @@ class Map extends Component {
           .enter().append("path")
           .attr("class", function(d) {return "country-" + d.id;})
           .attr("d", this.path)
-          .attr("fill", '#bdbdbd'); //https://www.color-hex.com/color/d3d3d3#shades-tints
+        .attr("fill", '#bdbdbd'); //https://www.color-hex.com/color/d3d3d3#shades-tints
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -152,10 +149,13 @@ class Map extends Component {
     }
   }
 
+
+// Here update the clicked circles dilemma.
   updateClicked(props, prevProps){
     let projectId = ProjectNavigator.GetProjectId(props.location);
     let prevProjectId = ProjectNavigator.GetProjectId(prevProps.location);
-
+    console.log(props.location);
+    console.log(prevProps.location);
     // if we just started, (i.e. navigated to the site via a permalink with a project id)
     // the projectId and prevProjectId will be identical because of how prevProps.location works
     // so change it to -1.
@@ -285,11 +285,26 @@ class Map extends Component {
               })
          .on('mouseout', d => { this.tooltip2.transition("check").style("opacity", 0);})
          .on('click',d => {
+           // Here update the clicked one project = multiple cities problem.
            let stra = d.name.split(" ")[0];
            if(d.data.length == 1) {
+             let id_real = d.data[0].survey_answers.project_id;
              this.projectNavigator.goToProject(this.props.history, this.props.location, d.data[0].survey_answers.project_id);
              this.projects.selectAll('circle').classed('clicked_bubble',false);
-             d3.select('#project-'+stra).classed('clicked_bubble',true);
+             // d3.select('#project-'+stra).classed('clicked_bubble',true);
+             // Select All circles.
+             // Filter on circles with the same id as the project clicked - not location
+             // Update their class to clicked_bubble.
+             this.projects.selectAll('circle')
+               .filter(function (d) {
+               for(var j =0; j < d.data.length; j++){
+                 if(d.data[j].survey_answers.project_id == id_real){
+                   return true;
+                 }
+               }
+               return false;})
+               .classed('clicked_bubble',function(d){ return true;});
+
            } else {
              this.multiple_projects_box.text('');
              this.multiple_projects_box.transition().style("opacity", .9);
@@ -303,11 +318,21 @@ class Map extends Component {
               .enter().append('li')
               .style('cursor','pointer')
               .on('click', d=>{
+                var id_real = d.survey_answers.project_id;
                 this.projectNavigator.goToProject(this.props.history, this.props.location, d.survey_answers.project_id);
                 this.multiple_projects_box.transition().style('opacity',0);
                 this.multiple_projects_box.text("");
                 this.projects.selectAll('circle').classed('clicked_bubble',false);
-                d3.select('#project-'+stra).classed('clicked_bubble',true);
+
+                this.projects.selectAll('circle')
+                  .filter(function (d) {
+                  for(var j =0; j < d.data.length; j++){
+                    if(d.data[j].survey_answers.project_id == id_real){
+                      return true;
+                    }
+                  }
+                  return false;})
+                  .classed('clicked_bubble',function(d){ return true;});
               })
               .text(function(d){return d.survey_answers.project_title;});
            }
