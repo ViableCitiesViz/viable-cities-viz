@@ -30,7 +30,7 @@ class Header extends Component {
           <div className="header-content__right">
             <ul className="header-links">
               <li className="header-links__item"><button className="header-links__item-link" onClick={this.props.toggleAbout}>About</button></li>
-              <li className="header-links__item header-links__item--primary"><a className="header-links__item-link" href="#">Lämna Feedback</a></li>
+              <li className="header-links__item header-links__item--primary"><a className="header-links__item-link" href="https://goo.gl/forms/bX9jxwEtvLveayls2" target="_blank">Lämna Feedback</a></li>
             </ul>
           </div>
         </div>
