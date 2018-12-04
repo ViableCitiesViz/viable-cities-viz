@@ -313,7 +313,7 @@ class Filters extends Component {
                 }
               });
             }}
-            placeholder="Filtrera efter städer"
+            placeholder="Filtrera efter plats"
             valueField="name"
             textField="name"
             itemComponent={ListItem}
