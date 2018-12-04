@@ -18,7 +18,7 @@ class About extends Component {
           <animated.div
             className="about-bg"
             style={{ background: props.background }}
-            onClick={(e) => e.target === e.currentTarget && this.props.toggleAbout()}>
+            onClick={(e) => e.target === e.currentTarget && this.props.about && this.props.toggleAbout()}>
             <animated.div
               className="about-content"
               style={{ opacity: props.opacity,
