@@ -13,6 +13,10 @@ import './Map.css';
 import ProjectNavigator from '../ProjectNavigator';
 import debounce from 'lodash.debounce';
 
+// current bugs
+// Multiple cities are not highlighted when clicked on a project.
+// Switching between map/matrix through project doesn't keep color on clicked project
+// Semantic zoom in factor needs to change from transform.y to transform.k 
 
 class Map extends Component {
 
@@ -64,7 +68,7 @@ class Map extends Component {
         this.multiple_projects_box.transition().style('opacity',0);
         this.multiple_projects_box.text("");
         this.projects.selectAll('circle').classed('clicked_bubble',false);
-        
+
       }
     });
 
@@ -155,9 +159,13 @@ class Map extends Component {
     // if we just started, (i.e. navigated to the site via a permalink with a project id)
     // the projectId and prevProjectId will be identical because of how prevProps.location works
     // so change it to -1.
+    console.log(projectId);
     if (!this.projectNavigator.hasChangedSinceInit()) {
       prevProjectId = -1;
       this.projectNavigator.change();
+      // this.projects.selectAll('circle').classed('clicked_bubble',false);
+      // d3.select('#project-'+stra).classed('clicked_bubble',true);
+
     }
 
     if (projectId === prevProjectId) return;

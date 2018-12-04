@@ -159,7 +159,7 @@ class Filters extends Component {
 
   buildLocationList() {
     const data = this.filteredByAllExcept('locations');
-    
+
     const ret = new Map();
     data.data.forEach(d => {
       d.survey_answers.locations.forEach(location => {
@@ -208,7 +208,7 @@ class Filters extends Component {
     const ROWS = 5;
     const COLS = 4;
 
-    const colRange = range(1, COLS + 1); 
+    const colRange = range(1, COLS + 1);
 
     const nonEmpty = {};
     for (let row = 1; row <= ROWS; ++row) {
@@ -277,7 +277,7 @@ class Filters extends Component {
         matchmaking: this.buildMatchmakingList()
       }
     }
-    
+
     return (
       <div className="filters">
         <h2>Filter</h2>
@@ -313,7 +313,7 @@ class Filters extends Component {
                 }
               });
             }}
-            placeholder="Filtrera efter kommuner"
+            placeholder="Filtrera efter städer"
             valueField="name"
             textField="name"
             itemComponent={ListItem}
