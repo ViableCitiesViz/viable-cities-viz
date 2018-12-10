@@ -56,7 +56,7 @@ class App extends Component {
             <Sidebar data={mockData} updateFilteredData={this.updateFilteredData} scaleData={this.state.scaleData} />
             <Switch>
               <Route path="/" exact render={props => (
-                <Redirect to="/matrix" />
+                <Redirect to="/map" />
               )}/>
               <Route path="/map" render={props => (
                 <Map data={mockData} filteredData={this.state.filteredData} updateScaleData={this.updateScaleData} />
