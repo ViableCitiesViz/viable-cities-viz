@@ -48,6 +48,10 @@ export function circleRadius(area) {
   return Math.sqrt(area / Math.PI);
 }
 
+export function ticks(project) {
+  //return Object.values(col2focus).reduce((sum, focusArea) => sum + project.survey_answers[focusArea].length, 0);
+}
+
 export const circleSizes = {
   ticks: {
     value: project => 1,
@@ -56,7 +60,7 @@ export const circleSizes = {
     key: 'ticks'
   },
   budget: {
-    value: project => project.survey_answers.budget.funded,
+    value: (project, normalize = false) => project.survey_answers.budget.funded,
     label: label => `${format(',')(label).replace(/,/g, ' ')} kr`,
     display: 'Budget',
     key: 'budget'
@@ -109,12 +113,16 @@ export function packData(data, scaleX, scaleY, circleSize) {
     }
   });
 
+
+
   // first pass: pack circles and find the "optimal scale"
   // and redo the circle radii to use that scale
   let maxEnclose = 0;
   for (let row = 1; row <= 5; ++row) {
     for (let col = 1; col <= 4; ++col) {
       if (!obj[row][col].length) continue; // if empty continue
+      obj[row][col].sort((a, b) => b.r - a.r);
+      //obj[row][col].sort((a, b) => a.survey_answers.project_title.localeCompare(b.survey_answers.project_title));
       packSiblings(obj[row][col]);
       maxEnclose = Math.max(maxEnclose, packEnclose(obj[row][col]).r);
     }
@@ -163,7 +171,7 @@ export function buildScaleData(packedData, circleSize) {
   labelNumbers[0] = Number.parseInt(maxSize).toPrecision(significantFigures);
   labelNumbers[1] = Number.parseInt(maxSize / 2).toPrecision(significantFigures);
   labelNumbers[2] = Number.parseInt(maxSize / 10).toPrecision(significantFigures);
-  labelNumbers = labelNumbers.map(number => Number.parseInt(number) === 0 ? 1 : number);
+  labelNumbers = labelNumbers.map(number => Number.parseInt(number) === 0 ? 1 : Number.parseInt(number));
 
   circleRadii[0] = circleRadius(labelNumbers[0]) * rScale;
   circleRadii[1] = circleRadius(labelNumbers[1]) * rScale;
@@ -174,6 +182,12 @@ export function buildScaleData(packedData, circleSize) {
       r: circleRadii[0],
       label: circleSize.label(labelNumbers[0])
     }];
+
+  if (labelNumbers[0] === labelNumbers[1] || labelNumbers[1] === labelNumbers[2])
+    return [0, 2].map(i => ({
+      r: circleRadii[i],
+      label: circleSize.label(labelNumbers[i])
+    }));
 
   return range(3).map(i => ({
     r: circleRadii[i],
