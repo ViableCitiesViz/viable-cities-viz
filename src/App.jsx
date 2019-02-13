@@ -41,7 +41,7 @@ function App() {
           <Sidebar data={mockData} updateFilteredData={updateFilteredData} scaleData={scaleData} />
           <Switch>
             <Route path="/" exact render={props => (
-              <Redirect to="/matrix" />
+              <Redirect to="/map" />
             )}/>
             <Route path="/map" render={props => (
               <Map data={mockData} filteredData={filteredData} updateScaleData={updateScaleData} />
