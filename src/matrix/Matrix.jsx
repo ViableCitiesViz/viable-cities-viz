@@ -30,8 +30,6 @@ class Matrix extends Component {
   componentDidMount() {
     this.svg = select(this.svgRef);
 
-    console.dir(this.svgWrapperRef);
-
     // used for transforming the contents of the svg, if necessary
     this.svgInner = this.svg
       .append('g')
@@ -105,8 +103,6 @@ class Matrix extends Component {
   draw(init = false) {
     let height = +this.svgWrapperRef.clientHeight - this.margin.top - this.margin.bottom;
     let width = +this.svgWrapperRef.clientWidth - this.margin.left - this.margin.right;
-
-    console.log(`width: ${width}, height: ${height}`);
 
     // 300 px is the size of the infobox that appears when a project is clicked!
     if (this.projectNavigator.projectExists(this.props.location, this.props.filteredData)) width -= 300;
