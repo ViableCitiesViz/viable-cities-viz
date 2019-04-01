@@ -4,16 +4,16 @@ self.__precacheManifest = [
     "url": "/static/media/11-Matt-och-steg.80797cbb.jpg"
   },
   {
-    "revision": "d99fc2d468c93b6a3f03",
-    "url": "/static/css/main.b68bdd06.chunk.css"
+    "revision": "d8d24e8682f9af35866b",
+    "url": "/static/css/main.a652df5c.chunk.css"
   },
   {
-    "revision": "a770b6797b68e3f8920e473eb824bac0",
-    "url": "/static/media/loader-big.a770b679.gif"
+    "revision": "792dcd18baf5f544aabcad1883d673c2",
+    "url": "/static/media/rw-widgets.792dcd18.svg"
   },
   {
-    "revision": "2d9854535d959f5cd586",
-    "url": "/static/js/1.2d985453.chunk.js"
+    "revision": "67ed211209306b9844de",
+    "url": "/static/js/1.67ed2112.chunk.js"
   },
   {
     "revision": "229c360febb4351a89df",
@@ -64,8 +64,8 @@ self.__precacheManifest = [
     "url": "/static/media/10-Mo-Bo.87f2f9fc.jpg"
   },
   {
-    "revision": "d99fc2d468c93b6a3f03",
-    "url": "/static/js/main.d99fc2d4.chunk.js"
+    "revision": "d8d24e8682f9af35866b",
+    "url": "/static/js/main.d8d24e86.chunk.js"
   },
   {
     "revision": "d14d2eb6e9525a0b74c2f7b2c04e587f",
@@ -112,23 +112,23 @@ self.__precacheManifest = [
     "url": "/static/media/rw-widgets.bc7c4a59.eot"
   },
   {
-    "revision": "12f0820c451bdc75f4d1ef97732bf6e8",
-    "url": "/static/media/rw-widgets.12f0820c.woff"
+    "revision": "a770b6797b68e3f8920e473eb824bac0",
+    "url": "/static/media/loader-big.a770b679.gif"
   },
   {
-    "revision": "792dcd18baf5f544aabcad1883d673c2",
-    "url": "/static/media/rw-widgets.792dcd18.svg"
+    "revision": "12f0820c451bdc75f4d1ef97732bf6e8",
+    "url": "/static/media/rw-widgets.12f0820c.woff"
   },
   {
     "revision": "eceddf474df95d8d4a7e316668c3be85",
     "url": "/static/media/rw-widgets.eceddf47.ttf"
   },
   {
-    "revision": "2d9854535d959f5cd586",
-    "url": "/static/css/1.bcf70613.chunk.css"
+    "revision": "67ed211209306b9844de",
+    "url": "/static/css/1.4fb2ef70.chunk.css"
   },
   {
-    "revision": "bbcfd1016b85b2d096126028a774d3c0",
+    "revision": "0c95776875211ff398db16ff707d6e27",
     "url": "/index.html"
   }
 ];
