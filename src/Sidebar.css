@@ -17,6 +17,10 @@
   padding: 10px 10px 10px 10px;
 }
 
+.sidebar__logo {
+  margin: 10px 0 15px 0;
+}
+
 .sidebar__bottom {
   flex-shrink: 0;
   padding: 10px 10px 10px 10px;

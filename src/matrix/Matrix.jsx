@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { select, axisLeft, axisTop, event, scalePoint, easePolyOut } from 'd3';
-import { themeLabel, focusLabel, packData, buildScaleData, parseNewlinesY, parseNewlinesX, type2class, circleSizes } from './MatrixUtility';
+import { themeLabel, focusLabel, packData, buildScaleData, parseNewlinesY, newlinesXTransform, parseNewlinesX, createLabelBackground, type2class, circleSizes } from './MatrixUtility';
 import { withRouter } from 'react-router-dom';
 import MatrixTooltip from './MatrixTooltip';
 import MatrixCircleMenu from './MatrixCircleMenu';
@@ -17,10 +17,11 @@ class Matrix extends Component {
     super(props);
     this.state = {
       hoveredProject: null,
-      circleSize: circleSizes.ticks
+      circleSize: circleSizes.ticks,
+      guideMode: false
     };
 
-    this.margin = { top: 130, right: 20, bottom: 20, left: 160 };
+    this.margin = { top: 100, right: 20, bottom: 20, left: 190 };
     this.offset = { x: 0,  y: 0 };
     this.projectNavigator = new ProjectNavigator('/matrix');
     this.draw = this.draw.bind(this);
@@ -190,7 +191,8 @@ class Matrix extends Component {
           .attr('fill', 'currentColor')
           .attr('x', -width - tickPadding)
           .attr('dy', '0.32em') // see d3-axis source code
-          .call(parseNewlinesY);
+          .call(parseNewlinesY)
+          .call(createLabelBackground);
     } else {
       const x = -width - tickPadding;
       selectors.yAxis.selectAll('.tick text.label')
@@ -215,12 +217,13 @@ class Matrix extends Component {
           .attr('fill', 'currentColor')
           .attr('y', -height - tickPadding)
           .attr('dy', '0em') // see d3-axis source code
-          .call(parseNewlinesX);
+          .call(parseNewlinesX)
+          .call(createLabelBackground);
     } else {
       const y = -height - tickPadding;
       selectors.xAxis.selectAll('.tick text.label')
           .attr('y', y)
-          .attr('transform', `translate(0,${y})rotate(-45)translate(0,${-y})`);
+          .attr('transform', newlinesXTransform(y));
     }
 
     if (dimensionsChanged)

@@ -8,11 +8,12 @@ class Header extends Component {
   render() {
     const views = ['Map', 'Matrix', 'Partners']
     const viewLinks = views.map(view => {
-      const match = this.props.location.pathname.includes(view.toLowerCase());
+      const viewMatch = this.props.location.pathname.includes(view.toLowerCase());
+      const projectMatch = this.props.location.pathname.match(/\/project\/(\d+)/);
       return (
         <li key={view}
-          className={`header-links__item ${match ? 'header-links__item--active' : ''}`}>
-          <Link className="header-links__item-link" to={`/${view.toLowerCase()}`}>
+          className={`header-links__item ${viewMatch ? 'header-links__item--active' : ''}`}>
+          <Link className="header-links__item-link" to={`/${view.toLowerCase() + (projectMatch !== null && view !== 'Partners' ? `/project/${projectMatch[1]}` : '')}`}>
             {view}
           </Link>
         </li>

@@ -38,7 +38,10 @@
 
 .matrix .tick text.label {
   font-size: 1.2em;
-  font-family: 'Open Sans';
+  /*font-family: 'Open Sans';*/
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
   will-change: transform;
 }
 

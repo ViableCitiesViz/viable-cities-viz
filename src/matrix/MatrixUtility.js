@@ -205,32 +205,48 @@ export function parseNewlinesY(texts) {
     const x = text.attr('x');
     const dy = parseFloat(text.attr('dy'));
     text.text(null);
-    const lineHeight = 1.3; // em
-    let i = 0;
-    words.forEach(word => {
+    const lineHeight = 1.1; // em
+    words.forEach((word, i) => {
       text.append('tspan')
           .text(word)
           .attr('x', x)
           .attr('y', `-${(words.length - 1) * lineHeight / 2}em`)
-          .attr('dy', `${dy + (i++ * lineHeight)}em`);
+          .attr('dy', `${dy + (i * lineHeight)}em`);
     });
   });
 }
+// if the label should be rotated, change the rotate value here
+export function newlinesXTransform(y) {
+  return `translate(0,${y})rotate(0)translate(0,${-y})`;
+}
 export function parseNewlinesX(texts) {
   texts.each(function() {
-    const text = select(this).attr('text-anchor', 'start');
+    const text = select(this).attr('text-anchor', 'middle');
     const words = text.text().split(/ {2}/);
     const y = text.attr('y');
-    const dy = parseFloat(text.attr('dy'));
     text.text(null);
-    const lineHeight = 1.3; // em
-    let i = 0;
-    words.forEach(word => {
-      text.append('tspan')
+    const lineHeight = 1.1; // em
+    words.forEach((word, i) => {
+      const ind = i === words.length - 1 ? 0 : 1;
+      text.insert('tspan', ':first-child')
           .text(word)
           .attr('x', 0)
-          .attr('dy', `${dy + (i++ * lineHeight)}em`);
+          .attr('dy', `-${ind * lineHeight}em`);
     });
-    text.attr('transform', `translate(0,${y})rotate(-45)translate(0,${-y})`);
+    text.attr('transform', newlinesXTransform(y));
   });
+}
+export function createLabelBackground(texts) {
+  texts.each(function() {
+    const text = select(this);
+    const bbox = text.node().getBBox();
+    text.select(function() { return this.parentNode; })
+      .insert('rect', ':first-child')
+        .attr('x', bbox.x)
+        .attr('y', bbox.y)
+        .attr('width', bbox.width)
+        .attr('height', bbox.height)
+        //.style('fill', 'red')
+        .classed('label-background', true);
+      });
 }
