@@ -1,0 +1,1526 @@
+{
+  "data": [
+    {
+      "survey_answers": {
+        "budget": { "funded": 4409448, "total_cost": 7886801 },
+        "project_id": "46068-1",
+        "project_type": "Forskningsprojekt",
+        "ratio_funded": 0.559092083089,
+        "project_title": "Aktivitetsbaserad energi- och mobilitetsmodellering på stadsnivå för planering av framtidens städer",
+        "focus_lifestyle": ["testbeds", "management"],
+        "focus_planning": ["testbeds", "management"],
+        "focus_mobility": ["testbeds", "management"],
+        "focus_infrastructure": ["testbeds", "management"],
+        "project_organization": "Uppsala universitet",
+        "locations": ["Borlänge"],
+        "keywords": [
+          "Energi",
+          "Byggnader",
+          "Transporter",
+          "Mobilitet",
+          "Aktiviteter",
+          "Stadsplanering",
+          "Modellering"
+        ],
+        "other_financiers": [
+          "Uppsala universitet",
+          "Högskolan Dalarna",
+          "WSP Sverige AB",
+          "Vattenfall AB",
+          "AB Borlänge Energi",
+          "Borlänge kommun"
+        ],
+        "other_recipients": [
+          "Kungliga Tekniska Högskolan",
+          "Uppsala universitet",
+          "Högskolan Dalarna",
+          "WSP Sverige AB"
+        ],
+        "project_manager": "Joakim Widén",
+        "project_manager_email": "joakim.widen@angstrom.uu.se",
+        "dates": { "start": "2019-01-01", "end": "2021-13-31" },
+        "description": "Projektet ska använda smarta digitala tekniker för att samla data om invånares mobilitet och aktiviteter. Dessa data kombineras med bland annat data om väder och plats i en stadsmodell. Modellen ska beräkna och visualisera energi- och effektbehov och växthusgasutsläpp i staden som underlag för stadsplanering.",
+        "link": "http://viablecities.com/foi-projekt/aktivitetsbaserad-modellering/"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 6000000, "total_cost": 12000000 },
+        "project_id": "2018-04500",
+        "project_type": "Innovationsprojekt",
+        "ratio_funded": 0.5,
+        "project_title": "City as a Platform",
+        "focus_lifestyle": [],
+        "focus_planning": [],
+        "focus_mobility": [],
+        "focus_infrastructure": [
+          "testbeds",
+          "innovation",
+          "financing",
+          "management",
+          "intelligence"
+        ],
+        "project_organization": "RISE",
+        "locations": [],
+        "keywords": [
+          "IoT",
+          "data",
+          "smartastäder",
+          "plattform",
+          "IoT-plattformar",
+          "dataplattformar",
+          "digitalisering",
+          "standardisering",
+          "samverkan"
+        ],
+        "other_financiers": [],
+        "other_recipients": [],
+        "project_manager": "Claus Popp Larsen",
+        "project_manager_email": "claus.popp.larsen@viablecities.com",
+        "dates": { "start": "2018-11-15", "end": "2021-08-31" },
+        "description": "City as a Platform är ett strategiskt innovationsprojekt som samlar 10 kommuner (till att börja med) vilka kommer att utforska, testa, implementera och samverka kring gemensamma IoT-plattformar som stöd för samhällsnytta i städerna. Projektet skall även säkra nationell förankring samt föreslå en nationell förvaltningsmodell av ett minimiramverk för dataplattformar, inklusive relevanta standarder.",
+        "link": "http://viablecities.com/foi-projekt/caap/"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 3487000, "total_cost": 6974000 },
+        "project_id": "46070-1",
+        "project_type": "Innovationsprojekt",
+        "ratio_funded": 0.5,
+        "project_title": "DDS Energieffektiv vård",
+        "focus_lifestyle": ["testbeds", "management"],
+        "focus_planning": ["testbeds", "management"],
+        "focus_mobility": [],
+        "focus_infrastructure": [],
+        "project_organization": "Stockholms Läns Landsting",
+        "locations": ["Stockholm"],
+        "keywords": [
+          "Energieffektivisering",
+          "Vård",
+          "Fastigheter",
+          "Digitalisering",
+          "Energieffektiv",
+          "Innovation"
+        ],
+        "other_financiers": [
+          "Stockholms läns landsting",
+          "Vattenfall AB",
+          "ABB AB",
+          "Ericsson AB",
+          "Telia Sverige AB"
+        ],
+        "other_recipients": [
+          "Kungliga Tekniska Högskolan",
+          "Stockholms läns landsting",
+          "Vattenfall AB",
+          "ABB AB",
+          "Ericsson AB",
+          "Telia Sverige AB"
+        ],
+        "project_manager": "Annika Larsson",
+        "project_manager_email": "annika1.larsson@vattenfall.com",
+        "dates": { "start": "2018-06-01", "end": "2019-12-31" },
+        "description": "Projektet ska utveckla digitala lösningar som gör det möjligt att analysera energiförbrukningen för både fastighetsdrift och vårdverksamhet. Syftet är att identifiera och visualisera möjligheter för bättre energianvändning.",
+        "website": "https://www.digitaldemostockholm.com/energieffektiv-vard/",
+        "link": "http://viablecities.com/foi-projekt/dds-energieffektiv-vard/"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 225000, "total_cost": 450000 },
+        "project_id": "46069-1",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.5,
+        "project_title": "Digitalt kontrollerade odlingssystem i stadsnära industriområden",
+        "focus_lifestyle": ["financing"],
+        "focus_planning": ["testbeds", "innovation"],
+        "focus_mobility": [],
+        "focus_infrastructure": ["testbeds", "innovation"],
+        "project_organization": "Invest Stockholm",
+        "locations": ["Stockholm"],
+        "keywords": [
+          "Controlled Environment Agriculture",
+          "Stadsodling",
+          "Industriområden",
+          "Foodtech",
+          "Cirkulära resursflöden",
+          "Attraktivitet och arbetstillfällen"
+        ],
+        "other_financiers": ["Invest Stockholm Business Region AB"],
+        "other_recipients": [
+          "Invest Stockholm Business Region AB",
+          "Sweheat Swedish Council for District Heating",
+          "Högdalsgruppen Ideell Förening",
+          "Sweden Foodtech"
+        ],
+        "project_manager": "Irena Lundberg",
+        "project_manager_email": "irena.lundberg@stockholm.se",
+        "dates": { "start": "2018-06-01", "end": "2018-12-31" },
+        "description": "I projektet kommer Stockholms Stad och partners genomföra pilotinstallationer av innovativa odlingssystem för frukt och grönsaker i stadens industriområden. Dessa odlingssystem väntas ge positiva miljöeffekter och potential till medborgarengagemang samt nya arbetstillfällen för nyanlända.",
+        "link": "http://viablecities.com/foi-projekt/odlingssystem-industriomraden/"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 437500, "total_cost": 870000 },
+        "project_id": "46043-1",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.502873563218,
+        "project_title": "Effektiv energiplanering för smarta och hållbara städer",
+        "focus_lifestyle": [],
+        "focus_planning": ["management"],
+        "focus_mobility": [],
+        "focus_infrastructure": ["management"],
+        "project_organization": "RISE",
+        "locations": ["Kiruna"],
+        "keywords": [
+          "Visualisering",
+          "Energisystem",
+          "Stadsplanering",
+          "Digitalisering",
+          "Beslutsstöd"
+        ],
+        "other_financiers": [
+          "Rise Research Institutes Of Sweden AB",
+          "Tekniska Verken i Kiruna AB",
+          "IVL Svenska Miljöinstitutet AB"
+        ],
+        "other_recipients": [
+          "Rise Research Institutes Of Sweden AB",
+          "Tekniska Verken i Kiruna AB",
+          "IVL Svenska Miljöinstitutet AB"
+        ],
+        "project_manager": "Inger-Lise Svensson",
+        "project_manager_email": "inger-lise.svensson@sp.se",
+        "dates": { "start": "2018-08-15", "end": "2019-07-31" },
+        "description": "Projektet ska utveckla ett dynamiskt visualiseringsverktyg för mer effektiv planering av städer. Verktyget ska ge bättre beslutsunderlag genom att visualisera och kommunicera konsekvenserna av stadsutveckling för energisystemet. Verktyget utvecklas i samråd med Kiruna kommun där nyttan kommer att vara betydande genom den stora förändring staden står inför.",
+        "link": "http://viablecities.com/foi-projekt/effektiv-energiplanering/"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 2000000, "total_cost": 8000000 },
+        "project_id": "2018-014681",
+        "project_type": "Demonstrationsprojekt",
+        "ratio_funded": 0.25,
+        "project_title": "Explorion – Bostadsnära mobilitetstjänst i det bilfria boendet",
+        "focus_lifestyle": ["testbeds"],
+        "focus_planning": ["testbeds", "innovation","management"],
+        "focus_mobility": ["testbeds","management"],
+        "focus_infrastructure": [],
+        "project_organization": "Lunds Kommuns Fastighets AB",
+        "locations": ["Lund"],
+        "keywords": [
+          "mobility as a service",
+          "maas",
+          "transport som tjänst",
+          "fastighetsnära mobilitetstjänst",
+          "living lab",
+          "hållbara transporter",
+          "delningsekonomi"
+        ],
+        "other_financiers": [],
+        "other_recipients": [],
+        "project_manager": "Denis Kerkhof",
+        "project_manager_email": "dennis.kerkhof@lkf.se",
+        "dates": { "start": "2018-03-01", "end": "2021-02-28" },
+        "description": "Biltrafiken i staden behöver minska – både för att skapa en mer attraktiv stad, och för att minska trafikens klimatpåverkan. Samtidigt är mobilitet som tjänst en växande trend. I detta projekt demonsteras ett “bilfritt boende” i fastigheten Xplorion på Södra Brunnshög i Lund genom att erbjuda mobilitetstjänsten EC2B åt de boende i stället för bilparkering för privata bilar.",
+        "link": "http://viablecities.com/foi-projekt/explorion/"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 405000, "total_cost": 810000 },
+        "project_id": "46032-1",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.5,
+        "project_title": "Hotmodellering och attacksimulering av livskraftiga städer",
+        "focus_lifestyle": [],
+        "focus_planning": [],
+        "focus_mobility": ["intelligence"],
+        "focus_infrastructure": ["intelligence"],
+        "project_organization": "KTH",
+        "locations": ["Stockholm", "Lund", "Uppsala"],
+        "keywords": [
+          "Cyber security",
+          "Threat modeling",
+          "Attack simulation",
+          "Risk management",
+          "Vulnerabilities",
+          "Security operation center",
+          "Internet of Things"
+        ],
+        "other_financiers": ["Umeå universitet", "Foreseeti AB"],
+        "other_recipients": [
+          "Kungliga Tekniska Högskolan",
+          "Umeå universitet",
+          "Foreseeti AB"
+        ],
+        "project_manager": "Robert Lagerström",
+        "project_manager_email": "robertl@kth.se",
+        "dates": { "start": "2018-06-01", "end": "2018-12-31" },
+        "description": "Ökad digitalisering gör städer med såbara för cyberattacker. För att möta denna typ av hot behöver sårbarheter kunna identifieras. Projektet är ett första steg mot att ta fram ett verktyg för att modellera hot och simulera attacker i städer.",
+        "link": "http://viablecities.com/foi-projekt/hotmodellering-attacksimulering/"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 4470000, "total_cost": 5970000 },
+        "project_id": "46064-1",
+        "project_type": "Forskningsprojekt",
+        "ratio_funded": 0.748743718593,
+        "project_title": "Hållbara urbana livsstilar genom nudging och medborgardeltagande",
+        "focus_lifestyle": ["testbeds", "management"],
+        "focus_planning": ["testbeds", "management"],
+        "focus_mobility": [],
+        "focus_infrastructure": [],
+        "project_organization": "SLU",
+        "locations": ["Uppsala", "Malmö"],
+        "keywords": [
+          "Medborgardeltagande",
+          "Nudging",
+          "Hållbara Urbana livsstilar",
+          "Konsumtion",
+          "Styrning"
+        ],
+        "other_financiers": [
+          "Uppsala kommun",
+          "Malmö stad",
+          "WSP Sverige AB",
+          "LINK Arkitektur AB",
+          "Urban Minds",
+          "Lindroos Arkitekter"
+        ],
+        "other_recipients": [
+          "Sveriges Lantbruksuniversitet SLU",
+          "Uppsala kommun",
+          "Malmö stad",
+          "WSP Sverige AB",
+          "LINK Arkitektur AB",
+          "Urban Minds",
+          "Lindroos Arkitekter"
+        ],
+        "project_manager": "Sofie Joosse",
+        "project_manager_email": "sofie.joosse@slu.se",
+        "dates": { "start": "2018-09-01", "end": "2021-08-31" },
+        "description": "Projektet ska undersöka hur stadsplanering kan främja hållbara urbana livsstilar. Fokus ligger på kunskap om medborgardeltagande och nudging som strategier för att främja en mer hållbar vardag.",
+        "link": "http://viablecities.com/foi-projekt/urbana-livsstilar"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 3879895, "total_cost": 8082420 },
+        "project_id": "46091-1",
+        "project_type": "Innovationsprojekt",
+        "ratio_funded": 0.480041250022,
+        "project_title": "Klimatkampen Uppsala",
+        "focus_lifestyle": ["testbeds"],
+        "focus_planning": [],
+        "focus_mobility": ["testbeds"],
+        "focus_infrastructure": [],
+        "project_organization": "Chalmers tekniska högskola",
+        "locations": ["Uppsala"],
+        "keywords": [
+          "Konsumtionens klimatpåverkan",
+          "Hållbara livsstilar",
+          "Hållbara praktiker",
+          "Feedback",
+          "Normaktivering"
+        ],
+        "other_financiers": [
+          "Uppsala Pastorat",
+          "Studiefrämjandet Uppsalaregionen",
+          "Uppsala läns landsting",
+          "Uppsalahem AB",
+          "Uppsala kommun",
+          "Vattenfall AB",
+          "Göteborgs universitet"
+        ],
+        "other_recipients": ["Chalmers Tekniska Högskola AB"],
+        "project_manager": "Stefan Wirsenius",
+        "project_manager_email": "stefan.wirsenius@gmail.com",
+        "dates": { "start": "2018-08-01", "end": "2020-03-31" },
+        "description": "Klimatkampen Uppsala ska påskynda klimatomställningen och underlätta mer hållbara val i vardagen för Uppsalabor. Projektet ska på olika sätt engagera och informera Uppsalabor om hur de kan minska sin klimatpåverkan.",
+        "link": "http://viablecities.com/foi-projekt/klimatkampen-uppsala/"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 455000, "total_cost": 1000000 },
+        "project_id": "46037-1",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.455,
+        "project_title": "Ladda, lagra, länka – Storskalig testbädd för prosumenter i energinätet",
+        "focus_lifestyle": [
+          "testbeds",
+          "innovation",
+          "financing",
+          "management"
+        ],
+        "focus_planning": [],
+        "focus_mobility": ["testbeds", "innovation", "financing", "management"],
+        "focus_infrastructure": [
+          "testbeds",
+          "innovation",
+          "financing",
+          "management"
+        ],
+        "project_organization": "KTH",
+        "locations": ["Stockholm"],
+        "keywords": [
+          "Elbilar",
+          "Laddingsinfrastruktur",
+          "Energilagring",
+          "Delningsekonomi",
+          "Lokal marknad",
+          "Lastbalansering",
+          "Prosumenter"
+        ],
+        "other_financiers": [
+          "Kungliga Tekniska Högskolan",
+          "Energiforsk AB",
+          "ElectriCITY Innovation EK"
+        ],
+        "other_recipients": [
+          "Kungliga Tekniska Högskolan",
+          "Energiforsk AB",
+          "ElectriCITY Innovation EK",
+          "ElBil2020 AB"
+        ],
+        "project_manager": "Björn Laumert",
+        "project_manager_email": "bjorn.laumert@energy.kth.se",
+        "dates": { "start": "2018-06-01", "end": "2018-11-30" },
+        "description": "Projektet ska undersöka möjligheten att etablera en storskalig testbädd för medborgare att producera och dela energitjänster med varandra. Medborgarna ska även kunna leverera förnybar el eller effektutjämning till energimarknaden. Koppling finns till den testbädd för delningsekonomi som etableras inom ramen för projektet Sharing Cities Sweden.",
+        "link": "http://viablecities.com/foi-projekt/ladda-lagra-lanka"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 499250, "total_cost": 1199250 },
+        "project_id": "46025-1",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.416301855326,
+        "project_title": "MERiT – Miljövänligt och enkelt resande i tjänsten",
+        "focus_lifestyle": ["testbeds"],
+        "focus_planning": [],
+        "focus_mobility": ["testbeds", "management"],
+        "focus_infrastructure": ["innovation"],
+        "project_organization": "RISE Viktoria",
+        "locations": ["Göteborg"],
+        "keywords": [
+          "Kombinerad mobilitet (KM)",
+          "Tjänsteresor",
+          "Mobility as a Service (MaaS)",
+          "Reseplattform",
+          "Fallstudie",
+          "Innovationsupphandling"
+        ],
+        "other_financiers": [
+          "Rise Research Institutes Of Sweden AB",
+          "WSP Sverige AB",
+          "Göteborgs kommun"
+        ],
+        "other_recipients": ["Rise Viktoria AB"],
+        "project_manager": "Anne Faxér",
+        "project_manager_email": "anne.faxer@viktoria.se",
+        "dates": { "start": "2018-08-01", "end": "2019-06-30" },
+        "description": "Pilotprojekt ska genomföras med en digital plattform för kombinerad mobilitet (mobilitet som tjänst) i tre stadsdelar inom Göteborgs stad, med ca 10 000 anställda. Syftet är att utvärdera hur sådana tjänster kan ge ett resande som är mer hållbart, attraktivt för användarna, och enkelt att administrera. ",
+        "link": "http://viablecities.com/foi-projekt/merit/"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 4999334, "total_cost": 10294238 },
+        "project_id": "46074-1",
+        "project_type": "Innovationsprojekt",
+        "ratio_funded": 0.4856439107,
+        "project_title": "Mo-Bo – Arkitektur för hållbar mobilitet",
+        "focus_lifestyle": [],
+        "focus_planning": ["testbeds", "innovation", "management"],
+        "focus_mobility": ["testbeds", "financing"],
+        "focus_infrastructure": [],
+        "project_organization": "Theory Into Practice",
+        "locations": ["Upplands Väsby", "Uppsala", "Stockholm"],
+        "keywords": [
+          "Mo-Bo",
+          "Arkitektur",
+          "Stadsbyggnad",
+          "Bostad",
+          "Mobilitetstjänster",
+          "Delningsekonomi",
+          "Hållbara transporter"
+        ],
+        "other_financiers": [
+          "Upplands Väsby kommun",
+          "Uppsala kommun",
+          "Laterre Invest ab",
+          "Kungliga Tekniska Högskolan",
+          "Theory Into Practice",
+          "Trivector Traffic AB",
+          "Urbio ab"
+        ],
+        "other_recipients": [
+          "Kungliga Tekniska Högskolan",
+          "Sveriges Lantbruksuniversitet SLU",
+          "Theory Into Practice",
+          "Urbio ab",
+          "Trivector Traffic AB"
+        ],
+        "project_manager": "Anna Sundman",
+        "project_manager_email": "anna@theoryintopractice.se",
+        "dates": { "start": "2018-06-01", "end": "2020-06-01" },
+        "description": "Mo-Bo är ett bostadskoncept med mobilitetstjänster som löser de boendes transporter på ett socialt, ekonomiskt och ekologiskt hållbart sätt. Delningsekonomi och mobilitetstjänster banar väg för nytänkande arkitektur där fler människor och varor kan transporteras av färre fordon, vilket innebär smartare användning av resurser och ytor.",
+        "website": "http://mo-bo.se/",
+        "link": "http://viablecities.com/foi-projekt/mo-bo"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 500000, "total_cost": 1000000 },
+        "project_id": "46067-1",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.5,
+        "project_title": "Mått och steg för effektivare nyttjande av byggnadsyta och användning av energi",
+        "focus_lifestyle": ["testbeds", "financing"],
+        "focus_planning": ["testbeds", "innovation", "financing", "management"],
+        "focus_mobility": [],
+        "focus_infrastructure": [],
+        "project_organization": "KTH",
+        "locations": ["Malmö"],
+        "keywords": [
+          "Effektiv ytanvändning",
+          "Nyttjandegrad",
+          "Alternativa energianvändningsmått",
+          "Fyrstegsprincip för bebyggelse",
+          "Digitalisering",
+          "Tjänster"
+        ],
+        "other_financiers": [
+          "Kungliga Tekniska Högskolan",
+          "Rise Research Institutes Of Sweden AB",
+          "Fastighets AB Trianon"
+        ],
+        "other_recipients": [
+          "Kungliga Tekniska Högskolan",
+          "Rise Research Institutes Of Sweden AB"
+        ],
+        "project_manager": "Mattias Höjer",
+        "project_manager_email": "hojer@kth.se",
+        "dates": { "start": "2018-08-01", "end": "2019-07-31" },
+        "description": "Projektet ska utforska hur digitalisering kan påverka efterfrågan och utbudet av uppvärmd yta i bebyggelsen, genom att införa tjänster för delning av yta. Den undersöker också nya sätt att mäta energianvändning utifrån aktivitet istället för per kvadratmeter. Fokus är på Rosengård i Malmö som grund för en fullskalig testbädd.",
+        "link": "http://viablecities.com/foi-projekt/matt-och-steg"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 242000, "total_cost": 630000 },
+        "project_id": "46093-1",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.384126984127,
+        "project_title": "R:energi – Lokal förnyelsebar energilösning i Röstånga",
+        "focus_lifestyle": ["innovation", "financing", "management"],
+        "focus_planning": ["innovation", "financing", "management"],
+        "focus_mobility": [],
+        "focus_infrastructure": ["innovation", "financing", "management"],
+        "project_organization": "Röstånga Tillsammans",
+        "locations": ["Svalöv"],
+        "keywords": [
+          "Röstånga ekoby",
+          "100% förnybar",
+          "Lokal energisystemlösning",
+          "Medborgardialog",
+          "Nätnytta"
+        ],
+        "other_financiers": [
+          "EvalPart AB",
+          "FOJAB arkitekter AB",
+          "Kraftringen Energi AB",
+          "Lunds universitet",
+          "Röstånga ekoby ekonomisk förening",
+          "Röstånga Tillsammans"
+        ],
+        "other_recipients": ["EvalPart AB", "FOJAB arkitekter AB"],
+        "project_manager": "Christian Stenqvist",
+        "project_manager_email": "christian.stenqvist@evalpart.se",
+        "dates": { "start": "2018-06-04", "end": "2019-02-28" },
+        "description": "Projektet ska bidra till att orten Röstånga blir en energimässigt helt förnybar “plusenergiort”. Kunskap och beslutsunderlag om energisystemlösningar tas fram för boendemiljön R:ekobyn med 30 hushåll med sikte på replikerbarhet anpassat till lokala förutsättningar.",
+        "link": "http://viablecities.com/foi-projekt/energilosning-rostanga/"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 480000, "total_cost": 960000 },
+        "project_id": "46080-1",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.5,
+        "project_title": "SAMIR – Samverkande infrastruktur för smarta och hållbara mindre kommuner och städer",
+        "focus_lifestyle": ["financing"],
+        "focus_planning": [],
+        "focus_mobility": ["financing", "management"],
+        "focus_infrastructure": ["financing", "management"],
+        "project_organization": "KTH",
+        "locations": ["Herrljunga", "Kungälv", "Övre Norrland"],
+        "keywords": [
+          "Digitalisering",
+          "Hållbara små städer och kommuner",
+          "Samverkande kommunal infrastruktur",
+          "Stadsnät",
+          "VA och el",
+          "Möjlighetsstudie",
+          "Roadmap"
+        ],
+        "other_financiers": [
+          "Kungälv Energi AB",
+          "Herrljunga Elektriska AB",
+          "Kungliga Tekniska Högskolan",
+          "Servanet AB",
+          "Iioote AB"
+        ],
+        "other_recipients": ["Kungliga Tekniska Högskolan"],
+        "project_manager": "Björn Laumert",
+        "project_manager_email": "bjorn.laumert@energy.kth.se",
+        "dates": { "start": "2018-07-01", "end": "2018-12-31" },
+        "description": "Projektet inriktas på att utforska behov av och begränsningar för mindre kommuner att använda smarta lösningar för samverkande infrastruktur. I Herrljunga och Kungälv kommer projektet undersöka möjligheter att att använda stadsnäten som stomme för digitalisering av kommunernas VA och elnät, men även andra kommunala/regionala verksamheter såsom belysning, parkering och kollektivtrafik.",
+        "link": "http://viablecities.com/foi-projekt/samverkande-infrastruktur"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 500000, "total_cost": 1000000 },
+        "project_id": "46086-1",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.5,
+        "project_title": "Sensorer för luftmiljö – möjligheter och begränsningar",
+        "focus_lifestyle": ["testbeds", "innovation"],
+        "focus_planning": ["testbeds", "innovation"],
+        "focus_mobility": ["testbeds", "innovation"],
+        "focus_infrastructure": [],
+        "project_organization": "RISE",
+        "locations": ["Karlstad"],
+        "keywords": [
+          "Sensor",
+          "Luft",
+          "Kontroll",
+          "Kvalitet",
+          "Partiklar",
+          "Mätning"
+        ],
+        "other_financiers": [
+          "SenseAir",
+          "Camfil Svenska AB",
+          "Akademiska Hus AB",
+          "MANN + HUMMEL Vokes Air AB",
+          "Swegon Operations AB",
+          "Karlstads kommun",
+          "Systemair Sverige AB",
+          "Norsk Elektro Optikk Lund AB"
+        ],
+        "other_recipients": ["Rise Research Institutes Of Sweden AB"],
+        "project_manager": "Sara Janhäll",
+        "project_manager_email": "sara.janhall@ri.se",
+        "dates": { "start": "2018-08-15", "end": "2019-08-15" },
+        "description": "Sensorer för mätning av luftkvalitet används för bl.a. styrning av inomhusluft och för information till allmänheten om utomhusluft. Projektet syftar till att förbättra kvaliteten hos mätdata för sensorer för luftburna partiklar för ökad service till oskyddade trafikanter och effektivare ventilation i byggnader.",
+        "link": "http://viablecities.com/foi-projekt/sensorer-luftmiljo/"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 51441000, "total_cost": 117000000 },
+        "project_id": "2017-02473",
+        "project_type": "Innovationsprojekt",
+        "ratio_funded": 0.439666667,
+        "project_title": "Sharing Cities Sweden",
+        "focus_lifestyle": ["testbeds", "innovation"],
+        "focus_planning": [],
+        "focus_mobility": ["financing"],
+        "focus_infrastructure": [],
+        "project_organization": "Lunds universitet",
+        "locations": ["Lund", "Stockholm", "Göteborg", "Malmö", "Umeå"],
+        "keywords": [
+          "Delningsekonomi",
+          "Konsumtion",
+          "Affärsmodeller",
+          "Testbädd"
+        ],
+        "other_financiers": [
+          "ElectriCITY Innovation EK",
+          "Göteborgs stad",
+          "Malmö stad",
+          "Umeå kommun",
+          "Lunds universitet",
+          "Kungliga Tekniska Högskolan",
+          "Trianon AB",
+          "E.ON Energilösningar AB",
+          "Form/Design Center",
+          "Sveriges Lantbruksuniversitet SLU",
+          "Lunds universitet",
+          "IVL Svenska Miljöinstitutet AB",
+          "Stockholms stad",
+          "Ericsson AB",
+          "Evothings",
+          "Rise Research Institutes Of Sweden AB",
+          "Skanska",
+          "Älvstranden Utveckling AB",
+          "Göteborgs universitet",
+          "Studiefrämjandet",
+          "Kollaborativ Ekonomi Göteborg",
+          "Akademiska Hus AB",
+          "Elof Hansson",
+          "NCC Property Development",
+          "Riksbyggen",
+          "Stena Fastigheter",
+          "The Food Print Lab",
+          "Klädoteket",
+          "Majornas samverkansförening",
+          "Coompanion",
+          "Umeå Energi",
+          "UPAB",
+          "VAKIN",
+          "Västerbottens läns landsting",
+          "Umeå universitet"
+        ],
+        "other_recipients": [],
+        "project_manager": "Kes McCormick",
+        "project_manager_email": "kes.mccormick@iiiee.lu.se",
+        "dates": { "start": "2017-08-01", "end": "2020-12-31" },
+        "description": "Sharing Cities Sweden är ett nationellt program för delningsekonomi i städer. Programmet syftar till att sätta Sverige på kartan som ett land som aktivt och kritiskt arbetar med delningsekonomi i städer. I testbäddar för delningsekonomi i Stockholm, Göteborg, Malmö och Umeå ska delningstjänster och digitala lösningar/plattformar utvecklas. Testbäddarna kompletteras med en nationell nod för koordination, nationellt lärande samt internationellt utbyte.",
+        "link": "http://viablecities.com/sharing-cities-sweden/"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 1800000, "total_cost": 3800000 },
+        "project_id": "2018-04649",
+        "project_type": "Innovationsprojekt",
+        "ratio_funded": 0.473684210526,
+        "project_title": "Sharing behaviour",
+        "focus_lifestyle": [],
+        "focus_planning": [],
+        "focus_mobility": [],
+        "focus_infrastructure": [],
+        "project_organization": "Lund university",
+        "locations": ["Lund"],
+        "keywords": [
+          "beteenden",
+          "livsstil",
+          "attityd",
+          "värdering",
+          "energi",
+          "delningstjänst",
+          "delningsekonomi",
+          "hållbar utveckling"
+        ],
+        "other_financiers": [],
+        "other_recipients": [],
+        "project_manager": "Luis Mundaca",
+        "project_manager_email": "luis.mundaca@iiiee.lu.se",
+        "dates": { "start": "2019-01-01", "end": "2020-12-31" },
+        "description": "Projektet ingår i programmet Sharing Cities Sweden. Många initiativ inom delningsekonomi som lanserats runt om i världen har inte lyckats som förväntat. Bristande kunskap om de bakomliggande orsakerna till (icke) adoption, skalning och mainstreaming bland användarna är huvudorsakerna. Projektet syftar till att utveckla beteendeekonomiska experiment som testar, granskar och genererar policyrekommendationer för att främja satsningar inom delningsekonomi i städer.",
+        "website": "https://www.sharingcities.se/investigating",
+        "link": "http://viablecities.com/foi-projekt/sharing-behaviour/"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 800000, "total_cost": 1700000 },
+        "project_id": "2018-04646",
+        "project_type": "Innovationsprojekt",
+        "ratio_funded": 0.470588235294,
+        "project_title": "Sharing business models",
+        "focus_lifestyle": [],
+        "focus_planning": [],
+        "focus_mobility": [],
+        "focus_infrastructure": [],
+        "project_organization": "Lund university",
+        "locations": ["Lund"],
+        "keywords": [
+          "affärsmodeller",
+          "samarbete",
+          "entreprenörskap",
+          "delningstjänst",
+          "hållbarhet",
+          "digitala lösningar"
+        ],
+        "other_financiers": [],
+        "other_recipients": [],
+        "project_manager": "Nancy Bocken",
+        "project_manager_email": "nancy.bocken@iiiee.lu.se",
+        "dates": { "start": "2019-01-01", "end": "2019-12-31" },
+        "description": "Projektet ingår i programmet Sharing Cities Sweden. Förståelsen av de nya affärsmodellerna är nyckeln till att genomföra “affärsmodellernas ekologier” i våra städer. Därför görs analys av ekologier av affärsmodeller i flera europeiska städer. Detta projekt gör det möjligt att uppskatta med hög trohet resultatet av dessa nya system, såsom affärsmodell för bilmodellering.",
+        "website": "https://www.sharingcities.se/investigating",
+        "link": "http://viablecities.com/foi-projekt/sharing-business-models/"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 1000000, "total_cost": 2000000 },
+        "project_id": "2018-04648",
+        "project_type": "Innovationsprojekt",
+        "ratio_funded": 0.5,
+        "project_title": "Sharing communities",
+        "focus_lifestyle": [],
+        "focus_planning": [],
+        "focus_mobility": [],
+        "focus_infrastructure": [],
+        "project_organization": "IVL",
+        "locations": [""],
+        "keywords": [
+          "delningsekonomi",
+          "städer",
+          "hållbar konsumtion",
+          "gemenskap",
+          "hyresföreningar",
+          "digitala lösningarhyresgäster",
+          "bostadsbolag",
+          "marknadsplatser",
+          "kommunikation",
+          "digitala verktyg"
+        ],
+        "other_financiers": [],
+        "other_recipients": [],
+        "project_manager": "Liv Fjellander",
+        "project_manager_email": "liv.fjellander@ivl.se",
+        "dates": { "start": "2019-01-01", "end": "2020-12-31" },
+        "description": "Projektet, som ingår i programmet Sharing Cities Sweden, syftar till att undersöka de sociala drivkrafterna och potentialen för delningsekonomin i samhällen och städer i Sverige. Det kommer att fokusera på hur bostadsföretag kan underlätta delning mellan hyresgäster och erbjuda utrymme för delande.",
+        "website": "https://www.sharingcities.se/investigating",
+        "link": "http://viablecities.com/foi-projekt/sharing-communities/"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 1000000, "total_cost": 2300000 },
+        "project_id": "2018-04500",
+        "project_type": "Innovationsprojekt",
+        "ratio_funded": 0.434782608696,
+        "project_title": "Sharing platforms",
+        "focus_lifestyle": [],
+        "focus_planning": [],
+        "focus_mobility": [],
+        "focus_infrastructure": [],
+        "project_organization": "Umeå University",
+        "locations": ["Umeå"],
+        "keywords": [
+          "digitala plattformar",
+          "delningsekonomi",
+          "städer",
+          "ramverk",
+          "entreprenörskap",
+          "delningstjänster",
+          "användare",
+          "informationsteknologi"
+        ],
+        "other_financiers": [],
+        "other_recipients": [],
+        "project_manager": "Per Levén",
+        "project_manager_email": "per.leven@umu.se",
+        "dates": { "start": "2019-01-01", "end": "2020-12-31" },
+        "description": "Projektet ingår i programmet Sharing Cities Sweden. Syftet med detta projekt är att undersöka om digitala delningsplattformar som bygger på en mer användarcentrerad delningsfilosofi kan lösa problemen med de tidigare plattformarna, som tenderade att vara mer resurscentrerade.",
+        "website": "https://www.sharingcities.se/investigating",
+        "link": "http://viablecities.com/foi-projekt/sharing-platforms/"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 2000000, "total_cost": 4150000 },
+        "project_id": "2018-04647",
+        "project_type": "Innovationsprojekt",
+        "ratio_funded": 0.481927710843,
+        "project_title": "Sharing towns",
+        "focus_lifestyle": [],
+        "focus_planning": [],
+        "focus_mobility": [],
+        "focus_infrastructure": [],
+        "project_organization": "Karlstad Municipality",
+        "locations": ["Karlstad"],
+        "keywords": [
+          "resursplattformar",
+          "hållbar utveckling",
+          "lokala nätverk",
+          "samverkansformer",
+          "innovation",
+          "delningsekonomi",
+          "städer",
+          "entreprenörskap",
+          "delningstjänst"
+        ],
+        "other_financiers": [],
+        "other_recipients": [],
+        "project_manager": "Henric Barkman",
+        "project_manager_email": "henric.barkman@karlstad.se",
+        "dates": { "start": "2019-01-01", "end": "2020-12-31" },
+        "description": "Projektet, som ingår i programmet Sharing Cities Sweden, syftar till att minska energianvändningen och klimatpåverkan genom att utveckla delningsekonomin i mindre städer. Genom att använda Karlstad och andra mindre städer i dialog med Karlstad kommer projektet att svara på frågan – vilken roll kan mindre städer och städer spela i delningsekonomin och hur kan deras arbete drivas?",
+        "website": "https://www.sharingcities.se/investigating",
+        "link": "http://viablecities.com/foi-projekt/sharing-towns/"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 300000, "total_cost": 600000 },
+        "project_id": "46047-1",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.5,
+        "project_title": "Smart och klimatmedveten matbutik för morgondagens konsumenter och samhälle",
+        "focus_lifestyle": ["testbeds", "innovation"],
+        "focus_planning": [],
+        "focus_mobility": ["testbeds", "innovation"],
+        "focus_infrastructure": [],
+        "project_organization": "RISE Research Institutes of Sweden",
+        "locations": ["Göteborg"],
+        "keywords": [
+          "Nudging",
+          "Konsumtion",
+          "E-handel",
+          "Livsmedel",
+          "Köpbeteende",
+          "Klimatpåverkan",
+          "Innovation"
+        ],
+        "other_financiers": ["MATSE AB", "Göteborgs kommun"],
+        "other_recipients": [
+          "Göteborgs universitet",
+          "Rise Research Institutes Of Sweden AB"
+        ],
+        "project_manager": "Britta Florén",
+        "project_manager_email": "britta.floren@ri.se",
+        "dates": { "start": "2018-09-01", "end": "2019-08-31" },
+        "description": "Projektet ska utforska vägar att locka fler att konsumera mat på mer miljö- och klimatsmarta sätt. Målet är att förstå hur miljöinformation om olika livsmedel tillsammans med smarta arbetssätt (nudging) kan förändra köpbeteendet hos konsumenten.",
+        "link": "http://viablecities.com/foi-projekt/klimatmedveten-matbutik"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 430000, "total_cost": 860000 },
+        "project_id": "46084-1",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.5,
+        "project_title": "Smart Village – självförsörjande energisystem i framtidens kvarter",
+        "focus_lifestyle": ["testbeds", "innovation"],
+        "focus_planning": ["testbeds", "innovation"],
+        "focus_mobility": [],
+        "focus_infrastructure": ["testbeds", "innovation"],
+        "project_organization": "Energikontoret sydost",
+        "locations": ["Mörbylånga"],
+        "keywords": [
+          "Smarta elnät",
+          "Materialval",
+          "Energilagring",
+          "Livvstil",
+          "Smart village"
+        ],
+        "other_financiers": [
+          "Kalmar Energi Försäljning AB",
+          "Energikontor Sydost AB",
+          "Magnus Björkegren",
+          "Niklas Andersson",
+          "WSP Sverige AB"
+        ],
+        "other_recipients": [
+          "Energikontor Sydost AB",
+          "Magnus Björkegren",
+          "Niklas Andersson",
+          "WSP Sverige AB"
+        ],
+        "project_manager": "Anna Thore",
+        "project_manager_email": "anna.thore@wsp.com",
+        "dates": { "start": "2018-06-18", "end": "2019-03-31" },
+        "description": "Konceptet Smart Village syftar till att bygga framtidens kvarter med hög grad av självförsörjning på energi. Projektet har som mål att testa gränserna för hur ett modernt område kan utformas och ge möjligheter till en livsstil med utsläpp nära noll samtidigt som nya förutsättningar skapas för social gemenskap.",
+        "website": "http://www.smartvillage.se/",
+        "link": "http://viablecities.com/foi-projekt/smart-village"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 317500, "total_cost": 635000 },
+        "project_id": "46038-1",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.5,
+        "project_title": "Småskalig elförsörjning genom aktiv styrning och innovativ lagring av solel",
+        "focus_lifestyle": ["financing"],
+        "focus_planning": [],
+        "focus_mobility": [],
+        "focus_infrastructure": ["financing"],
+        "project_organization": "IVL Svenska Miljöinstitutet",
+        "locations": ["Lund"],
+        "keywords": [
+          "Flexibla energisystem",
+          "Solel",
+          "Lokal ellagring",
+          "Styrbara laster",
+          "Användarstudier",
+          "Affärsmodell"
+        ],
+        "other_financiers": [
+          "Sony Mobile Communications AB",
+          "Kraftringen Energi AB",
+          "Lunds kommun",
+          "Sydö development"
+        ],
+        "other_recipients": ["IVL Svenska Miljöinstitutet AB"],
+        "project_manager": "Johan Holmqvist",
+        "project_manager_email": "johan.holmqvist@ivl.se",
+        "dates": { "start": "2018-06-15", "end": "2018-12-14" },
+        "description": "Projektet ska undersöka förutsättningarna för ett demonstrationsprojekt för flexibla energisystem i byggnader baserad på solel, lokal lagring och styrbara laster i den nyetablerade stadsdelen Brunnshög i Lunds kommun.",
+        "link": "http://viablecities.com/foi-projekt/smaskalig-elforsorjning"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 925325, "total_cost": 1102015 },
+        "project_id": "2018-04496",
+        "project_type": "Forskningsprojekt",
+        "ratio_funded": 0.839666429223,
+        "project_title": "Urban DIGG Infra",
+        "focus_lifestyle": [],
+        "focus_planning": ["testbeds","intelligence"],
+        "focus_mobility": ["testbeds","intelligence"],
+        "focus_infrastructure": ["testbeds","innovation","intelligence"],
+        "project_organization": "Viable Cities",
+        "locations": [],
+        "keywords": [
+            "accessnät",
+            "smarta städer",
+            "uppkoppling",
+            "sakernas internet",
+            "säkerhet",
+            "publika nätverk",
+            "tjänster",
+            "affärsmodeller"
+        ],
+        "other_financiers": [],
+        "other_recipients": [],
+        "project_manager": "Alex Jonsson",
+        "project_manager_email": "alex.jonsson@viablecities.com",
+        "dates": { "start": "2018-11-15", "end": "2019-05-17" },
+        "description": "Denna förstudie syftar till att undersöka om hur den smarta staden bäst stödjer sina medborgare och uppkopplade saker vad gäller digital infrastruktur. Hur är vi är anslutna till tjänster och funktioner år 2030? Vilka tjänster och affärsmodellerna kan finnas? Vilka behov och krav ska ställas på tillgänglighet, säkerhet? Hur blir nätet mer robust mot yttre och inre påverkan?",
+        "link": "http://viablecities.com/foi-projekt/urban-digg-infra/"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 400000, "total_cost": 800000 },
+        "project_id": "46045-1",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.5,
+        "project_title": "Urban ICT Arena som kvadrupelhelixmiljö för hållbar energiomställning",
+        "focus_lifestyle": ["testbeds"],
+        "focus_planning": ["testbeds"],
+        "focus_mobility": [],
+        "focus_infrastructure": [],
+        "project_organization": "Kista Science City AB",
+        "locations": ["Stockholm"],
+        "keywords": [
+          "Urban ICT Arena",
+          "Testbädd",
+          "Kvadrupelhelix",
+          "Medborgardialog",
+          "Energi",
+          "Civilsamhället",
+          "Kista"
+        ],
+        "other_financiers": [
+          "SSM Holding AB",
+          "Kista Träff",
+          "INITIATIVES OF CHANGE-SVERIGE",
+          "Kista Science City AB"
+        ],
+        "other_recipients": [
+          "Kista Träff",
+          "INITIATIVES OF CHANGE-SVERIGE",
+          "Kista Science City AB"
+        ],
+        "project_manager": "Marcus Anneroth",
+        "project_manager_email": "marcus.anneroth@scap.se",
+        "dates": { "start": "2018-08-13", "end": "2018-12-14" },
+        "description": "Projektet ska undersöka förutsättningarna för att utveckla testbädden Urban ICT Arena i Kista till en s k kvadrupelhelixmiljö, med samverkan mellan akademi, näringsliv, offentlig sektor och civilsamhälle. Med fokus på kopplingen till det lokala civilsamhället ska projektet ta sig an energiutmaningen för att påskynda omställningen till en hållbar stad.",
+        "link": "http://viablecities.com/foi-projekt/urban-ict-arena-energiomstallning"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 4659600, "total_cost": 9790000 },
+        "project_id": "46026-1",
+        "project_type": "Innovationsprojekt",
+        "ratio_funded": 0.47595505618,
+        "project_title": "Värdeskapande med öppna data från energisystemet ectogrid™",
+        "focus_lifestyle": ["testbeds", "innovation"],
+        "focus_planning": ["testbeds", "innovation"],
+        "focus_mobility": [],
+        "focus_infrastructure": ["testbeds", "innovation"],
+        "project_organization": "FOG",
+        "locations": ["Göteborg"],
+        "keywords": [
+          "Datadelning",
+          "Öppen innovation",
+          "ectogrid™",
+          "Digitaliserad energilösning",
+          "Systemintegrering"
+        ],
+        "other_financiers": [
+          "Lunds kommun",
+          "Medicon Village",
+          "E.ON Energilösningar AB"
+        ],
+        "other_recipients": [
+          "Lunds universitet",
+          "Lunds kommun",
+          "Medicon Village",
+          "E.ON Energilösningar AB"
+        ],
+        "project_manager": "Maria Malm Skarin",
+        "project_manager_email": "maria.malm@eon.se",
+        "dates": { "start": "2018-09-01", "end": "2020-09-01" },
+        "description": "Projektet ska skapa förutsättningar för olika företag, föreningar, forsknings- och offentliga verksamheter, att dra nytta av öppen data från energisystemet ectogrid™. Genom att tillgängliggöra ectogrid™-data kan digitalisering och medborgarinvolvering bidra till ökad energisystemoptimering, t ex genom balansering av energislag och laster.",
+        "link": "http://viablecities.com/foi-projekt/oppnadata-ectogrid"
+      }
+    },
+    {
+      "survey_answers": {
+        "budget": { "funded": 500000, "total_cost": 1000000 },
+        "project_id": "46077-1",
+        "project_type": "Förstudie",
+        "ratio_funded": 0.5,
+        "project_title": "3De – energiutmaningar med tredimensionell fastighetsindelning",
+        "focus_lifestyle": [
+          "testbeds",
+          "innovation",
+          "financing",
+          "management"
+        ],
+        "focus_planning": ["testbeds", "innovation", "financing", "management"],
+        "focus_mobility": [],
+        "focus_infrastructure": [
+          "testbeds",
+          "innovation",
+          "financing",
+          "management"
+        ],
+        "project_organization": "FOG",
+        "locations": ["Göteborg"],
+        "keywords": [
+          "Integrerad energidesign",
+          "Tredimensionell fastighetsbildning",
+          "Energioptimering",
+          "Affärsmodell",
+          "Stadsutveckling."
+        ],
+        "other_financiers": [
+          "Älvstranden Utveckling AB",
+          "Göteborg Energi AB",
+          "Göteborgs kommun",
+          "Riksbyggen ek för"
+        ],
+        "other_recipients": [
+          "Chalmers Tekniska Högskola AB",
+          "Rise Research Institutes Of Sweden AB",
+          "Riksbyggen ek för"
+        ],
+        "project_manager": "Staffan Bolminger",
+        "project_manager_email": "staffan@urbaninnovation.se",
+        "dates": { "start": "2018-08-31", "end": "2019-08-30" },
+        "description": "Projektet ska korta kopplingarna mellan forskning och praktik vad gäller att arbeta med tredimensionell fastighetsindelning (3D) för att inrymma flera ägare och många funktioner i samma byggnad. Detta skapar både möjligheter och utmaningar för energioptimering (e). Projektet inriktas på att i tre stadsutvecklingsprojekt föra samman forskare med kravställare samt genomförare.",
+        "link": "http://viablecities.com/foi-projekt/3de"
+      }
+    },
+
+    {
+      "survey_answers": {
+        "budget": { "funded": 4845181, "total_cost": 9936863 },
+        "project_id": "48789-1",
+        "project_type": "",
+        "ratio_funded": 0,487596638899017,
+        "project_title": "Klimatneutrala Uppsala 2030",
+        "focus_lifestyle": ["testbeds"
+        ],
+        "focus_planning": ["testbeds", "innovation", "financing", "management"
+	],
+        "focus_mobility": ["testbeds", "innovation", "management"
+	],
+        "focus_infrastructure": ["testbeds", "innovation", "management"
+        ],
+        "project_organization": "Uppsala kommun",
+        "locations": ["Uppsala"],
+        "keywords": [
+          "Klimatfärdplan", 
+	  "Digitalisering", 
+	  "Exponential roadmap", 
+	  "Visualisering", 
+	  "Datamodellering", 
+	  "Testbädd", 
+	  "Samskapande"
+        ],
+        "other_financiers": [
+	  "STUNS – Stiftelsen för samverkan mellan universiteten i Uppsala", näringsliv och samhälle", 
+          "Uppsala Innovation Center", 
+          "Energikontoret i Mälardalen AB", 
+          "Uppsala universitet", 
+          "SLU", 
+          "KTH", 
+          "Internet of Planet AB", 
+          "ClimateView AB", 
+          "Ericsson AB Research"
+        ],
+        "other_recipients": [
+          ""
+        ],
+        "project_manager": "Björn Sigurdson",
+        "project_manager_email": "bjorn.sigurdson@uppsala.se",
+        "dates": { "start": "2019-10-01", "end": "2021-09-30" },
+        "description": "Uppsala kommun och nätverket Uppsala klimatprotokoll ska ta fram en handlingsplan för ett fossilfritt välfärdssamhälle 2030. Projektet ska 1) implementera nya IT-verktyg för visualisering i syfte att öka medvetenheten och stimulera ett brett deltagande i arbetet med att ta fram och sedan genomföra klimatfärdplanen, 2) utveckla tvärvetenskapliga och tvärsektoriella innovationsteam med akademi, näringsliv och samhälle för att göra Uppsala och Bergsbrunna till en internationell förebild som testbädd för hållbar stadsutveckling.",
+        "link": "http://viablecities.com/foi-projekt/klimatneutrala-uppsala-2030/"
+      }
+    },
+
+    {
+      "survey_answers": {
+        "budget": { "funded": 4884000, "total_cost": 9768000 },
+        "project_id": "48786-1",
+        "project_type": "",
+        "ratio_funded": 0,5,
+        "project_title": "Klimatneutrala Stockholm 2030",
+        "focus_lifestyle": ["management"
+        ],
+        "focus_planning": ["management"
+	],
+        "focus_mobility": ["management"
+	],
+        "focus_infrastructure": ["management"
+        ],
+        "project_organization": "Stockholms stad",
+        "locations": ["Stockholm"],
+        "keywords": [
+          "Beslutsstöd",
+	  "Scenariomodell", 
+	  "Visualisering", 
+	  "Styrning", 
+	  "Samverkan", 
+	  "Fossilbränslefritt"
+        ],
+        "other_financiers": [
+          "Stockholm Exergi", 
+	  "Ellevio", 
+	  "RISE Reserach Institutes of Sweden",
+	  "KTH"
+        ],
+        "other_recipients": [
+          ""
+        ],
+        "project_manager": "Björn Hugosson",
+        "project_manager_email": "bjorn.hugosson@stockholm.se",
+        "dates": { "start": "2019-10-01", "end": "2021-09-30" },
+        "description": "Projektet i Stockholm syftar till att förbättra städers förmåga att hantera de komplexa beslutssituationer som uppstår och finna lämpliga åtgärder för minskade utsläpp. Ett innovationsteam med kommun, akademi och näringsliv etableras som motor i omställningsarbetet. Ett digitalt beslutsstöd med simulering och visualisering av stadens energi- och transportsystem möjliggör en överblick av åtgärders konsekvenser och ytterligare behov. Verktyget bygger på befintliga data från en mängd aktörer i Stockholm, men är generellt tillämpbart, och inkluderar scenarioanalyser av olika åtgärders konsekvenser.",
+        "link": "http://viablecities.com/foi-projekt/klimatneutrala-stockholm-2030/"
+      }
+    },
+
+    {
+      "survey_answers": {
+        "budget": { "funded": 3322848, "total_cost": 8339722 },
+        "project_id": "48792-1",
+        "project_type": "",
+        "ratio_funded": 0,398436302792827,
+        "project_title": "Klimatneutrala Göteborg 2030",
+        "focus_lifestyle": ["testbeds", "management"
+        ],
+        "focus_planning": [
+	],
+        "focus_mobility": ["testbeds", "management"
+	],
+        "focus_infrastructure": [
+        ],
+        "project_organization": "Göteborgs stad",
+        "locations": ["Göteborg"],
+        "keywords": [
+          "Innovation", 
+	  "Styrning", 
+	  "Omställning", 
+	  "Klimat", 
+	  "Virtuell", 
+	  "Livsstil", 
+	  "Policy"
+        ],
+        "other_financiers": [
+          "Business Region Göteborg", 
+	  "Parkeringsbolaget Göteborgs stad",
+	  "Göteborgsregionens kommunalförbund",
+	  "IVL",
+	  "RISE Research Institutes of Sweden",
+	  "Handelshögskolan vid Göteborgs universitet",
+	  "Visual Arena Göteborg",
+	  "Lindholmen Science Park"
+        ],
+        "other_recipients": [
+          ""
+        ],
+        "project_manager": "Henriette Söderberg",
+        "project_manager_email": "henriette.soderberg@miljo.goteborg.se",
+        "dates": { "start": "2019-10-01", "end": "2021-09-30" },
+        "description": "Projektet inriktas på en datadriven klimatomställning för det goda livet i Göteborg. En viktig del i detta är nya systemlösningar kopplat till mobilitet som kan minska klimatpåverkan och ge förutsättningar för en anpassningsbar styrning av staden. En viktig ambition är att addera mer klimat- och beteendedata till modellen som kallas ”Virtuella Göteborg”, d.v.s. stadens digitala tvilling av den fysiska miljön. Man vill också nyttja den digitala tvillingen som katalysator i omställningsarbetet.",
+        "link": "http://viablecities.com/foi-projekt/klimatneutrala-goteborg-2030/"
+      }
+    },
+
+    {
+      "survey_answers": {
+        "budget": { "funded": 4000000, "total_cost": 8000000 },
+        "project_id": "48788-1",
+        "project_type": "",
+        "ratio_funded": 0,5,
+        "project_title": "Klimatneutrala Umeå 2030",
+        "focus_lifestyle": ["innovation", "financing"
+        ],
+        "focus_planning": ["innovation", "management"
+	],
+        "focus_mobility": ["innovation", "management"
+	],
+        "focus_infrastructure": [
+        ],
+        "project_organization": "Umeå kommun",
+        "locations": ["Umeå"],
+        "keywords": [
+          "Koldioxidneutralitet", 
+	  "Mobilitet", 
+	  "Konsumtion",
+	  "Energi", 
+	  "Cirkulär ekonomi", 
+	  "Innovation"
+        ],
+        "other_financiers": [
+          "Umeå Energi", 
+	  "Umeå Universitet", 
+	  "eXpression", 
+	  "BioFuel Region", 
+	  "Nätverket för hållbart byggande och förvaltande", 
+	  "Swedavia"
+        ],
+        "other_recipients": [
+          ""
+        ],
+        "project_manager": "Sebastian Holmström",
+        "project_manager_email": "Sebastian.holmstrom@umea.se",
+        "dates": { "start": "2019-09-01", "end": "2021-08-31" },
+        "description": "Projektet för ett smart klimatneutralt Umeå 2030 utgår från ett konsumtionsperspektiv på stadens klimatpåverkan och inkluderar utsläpp inom och utanför Umeås geografiska gräns. Insatser inriktas på fyra hotspots för att minska hushållens klimatpåverkan: 1. Resande (flygande samt bilanvändning), 2. Livsmedel (köttkonsumtion, mjölkprodukter samt matsvinn), 3. Boendeenergi  4. Kläder och möbler. Arbetet involverar även utvecklingen av två helt nya stadsdelar, Tomtebostrand och Norra Ön, som båda har ambitionen att vara internationella hållbarhetsförebilder.",
+        "link": "http://viablecities.com/foi-projekt/klimatneutrala-umea-2030/"
+      }
+
+    {
+      "survey_answers": {
+        "budget": { "funded": 4946842, "total_cost": 9893634 },
+        "project_id": "48785-1",
+        "project_type": "",
+        "ratio_funded": 0,500002526877384,
+        "project_title": "Klimatneutrala Malmö 2030",
+        "focus_lifestyle": ["innovation", "management"
+        ],
+        "focus_planning": ["innovation", "management"
+	],
+        "focus_mobility": ["innovation", "management"
+	],
+        "focus_infrastructure": ["innovation", "management"
+        ],
+        "project_organization": "Malmö stad",
+        "locations": ["Malmö"],
+        "keywords": [
+          "Klimatneutralitet", 
+	  "Omställning", 
+	  "Klimatmål", 
+	  "Konsumtion", 
+	  "Medborgare"
+        ],
+        "other_financiers": [
+          "VA SYD, Sysav", 
+	  "E.ON", 
+	  "Trivector AB", 
+	  "Ericsson", 
+	  "Lunds universitet",
+	  "RISE Research Institutes of Sweden"
+        ],
+        "other_recipients": [
+          ""
+        ],
+        "project_manager": "Matilde Törnqvist",
+        "project_manager_email": "matilde.tornqvist@malmo.se",
+        "dates": { "start": "2019-09-02", "end": "2021-09-01" },
+        "description": "Malmö stad ska i detta projekt samla interna och externa intressenter i ett innovationsteam för att tillsammans skapa en målbild som möjliggör klimatneutralitet i Malmö till 2030. Innovationsteamet ska även arbeta fram en agil handlingsplan för hur målen ska nås. I vissa fall har intressenterna rådighet över de insatser som krävs. Projektet har ett särskilt fokus på medborgarengagemang. Inom projektet ska även undersökas vilka digitala verktyg som redan finns, och vad som behöver utvecklas, för att accelerera omställningen till en klimatneutral stad 2030.",
+        "link": "http://viablecities.com/foi-projekt/klimatneutrala-malmo-2030/"
+      }
+    },
+
+    {
+      "survey_answers": {
+        "budget": { "funded": 4799980, "total_cost": 9860896 },
+        "project_id": "48784-1",
+        "project_type": "",
+        "ratio_funded": 0,48676915363472,
+        "project_title": "Klimatneutrala Lund 2030",
+        "focus_lifestyle": ["innovation", "financing", "management", "intelligence"
+        ],
+        "focus_planning": ["financing", "intelligence"
+	],
+        "focus_mobility": ["management", "intelligence"
+	],
+        "focus_infrastructure": ["testbeds", "innovation", "financing", "intelligence"
+        ],
+        "project_organization": "Lunds kommun",
+        "locations": ["Lund"],
+        "keywords": [
+          "Innovation", 
+	  "Service design", 
+	  "Klimat", 
+	  "Energi", 
+	  "Lund", 
+	  "Digitalisering", 
+	  "Youth climathon"
+        ],
+        "other_financiers": [
+          "Idean", 
+	  "ustwo", 
+	  "Lunds universitet", 
+	  "K2 nationellt kunskapscentrum för kollektivtrafiken", 
+	  "IVL", 
+	  "Naturskyddsföreningen"
+        ],
+        "other_recipients": [
+          ""
+        ],
+        "project_manager": "Tommy Bengtsson",
+        "project_manager_email": "tommy.bengtsson@lund.se",
+        "dates": { "start": "2019-09-01", "end": "2021-08-31" },
+        "description": "För att utveckla ett smart och klimatneutralt Lund 2030 kommer ett innovationsteam att bildas som består av designbolag, forskningsinstitutioner och ett tvärsektoriellt team centralt placerade i kommunen. Detta team ska tillsammans med en innovationskartläggare leverera en färdplan för hur Lund kan bli klimatneutralt till 2030.Teamet ska leverera minst fem koncept med stor potential att bidra till klimatneutralitet till 2030 och som bygger på medborgares behov och med digitalisering som en möjliggörare.",
+        "link": "http://viablecities.com/foi-projekt/klimatneutrala-lund-2030/"
+      }
+    },
+
+    {
+      "survey_answers": {
+        "budget": { "funded": 3000628, "total_cost": 6001256 },
+        "project_id": "48781-1",
+        "project_type": "",
+        "ratio_funded": 0,5,
+        "project_title": "Klimatneutrala Barkarbystaden 2030",
+        "focus_lifestyle": [""
+        ],
+        "focus_planning": ["testbeds", "management"
+	],
+        "focus_mobility": ["innovation"
+	],
+        "focus_infrastructure": [""
+        ],
+        "project_organization": "Järfälla kommun",
+        "locations": ["Järfälla"],
+        "keywords": [
+          "Klimatneutral", 
+	  "Handlingsplan", 
+	  "Innovationsplattform", 
+	  "Samskapande", 
+	  "Klimatavtal", 
+	  "Mobilitet"
+        ],
+        "other_financiers": [
+          "Barkarby Science", 
+	  "NCC", 
+	  "ÅF", 
+	  "Södertörns Högskola", 
+	  "E.ON"
+        ],
+        "other_recipients": [
+          ""
+        ],
+        "project_manager": "Megha Huber",
+        "project_manager_email": "mega.huber@jarfalla.se",
+        "dates": { "start": "2019-09-01", "end": "2021-09-30" },
+        "description": "För att utveckla ett smart och klimatneutralt Lund 2030 kommer ett innovationsteam att bildas som består av designbolag, forskningsinstitutioner och ett tvärsektoriellt team centralt placerade i kommunen. Detta team ska tillsammans med en innovationskartläggare leverera en färdplan för hur Lund kan bli klimatneutralt till 2030.Teamet ska leverera minst fem koncept med stor potential att bidra till klimatneutralitet till 2030 och som bygger på medborgares behov och med digitalisering som en möjliggörare.",
+        "link": "http://viablecities.com/foi-projekt/klimatneutrala-barkarbystaden-2030/"
+      }
+    },
+
+    {
+      "survey_answers": {
+        "budget": { "funded": 4099000, "total_cost": 8160600 },
+        "project_id": "48778-1",
+        "project_type": "",
+        "ratio_funded": 0,502291498174154,
+        "project_title": "Klimatneutrala Enköping 2030",
+        "focus_lifestyle": [""
+        ],
+        "focus_planning": ["innovation", "management", "intelligence"
+	],
+        "focus_mobility": ["management", "intelligence"
+	],
+        "focus_infrastructure": [""
+        ],
+        "project_organization": "Enköpings kommun",
+        "locations": ["Enköping"],
+        "keywords": [
+          "Enköping", 
+	  "Myran", 
+	  "Transformation", 
+	  "Medborgardialog", 
+	  "Klimatneutralitet"
+        ],
+        "other_financiers": [
+          "RISE Research Institutes of Sweden", 
+	  "AB Europan Sweden", 
+	  "ÅF Infrastructure AB", 
+	  "ICA Maxi"
+        ],
+        "other_recipients": [
+          ""
+        ],
+        "project_manager": "Thomas Adlercreutz",
+        "project_manager_email": "thomas.adlercreutz@enkoping.se",
+        "dates": { "start": "2019-09-01", "end": "2021-08-31" },
+        "description": "I projektet i Enköping ska en IoT-plattform göra det möjligt att samla/dela ny data från byggnader och miljö, och därmed skapa förbättrad beslutsgrund, skalbara innovationer och nya tjänster. För att pröva dialogeffekter och förankringsmönster hos medborgarna genomförs grupperade kvalitativa digitala piloter.",
+        "link": "http://viablecities.com/foi-projekt/klimatneutrala-enkoping-2030/"
+      }
+    },
+
+    {
+      "survey_answers": {
+        "budget": { "funded": 3519187, "total_cost": 7038374 },
+        "project_id": "48776-1",
+        "project_type": "",
+        "ratio_funded": 0,5,
+        "project_title": "Klimatneutrala Växjö 2030",
+        "focus_lifestyle": ["management"
+        ],
+        "focus_planning": ["management"
+	],
+        "focus_mobility": [""
+	],
+        "focus_infrastructure": [""
+        ],
+        "project_organization": "Växjö kommun",
+        "locations": ["Växjö"],
+        "keywords": [
+          "Livscykelanalyser", 
+	  "LCAs", 
+	  "Agenda 2030", 
+	  "Tankesmedja", 
+	  "Klimatpåverkan byggnader", 
+	  "Klimatpåveran transporter", 
+	  "Vätgasproduktion", 
+	  "Digitala verktyg", 
+	  "Klimatutsläppsdat"
+        ],
+        "other_financiers": [
+          "Växjö Energi AB", 
+	  "Vöfab", 
+	  "Växjöbostäder", 
+	  "Vidingehem", 
+	  "Videum", 
+	  "Linnéuniversitetet"
+        ],
+        "other_recipients": [
+          ""
+        ],
+        "project_manager": "Henrik Johansson",
+        "project_manager_email": "Henrik.johansson@vaxjo.se",
+        "dates": { "start": "2019-09-01", "end": "2021-08-31" },
+        "description": "I detta projekt vill Växjö kommun samverka med aktörer i samhället för att ta fram en handlingsplan och metoder för omställningen till ett samhälle med låg klimatpåverkan. Projektet ska jobba med helhetsbilden för ett klimatneutralt Växjö, men också fördjupa sig områdena byggnation och transport. Inom projektet kommer digitala verktyg att skapas och testas med fokus på att förbättra insikt av befintliga utsläpp samt att tillåta planera och jämföra olika lösningar och scenarier som behövs för att nå klimatneutralitet 2030. Projektet kommer också att arbeta med “tankesmedja” som ska fungera som ett lokalt klimatråd som följer, stödjer och driver på det lokala klimatarbetet.",
+        "link": "http://viablecities.com/foi-projekt/klimatneutrala-vaxjo-2030/"
+      }
+    },
+
+  ]
+}
