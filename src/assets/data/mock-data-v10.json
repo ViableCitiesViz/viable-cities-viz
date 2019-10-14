@@ -61,7 +61,7 @@
           "intelligence"
         ],
         "project_organization": "RISE",
-        "locations": [],
+        "locations": ["missing"],
         "keywords": [
           "IoT",
           "data",
@@ -206,8 +206,8 @@
         "ratio_funded": 0.25,
         "project_title": "Explorion – Bostadsnära mobilitetstjänst i det bilfria boendet",
         "focus_lifestyle": ["testbeds"],
-        "focus_planning": ["testbeds", "innovation","management"],
-        "focus_mobility": ["testbeds","management"],
+        "focus_planning": ["testbeds", "innovation", "management"],
+        "focus_mobility": ["testbeds", "management"],
         "focus_infrastructure": [],
         "project_organization": "Lunds Kommuns Fastighets AB",
         "locations": ["Lund"],
@@ -764,7 +764,7 @@
         "focus_mobility": [],
         "focus_infrastructure": [],
         "project_organization": "IVL",
-        "locations": [""],
+        "locations": ["missing"],
         "keywords": [
           "delningsekonomi",
           "städer",
@@ -972,20 +972,20 @@
         "ratio_funded": 0.839666429223,
         "project_title": "Urban DIGG Infra",
         "focus_lifestyle": [],
-        "focus_planning": ["testbeds","intelligence"],
-        "focus_mobility": ["testbeds","intelligence"],
-        "focus_infrastructure": ["testbeds","innovation","intelligence"],
+        "focus_planning": ["testbeds", "intelligence"],
+        "focus_mobility": ["testbeds", "intelligence"],
+        "focus_infrastructure": ["testbeds", "innovation", "intelligence"],
         "project_organization": "Viable Cities",
-        "locations": [],
+        "locations": ["missing"],
         "keywords": [
-            "accessnät",
-            "smarta städer",
-            "uppkoppling",
-            "sakernas internet",
-            "säkerhet",
-            "publika nätverk",
-            "tjänster",
-            "affärsmodeller"
+          "accessnät",
+          "smarta städer",
+          "uppkoppling",
+          "sakernas internet",
+          "säkerhet",
+          "publika nätverk",
+          "tjänster",
+          "affärsmodeller"
         ],
         "other_financiers": [],
         "other_recipients": [],
@@ -1128,41 +1128,36 @@
         "budget": { "funded": 4845181, "total_cost": 9936863 },
         "project_id": "48789-1",
         "project_type": "",
-        "ratio_funded": 0,487596638899017,
+        "ratio_funded": 0.487596638899017,
         "project_title": "Klimatneutrala Uppsala 2030",
-        "focus_lifestyle": ["testbeds"
-        ],
-        "focus_planning": ["testbeds", "innovation", "financing", "management"
-	],
-        "focus_mobility": ["testbeds", "innovation", "management"
-	],
-        "focus_infrastructure": ["testbeds", "innovation", "management"
-        ],
+        "focus_lifestyle": ["testbeds"],
+        "focus_planning": ["testbeds", "innovation", "financing", "management"],
+        "focus_mobility": ["testbeds", "innovation", "management"],
+        "focus_infrastructure": ["testbeds", "innovation", "management"],
         "project_organization": "Uppsala kommun",
         "locations": ["Uppsala"],
         "keywords": [
-          "Klimatfärdplan", 
-	  "Digitalisering", 
-	  "Exponential roadmap", 
-	  "Visualisering", 
-	  "Datamodellering", 
-	  "Testbädd", 
-	  "Samskapande"
+          "Klimatfärdplan",
+          "Digitalisering",
+          "Exponential roadmap",
+          "Visualisering",
+          "Datamodellering",
+          "Testbädd",
+          "Samskapande"
         ],
         "other_financiers": [
-	  "STUNS – Stiftelsen för samverkan mellan universiteten i Uppsala", näringsliv och samhälle", 
-          "Uppsala Innovation Center", 
-          "Energikontoret i Mälardalen AB", 
-          "Uppsala universitet", 
-          "SLU", 
-          "KTH", 
-          "Internet of Planet AB", 
-          "ClimateView AB", 
+          "STUNS – Stiftelsen för samverkan mellan universiteten i Uppsala",
+          "näringsliv och samhälle",
+          "Uppsala Innovation Center",
+          "Energikontoret i Mälardalen AB",
+          "Uppsala universitet",
+          "SLU",
+          "KTH",
+          "Internet of Planet AB",
+          "ClimateView AB",
           "Ericsson AB Research"
         ],
-        "other_recipients": [
-          ""
-        ],
+        "other_recipients": [],
         "project_manager": "Björn Sigurdson",
         "project_manager_email": "bjorn.sigurdson@uppsala.se",
         "dates": { "start": "2019-10-01", "end": "2021-09-30" },
@@ -1176,35 +1171,29 @@
         "budget": { "funded": 4884000, "total_cost": 9768000 },
         "project_id": "48786-1",
         "project_type": "",
-        "ratio_funded": 0,5,
+        "ratio_funded": 0.5,
         "project_title": "Klimatneutrala Stockholm 2030",
-        "focus_lifestyle": ["management"
-        ],
-        "focus_planning": ["management"
-	],
-        "focus_mobility": ["management"
-	],
-        "focus_infrastructure": ["management"
-        ],
+        "focus_lifestyle": ["management"],
+        "focus_planning": ["management"],
+        "focus_mobility": ["management"],
+        "focus_infrastructure": ["management"],
         "project_organization": "Stockholms stad",
         "locations": ["Stockholm"],
         "keywords": [
           "Beslutsstöd",
-	  "Scenariomodell", 
-	  "Visualisering", 
-	  "Styrning", 
-	  "Samverkan", 
-	  "Fossilbränslefritt"
+          "Scenariomodell",
+          "Visualisering",
+          "Styrning",
+          "Samverkan",
+          "Fossilbränslefritt"
         ],
         "other_financiers": [
-          "Stockholm Exergi", 
-	  "Ellevio", 
-	  "RISE Reserach Institutes of Sweden",
-	  "KTH"
+          "Stockholm Exergi",
+          "Ellevio",
+          "RISE Reserach Institutes of Sweden",
+          "KTH"
         ],
-        "other_recipients": [
-          ""
-        ],
+        "other_recipients": [],
         "project_manager": "Björn Hugosson",
         "project_manager_email": "bjorn.hugosson@stockholm.se",
         "dates": { "start": "2019-10-01", "end": "2021-09-30" },
@@ -1218,40 +1207,34 @@
         "budget": { "funded": 3322848, "total_cost": 8339722 },
         "project_id": "48792-1",
         "project_type": "",
-        "ratio_funded": 0,398436302792827,
+        "ratio_funded": 0.398436302792827,
         "project_title": "Klimatneutrala Göteborg 2030",
-        "focus_lifestyle": ["testbeds", "management"
-        ],
-        "focus_planning": [
-	],
-        "focus_mobility": ["testbeds", "management"
-	],
-        "focus_infrastructure": [
-        ],
+        "focus_lifestyle": ["testbeds", "management"],
+        "focus_planning": [],
+        "focus_mobility": ["testbeds", "management"],
+        "focus_infrastructure": [],
         "project_organization": "Göteborgs stad",
         "locations": ["Göteborg"],
         "keywords": [
-          "Innovation", 
-	  "Styrning", 
-	  "Omställning", 
-	  "Klimat", 
-	  "Virtuell", 
-	  "Livsstil", 
-	  "Policy"
+          "Innovation",
+          "Styrning",
+          "Omställning",
+          "Klimat",
+          "Virtuell",
+          "Livsstil",
+          "Policy"
         ],
         "other_financiers": [
-          "Business Region Göteborg", 
-	  "Parkeringsbolaget Göteborgs stad",
-	  "Göteborgsregionens kommunalförbund",
-	  "IVL",
-	  "RISE Research Institutes of Sweden",
-	  "Handelshögskolan vid Göteborgs universitet",
-	  "Visual Arena Göteborg",
-	  "Lindholmen Science Park"
+          "Business Region Göteborg",
+          "Parkeringsbolaget Göteborgs stad",
+          "Göteborgsregionens kommunalförbund",
+          "IVL",
+          "RISE Research Institutes of Sweden",
+          "Handelshögskolan vid Göteborgs universitet",
+          "Visual Arena Göteborg",
+          "Lindholmen Science Park"
         ],
-        "other_recipients": [
-          ""
-        ],
+        "other_recipients": [],
         "project_manager": "Henriette Söderberg",
         "project_manager_email": "henriette.soderberg@miljo.goteborg.se",
         "dates": { "start": "2019-10-01", "end": "2021-09-30" },
@@ -1265,79 +1248,67 @@
         "budget": { "funded": 4000000, "total_cost": 8000000 },
         "project_id": "48788-1",
         "project_type": "",
-        "ratio_funded": 0,5,
+        "ratio_funded": 0.5,
         "project_title": "Klimatneutrala Umeå 2030",
-        "focus_lifestyle": ["innovation", "financing"
-        ],
-        "focus_planning": ["innovation", "management"
-	],
-        "focus_mobility": ["innovation", "management"
-	],
-        "focus_infrastructure": [
-        ],
+        "focus_lifestyle": ["innovation", "financing"],
+        "focus_planning": ["innovation", "management"],
+        "focus_mobility": ["innovation", "management"],
+        "focus_infrastructure": [],
         "project_organization": "Umeå kommun",
         "locations": ["Umeå"],
         "keywords": [
-          "Koldioxidneutralitet", 
-	  "Mobilitet", 
-	  "Konsumtion",
-	  "Energi", 
-	  "Cirkulär ekonomi", 
-	  "Innovation"
+          "Koldioxidneutralitet",
+          "Mobilitet",
+          "Konsumtion",
+          "Energi",
+          "Cirkulär ekonomi",
+          "Innovation"
         ],
         "other_financiers": [
-          "Umeå Energi", 
-	  "Umeå Universitet", 
-	  "eXpression", 
-	  "BioFuel Region", 
-	  "Nätverket för hållbart byggande och förvaltande", 
-	  "Swedavia"
+          "Umeå Energi",
+          "Umeå Universitet",
+          "eXpression",
+          "BioFuel Region",
+          "Nätverket för hållbart byggande och förvaltande",
+          "Swedavia"
         ],
-        "other_recipients": [
-          ""
-        ],
+        "other_recipients": [],
         "project_manager": "Sebastian Holmström",
         "project_manager_email": "Sebastian.holmstrom@umea.se",
         "dates": { "start": "2019-09-01", "end": "2021-08-31" },
         "description": "Projektet för ett smart klimatneutralt Umeå 2030 utgår från ett konsumtionsperspektiv på stadens klimatpåverkan och inkluderar utsläpp inom och utanför Umeås geografiska gräns. Insatser inriktas på fyra hotspots för att minska hushållens klimatpåverkan: 1. Resande (flygande samt bilanvändning), 2. Livsmedel (köttkonsumtion, mjölkprodukter samt matsvinn), 3. Boendeenergi  4. Kläder och möbler. Arbetet involverar även utvecklingen av två helt nya stadsdelar, Tomtebostrand och Norra Ön, som båda har ambitionen att vara internationella hållbarhetsförebilder.",
         "link": "http://viablecities.com/foi-projekt/klimatneutrala-umea-2030/"
       }
-
+    },
     {
       "survey_answers": {
         "budget": { "funded": 4946842, "total_cost": 9893634 },
         "project_id": "48785-1",
         "project_type": "",
-        "ratio_funded": 0,500002526877384,
+        "ratio_funded": 0.500002526877384,
         "project_title": "Klimatneutrala Malmö 2030",
-        "focus_lifestyle": ["innovation", "management"
-        ],
-        "focus_planning": ["innovation", "management"
-	],
-        "focus_mobility": ["innovation", "management"
-	],
-        "focus_infrastructure": ["innovation", "management"
-        ],
+        "focus_lifestyle": ["innovation", "management"],
+        "focus_planning": ["innovation", "management"],
+        "focus_mobility": ["innovation", "management"],
+        "focus_infrastructure": ["innovation", "management"],
         "project_organization": "Malmö stad",
         "locations": ["Malmö"],
         "keywords": [
-          "Klimatneutralitet", 
-	  "Omställning", 
-	  "Klimatmål", 
-	  "Konsumtion", 
-	  "Medborgare"
+          "Klimatneutralitet",
+          "Omställning",
+          "Klimatmål",
+          "Konsumtion",
+          "Medborgare"
         ],
         "other_financiers": [
-          "VA SYD, Sysav", 
-	  "E.ON", 
-	  "Trivector AB", 
-	  "Ericsson", 
-	  "Lunds universitet",
-	  "RISE Research Institutes of Sweden"
+          "VA SYD, Sysav",
+          "E.ON",
+          "Trivector AB",
+          "Ericsson",
+          "Lunds universitet",
+          "RISE Research Institutes of Sweden"
         ],
-        "other_recipients": [
-          ""
-        ],
+        "other_recipients": [],
         "project_manager": "Matilde Törnqvist",
         "project_manager_email": "matilde.tornqvist@malmo.se",
         "dates": { "start": "2019-09-02", "end": "2021-09-01" },
@@ -1351,38 +1322,42 @@
         "budget": { "funded": 4799980, "total_cost": 9860896 },
         "project_id": "48784-1",
         "project_type": "",
-        "ratio_funded": 0,48676915363472,
+        "ratio_funded": 0.48676915363472,
         "project_title": "Klimatneutrala Lund 2030",
-        "focus_lifestyle": ["innovation", "financing", "management", "intelligence"
+        "focus_lifestyle": [
+          "innovation",
+          "financing",
+          "management",
+          "intelligence"
         ],
-        "focus_planning": ["financing", "intelligence"
-	],
-        "focus_mobility": ["management", "intelligence"
-	],
-        "focus_infrastructure": ["testbeds", "innovation", "financing", "intelligence"
+        "focus_planning": ["financing", "intelligence"],
+        "focus_mobility": ["management", "intelligence"],
+        "focus_infrastructure": [
+          "testbeds",
+          "innovation",
+          "financing",
+          "intelligence"
         ],
         "project_organization": "Lunds kommun",
         "locations": ["Lund"],
         "keywords": [
-          "Innovation", 
-	  "Service design", 
-	  "Klimat", 
-	  "Energi", 
-	  "Lund", 
-	  "Digitalisering", 
-	  "Youth climathon"
+          "Innovation",
+          "Service design",
+          "Klimat",
+          "Energi",
+          "Lund",
+          "Digitalisering",
+          "Youth climathon"
         ],
         "other_financiers": [
-          "Idean", 
-	  "ustwo", 
-	  "Lunds universitet", 
-	  "K2 nationellt kunskapscentrum för kollektivtrafiken", 
-	  "IVL", 
-	  "Naturskyddsföreningen"
+          "Idean",
+          "ustwo",
+          "Lunds universitet",
+          "K2 nationellt kunskapscentrum för kollektivtrafiken",
+          "IVL",
+          "Naturskyddsföreningen"
         ],
-        "other_recipients": [
-          ""
-        ],
+        "other_recipients": [],
         "project_manager": "Tommy Bengtsson",
         "project_manager_email": "tommy.bengtsson@lund.se",
         "dates": { "start": "2019-09-01", "end": "2021-08-31" },
@@ -1396,36 +1371,30 @@
         "budget": { "funded": 3000628, "total_cost": 6001256 },
         "project_id": "48781-1",
         "project_type": "",
-        "ratio_funded": 0,5,
+        "ratio_funded": 0.5,
         "project_title": "Klimatneutrala Barkarbystaden 2030",
-        "focus_lifestyle": [""
-        ],
-        "focus_planning": ["testbeds", "management"
-	],
-        "focus_mobility": ["innovation"
-	],
-        "focus_infrastructure": [""
-        ],
+        "focus_lifestyle": [],
+        "focus_planning": ["testbeds", "management"],
+        "focus_mobility": ["innovation"],
+        "focus_infrastructure": [],
         "project_organization": "Järfälla kommun",
         "locations": ["Järfälla"],
         "keywords": [
-          "Klimatneutral", 
-	  "Handlingsplan", 
-	  "Innovationsplattform", 
-	  "Samskapande", 
-	  "Klimatavtal", 
-	  "Mobilitet"
+          "Klimatneutral",
+          "Handlingsplan",
+          "Innovationsplattform",
+          "Samskapande",
+          "Klimatavtal",
+          "Mobilitet"
         ],
         "other_financiers": [
-          "Barkarby Science", 
-	  "NCC", 
-	  "ÅF", 
-	  "Södertörns Högskola", 
-	  "E.ON"
+          "Barkarby Science",
+          "NCC",
+          "ÅF",
+          "Södertörns Högskola",
+          "E.ON"
         ],
-        "other_recipients": [
-          ""
-        ],
+        "other_recipients": [],
         "project_manager": "Megha Huber",
         "project_manager_email": "mega.huber@jarfalla.se",
         "dates": { "start": "2019-09-01", "end": "2021-09-30" },
@@ -1439,34 +1408,28 @@
         "budget": { "funded": 4099000, "total_cost": 8160600 },
         "project_id": "48778-1",
         "project_type": "",
-        "ratio_funded": 0,502291498174154,
+        "ratio_funded": 0.502291498174154,
         "project_title": "Klimatneutrala Enköping 2030",
-        "focus_lifestyle": [""
-        ],
-        "focus_planning": ["innovation", "management", "intelligence"
-	],
-        "focus_mobility": ["management", "intelligence"
-	],
-        "focus_infrastructure": [""
-        ],
+        "focus_lifestyle": [],
+        "focus_planning": ["innovation", "management", "intelligence"],
+        "focus_mobility": ["management", "intelligence"],
+        "focus_infrastructure": [],
         "project_organization": "Enköpings kommun",
         "locations": ["Enköping"],
         "keywords": [
-          "Enköping", 
-	  "Myran", 
-	  "Transformation", 
-	  "Medborgardialog", 
-	  "Klimatneutralitet"
+          "Enköping",
+          "Myran",
+          "Transformation",
+          "Medborgardialog",
+          "Klimatneutralitet"
         ],
         "other_financiers": [
-          "RISE Research Institutes of Sweden", 
-	  "AB Europan Sweden", 
-	  "ÅF Infrastructure AB", 
-	  "ICA Maxi"
+          "RISE Research Institutes of Sweden",
+          "AB Europan Sweden",
+          "ÅF Infrastructure AB",
+          "ICA Maxi"
         ],
-        "other_recipients": [
-          ""
-        ],
+        "other_recipients": [],
         "project_manager": "Thomas Adlercreutz",
         "project_manager_email": "thomas.adlercreutz@enkoping.se",
         "dates": { "start": "2019-09-01", "end": "2021-08-31" },
@@ -1480,47 +1443,40 @@
         "budget": { "funded": 3519187, "total_cost": 7038374 },
         "project_id": "48776-1",
         "project_type": "",
-        "ratio_funded": 0,5,
+        "ratio_funded": 0.5,
         "project_title": "Klimatneutrala Växjö 2030",
-        "focus_lifestyle": ["management"
-        ],
-        "focus_planning": ["management"
-	],
-        "focus_mobility": [""
-	],
-        "focus_infrastructure": [""
-        ],
+        "focus_lifestyle": ["management"],
+        "focus_planning": ["management"],
+        "focus_mobility": [],
+        "focus_infrastructure": [],
         "project_organization": "Växjö kommun",
         "locations": ["Växjö"],
         "keywords": [
-          "Livscykelanalyser", 
-	  "LCAs", 
-	  "Agenda 2030", 
-	  "Tankesmedja", 
-	  "Klimatpåverkan byggnader", 
-	  "Klimatpåveran transporter", 
-	  "Vätgasproduktion", 
-	  "Digitala verktyg", 
-	  "Klimatutsläppsdat"
+          "Livscykelanalyser",
+          "LCAs",
+          "Agenda 2030",
+          "Tankesmedja",
+          "Klimatpåverkan byggnader",
+          "Klimatpåveran transporter",
+          "Vätgasproduktion",
+          "Digitala verktyg",
+          "Klimatutsläppsdat"
         ],
         "other_financiers": [
-          "Växjö Energi AB", 
-	  "Vöfab", 
-	  "Växjöbostäder", 
-	  "Vidingehem", 
-	  "Videum", 
-	  "Linnéuniversitetet"
+          "Växjö Energi AB",
+          "Vöfab",
+          "Växjöbostäder",
+          "Vidingehem",
+          "Videum",
+          "Linnéuniversitetet"
         ],
-        "other_recipients": [
-          ""
-        ],
+        "other_recipients": [],
         "project_manager": "Henrik Johansson",
         "project_manager_email": "Henrik.johansson@vaxjo.se",
         "dates": { "start": "2019-09-01", "end": "2021-08-31" },
         "description": "I detta projekt vill Växjö kommun samverka med aktörer i samhället för att ta fram en handlingsplan och metoder för omställningen till ett samhälle med låg klimatpåverkan. Projektet ska jobba med helhetsbilden för ett klimatneutralt Växjö, men också fördjupa sig områdena byggnation och transport. Inom projektet kommer digitala verktyg att skapas och testas med fokus på att förbättra insikt av befintliga utsläpp samt att tillåta planera och jämföra olika lösningar och scenarier som behövs för att nå klimatneutralitet 2030. Projektet kommer också att arbeta med “tankesmedja” som ska fungera som ett lokalt klimatråd som följer, stödjer och driver på det lokala klimatarbetet.",
         "link": "http://viablecities.com/foi-projekt/klimatneutrala-vaxjo-2030/"
       }
-    },
-
+    }
   ]
 }
