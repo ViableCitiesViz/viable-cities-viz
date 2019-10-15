@@ -68,9 +68,7 @@
   font-weight: 600;
   color: hsl(0, 10%, 70%);
   border-bottom: 0px solid hsl(173, 10%, 70%);
-  transition: border-width 200ms,
-    border-color 200ms,
-    color 200ms;
+  transition: border-width 200ms, border-color 200ms, color 200ms;
 }
 
 .info-box__view-link:hover {
@@ -88,7 +86,9 @@
   border-bottom: 3px solid hsl(173, 100%, 45%);
 }
 
+/*
 .info-box__item-decoration {
-  /*background: hsl(60, 90%, 90%);*/
-  /*text-decoration: underline;*/
+ background: hsl(60, 90%, 90%);
+text-decoration: underline;
 }
+*/

@@ -1,18 +1,17 @@
-import { matchPath } from 'react-router';
+import { matchPath } from "react-router";
 
 // NOTE: For all methods that take props as an argument, it assumed that props is an object which contains
-// the history property and the filteredData property. If the history property is missing, make sure to 
+// the history property and the filteredData property. If the history property is missing, make sure to
 // use the 'withRouter' higher-order-component on whatever component ProjectNavigator is used from.
 class ProjectNavigator {
-  constructor(rootPath = '') {
+  constructor(rootPath = "") {
     this.rootPath = rootPath;
     this._hasChangedSinceInit = false;
   }
 
   static GetProjectId(location) {
     const match = matchPath(location.pathname, { path: `*/project/:id` });
-    if (match !== null)
-      return match.params.id;
+    if (match !== null) return match.params.id;
     return -1;
   }
 
@@ -29,7 +28,10 @@ class ProjectNavigator {
   }
 
   goToRoot(history, location) {
-    if (matchPath(location.pathname, { path: this.rootPath, exact: true }) === null) {
+    if (
+      matchPath(location.pathname, { path: this.rootPath, exact: true }) ===
+      null
+    ) {
       this._hasChangedSinceInit = true;
       history.push(this.rootPath);
     }
@@ -51,7 +53,10 @@ class ProjectNavigator {
   }
 
   projectHasChanged(location, prevLocation) {
-    return ProjectNavigator.GetProjectId(location) !== ProjectNavigator.GetProjectId(prevLocation);
+    return (
+      ProjectNavigator.GetProjectId(location) !==
+      ProjectNavigator.GetProjectId(prevLocation)
+    );
   }
 }
 

@@ -11,9 +11,6 @@
   flex-shrink: 0;
 }
 
-.matrix-circle-menu svg {
-}
-
 .matrix-circle-menu circle {
   stroke: #4a4a4a;
   stroke-width: 1px;

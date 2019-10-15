@@ -1,14 +1,10 @@
 export default class MatrixGuideMode {
-  constructor() {
-    
-  }
+  constructor() {}
 
   // on enter
   //  add listeners to labels
-  onEnter() {
+  onEnter() {}
 
-  }
-  
   // on leave
   //  remove listeners from labels
 }

@@ -60,14 +60,13 @@
   border-bottom: 0px solid #eee;
   border-left: none;
   box-sizing: border-box;
-  transition: border-width 200ms,
-    border-color 200ms,
-    color 200ms;
+  transition: border-width 200ms, border-color 200ms, color 200ms;
   cursor: pointer;
   outline: none;
 }
 
-.header-links__item:not(.header-links__item--active) .header-links__item-link:hover {
+.header-links__item:not(.header-links__item--active)
+  .header-links__item-link:hover {
   border-bottom: 4px solid #eee;
   color: #fff;
 }

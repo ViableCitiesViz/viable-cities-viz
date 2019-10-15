@@ -1,12 +1,12 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { range } from 'd3';
-import { Multiselect } from 'react-widgets'
-import { col2focus, row2theme, theme2row } from '../matrix/MatrixUtility';
-import Matchmaking from './Matchmaking';
-import isEqual from 'react-fast-compare';
-import _intersection from 'lodash.intersection';
-import './Filters.css';
+import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
+import { range } from "d3";
+import { Multiselect } from "react-widgets";
+import { col2focus, row2theme, theme2row } from "../matrix/MatrixUtility";
+import Matchmaking from "./Matchmaking";
+import isEqual from "react-fast-compare";
+import _intersection from "lodash.intersection";
+import "./Filters.css";
 
 // find the intersection of an arbitrary number of subsets of data
 function intersection(...data) {
@@ -31,7 +31,7 @@ class Filters extends Component {
         locations: props.data,
         partners: props.data,
         keywords: props.data,
-        matchmaking: props.data,
+        matchmaking: props.data
       },
       filterValues: {
         titles: [],
@@ -81,125 +81,155 @@ class Filters extends Component {
     });
 
     this.filterBy = {
-      titles: (titles) => {
+      titles: titles => {
         if (!titles.length) return this.props.data;
 
         return {
-          data: this.props.data.data.filter((d) => {
+          data: this.props.data.data.filter(d => {
             if (!titles.includes(d.survey_answers.project_title)) return false;
             return true;
           })
         };
       },
-      locations: (locations) => {
+      locations: locations => {
         if (!locations.length) return this.props.data;
 
         return {
-          data: this.props.data.data.filter((d) => {
-            if (!locations.some(location => {
-              return this.projectLocations[d.survey_answers.project_id].has(location.name);
-            })) return false;
+          data: this.props.data.data.filter(d => {
+            if (
+              !locations.some(location => {
+                return this.projectLocations[d.survey_answers.project_id].has(
+                  location.name
+                );
+              })
+            )
+              return false;
             return true;
           })
         };
       },
-      partners: (partners) => {
+      partners: partners => {
         if (!partners.length) return this.props.data;
 
         return {
-          data: this.props.data.data.filter((d) => {
-            if (!partners.some(partner => {
-              return this.projectPartners[d.survey_answers.project_id].has(partner.name);
-            })) return false;
+          data: this.props.data.data.filter(d => {
+            if (
+              !partners.some(partner => {
+                return this.projectPartners[d.survey_answers.project_id].has(
+                  partner.name
+                );
+              })
+            )
+              return false;
             return true;
           })
-        }
+        };
       },
-      keywords: (keywords) => {
+      keywords: keywords => {
         if (!keywords.length) return this.props.data;
 
         return {
-          data: this.props.data.data.filter((d) => {
-            if (!keywords.some(keyword => {
-              return this.projectKeywords[d.survey_answers.project_id].has(keyword.name);
-            })) return false;
+          data: this.props.data.data.filter(d => {
+            if (
+              !keywords.some(keyword => {
+                return this.projectKeywords[d.survey_answers.project_id].has(
+                  keyword.name
+                );
+              })
+            )
+              return false;
             return true;
           })
-        }
+        };
       },
-      matchmaking: (matchmaking) => {
+      matchmaking: matchmaking => {
         if (!matchmaking.length) return this.props.data;
 
         return {
-          data: this.props.data.data.filter((d) => {
-            if (!matchmaking.every(position => {
-              return d.survey_answers[col2focus[position.col]].includes(row2theme[position.row])
-            })) return false;
+          data: this.props.data.data.filter(d => {
+            if (
+              !matchmaking.every(position => {
+                return d.survey_answers[col2focus[position.col]].includes(
+                  row2theme[position.row]
+                );
+              })
+            )
+              return false;
             return true;
           })
-        }
+        };
       }
     };
   }
 
   empty() {
-    return Object.values(this.state.filterValues).every(value => value.length === 0);
+    return Object.values(this.state.filterValues).every(
+      value => value.length === 0
+    );
   }
 
   filteredByAllExcept(filter) {
-    return intersection(...Object.entries(this.state.filteredBy)
-      .filter(([key, value]) => key !== filter)
-      .map(([key, value]) => value))
+    return intersection(
+      ...Object.entries(this.state.filteredBy)
+        .filter(([key, value]) => key !== filter)
+        .map(([key, value]) => value)
+    );
   }
 
   buildTitlesList() {
-    const data = this.filteredByAllExcept('titles');
-    return data.data.map(d => d.survey_answers.project_title)
+    const data = this.filteredByAllExcept("titles");
+    return data.data.map(d => d.survey_answers.project_title);
   }
 
   buildLocationList() {
-    const data = this.filteredByAllExcept('locations');
+    const data = this.filteredByAllExcept("locations");
 
     const ret = new Map();
     data.data.forEach(d => {
       d.survey_answers.locations.forEach(location => {
-        ret.has(location) ? ret.set(location, ret.get(location) + 1) : ret.set(location, 1);
+        ret.has(location)
+          ? ret.set(location, ret.get(location) + 1)
+          : ret.set(location, 1);
       });
     });
 
     return [...ret]
       .sort()
-      .reduce((arr, [key, value]) => [...arr, {name: key, count: value}], [])
+      .reduce((arr, [key, value]) => [...arr, { name: key, count: value }], []);
   }
 
   buildPartnerList() {
-    const data = this.filteredByAllExcept('partners');
+    const data = this.filteredByAllExcept("partners");
 
     const ret = new Map();
     data.data.forEach(d => {
       this.projectPartners[d.survey_answers.project_id].forEach(partner => {
-        ret.has(partner) ? ret.set(partner, ret.get(partner) + 1) : ret.set(partner, 1);
+        ret.has(partner)
+          ? ret.set(partner, ret.get(partner) + 1)
+          : ret.set(partner, 1);
       });
     });
 
     return [...ret]
       .sort()
-      .reduce((arr, [key, value]) => [...arr, {name: key, count: value}], [])
+      .reduce((arr, [key, value]) => [...arr, { name: key, count: value }], []);
   }
 
   buildKeywordList() {
-    const data = this.filteredByAllExcept('keywords');
+    const data = this.filteredByAllExcept("keywords");
 
     const ret = new Map();
     data.data.forEach(d => {
       d.survey_answers.keywords.forEach(keyword => {
-        ret.has(keyword) ? ret.set(keyword, ret.get(keyword) + 1) : ret.set(keyword, 1);
+        ret.has(keyword)
+          ? ret.set(keyword, ret.get(keyword) + 1)
+          : ret.set(keyword, 1);
       });
     });
 
     return [...ret]
       .sort()
-      .reduce((arr, [key, value]) => [...arr, {name: key, count: value}], [])
+      .reduce((arr, [key, value]) => [...arr, { name: key, count: value }], []);
   }
 
   buildMatchmakingList() {
@@ -223,7 +253,7 @@ class Filters extends Component {
         d.survey_answers[col2focus[col]].forEach(theme => {
           const row = theme2row[theme];
           if (!nonEmpty[row][col]) nonEmpty[row][col] = true;
-        })
+        });
       });
     });
 
@@ -242,8 +272,15 @@ class Filters extends Component {
     if (!isEqual(prevState.filterValues, this.state.filterValues)) {
       const filteredBy = {};
       Object.keys(this.filterBy).forEach(filter => {
-        if (!isEqual(prevState.filterValues[filter], this.state.filterValues[filter])) {
-          filteredBy[filter] = this.filterBy[filter](this.state.filterValues[filter]);
+        if (
+          !isEqual(
+            prevState.filterValues[filter],
+            this.state.filterValues[filter]
+          )
+        ) {
+          filteredBy[filter] = this.filterBy[filter](
+            this.state.filterValues[filter]
+          );
         }
       });
       if (Object.keys(filteredBy).length) {
@@ -252,12 +289,14 @@ class Filters extends Component {
             ...state.filteredBy,
             ...filteredBy
           }
-        }))
+        }));
       }
     }
 
     if (!isEqual(prevState.filteredBy, this.state.filteredBy)) {
-      const newFilteredData = intersection(...Object.values(this.state.filteredBy));
+      const newFilteredData = intersection(
+        ...Object.values(this.state.filteredBy)
+      );
       this.setState({
         filteredData: newFilteredData
       });
@@ -275,16 +314,14 @@ class Filters extends Component {
         partners: this.buildPartnerList(),
         keywords: this.buildKeywordList(),
         matchmaking: this.buildMatchmakingList()
-      }
+      };
     }
 
     return (
       <div className="filters">
         <h2>Filter</h2>
         <div className="filters-box">
-          <span className="filters-box__title">
-            Titel
-          </span>
+          <span className="filters-box__title">Titel</span>
           <Multiselect
             data={this.componentData.titles}
             onChange={titles => {
@@ -297,12 +334,11 @@ class Filters extends Component {
             }}
             placeholder="Filtera efter titlar"
             filter="contains"
-            value={this.state.filterValues.titles} />
+            value={this.state.filterValues.titles}
+          />
         </div>
         <div className="filters-box">
-          <span className="filters-box__title">
-            Plats
-          </span>
+          <span className="filters-box__title">Plats</span>
           <Multiselect
             data={this.componentData.locations}
             onChange={locations => {
@@ -317,12 +353,11 @@ class Filters extends Component {
             valueField="name"
             textField="name"
             itemComponent={ListItem}
-            value={this.state.filterValues.locations} />
+            value={this.state.filterValues.locations}
+          />
         </div>
         <div className="filters-box">
-          <span className="filters-box__title">
-            Partner
-          </span>
+          <span className="filters-box__title">Partner</span>
           <Multiselect
             data={this.componentData.partners}
             onChange={partners => {
@@ -338,12 +373,11 @@ class Filters extends Component {
             valueField="name"
             textField="name"
             itemComponent={ListItem}
-            value={this.state.filterValues.partners} />
+            value={this.state.filterValues.partners}
+          />
         </div>
         <div className="filters-box">
-          <span className="filters-box__title">
-            Nyckelord
-          </span>
+          <span className="filters-box__title">Nyckelord</span>
           <Multiselect
             data={this.componentData.keywords}
             onChange={keywords => {
@@ -359,7 +393,8 @@ class Filters extends Component {
             valueField="name"
             textField="name"
             itemComponent={ListItem}
-            value={this.state.filterValues.keywords} />
+            value={this.state.filterValues.keywords}
+          />
         </div>
 
         <Matchmaking
@@ -372,27 +407,39 @@ class Filters extends Component {
               }
             });
           }}
-          enabled={this.componentData.matchmaking} />
+          enabled={this.componentData.matchmaking}
+        />
 
-        {!this.empty() &&
+        {!this.empty() && (
           <Fragment>
-            <p className='filters-results-text'>
-              Visar <span className="filters-results-text__number">{this.state.filteredData.data.length}</span>
-              {' '} av <span className="filters-results-text__number">{this.props.data.data.length}</span> projekt.
+            <p className="filters-results-text">
+              Visar{" "}
+              <span className="filters-results-text__number">
+                {this.state.filteredData.data.length}
+              </span>{" "}
+              av{" "}
+              <span className="filters-results-text__number">
+                {this.props.data.data.length}
+              </span>{" "}
+              projekt.
             </p>
 
-            <div className='filters-button-box'>
+            <div className="filters-button-box">
               <button
                 className="filters-button"
-                onClick={() => this.setState({
-                  filterValues: Object.entries(this.state.filterValues)
-                    .reduce((obj, [k,_]) => ({...obj, [k]: []}), {})
-                })}>
+                onClick={() =>
+                  this.setState({
+                    filterValues: Object.entries(
+                      this.state.filterValues
+                    ).reduce((obj, [k, _]) => ({ ...obj, [k]: [] }), {})
+                  })
+                }
+              >
                 Rensa filter
               </button>
             </div>
           </Fragment>
-        }
+        )}
       </div>
     );
   }

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import './MatrixTooltip.css';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import "./MatrixTooltip.css";
 
 const topOffset = 10;
 
@@ -17,9 +17,16 @@ class MatrixTooltip extends Component {
       <div
         className="matrix-tooltip"
         style={{
-          top: this.props.project.y + this.props.margin.top - this.props.project.r - topOffset + this.props.offset.y,
-          left: this.props.project.x + this.props.margin.left + this.props.offset.x
-        }}>
+          top:
+            this.props.project.y +
+            this.props.margin.top -
+            this.props.project.r -
+            topOffset +
+            this.props.offset.y,
+          left:
+            this.props.project.x + this.props.margin.left + this.props.offset.x
+        }}
+      >
         {this.props.project.survey_answers.project_title}
       </div>
     );

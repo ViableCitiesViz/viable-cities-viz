@@ -4,9 +4,6 @@
   overflow: hidden;
 }
 
-.scale-legend svg {
-}
-
 .scale-legend circle {
   stroke: #444;
   stroke-width: 1px;

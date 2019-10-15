@@ -21,17 +21,14 @@
 }
 
 .about-content h1 {
- margin: 0;
- text-align: center;
- font-weight: 600;
+  margin: 0;
+  text-align: center;
+  font-weight: 600;
 }
 
 .about-content h1 + small {
   display: block;
   text-align: center;
-}
-
-.about-content small {
 }
 
 .about-content strong {

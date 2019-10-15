@@ -1,7 +1,7 @@
-import { useLayoutEffect } from 'react';
-import projectImages from './info-box/projectImages';
+import { useLayoutEffect } from "react";
+import projectImages from "./info-box/projectImages";
 
-/** 
+/**
  * This avoids the visual bug where an image loads while the infobox,
  * this way all the images are already loaded.
  *
@@ -15,4 +15,4 @@ export default function usePreloadImages() {
       img.src = url;
     });
   }, []);
-};
+}
