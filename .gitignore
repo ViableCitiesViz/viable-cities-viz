@@ -23,6 +23,8 @@ yarn-error.log*
 #sublime
 *.sublime-workspace
 
+#VS Code
+*.vscode
 #victor-files
 /src/map/js/fetch_city_coordinates.js
 /src/map/test_files
