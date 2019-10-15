@@ -7,7 +7,7 @@ import * as topojson from "topojson";
 import europe from "../assets/data/europe.topo.json";
 import sweden from "../assets/data/sweden.topo.json";
 import cities from "../assets/data/cities-v2.json";
-import mockData from "../assets/data/mock-data-v8.json";
+// import mockData from "../assets/data/mock-data-v8.json";
 import project_coordinates from "../assets/data/project-coordinates.json";
 import "./Map.css";
 import ProjectNavigator from "../ProjectNavigator";
@@ -196,7 +196,7 @@ class Map extends Component {
       .selectAll("circle")
       .filter(function(d) {
         for (var j = 0; j < d.data.length; j++) {
-          if (d.data[j].survey_answers.project_id == projectId) {
+          if (d.data[j].survey_answers.project_id === projectId) {
             return true;
           }
         }
@@ -259,7 +259,7 @@ class Map extends Component {
           xx = true;
         }
       }
-      if (xx == false) {
+      if (xx === false) {
         var obj = {};
         obj.name = ab;
         var xxx = loc_circles[i].data;
@@ -344,7 +344,7 @@ class Map extends Component {
       .on("click", d => {
         // Here update the clicked one project = multiple cities problem.
         let stra = d.name.split(" ")[0];
-        if (d.data.length == 1) {
+        if (d.data.length === 1) {
           let id_real = d.data[0].survey_answers.project_id;
           this.projectNavigator.goToProject(
             this.props.history,
@@ -356,7 +356,7 @@ class Map extends Component {
             .selectAll("circle")
             .filter(function(d) {
               for (var j = 0; j < d.data.length; j++) {
-                if (d.data[j].survey_answers.project_id == id_real) {
+                if (d.data[j].survey_answers.project_id === id_real) {
                   return true;
                 }
               }
@@ -404,7 +404,7 @@ class Map extends Component {
                 .selectAll("circle")
                 .filter(function(d) {
                   for (var j = 0; j < d.data.length; j++) {
-                    if (d.data[j].survey_answers.project_id == id_real) {
+                    if (d.data[j].survey_answers.project_id === id_real) {
                       return true;
                     }
                   }

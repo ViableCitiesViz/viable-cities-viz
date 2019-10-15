@@ -59,7 +59,7 @@ class Partners extends Component {
       1: 80
     };
 
-    this.project_no = -1;
+    this.project_no = "-1"; // Changed to string because project_id is now string!
     this.bubbles = null; // Bubbles in object.
     this.nodes = {}; // Bubbles as nodes.
     this.view_option = 0;
@@ -331,7 +331,7 @@ class Partners extends Component {
         return this.temp_str[d];
       })
       .filter(function(d) {
-        if (d == 1) {
+        if (d === 1) {
           return true;
         }
         return false;
@@ -344,7 +344,7 @@ class Partners extends Component {
   }
 
   move_bubbles(opt) {
-    if (opt == 0) {
+    if (opt === 0) {
       this.simulation.force(
         "x",
         d3
@@ -352,7 +352,7 @@ class Partners extends Component {
           .strength(this.forceStrength)
           .x(this.center.x)
       );
-    } else if (opt == 1) {
+    } else if (opt === 1) {
       this.simulation.force(
         "x",
         d3
@@ -360,7 +360,7 @@ class Partners extends Component {
           .strength(this.forceStrength)
           .x(this.omrade_view.bind(this))
       );
-    } else if (opt == 2) {
+    } else if (opt === 2) {
       this.simulation.force(
         "x",
         d3
@@ -375,12 +375,12 @@ class Partners extends Component {
   }
 
   toggle_title(opt) {
-    if (opt == 1) {
+    if (opt === 1) {
       d3.selectAll(".omradeTitles").attr("display", "initial");
     } else {
       d3.selectAll(".omradeTitles").attr("display", "none");
     }
-    if (opt == 2) {
+    if (opt === 2) {
       d3.selectAll(".projTitles").attr("display", "initial");
     } else {
       d3.selectAll(".projTitles").attr("display", "none");
@@ -393,7 +393,7 @@ class Partners extends Component {
   project_view(d) {
     let projs = d.projects;
     for (var i = 0; i < projs.length; i++) {
-      if (projs[i] == this.project_no) {
+      if (projs[i] === this.project_no) {
         return this.projectSpace[1];
       }
     }
