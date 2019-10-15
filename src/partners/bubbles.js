@@ -16,7 +16,7 @@ function omrade_view(d) {
 function project_view(d) {
   var projs = d.projects;
   for (var i = 0; i < projs.length; i++) {
-    if (projs[i] == project_no) {
+    if (projs[i] === project_no) {
       return projectSpace[1];
     }
   }
@@ -105,7 +105,7 @@ function create_project_titles() {
       return temp_str[d];
     })
     .filter(function(d) {
-      if (d == 1) {
+      if (d === 1) {
         return true;
       }
       return false;
@@ -115,13 +115,13 @@ function create_project_titles() {
 }
 
 function toggle_title() {
-  if (view_option == 1) {
+  if (view_option === 1) {
     // console.log(view_option);
     $(".omradeTitles").css("display", "initial");
   } else {
     $(".omradeTitles").css("display", "none");
   }
-  if (view_option == 2) {
+  if (view_option === 2) {
     $(".projTitles").css("display", "initial");
   } else {
     $(".projTitles").css("display", "none");
@@ -159,13 +159,13 @@ function create_legend() {
     .append("text")
     // This is gross.
     .attr("x", function(d) {
-      if (d == 0) {
+      if (d === 0) {
         return d * width_s + extra_width + 92;
       }
-      if (d == 1) {
+      if (d === 1) {
         return d * width_s + extra_width + 86;
       }
-      if (d == 2) {
+      if (d === 2) {
         return d * width_s + extra_width + 86;
       }
       return d * width_s + extra_width + 110;
