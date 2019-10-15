@@ -54,6 +54,7 @@ class Header extends Component {
                 <a
                   className="header-links__item-link"
                   href="https://goo.gl/forms/bX9jxwEtvLveayls2"
+                  rel="noopener noreferrer"
                   target="_blank"
                 >
                   Lämna Feedback
