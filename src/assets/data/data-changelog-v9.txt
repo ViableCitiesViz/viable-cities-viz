@@ -1,0 +1,6 @@
+- Fixed various errors in new raw data file
+  - Incorrect decimal signs, missing parentheses, quotes et cetera
+  - Some empty lists were mistakenly entered as [""] - this caused crashes
+  - Three projects had empty locations - adding placeholder ["missing"] works for now
+
+- Some projects had locations not used before. I added those places to 'project_coordinates.json'
