@@ -61,7 +61,7 @@
           "intelligence"
         ],
         "project_organization": "RISE",
-        "locations": ["missing"],
+        "locations": ["Umeå"],
         "keywords": [
           "IoT",
           "data",
@@ -73,7 +73,7 @@
           "standardisering",
           "samverkan"
         ],
-        "other_financiers": [],
+        "other_financiers": ["uppgift saknas"],
         "other_recipients": [],
         "project_manager": "Claus Popp Larsen",
         "project_manager_email": "claus.popp.larsen@viablecities.com",
@@ -220,7 +220,7 @@
           "hållbara transporter",
           "delningsekonomi"
         ],
-        "other_financiers": [],
+        "other_financiers": ["uppgift saknas"],
         "other_recipients": [],
         "project_manager": "Denis Kerkhof",
         "project_manager_email": "dennis.kerkhof@lkf.se",
@@ -711,7 +711,7 @@
           "delningsekonomi",
           "hållbar utveckling"
         ],
-        "other_financiers": [],
+        "other_financiers": ["uppgift saknas"],
         "other_recipients": [],
         "project_manager": "Luis Mundaca",
         "project_manager_email": "luis.mundaca@iiiee.lu.se",
@@ -742,7 +742,7 @@
           "hållbarhet",
           "digitala lösningar"
         ],
-        "other_financiers": [],
+        "other_financiers": ["uppgift saknas"],
         "other_recipients": [],
         "project_manager": "Nancy Bocken",
         "project_manager_email": "nancy.bocken@iiiee.lu.se",
@@ -764,7 +764,7 @@
         "focus_mobility": [],
         "focus_infrastructure": [],
         "project_organization": "IVL",
-        "locations": ["missing"],
+        "locations": ["platsuppgift saknas"],
         "keywords": [
           "delningsekonomi",
           "städer",
@@ -777,7 +777,7 @@
           "kommunikation",
           "digitala verktyg"
         ],
-        "other_financiers": [],
+        "other_financiers": ["uppgift saknas"],
         "other_recipients": [],
         "project_manager": "Liv Fjellander",
         "project_manager_email": "liv.fjellander@ivl.se",
@@ -810,7 +810,7 @@
           "användare",
           "informationsteknologi"
         ],
-        "other_financiers": [],
+        "other_financiers": ["uppgift saknas"],
         "other_recipients": [],
         "project_manager": "Per Levén",
         "project_manager_email": "per.leven@umu.se",
@@ -844,7 +844,7 @@
           "entreprenörskap",
           "delningstjänst"
         ],
-        "other_financiers": [],
+        "other_financiers": ["uppgift saknas"],
         "other_recipients": [],
         "project_manager": "Henric Barkman",
         "project_manager_email": "henric.barkman@karlstad.se",
@@ -976,7 +976,7 @@
         "focus_mobility": ["testbeds", "intelligence"],
         "focus_infrastructure": ["testbeds", "innovation", "intelligence"],
         "project_organization": "Viable Cities",
-        "locations": ["missing"],
+        "locations": ["platsuppgift saknas"],
         "keywords": [
           "accessnät",
           "smarta städer",
@@ -987,7 +987,7 @@
           "tjänster",
           "affärsmodeller"
         ],
-        "other_financiers": [],
+        "other_financiers": ["uppgift saknas"],
         "other_recipients": [],
         "project_manager": "Alex Jonsson",
         "project_manager_email": "alex.jonsson@viablecities.com",

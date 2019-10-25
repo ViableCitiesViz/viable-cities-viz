@@ -545,5 +545,20 @@
     "Organisation": "Västerbottens läns landsting",
     "Kategori": "Offentlig verksamhet",
     "Projects": ["2017-02473"]
+  },
+
+  {
+    "Organisation": "uppgift saknas",
+    "Kategori": "Offentlig verksamhet",
+    "Projects": [
+      "2018-04500",
+      "2018-014681",
+      "2018-04649",
+      "2018-04646",
+      "2018-04647",
+      "2018-04648",
+      "2018-04496",
+      "2018-045000"
+    ]
   }
 ]
